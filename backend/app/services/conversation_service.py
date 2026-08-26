@@ -33,16 +33,22 @@ class ConversationService:
     def save_ai_message(self, conversation_id: str, content: str) -> Message:
         return self._save_message(conversation_id, "assistant", content)
 
+    def get_conversation(self, conversation_id: str) -> Conversation:
+        """Return a conversation or raise a domain-level not-found error."""
+        self._validate_id(conversation_id)
+        conversation = self.repository.get_conversation(conversation_id)
+        if conversation is None:
+            raise ConversationNotFoundError(f"会话不存在: {conversation_id}")
+        return conversation
+
     def _save_message(self, conversation_id: str, role: str, content: str) -> Message:
         self._validate_id(conversation_id)
         if not content or not content.strip():
             raise ValueError("消息内容不能为空")
-        if self.repository.get_conversation(conversation_id) is None:
-            raise ConversationNotFoundError(f"会话不存在: {conversation_id}")
+        self.get_conversation(conversation_id)
         return self.repository.save_message(conversation_id, role, content)
 
     def get_conversation_history(self, conversation_id: str) -> List[Message]:
         self._validate_id(conversation_id)
-        if self.repository.get_conversation(conversation_id) is None:
-            raise ConversationNotFoundError(f"会话不存在: {conversation_id}")
+        self.get_conversation(conversation_id)
         return self.repository.get_messages_by_conversation_id(conversation_id)
