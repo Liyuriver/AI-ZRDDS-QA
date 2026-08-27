@@ -4,3 +4,4 @@ pydantic
 sqlalchemy
 pymysql
 python-dotenv
+httpx
