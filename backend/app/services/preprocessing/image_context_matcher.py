@@ -48,7 +48,12 @@ def _chunk_meta(chunks: list[dict[str, Any]], page: int) -> tuple[str | None, st
 
 
 def resolve_visual_chunk(visual: dict[str, Any] | MinerUImage, chunks: Iterable[dict[str, Any]], blocks: Iterable[Any] | None = None, page_sizes: dict[int, tuple[float, float]] | None = None) -> dict[str, Any]:
-    """Resolve one visual using caption, source-block proximity, and page spans."""
+    """Resolve one visual using reading order and heading boundaries.
+
+    A visual at the top of a page can belong to the section that continued
+    from the previous page.  Page ranges remain candidates, but never decide
+    ownership before the page's heading boundary has been considered.
+    """
     chunk_list = list(chunks)
     page = int(visual.get("page") if isinstance(visual, dict) else visual.page)
     bbox = visual.get("bbox") if isinstance(visual, dict) else visual.bbox
@@ -66,6 +71,27 @@ def resolve_visual_chunk(visual: dict[str, Any] | MinerUImage, chunks: Iterable[
         y = ((float(bbox[1]) + float(bbox[3])) / 2) * height if max(abs(float(v)) for v in bbox) <= 1.5 else (float(bbox[1]) + float(bbox[3])) / 2
         nearby = [block for block in blocks if int(getattr(block, "page", 0) or 0) == page and getattr(block, "bbox", None)]
         if nearby:
+            page_headings = sorted(
+                (block for block in nearby if getattr(block, "heading_level", None)),
+                key=lambda block: (block.bbox[1], block.order),
+            )
+            first_heading = page_headings[0] if page_headings else None
+            # Before the first heading on a page, inherit the most recent
+            # source-block interval that ended before that heading.  This is
+            # the generic page-break case: previous section -> visual -> new
+            # heading.  Once the heading has been passed, normal local order
+            # resolution below selects the new section.
+            if first_heading is not None and y < first_heading.bbox[1]:
+                heading_order = int(getattr(first_heading, "order", 0))
+                inherited = [
+                    chunk for chunk in chunk_list
+                    if chunk.get("source_block_end") is not None
+                    and int(chunk.get("source_block_end")) < heading_order
+                    and any(int(source_page or 0) < page for source_page in (chunk.get("source_pages") or [chunk.get("page")]))
+                ]
+                if inherited:
+                    owner = max(inherited, key=lambda chunk: int(chunk.get("source_block_end") or -1))
+                    return {"chunk_id": owner.get("chunk_id"), "section": owner.get("section"), "binding_status": "resolved", "binding_reason": "page_top_heading_inheritance", "binding_score": 0.92}
             preceding = [block for block in nearby if block.bbox[1] <= y]
             nearest = max(preceding, key=lambda block: (block.bbox[3], block.order)) if preceding else min(nearby, key=lambda block: abs(block.bbox[1] - y))
             owner = next((chunk for chunk in same_page if nearest.order in (chunk.get("source_block_ids") or [])), None)

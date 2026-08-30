@@ -361,7 +361,7 @@ def _heading_info(text: str) -> tuple[int, str] | None:
         number, title = match.groups()
         # H1 is reserved for the document title. 1 -> H2, 1.1 -> H3, ...
         level = min(number.count(".") + 2, 6)
-        return level, f"{number} {title}".strip()
+        return level, f"{number}. {title}".strip()
     match = CHAPTER_RE.match(text)
     if match:
         return 2, text
@@ -814,9 +814,10 @@ def split_chunks(document: str, blocks: list[Block], max_chars: int, metadata: d
     current_page: int | None = None
     current_pages: set[int] = set()
     current_block_ids: list[int] = []
+    current_has_nonheading = False
 
     def emit() -> None:
-        nonlocal current, current_pages, current_block_ids
+        nonlocal current, current_pages, current_block_ids, current_has_nonheading
         content = "\n\n".join(current).strip()
         if content:
             chunks.append({
@@ -841,18 +842,23 @@ def split_chunks(document: str, blocks: list[Block], max_chars: int, metadata: d
                 "content": content,
             })
         current = []
+        current_has_nonheading = False
 
     for block, section in heading_paths(blocks):
         if block.kind == "toc":
             continue
         rendered = _render_block(block)
         if block.heading_level:
-            emit()
+            # Consecutive headings belong to one structural chunk until actual
+            # body content starts. This avoids empty chunks for a parent
+            # heading immediately followed by its first child heading.
+            if current and current_has_nonheading:
+                emit()
             current_section = section or None
             current_page = block.page
-            current = [rendered]
+            current = current + ([rendered] if current else [rendered])
             current_pages = {block.page}
-            current_block_ids = [block.order]
+            current_block_ids = current_block_ids + ([block.order] if current_block_ids else [block.order])
             continue
         candidate = "\n\n".join(current + [rendered])
         if current and len(candidate) > max_chars:
@@ -863,6 +869,7 @@ def split_chunks(document: str, blocks: list[Block], max_chars: int, metadata: d
             current_page = block.page
             current_section = section or current_section
         current.append(rendered)
+        current_has_nonheading = True
         current_pages.add(block.page)
         current_block_ids.append(block.order)
     emit()

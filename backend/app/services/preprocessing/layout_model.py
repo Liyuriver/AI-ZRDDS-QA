@@ -6,7 +6,7 @@ visual/code blocks. No IMAGE_SLOT replacement or post-render insertion exists.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, replace
 import re
 from typing import Any, Iterable
 
@@ -346,6 +346,17 @@ def _looks_config_text(value: str) -> bool:
     return sum(line.startswith("#") for line in lines) >= 1 and (any("/" in line or "=" in line or line.startswith("*") for line in lines) or len(lines) >= 3)
 
 
+def _looks_code_fragment(value: str) -> bool:
+    text = str(value or "").strip()
+    if not text or len(text) > 240:
+        return False
+    return bool(
+        re.search(r"(?:#\s*(?:include|define|if|else|endif)\b|//|/\*|\*/|->|::|[{};])", text)
+        or re.search(r"\b[A-Za-z_]\w*\s*\(", text)
+        or re.search(r"\b(?:true|false|null|None)\b", text)
+    )
+
+
 def _dedupe_codes_against_source(parsed: Any, code_blocks: list[PageBlock], visual_blocks: list[PageBlock]) -> list[PageBlock]:
     """Keep physical code occurrences while avoiding parser duplicates.
 
@@ -521,6 +532,47 @@ def render_page_blocks(document: str, blocks: Iterable[PageBlock]) -> str:
 
     ordered = [block for block in blocks if block.text]
 
+    # A PDF code screenshot can have selectable source text layered over it.
+    # Keep that source line inside the screenshot's existing fence when the
+    # geometries overlap; otherwise the line would appear as a truncated
+    # duplicate after the fence closes.
+    merged: list[PageBlock] = []
+    for block in ordered:
+        if (
+            merged
+            and block.source == "pdfplumber"
+            and _looks_code_fragment(block.text)
+            and merged[-1].kind in {"image", "code_figure"}
+            and merged[-1].page == block.page
+            and merged[-1].bbox
+            and block.bbox
+            and min(merged[-1].bbox[3], block.bbox[3]) > max(merged[-1].bbox[1], block.bbox[1])
+            and "```" in merged[-1].text
+        ):
+            previous = merged[-1]
+            fence_end = previous.text.rfind("```")
+            source_text = block.text.strip()
+            body = previous.text[:fence_end]
+            body_lines = body.splitlines()
+            # Replace a clipped OCR/VLM line when the selectable source line
+            # covers it. This is content/geometry driven and applies to any
+            # code or configuration fragment, without document-specific rules.
+            replaced = False
+            for index, line in enumerate(body_lines):
+                candidate = line.strip()
+                compact_candidate = re.sub(r"\s+", "", candidate)
+                compact_source = re.sub(r"\s+", "", source_text)
+                if candidate and compact_candidate != compact_source and compact_source.startswith(compact_candidate) and len(compact_candidate) >= 12:
+                    body_lines[index] = source_text
+                    replaced = True
+                    break
+            if not replaced:
+                body_lines.append(source_text)
+            merged[-1] = replace(previous, text="\n".join(body_lines).rstrip() + "\n" + previous.text[fence_end:])
+            continue
+        merged.append(block)
+    ordered = merged
+
     def is_config_fragment(block: PageBlock) -> bool:
         if block.source != "pdfplumber" or block.kind in {"heading", "table", "image", "code_figure"}:
             return False
@@ -538,7 +590,7 @@ def render_page_blocks(document: str, blocks: Iterable[PageBlock]) -> str:
     # Mark only source runs with multiple configuration signals. This keeps a
     # prose line such as "修改 /etc/..." outside the fence while grouping the
     # following comments and directives into one continuous code block.
-    signals = [is_config_fragment(block) for block in ordered]
+    signals = [is_config_fragment(block) or _looks_code_fragment(block.text) for block in ordered]
     fenced_run = [False] * len(ordered)
     index = 0
     while index < len(ordered):

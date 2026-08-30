@@ -92,11 +92,7 @@ def _page(record: dict[str, Any]) -> int:
 
 
 def _bbox(record: dict[str, Any]) -> list[float] | None:
-    """Return MinerU bbox in one canonical 0..1 coordinate space.
-
-    content_list_v2 uses 0..1 while legacy content_list uses 0..1000.
-    Normalizing here prevents downstream code from ever comparing mixed units.
-    """
+    """Return the source bbox unchanged; consumers normalize at their boundary."""
     value = _first(record, "bbox", "box", "coordinate")
     if not isinstance(value, (list, tuple)) or len(value) != 4:
         return None
@@ -104,8 +100,6 @@ def _bbox(record: dict[str, Any]) -> list[float] | None:
         box = [float(item) for item in value]
     except (TypeError, ValueError):
         return None
-    scale = 1.0 if max(abs(item) for item in box) <= 1.5 else 1000.0
-    box = [max(0.0, min(1.0, item / scale)) for item in box]
     if box[2] <= box[0] or box[3] <= box[1]:
         return None
     return box
@@ -203,8 +197,8 @@ def read_mineru_output(output_dir: Path) -> list[MinerUImage]:
         image_path = image_path or ""
         page = _page(record)
         record_page = _page(record)
-        before = [_text(item) for item in records[max(0, index - 3):index] if _text(item) and _page(item) == record_page]
-        after = [_text(item) for item in records[index + 1:index + 4] if _text(item) and _page(item) == record_page]
+        before = [_text(item) for item in records[max(0, index - 3):index] if _text(item)]
+        after = [_text(item) for item in records[index + 1:index + 4] if _text(item)]
         requested_id = str(_first(record, "image_id", "id") or f"img-p{page}-{len(result) + 1:02d}")
         used_ids = {item.image_id for item in result}
         image_id = requested_id

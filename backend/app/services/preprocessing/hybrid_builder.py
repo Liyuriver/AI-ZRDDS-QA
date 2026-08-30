@@ -155,7 +155,9 @@ def _technical_values(value: Any, label: str = "") -> list[tuple[str, str]]:
 
 def _is_table_excluded(match: dict[str, Any], vlm: dict[str, Any]) -> bool:
     """Exclude a true table visual or a geometry-confirmed table header fragment."""
-    return match.get("record_status") == "table_header_excluded" or vlm.get("image_type") == "table_image"
+    caption = str(match.get("caption") or vlm.get("caption") or "")
+    formal_figure = bool(re.match(r"^(?:图\s*\d+|Figure\s+\d+|Fig\.\s*\d+)\b", caption, re.IGNORECASE))
+    return match.get("record_status") == "table_header_excluded" or (vlm.get("image_type") == "table_image" and not formal_figure)
 
 
 
@@ -1086,7 +1088,7 @@ def build_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: dict[
             match["record_status"] = "table_excluded" if vlm.get("image_type") == "table_image" else (match.get("record_status") or "candidate")
         if _is_table_excluded(match, vlm):
             continue
-        source = Path(match.get("path", ""))
+        source = Path(match.get("path") or "")
         if not source.is_absolute():
             source = Path(match.get("mineru_root", "")) / source
         if source.is_file():
@@ -1162,10 +1164,24 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
 
     table_header_excluded = [item.get("image_id") for item in matches if item.get("record_status") == "table_header_excluded"]
     table_excluded = [item.get("image_id") for item in matches if _is_table_excluded(item, enrichments.get(item.get("image_id"), {}))]
-    expected = [item for item in matches if not _is_table_excluded(item, enrichments.get(item.get("image_id"), {}))]
-    expected_paths = {f"{item.get('image_id')}{Path(item.get('path','')).suffix.lower() or '.jpg'}": item.get("image_id") for item in expected}
+
+    def is_allowed_missing_source(item: dict[str, Any]) -> bool:
+        return item.get("path") is None and item.get("resolution_status") == "missing_source" and item.get("needs_review") is True
+
+    def is_ignored_non_knowledge(item: dict[str, Any]) -> bool:
+        return item.get("resolution_status") == "ignored_non_knowledge" or item.get("visual_class") in {"structured_table_duplicate", "non_knowledge_visual"}
+
+    active_visuals = [item for item in matches if not _is_table_excluded(item, enrichments.get(item.get("image_id"), {})) and not is_ignored_non_knowledge(item)]
+    missing_source_visuals = [item.get("image_id") for item in active_visuals if is_allowed_missing_source(item)]
+    unresolved_visuals = [item.get("image_id") for item in active_visuals if is_allowed_missing_source(item) or item.get("binding_status") == "ambiguous"]
+    ignored_non_knowledge_visuals = [item.get("image_id") for item in matches if is_ignored_non_knowledge(item)]
+    invalid_unresolved = [item.get("image_id") for item in active_visuals if item.get("path") is None and not is_allowed_missing_source(item)]
+    expected = [item for item in active_visuals if not is_allowed_missing_source(item)]
+    expected_paths = {f"{item.get('image_id')}{Path(item.get('path') or '').suffix.lower() or '.jpg'}": item.get("image_id") for item in expected}
     inserted_ids = [image_id for filename, image_id in expected_paths.items() if filename in set(image_refs)]
     missing_insertions = [item.get("image_id") for item in expected if item.get("image_id") not in inserted_ids and item.get("path")]
+    image_accounted_total = len(inserted_ids) + len(table_excluded)
+    image_accounting_ok = image_accounted_total == len(matches)
 
     # Semantic figure coverage is independent of PDF XObject count.  A source
     # figure may be a bitmap, a vector diagram, or one of several figures on a
@@ -1197,7 +1213,18 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
 
     code_matches = code_matches or []
     source_code = [str(item.get("code_content") or "").strip() for item in code_matches if str(item.get("code_content") or "").strip()]
-    missing_code_blocks = [body for body in source_code if body not in markdown_text]
+    # MinerU code records often flatten line breaks while Markdown preserves
+    # the source block layout. Validate token continuity instead of requiring
+    # byte-identical whitespace, while still detecting genuinely missing text.
+    normalized_markdown = re.sub(r"\s+", "", markdown_text)
+    missing_code_blocks = []
+    for body in source_code:
+        normalized_body = re.sub(r"\s+", "", body)
+        tokens = [token for token in re.findall(r"[A-Za-z_][A-Za-z0-9_.-]{2,}|[\u4e00-\u9fff]{2,}", body) if token]
+        if normalized_body not in normalized_markdown and any(token not in markdown_text for token in tokens):
+            missing_code_blocks.append(body)
+    fence_markers = re.findall(r"^```", markdown_text, re.MULTILINE)
+    unclosed_code_fences = len(fence_markers) % 2
 
     missing_visual_information = []
     late_source_vlm_failed = []
@@ -1216,11 +1243,31 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
 
     missing_images = []
     for item in expected:
-        source = Path(item.get("path", ""))
-        if not source.is_absolute() and item.get("mineru_root"):
-            source = Path(item["mineru_root"]) / source
+        source = Path(item.get("path") or "")
+        if not source.is_absolute():
+            output_source = output_dir / source
+            source = output_source if output_source.is_file() else (Path(item.get("mineru_root") or "") / source)
         if item.get("path") and not source.is_file():
             missing_images.append(item.get("image_id"))
+
+    chunk_ids = {str(chunk.get("chunk_id")) for chunk in getattr(parsed, "chunks", []) if chunk.get("chunk_id")}
+    binding_without_owner = [
+        item.get("image_id") for item in expected
+        if item.get("binding_status") == "resolved"
+        and (not item.get("chunk_id") or str(item.get("chunk_id")) not in chunk_ids)
+    ]
+    multiple_owners = [
+        item.get("image_id") for item in expected
+        if len(item.get("owner_chunk_ids") or []) > 1
+    ]
+    duplicate_physical_occurrences = []
+    for index, left in enumerate(expected):
+        for right in expected[index + 1:]:
+            if left.get("path") != right.get("path") or left.get("page") != right.get("page") or not left.get("path"):
+                continue
+            if _normalized_iou(_normalized_bbox(left.get("bbox")), _normalized_bbox(right.get("bbox"))) >= 0.85:
+                duplicate_physical_occurrences.extend([left.get("image_id"), right.get("image_id")])
+    duplicate_physical_occurrences = sorted(set(duplicate_physical_occurrences))
 
     failures = []
     if missing_files: failures.append("required_files")
@@ -1231,12 +1278,21 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
     if heading_level_jumps: failures.append("heading_levels")
     if missing_angle_tokens: failures.append("angle_placeholders")
     if missing_code_blocks: failures.append("code_blocks")
+    if unclosed_code_fences: failures.append("unclosed_code_fences")
     if missing_images: failures.append("missing_images")
     if missing_visual_information: failures.append("missing_visual_information")
     if late_source_vlm_failed: failures.append("late_source_vlm")
+    if invalid_unresolved: failures.append("invalid_unresolved_visuals")
+    if binding_without_owner: failures.append("binding_without_owner")
+    if multiple_owners: failures.append("multiple_owners")
+    if duplicate_physical_occurrences: failures.append("duplicate_physical_occurrences")
 
-    qwen_failed = sum(str(item.get("parse_status") or "") in {"failed", "source_recovered_vlm_failed"} for item in enrichments.values())
-    status = "FAIL" if failures or qwen_failed else "PASS"
+    qwen_failed = sum(
+        str((enrichments.get(item.get("image_id"), {}) or {}).get("parse_status") or "")
+        in {"failed", "source_recovered_vlm_failed"}
+        for item in expected
+    )
+    status = "FAIL" if failures or qwen_failed else ("PASS_WITH_UNRESOLVED" if unresolved_visuals else "PASS")
     type_counts = Counter(item.get("image_type", "unknown") for item in enrichments.values())
     report = {
         "status": status,
@@ -1247,6 +1303,8 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
         "inserted_image_total": len(inserted_ids),
         "inserted_image_ids": inserted_ids,
         "expected_non_table_image_total": len(expected),
+        "image_accounted_total": image_accounted_total,
+        "image_accounting_ok": image_accounting_ok,
         "missing_insertions": missing_insertions,
         "duplicate_image_references": duplicate_image_references,
         "image_coverage": len(inserted_ids) / len(expected) if expected else 1.0,
@@ -1264,8 +1322,18 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
         "missing_angle_tokens": missing_angle_tokens,
         "code_total": len(source_code),
         "missing_code_blocks": len(missing_code_blocks),
+        "unclosed_code_fences": unclosed_code_fences,
         "missing_images": missing_images,
         "missing_visual_information": missing_visual_information,
+        "missing_source_visuals": missing_source_visuals,
+        "unresolved_visuals": unresolved_visuals,
+        "ignored_non_knowledge_visuals": ignored_non_knowledge_visuals,
+        "invalid_unresolved_visuals": invalid_unresolved,
+        "knowledge_visual_without_path": invalid_unresolved,
+        "processed_visual_count": len(expected),
+        "binding_without_owner": binding_without_owner,
+        "multiple_owners": multiple_owners,
+        "duplicate_physical_occurrences": duplicate_physical_occurrences,
         "late_source_vlm_failed": late_source_vlm_failed,
         "qwen_failed": qwen_failed,
         "image_type_counts": dict(type_counts),
