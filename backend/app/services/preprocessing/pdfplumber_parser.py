@@ -49,6 +49,13 @@ class ParsedDocument:
     page_sizes: dict[int, tuple[float, float]] = field(default_factory=dict)
     source_path: str | None = None
     source_image_occurrences: list[dict[str, Any]] = field(default_factory=list)
+    product: str | None = None
+    version: str | None = None
+    version_raw: str | None = None
+    doc_type: str | None = None
+    publish_date: str | None = None
+    applicable_versions: list[str] = field(default_factory=list)
+    metadata_source: str | None = None
 
 
 def normalize_line(line: str) -> str:
@@ -799,22 +806,37 @@ def render_markdown(document: str, blocks: list[Block]) -> str:
     return "\n".join(lines).strip() + "\n"
 
 
-def split_chunks(document: str, blocks: list[Block], max_chars: int) -> list[dict]:
+def split_chunks(document: str, blocks: list[Block], max_chars: int, metadata: dict[str, Any] | None = None) -> list[dict]:
     """Chunk once from canonical blocks; headings are never dropped or copied."""
     chunks: list[dict] = []
     current: list[str] = []
     current_section: str | None = None
     current_page: int | None = None
+    current_pages: set[int] = set()
+    current_block_ids: list[int] = []
 
     def emit() -> None:
-        nonlocal current
+        nonlocal current, current_pages, current_block_ids
         content = "\n\n".join(current).strip()
         if content:
             chunks.append({
                 "document": document,
+                "product": (metadata or {}).get("product"),
+                "version": (metadata or {}).get("version"),
+                "version_raw": (metadata or {}).get("version_raw"),
+                "doc_type": (metadata or {}).get("doc_type"),
+                "publish_date": (metadata or {}).get("publish_date"),
+                "applicable_versions": list((metadata or {}).get("applicable_versions") or []),
+                "metadata_source": (metadata or {}).get("metadata_source"),
                 "section": current_section,
                 "heading_path": current_section,
-                "page": current_page,
+                "page": min(current_pages) if current_pages else current_page,
+                "page_start": min(current_pages) if current_pages else current_page,
+                "page_end": max(current_pages) if current_pages else current_page,
+                "source_pages": sorted(current_pages) if current_pages else ([current_page] if current_page else []),
+                "source_block_ids": list(current_block_ids),
+                "source_block_start": min(current_block_ids) if current_block_ids else None,
+                "source_block_end": max(current_block_ids) if current_block_ids else None,
                 "chunk_id": f"chunk-{len(chunks) + 1:04d}",
                 "content": content,
             })
@@ -829,6 +851,8 @@ def split_chunks(document: str, blocks: list[Block], max_chars: int) -> list[dic
             current_section = section or None
             current_page = block.page
             current = [rendered]
+            current_pages = {block.page}
+            current_block_ids = [block.order]
             continue
         candidate = "\n\n".join(current + [rendered])
         if current and len(candidate) > max_chars:
@@ -839,11 +863,13 @@ def split_chunks(document: str, blocks: list[Block], max_chars: int) -> list[dic
             current_page = block.page
             current_section = section or current_section
         current.append(rendered)
+        current_pages.add(block.page)
+        current_block_ids.append(block.order)
     emit()
     return chunks
 
 
-def parse_pdf(pdf_path: Path, *, max_chars: int = 1800) -> ParsedDocument:
+def parse_pdf(pdf_path: Path, *, max_chars: int = 1800, metadata: dict[str, Any] | None = None) -> ParsedDocument:
     pdf_path = Path(pdf_path)
     if not pdf_path.is_file():
         raise FileNotFoundError(f"PDF not found: {pdf_path}")
@@ -851,7 +877,11 @@ def parse_pdf(pdf_path: Path, *, max_chars: int = 1800) -> ParsedDocument:
         raise ValueError("max_chars should be at least 400")
     document = pdf_path.name
     blocks, page_sizes, source_images = _extract_blocks_from_pdf(pdf_path)
-    return ParsedDocument(document, blocks, split_chunks(document, blocks, max_chars), render_markdown(document, blocks), page_sizes, str(pdf_path.resolve()), source_images)
+    meta = dict(metadata or {})
+    chunks = split_chunks(document, blocks, max_chars, meta)
+    return ParsedDocument(document, blocks, chunks, render_markdown(document, blocks), page_sizes, str(pdf_path.resolve()), source_images,
+                          meta.get("product"), meta.get("version"), meta.get("version_raw"), meta.get("doc_type"),
+                          meta.get("publish_date"), list(meta.get("applicable_versions") or []), meta.get("metadata_source"))
 
 
 __all__ = ["Block", "ParsedDocument", "compact_table_rows", "extract_page_lines", "heading_paths", "join_wrapped", "lines_to_blocks", "normalize_line", "parse_pdf", "render_markdown", "split_chunks", "table_to_markdown"]

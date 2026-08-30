@@ -16,7 +16,7 @@ from typing import Any
 @dataclass(frozen=True)
 class MinerUImage:
     image_id: str
-    image_path: str
+    image_path: str | None
     page: int
     bbox: list[float] | None
     raw_type: str | None
@@ -187,10 +187,11 @@ def read_mineru_output(output_dir: Path) -> list[MinerUImage]:
         candidates = sorted(output_dir.glob("*_content_list.json"))
     if not candidates:
         raise FileNotFoundError(f"No *_content_list_v2.json or *_content_list.json in {output_dir}")
+    if len(candidates) > 1:
+        raise ValueError("Ambiguous MinerU content lists under %s: %s; select exactly one target list" % (output_dir, ", ".join(path.name for path in candidates)))
 
     records: list[dict[str, Any]] = []
-    for path in candidates:
-        records.extend(_load_records(path))
+    records = _load_records(candidates[0])
 
     result: list[MinerUImage] = []
     headings = [_heading(record) for record in records]
@@ -201,8 +202,9 @@ def read_mineru_output(output_dir: Path) -> list[MinerUImage]:
             continue
         image_path = image_path or ""
         page = _page(record)
-        before = [_text(item) for item in records[max(0, index - 3):index] if _text(item)]
-        after = [_text(item) for item in records[index + 1:index + 4] if _text(item)]
+        record_page = _page(record)
+        before = [_text(item) for item in records[max(0, index - 3):index] if _text(item) and _page(item) == record_page]
+        after = [_text(item) for item in records[index + 1:index + 4] if _text(item) and _page(item) == record_page]
         requested_id = str(_first(record, "image_id", "id") or f"img-p{page}-{len(result) + 1:02d}")
         used_ids = {item.image_id for item in result}
         image_id = requested_id
@@ -223,7 +225,7 @@ def read_mineru_output(output_dir: Path) -> list[MinerUImage]:
             order=index,
             previous_heading=next((heading for heading in reversed(headings[:index]) if heading), None),
             next_heading=next((heading for heading in headings[index + 1:] if heading), None),
-            raw=record,
+            raw={**record, "missing_mineru_source": not bool(image_path)},
         ))
     # Preserve every source occurrence exactly once.  Two records may point to
     # identical bytes and may even overlap on the same page because the source
@@ -269,8 +271,9 @@ def read_mineru_code(output_dir: Path) -> list[dict[str, Any]]:
         candidates = sorted(output_dir.glob("*_content_list.json"))
 
     records: list[dict[str, Any]] = []
-    for path in candidates:
-        records.extend(_load_records(path))
+    if len(candidates) > 1:
+        raise ValueError("Ambiguous MinerU content lists under %s: %s; select exactly one target list" % (output_dir, ", ".join(path.name for path in candidates)))
+    records = _load_records(candidates[0])
 
     result: list[dict[str, Any]] = []
     for index, record in enumerate(records):

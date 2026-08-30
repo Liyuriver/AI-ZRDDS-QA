@@ -81,6 +81,16 @@ def _horizontal_overlap_ratio(left: tuple[float, float, float, float] | None, ri
     return overlap / denom
 
 
+def _coverage(inner: tuple[float, float, float, float] | None, outer: tuple[float, float, float, float] | None) -> float:
+    if not inner or not outer:
+        return 0.0
+    x0, y0 = max(inner[0], outer[0]), max(inner[1], outer[1])
+    x1, y1 = min(inner[2], outer[2]), min(inner[3], outer[3])
+    inter = max(0.0, x1 - x0) * max(0.0, y1 - y0)
+    area = max((inner[2] - inner[0]) * (inner[3] - inner[1]), 1e-9)
+    return inter / area
+
+
 def mark_table_header_visuals(parsed: Any, matches: Iterable[dict[str, Any]], enrichments: dict[str, dict[str, Any]]) -> set[str]:
     """Mark visual fragments that are actually a table header/title.
 
@@ -148,7 +158,7 @@ def bind_source_figure_captions(parsed: Any, matches: Iterable[dict[str, Any]], 
     for block in getattr(parsed, "blocks", []):
         text = str(getattr(block, "text", "")).strip()
         box = _bbox(getattr(block, "bbox", None))
-        if not box or not re.match(r"^图\s*\d+\s*\S", text):
+        if not box or not re.match(r"^(?:图\s*\d+(?:[-.]\d+)?|Figure\s+\d+(?:[-.]\d+)?|Fig\.\s*\d+(?:[-.]\d+)?)\s*\S", text, re.IGNORECASE):
             continue
         captions_by_page.setdefault(int(getattr(block, "page", 0)), []).append((box, text))
 
@@ -327,6 +337,15 @@ def _normalise_text(value: str) -> str:
     return "".join(value.split()).lower()
 
 
+def _looks_config_text(value: str) -> bool:
+    lines = [line.strip() for line in str(value or "").splitlines() if line.strip()]
+    if not lines:
+        return False
+    if len(lines) == 1:
+        return lines[0].startswith("#") and ("/" in lines[0] or lines[0] == "#")
+    return sum(line.startswith("#") for line in lines) >= 1 and (any("/" in line or "=" in line or line.startswith("*") for line in lines) or len(lines) >= 3)
+
+
 def _dedupe_codes_against_source(parsed: Any, code_blocks: list[PageBlock], visual_blocks: list[PageBlock]) -> list[PageBlock]:
     """Keep physical code occurrences while avoiding parser duplicates.
 
@@ -455,7 +474,7 @@ def build_page_blocks(parsed: Any, matches: Iterable[dict[str, Any]], codes: Ite
         # into normal正文. Headings are never suppressed. A pdfplumber table is
         # also suppressed when a non-table visual clearly owns the region.
         if not level and box:
-            owner = next((region for region in all_nontext_regions if region.page == page and (_centre_inside(box, region.bbox) or _iou(box, region.bbox) >= 0.60)), None)
+            owner = next((region for region in all_nontext_regions if region.page == page and (_coverage(box, region.bbox) >= 0.80 or _iou(box, region.bbox) >= 0.60)), None)
             if owner:
                 if kind in {"text", "box", "code"}:
                     continue
@@ -499,10 +518,57 @@ def build_page_blocks(parsed: Any, matches: Iterable[dict[str, Any]], codes: Ite
 def render_page_blocks(document: str, blocks: Iterable[PageBlock]) -> str:
     """Render exactly once. Heading levels are preserved, never re-written."""
     lines = [f"# {document.removesuffix('.pdf')}", ""]
-    for block in blocks:
-        if not block.text:
+
+    ordered = [block for block in blocks if block.text]
+
+    def is_config_fragment(block: PageBlock) -> bool:
+        if block.source != "pdfplumber" or block.kind in {"heading", "table", "image", "code_figure"}:
+            return False
+        text = str(block.text).strip()
+        if not text or text.startswith("```"):
+            return False
+        compact = text.lower()
+        return (
+            text == "#"
+            or text.startswith("#")
+            or text.startswith("*") and any(token in compact for token in (" soft ", " hard ", " unlimited", " nofile"))
+            or ("=" in text and len(text) <= 180)
+        )
+
+    # Mark only source runs with multiple configuration signals. This keeps a
+    # prose line such as "修改 /etc/..." outside the fence while grouping the
+    # following comments and directives into one continuous code block.
+    signals = [is_config_fragment(block) for block in ordered]
+    fenced_run = [False] * len(ordered)
+    index = 0
+    while index < len(ordered):
+        if not signals[index] or ordered[index].heading_level:
+            index += 1
             continue
+        end = index
+        signal_count = 0
+        while end < len(ordered) and signals[end] and not ordered[end].heading_level and ordered[end].page == ordered[index].page:
+            signal_count += 1
+            end += 1
+        if signal_count >= 2:
+            for position in range(index, end):
+                fenced_run[position] = True
+        index = end
+
+    pending: list[str] = []
+
+    def flush_pending() -> None:
+        if pending:
+            lines.extend(["```text", "\n".join(pending).strip("\n"), "```", ""])
+            pending.clear()
+
+    for position, block in enumerate(ordered):
+        if fenced_run[position]:
+            pending.append(block.text)
+            continue
+        flush_pending()
         lines.extend([block.text, ""])
+    flush_pending()
     return "\n".join(lines).rstrip() + "\n"
 
 

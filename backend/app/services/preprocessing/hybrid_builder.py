@@ -213,15 +213,13 @@ def _intersection_cover(left: tuple[float, float, float, float] | None, right: t
 def _source_text_context_for_page(parsed: Any, page: int) -> str:
     """Return nearby source-backed text for conservative code correction.
 
-    A code screenshot can summarize settings introduced on the previous page
-    (as in a full project configuration example).  Use only the current page
-    and its immediate neighbours; this keeps anchors local without hard-coding
-    document names or product terms.
+    Context is evidence only and is deliberately page-local. Adjacent pages can
+    contain similarly named variables and must not trigger automatic repair.
     """
     parts: list[str] = []
     for block in getattr(parsed, "blocks", []) or []:
         block_page = int(getattr(block, "page", 0) or 0)
-        if abs(block_page - int(page)) > 1:
+        if block_page != int(page):
             continue
         text = str(getattr(block, "text", "") or "").strip()
         if text:
@@ -230,10 +228,32 @@ def _source_text_context_for_page(parsed: Any, page: int) -> str:
 
 
 def _chunk_meta_for_page(parsed: Any, page: int) -> tuple[str | None, str | None]:
-    same_page = [chunk for chunk in getattr(parsed, "chunks", []) if int(chunk.get("page") or 0) == page]
-    if not same_page:
-        return None, None
-    return same_page[0].get("chunk_id"), same_page[0].get("section")
+    candidates = [chunk for chunk in getattr(parsed, "chunks", []) if page in (chunk.get("source_pages") or [chunk.get("page")])]
+    if len(candidates) == 1:
+        return candidates[0].get("chunk_id"), candidates[0].get("section")
+    return None, None
+
+
+def _bind_visual_chunks(parsed: Any, matches: list[dict[str, Any]], enrichments: dict[str, dict[str, Any]], codes: list[dict[str, Any]]) -> None:
+    from .image_context_matcher import resolve_visual_chunk
+    from .layout_model import bind_source_figure_captions
+    chunks = getattr(parsed, "chunks", [])
+    blocks = getattr(parsed, "blocks", [])
+    bind_source_figure_captions(parsed, matches, enrichments)
+    for item in [*matches, *codes]:
+        if item in matches:
+            image_id = str(item.get("image_id") or "")
+            visual = dict(item)
+            visual["caption"] = item.get("caption") or (enrichments.get(image_id, {}) or {}).get("caption")
+        else:
+            visual = item
+        binding = resolve_visual_chunk(visual, chunks, blocks, getattr(parsed, "page_sizes", {}))
+        item["chunk_id"] = binding.get("chunk_id")
+        item["section"] = binding.get("section")
+        item["binding_status"] = binding.get("binding_status")
+        item["binding_reason"] = binding.get("binding_reason")
+        item["binding_score"] = binding.get("binding_score")
+        item["needs_review"] = binding.get("binding_status") != "resolved"
 
 
 
@@ -329,7 +349,10 @@ def _enrich_late_source_visuals(
             merged["caption"] = current["caption"]
         elif current.get("caption") and not merged.get("caption"):
             merged["caption"] = current["caption"]
-        if merged.get("parse_status") != "success":
+        if merged.get("parse_status") in {"vlm_disabled", "offline_mock"}:
+            merged["parse_status"] = "source_recovered_vlm_disabled"
+            merged["needs_review"] = True
+        elif merged.get("parse_status") != "success":
             merged["parse_status"] = "source_recovered_vlm_failed"
             merged["needs_review"] = True
         enrichments[image_id] = merged
@@ -1045,6 +1068,12 @@ def build_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: dict[
     code_matches = code_matches or []
     _supplement_pdf_image_occurrences(parsed, matches, enrichments, output_dir)
     _supplement_pdf_vector_figures(parsed, matches, enrichments, output_dir)
+    _bind_visual_chunks(parsed, matches, enrichments, code_matches)
+    for match in matches:
+        if not match.get("path"):
+            match["path"] = None
+            match["resolution_status"] = "missing_source"
+            match["needs_review"] = True
     _enrich_late_source_visuals(parsed, matches, enrichments, code_matches)
     mark_table_header_visuals(parsed, matches, enrichments)
     image_paths: dict[str, str] = {}
@@ -1067,14 +1096,32 @@ def build_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: dict[
                 shutil.copy2(source, target)
             image_paths[image_id] = f"images/{target.name}"
     _materialize_code_crops(parsed, code_matches, matches, enrichments, image_paths, output_dir)
+    from .visual_registry import build_visual_registry
+    matches, code_matches, registry = build_visual_registry(matches, code_matches, enrichments, image_paths)
     for code in code_matches:
         code["slot_status"] = "canonical_code" if code.get("code_content") else "missing_code_content"
 
     chunks = []
     for original in parsed.chunks:
         chunk = dict(original)
-        chunk["images"] = [{"image_id": match["image_id"], "path": image_paths.get(match["image_id"], ""), "type": enrichments.get(match["image_id"], {}).get("image_type", "unknown"), "page": match.get("page"), "needs_review": bool(enrichments.get(match["image_id"], {}).get("needs_review", False) or match.get("match_status") != "auto_matched")} for match in matches if match.get("chunk_id") == original.get("chunk_id") and match.get("image_id") and not _is_table_excluded(match, enrichments.get(match.get("image_id"), {}))]
-        chunk["images"].extend({"image_id": code.get("code_id"), "path": code.get("source_image_path"), "type": "code_original", "page": code.get("page"), "needs_review": code.get("code_verification_status") in {"primary_review", "primary_unverified", "primary_rejected", "primary_transcription_empty", "primary_transcription_failed"}} for code in code_matches if code.get("chunk_id") == original.get("chunk_id") and code.get("source_image_path"))
+        records = []
+        for match in matches:
+            if match.get("chunk_id") != original.get("chunk_id") or not match.get("image_id") or _is_table_excluded(match, enrichments.get(match.get("image_id"), {})):
+                continue
+            path = image_paths.get(match["image_id"])
+            records.append({"image_id": match["image_id"], "path": path, "type": enrichments.get(match["image_id"], {}).get("image_type", "unknown"), "page": match.get("page"), "bbox": match.get("bbox"), "needs_review": bool(enrichments.get(match["image_id"], {}).get("needs_review", False) or match.get("match_status") != "auto_matched"), "binding_status": match.get("binding_status"), "resolution_status": "resolved" if path else "missing_source"})
+        for code in code_matches:
+            if code.get("chunk_id") == original.get("chunk_id") and code.get("source_image_path"):
+                records.append({"image_id": code.get("code_id"), "path": code.get("source_image_path"), "type": "code_original", "page": code.get("page"), "bbox": code.get("bbox"), "needs_review": True, "binding_status": code.get("binding_status"), "resolution_status": "resolved"})
+        unique = []
+        for record in records:
+            old_box = _normalized_bbox(record.get("bbox"))
+            duplicate = next((old for old in unique if old.get("path") == record.get("path") and old.get("page") == record.get("page") and old.get("path") and ( _normalized_iou(_normalized_bbox(old.get("bbox")), old_box) >= 0.85 or max(_intersection_cover(_normalized_bbox(old.get("bbox")), old_box)) >= 0.88)), None)
+            if duplicate:
+                duplicate["roles"] = sorted(set((duplicate.get("roles") or [duplicate.get("type")]) + [record.get("type")]))
+                continue
+            unique.append(record)
+        chunk["images"] = unique
         chunks.append(chunk)
 
     page_blocks = build_page_blocks(parsed, matches, code_matches or [], enrichments, image_paths)
@@ -1083,6 +1130,7 @@ def build_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: dict[
     (output_dir / "chunks.json").write_text(json.dumps(chunks, ensure_ascii=False, indent=2), encoding="utf-8")
     (output_dir / "chunks.jsonl").write_text("\n".join(json.dumps(chunk, ensure_ascii=False) for chunk in chunks) + "\n", encoding="utf-8")
     (output_dir / "layout_blocks.json").write_text(json.dumps([block.to_dict() for block in page_blocks], ensure_ascii=False, indent=2), encoding="utf-8")
+    (output_dir / "visual_registry.json").write_text(json.dumps(registry, ensure_ascii=False, indent=2), encoding="utf-8")
     manifest = []
     for match in matches:
         enriched = dict(match)
@@ -1161,7 +1209,7 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
         key_information = [str(v).strip() for v in (value.get("key_information") or []) if str(v).strip()]
         code_content = str(value.get("code_content") or "").strip()
         has_output_information = bool(description or key_information or (image_type == "code_or_config" and code_content))
-        if not has_output_information:
+        if not has_output_information and str(value.get("parse_status") or "") not in {"vlm_disabled", "source_recovered_vlm_disabled", "offline_mock"}:
             missing_visual_information.append(image_id)
         if str(value.get("parse_status") or "") in {"source_recovered_without_vlm", "source_recovered_vlm_failed"}:
             late_source_vlm_failed.append(image_id)

@@ -78,11 +78,16 @@ def filter_images(images: list[Any], image_root: Path) -> list[Any]:
     ignored_types = ("logo", "decorative", "decoration", "background", "watermark")
     for image in images:
         raw_type = (image.raw_type or "").lower()
+        if not image.image_path:
+            retained.append(image)
+            continue
         path = Path(image.image_path)
         source = path if path.is_absolute() else image_root / path
         if raw_type in ignored_types or any(term in (image.caption or "").lower() for term in ignored_types):
             continue
         if not source.is_file():
+            # Missing MinerU export is recoverable from the source PDF.
+            retained.append(image)
             continue
         retained.append(image)
     return retained
@@ -332,6 +337,8 @@ def _precise_code_payload(encoded: str, model: str, mime: str) -> dict[str, Any]
 
 def transcribe_code_image(image_path: Path, *, mineru_ocr: str | None = None, context: str = "", timeout: float = 60.0, retries: int = 2) -> dict[str, Any]:
     """Produce one authoritative visual transcription and validate it without merging evidence."""
+    if os.getenv("ENABLE_VLM", "true").lower() in {"0", "false", "no", "off"} or os.getenv("TEST_MODE", "").lower() == "true":
+        return {"code_content": None, "parse_status": "vlm_disabled", "needs_review": True, "code_verification": {"status": "vlm_disabled", "accepted": False, "needs_review": True}}
     api_key = os.getenv("DASHSCOPE_API_KEY")
     if not api_key:
         raise RuntimeError("DASHSCOPE_API_KEY is not configured")
@@ -389,6 +396,8 @@ def transcribe_code_image(image_path: Path, *, mineru_ocr: str | None = None, co
 
 def enrich_image(image_path: Path, *, document: str, section: str | None, context_before: str, context_after: str, mineru_ocr: str | None, timeout: float = 60.0, retries: int = 2) -> dict[str, Any]:
     """Call Qwen only when explicitly configured; return auditable failures."""
+    if os.getenv("ENABLE_VLM", "true").lower() in {"0", "false", "no", "off"} or os.getenv("TEST_MODE", "").lower() == "true":
+        return {"image_type": "unknown", "raw_image_type": "unknown", "description": "", "key_information": [], "technical_values": [], "parse_status": "vlm_disabled", "needs_review": True, "verified_by_image": False, "supported_by_context": False}
     api_key = os.getenv("DASHSCOPE_API_KEY")
     if not api_key:
         raise RuntimeError("DASHSCOPE_API_KEY is not configured")

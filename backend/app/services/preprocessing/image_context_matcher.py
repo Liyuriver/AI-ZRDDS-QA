@@ -6,6 +6,7 @@ never used to decide a visual's physical position.
 """
 from __future__ import annotations
 
+import re
 from typing import Any, Iterable
 from .mineru_reader import MinerUImage
 
@@ -46,6 +47,40 @@ def _chunk_meta(chunks: list[dict[str, Any]], page: int) -> tuple[str | None, st
     return chunk.get("chunk_id"), chunk.get("section")
 
 
+def resolve_visual_chunk(visual: dict[str, Any] | MinerUImage, chunks: Iterable[dict[str, Any]], blocks: Iterable[Any] | None = None, page_sizes: dict[int, tuple[float, float]] | None = None) -> dict[str, Any]:
+    """Resolve one visual using caption, source-block proximity, and page spans."""
+    chunk_list = list(chunks)
+    page = int(visual.get("page") if isinstance(visual, dict) else visual.page)
+    bbox = visual.get("bbox") if isinstance(visual, dict) else visual.bbox
+    caption = str((visual.get("caption") if isinstance(visual, dict) else visual.caption) or "").strip()
+    same_page = [chunk for chunk in chunk_list if page in (chunk.get("source_pages") or [chunk.get("page")])]
+    if not same_page:
+        return {"chunk_id": None, "section": None, "binding_status": "ambiguous", "binding_reason": "no_source_page_candidate", "binding_score": 0.0}
+    if caption:
+        normalized = re.sub(r"\s+", "", caption).lower()
+        hits = [chunk for chunk in same_page if normalized in re.sub(r"\s+", "", str(chunk.get("content") or "")).lower()]
+        if len(hits) == 1:
+            return {"chunk_id": hits[0].get("chunk_id"), "section": hits[0].get("section"), "binding_status": "resolved", "binding_reason": "caption_match", "binding_score": 1.0}
+    if bbox and blocks:
+        width, height = (page_sizes or {}).get(page, (1.0, 1.0))
+        y = ((float(bbox[1]) + float(bbox[3])) / 2) * height if max(abs(float(v)) for v in bbox) <= 1.5 else (float(bbox[1]) + float(bbox[3])) / 2
+        nearby = [block for block in blocks if int(getattr(block, "page", 0) or 0) == page and getattr(block, "bbox", None)]
+        if nearby:
+            preceding = [block for block in nearby if block.bbox[1] <= y]
+            nearest = max(preceding, key=lambda block: (block.bbox[3], block.order)) if preceding else min(nearby, key=lambda block: abs(block.bbox[1] - y))
+            owner = next((chunk for chunk in same_page if nearest.order in (chunk.get("source_block_ids") or [])), None)
+            if owner:
+                return {"chunk_id": owner.get("chunk_id"), "section": owner.get("section"), "binding_status": "resolved", "binding_reason": "source_block_interval", "binding_score": 0.9}
+            text = str(getattr(nearest, "text", "") or "").strip()
+            hits = [chunk for chunk in same_page if text and text in str(chunk.get("content") or "")]
+            if len(hits) == 1:
+                return {"chunk_id": hits[0].get("chunk_id"), "section": hits[0].get("section"), "binding_status": "resolved", "binding_reason": "source_block_proximity", "binding_score": 0.85}
+    if len(same_page) == 1:
+        chunk = same_page[0]
+        return {"chunk_id": chunk.get("chunk_id"), "section": chunk.get("section"), "binding_status": "resolved", "binding_reason": "unique_source_page", "binding_score": 0.7}
+    return {"chunk_id": None, "section": None, "binding_status": "ambiguous", "binding_reason": "multiple_source_page_candidates", "binding_score": 0.0}
+
+
 def _dedupe_images(images: list[MinerUImage]) -> list[MinerUImage]:
     """Compatibility shim: preserve every MinerU source occurrence.
 
@@ -64,6 +99,18 @@ def match_images(chunks: Iterable[dict[str, Any]], images: Iterable[MinerUImage]
     for image in _dedupe_images(list(images)):
         chunk_id, section = _chunk_meta(chunk_list, image.page)
         bbox = _norm_bbox(image.bbox)
+        slot_id = None
+        if bbox and str(image.raw_type or "").lower() != "table":
+            for chunk in chunk_list:
+                if int(chunk.get("page") or 0) != image.page:
+                    continue
+                for slot in re.finditer(r"<!-- IMAGE_SLOT id=(\S+) page=(\d+) bbox=([\d.,-]+) order=(\d+) -->", str(chunk.get("content") or "")):
+                    slot_box = _norm_bbox([float(value) for value in slot.group(3).split(",")])
+                    if slot_box and _iou(bbox, slot_box) >= 0.45:
+                        slot_id = slot.group(1)
+                        break
+                if slot_id:
+                    break
         output.append({
             "image_id": image.image_id,
             "source_occurrence_id": f"mineru:{image.page}:{image.order}:{image.image_id}",
@@ -77,8 +124,8 @@ def match_images(chunks: Iterable[dict[str, Any]], images: Iterable[MinerUImage]
             "section": section,
             "match_score": 100 if bbox else 0,
             "match_status": "auto_matched" if bbox else "review",
-            "slot_id": None,
-            "slot_status": "not_used",
+            "slot_id": slot_id,
+            "slot_status": "table_not_slot" if str(image.raw_type or "").lower() == "table" else ("matched" if slot_id else "not_used"),
         })
     return output
 
@@ -100,4 +147,4 @@ def match_visual_records(chunks: Iterable[dict[str, Any]], images: Iterable[Mine
     return match_images(chunk_list, images), match_code_records(chunk_list, codes)
 
 
-__all__ = ["match_code_records", "match_images", "match_visual_records"]
+__all__ = ["match_code_records", "match_images", "match_visual_records", "resolve_visual_chunk"]
