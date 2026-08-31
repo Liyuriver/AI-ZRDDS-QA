@@ -27,6 +27,12 @@ class AIClient:
         self.segment_map = self._load_segment_map()
         self._enrich_map_with_chunk_content()
 
+        # 队友的预处理结果中，图片说明可能不直接写在 chunks.jsonl，
+        # 而是在 image_manifest.json / image_matches.json /
+        # visual_registry.json 等结构化文件里。
+        # 这里统一建立图片元数据索引，供 caption 回退使用。
+        self.image_meta_index = self._load_image_metadata_index()
+
         # 本地开发默认由 FastAPI 暴露图片；部署时可通过环境变量覆盖。
         self.image_base_url = (
             os.getenv("IMAGE_BASE_URL")
@@ -99,6 +105,193 @@ class AIClient:
                 by_bundle[bundle_dir] = chunk_contents
 
             item["_content"] = by_bundle[bundle_dir].get(str(chunk_id), "")
+
+    @staticmethod
+    def _first_nonempty_text(data: dict) -> str:
+        """
+        取适合作为前端 caption 的简短说明。
+
+        当前预处理格式中，很多截图的顶层 caption 为空，
+        真正的图像说明位于 image_manifest.json 的：
+            vlm.description
+        所以这里显式支持嵌套 vlm 字段。
+        """
+        for key in (
+            "caption",
+            "image_text",
+            "description",
+            "summary",
+            "alt_text",
+            "title",
+            "text",
+        ):
+            value = data.get(key)
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+
+        vlm = data.get("vlm")
+        if isinstance(vlm, dict):
+            # VLM caption 经常也是空字符串，所以优先尝试 caption，
+            # 再使用 description 作为简洁图注。
+            for key in ("caption", "description"):
+                value = vlm.get(key)
+                if isinstance(value, str) and value.strip():
+                    return value.strip()
+
+        return ""
+
+    def _load_image_metadata_index(self) -> dict[str, dict]:
+        """
+        扫描每个 hybrid 文档目录中的结构化图片元数据文件。
+
+        支持：
+        - image_manifest.json
+        - image_matches.json
+        - visual_registry.json
+
+        不依赖某一种固定 JSON 外层结构，而是递归寻找包含
+        image_id / path 等字段的对象。
+        """
+        index: dict[str, dict] = {}
+
+        candidate_files = (
+            "image_manifest.json",
+            "image_matches.json",
+            "visual_registry.json",
+        )
+
+        def walk(node, bundle_dir: str):
+            if isinstance(node, dict):
+                image_id = (
+                    node.get("image_id")
+                    or node.get("id")
+                    or node.get("imageId")
+                )
+                image_path = (
+                    node.get("path")
+                    or node.get("image_path")
+                    or node.get("file_path")
+                )
+
+                caption = self._first_nonempty_text(node)
+
+                if image_id or image_path:
+                    meta = dict(node)
+                    meta["_bundle_dir"] = bundle_dir
+                    if caption and not meta.get("caption"):
+                        meta["caption"] = caption
+
+                    def save_meta(key: str, candidate: dict) -> None:
+                        """
+                        同一图片可能同时出现在 manifest / matches / registry。
+                        保留信息更丰富的那份，避免后读取的 visual_registry
+                        把包含 vlm.description 的 manifest 记录覆盖掉。
+                        """
+                        existing = index.get(key)
+
+                        if existing is None:
+                            index[key] = candidate
+                            return
+
+                        existing_caption = self._first_nonempty_text(existing)
+                        candidate_caption = self._first_nonempty_text(candidate)
+
+                        # 有说明的优先于无说明的。
+                        if candidate_caption and not existing_caption:
+                            index[key] = candidate
+                            return
+
+                        # 都有或都没有说明时，优先保留包含 VLM 结果的记录。
+                        if (
+                            isinstance(candidate.get("vlm"), dict)
+                            and not isinstance(existing.get("vlm"), dict)
+                        ):
+                            index[key] = candidate
+
+                    if image_id:
+                        save_meta(
+                            f"id::{bundle_dir}::{image_id}",
+                            meta,
+                        )
+
+                    if image_path:
+                        norm_path = str(image_path).replace("\\\\", "/").lstrip("/")
+                        save_meta(
+                            f"path::{bundle_dir}::{norm_path}",
+                            meta,
+                        )
+
+                for value in node.values():
+                    walk(value, bundle_dir)
+
+            elif isinstance(node, list):
+                for value in node:
+                    walk(value, bundle_dir)
+
+        if not self.hybrid_root.exists():
+            return index
+
+        for bundle in self.hybrid_root.iterdir():
+            if not bundle.is_dir():
+                continue
+
+            for filename in candidate_files:
+                path = bundle / filename
+                if not path.exists():
+                    continue
+
+                try:
+                    with path.open("r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    walk(data, bundle.name)
+                except Exception:
+                    # 某个辅助文件异常不应影响问答主流程
+                    continue
+
+        return index
+
+    def _resolve_image_caption(
+        self,
+        bundle_dir: str,
+        image: dict,
+    ) -> str:
+        """
+        caption 获取顺序：
+        1. chunks.jsonl / dify_segment_map 中现成 caption
+        2. image_text 等现成说明
+        3. image_manifest / image_matches / visual_registry 中同图元数据
+        """
+        direct = self._first_nonempty_text(image)
+        if direct:
+            return direct
+
+        image_id = image.get("image_id")
+        image_path = image.get("path")
+
+        candidates = []
+
+        if image_id:
+            candidates.append(
+                self.image_meta_index.get(
+                    f"id::{bundle_dir}::{image_id}"
+                )
+            )
+
+        if image_path:
+            norm_path = str(image_path).replace("\\", "/").lstrip("/")
+            candidates.append(
+                self.image_meta_index.get(
+                    f"path::{bundle_dir}::{norm_path}"
+                )
+            )
+
+        for meta in candidates:
+            if isinstance(meta, dict):
+                caption = self._first_nonempty_text(meta)
+                if caption:
+                    return caption
+
+        return ""
 
     @staticmethod
     def _clean_answer(answer: str) -> str:
@@ -220,7 +413,7 @@ class AIClient:
                 {
                     "image_id": image.get("image_id"),
                     "url": self._build_image_url(bundle_dir, image_path),
-                    "caption": image.get("caption") or image.get("image_text") or "",
+                    "caption": self._resolve_image_caption(bundle_dir, image),
                     "page": image.get("page") or mapping.get("page") or 0,
                     "document": mapping.get("document") or "",
                     "section": mapping.get("section") or "",
