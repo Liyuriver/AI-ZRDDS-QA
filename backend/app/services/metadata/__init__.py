@@ -1,6 +1,6 @@
 """Document metadata and version management services."""
 
-from .metadata_service import (
+from app.services.metadata.metadata_service import (
     get_document_metadata,
     get_metadata_by_source_file,
     list_documents,
@@ -9,7 +9,7 @@ from .metadata_service import (
     merge_metadata_into_chunks,
     validate_metadata,
 )
-from .version_service import (
+from app.services.metadata.version_service import (
     COMPATIBLE,
     INCOMPATIBLE,
     UNKNOWN,

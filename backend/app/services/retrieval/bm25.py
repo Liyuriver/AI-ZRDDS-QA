@@ -4,7 +4,7 @@ from typing import Any, Dict, Iterable, List, Mapping, Sequence
 
 from rank_bm25 import BM25Okapi
 
-from .tokenizer import tokenize
+from app.services.retrieval.tokenizer import tokenize
 
 
 class BM25Index:

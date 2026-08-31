@@ -16,11 +16,11 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from backend.app.services.preprocessing.hybrid_builder import build_dataset, validate_dataset
-from backend.app.services.preprocessing.image_context_matcher import match_visual_records
-from backend.app.services.preprocessing.image_vlm import enrich_image, filter_images, normalize_image_type
-from backend.app.services.preprocessing.mineru_reader import MinerUImage, read_mineru_code, read_mineru_output
-from backend.app.services.preprocessing.pdfplumber_parser import parse_pdf
+from app.services.preprocessing.hybrid_builder import build_dataset, validate_dataset
+from app.services.preprocessing.image_context_matcher import match_visual_records
+from app.services.preprocessing.image_vlm import enrich_image, filter_images, normalize_image_type
+from app.services.preprocessing.mineru_reader import MinerUImage, read_mineru_code, read_mineru_output
+from app.services.preprocessing.pdfplumber_parser import parse_pdf
 
 import pdfplumber
 

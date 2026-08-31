@@ -5,11 +5,11 @@ import logging
 from fastapi import FastAPI
 from sqlalchemy.exc import SQLAlchemyError
 
-from .api.chat import conversation_router, router as chat_router
-from .api.knowledge import router as knowledge_router
-from .api.user import router as user_router
-from .config import API_V1_PREFIX, PROJECT_NAME, PROJECT_VERSION
-from .database.database import init_db
+from app.api.chat import conversation_router, router as chat_router
+from app.api.knowledge import router as knowledge_router
+from app.api.user import router as user_router
+from app.config import API_V1_PREFIX, PROJECT_NAME, PROJECT_VERSION
+from app.database.database import init_db
 
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles

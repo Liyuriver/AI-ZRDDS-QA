@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import re
 from typing import Any, Iterable
-from .mineru_reader import MinerUImage
+from app.services.preprocessing.mineru_reader import MinerUImage
 
 
 def _norm_bbox(box: list[float] | tuple[float, ...] | None) -> list[float] | None:

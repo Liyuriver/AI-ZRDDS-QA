@@ -1,5 +1,5 @@
 """Backward-compatible Knowledge service package."""
 
-from .knowledge_service import KnowledgeService
+from app.services.knowledge.knowledge_service import KnowledgeService
 
 __all__ = ["KnowledgeService"]

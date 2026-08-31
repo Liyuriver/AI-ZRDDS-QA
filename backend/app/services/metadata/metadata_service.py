@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Optional, Union
 
-from backend.app.schemas.metadata import DocumentMetadata
+from app.schemas.metadata import DocumentMetadata
 
 
 METADATA_PATH = Path(__file__).resolve().parents[3] / "data" / "metadata" / "document_metadata.json"

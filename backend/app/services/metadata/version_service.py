@@ -3,7 +3,7 @@
 from typing import Any, Iterable, Mapping, Optional
 import re
 
-from backend.app.schemas.metadata import DocumentMetadata
+from app.schemas.metadata import DocumentMetadata
 
 COMPATIBLE = "compatible"
 INCOMPATIBLE = "incompatible"

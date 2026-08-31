@@ -5,15 +5,15 @@ import logging
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Tuple
 
-from backend.app.schemas.metadata import DocumentMetadata
-from backend.app.schemas.retrieval import RetrievalResponse, RetrievalResult, SkippedDocument
-from backend.app.services.metadata.metadata_service import (
+from app.schemas.metadata import DocumentMetadata
+from app.schemas.retrieval import RetrievalResponse, RetrievalResult, SkippedDocument
+from app.services.metadata.metadata_service import (
     list_documents as list_metadata,
     merge_metadata_into_chunks,
 )
-from backend.app.services.metadata.version_service import UNKNOWN, version_status
+from app.services.metadata.version_service import UNKNOWN, version_status
 
-from .bm25 import BM25Index
+from app.services.retrieval.bm25 import BM25Index
 
 logger = logging.getLogger(__name__)
 HYBRID_PATH = Path(__file__).resolve().parents[3] / "data" / "hybrid"

@@ -11,7 +11,7 @@ from typing import Any
 
 import pdfplumber
 
-from .layout_model import build_page_blocks, mark_table_header_visuals, render_page_blocks
+from app.services.preprocessing.layout_model import build_page_blocks, mark_table_header_visuals, render_page_blocks
 
 
 def _image_markdown(item: dict[str, Any], output_dir: Path) -> str:
@@ -237,8 +237,8 @@ def _chunk_meta_for_page(parsed: Any, page: int) -> tuple[str | None, str | None
 
 
 def _bind_visual_chunks(parsed: Any, matches: list[dict[str, Any]], enrichments: dict[str, dict[str, Any]], codes: list[dict[str, Any]]) -> None:
-    from .image_context_matcher import resolve_visual_chunk
-    from .layout_model import bind_source_figure_captions
+    from app.services.preprocessing.image_context_matcher import resolve_visual_chunk
+    from app.services.preprocessing.layout_model import bind_source_figure_captions
     chunks = getattr(parsed, "chunks", [])
     blocks = getattr(parsed, "blocks", [])
     bind_source_figure_captions(parsed, matches, enrichments)
@@ -296,7 +296,7 @@ def _enrich_late_source_visuals(
     rendered with no 图示信息.  Only those late records are handled here; already
     enriched MinerU images are untouched.
     """
-    from .image_vlm import enrich_image
+    from app.services.preprocessing.image_vlm import enrich_image
 
     document = str(getattr(parsed, "document", "document.pdf"))
     for match in matches:
@@ -1022,7 +1022,7 @@ def _materialize_code_crops(
         code["source_occurrence_id"] = owner.get("source_occurrence_id")
         code["source_image_status"] = "reused_native_embedded_occurrence"
         try:
-            from .image_vlm import transcribe_code_image
+            from app.services.preprocessing.image_vlm import transcribe_code_image
             local_path = output_dir / str(owner["path"])
             existing_verification = owner_vlm.get("code_verification") or {}
             existing_candidate = owner_vlm.get("code_content_candidate")
@@ -1098,7 +1098,7 @@ def build_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: dict[
                 shutil.copy2(source, target)
             image_paths[image_id] = f"images/{target.name}"
     _materialize_code_crops(parsed, code_matches, matches, enrichments, image_paths, output_dir)
-    from .visual_registry import build_visual_registry
+    from app.services.preprocessing.visual_registry import build_visual_registry
     matches, code_matches, registry = build_visual_registry(matches, code_matches, enrichments, image_paths)
     for code in code_matches:
         code["slot_status"] = "canonical_code" if code.get("code_content") else "missing_code_content"

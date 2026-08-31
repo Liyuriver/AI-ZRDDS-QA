@@ -1,7 +1,7 @@
 """ORM models used by the data layer."""
 
-from .user import User
-from .conversation import Conversation
-from .message import Message
+from app.models.user import User
+from app.models.conversation import Conversation
+from app.models.message import Message
 
 __all__ = ["User", "Conversation", "Message"]
