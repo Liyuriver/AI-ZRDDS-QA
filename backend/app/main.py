@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from sqlalchemy.exc import SQLAlchemyError
 
 from .api.chat import conversation_router, router as chat_router
+from .api.knowledge import router as knowledge_router
 from .api.user import router as user_router
 from .config import API_V1_PREFIX, PROJECT_NAME, PROJECT_VERSION
 from .database.database import init_db
@@ -43,3 +44,4 @@ async def health() -> dict[str, str]:
 app.include_router(chat_router, prefix=API_V1_PREFIX)
 app.include_router(conversation_router, prefix=API_V1_PREFIX)
 app.include_router(user_router, prefix=API_V1_PREFIX)
+app.include_router(knowledge_router, prefix=API_V1_PREFIX)
