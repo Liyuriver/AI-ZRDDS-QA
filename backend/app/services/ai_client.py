@@ -3,6 +3,7 @@ import os
 import re
 from pathlib import Path
 from typing import Any, Dict
+from urllib.parse import quote
 
 import httpx
 from dotenv import load_dotenv
@@ -25,6 +26,12 @@ class AIClient:
 
         self.segment_map = self._load_segment_map()
         self._enrich_map_with_chunk_content()
+
+        # 本地开发默认由 FastAPI 暴露图片；部署时可通过环境变量覆盖。
+        self.image_base_url = (
+            os.getenv("IMAGE_BASE_URL")
+            or "http://127.0.0.1:8000/static/hybrid"
+        ).rstrip("/")
 
     @staticmethod
     def _normalize_text(text: str) -> str:
@@ -174,6 +181,54 @@ class AIClient:
 
         return best
 
+
+    def _build_image_url(self, bundle_dir: str, image_path: str) -> str:
+        """把映射里的 bundle_dir + 相对图片路径转换成可访问 URL。"""
+        bundle = quote(str(bundle_dir).replace("\\", "/").strip("/"), safe="")
+        path = quote(str(image_path).replace("\\", "/").lstrip("/"), safe="/")
+        return f"{self.image_base_url}/{bundle}/{path}"
+
+    def _images_from_mapping(self, mapping: dict | None) -> list[dict]:
+        if not mapping:
+            return []
+
+        bundle_dir = mapping.get("bundle_dir")
+        raw_images = mapping.get("images") or []
+        if not bundle_dir or not isinstance(raw_images, list):
+            return []
+
+        result = []
+        for image in raw_images:
+            if not isinstance(image, dict):
+                continue
+
+            image_path = image.get("path")
+            if not image_path:
+                continue
+
+            # 只返回磁盘上真实存在的图片，避免前端收到坏链接。
+            local_path = (self.hybrid_root / bundle_dir / image_path).resolve()
+            try:
+                local_path.relative_to(self.hybrid_root.resolve())
+            except ValueError:
+                continue
+
+            if not local_path.exists() or not local_path.is_file():
+                continue
+
+            result.append(
+                {
+                    "image_id": image.get("image_id"),
+                    "url": self._build_image_url(bundle_dir, image_path),
+                    "caption": image.get("caption") or image.get("image_text") or "",
+                    "page": image.get("page") or mapping.get("page") or 0,
+                    "document": mapping.get("document") or "",
+                    "section": mapping.get("section") or "",
+                }
+            )
+
+        return result
+
     def _extract_sources(self, data: Dict[str, Any]) -> list[dict]:
         metadata = data.get("metadata") or {}
 
@@ -184,6 +239,8 @@ class AIClient:
         )
 
         sources = []
+        images = []
+        seen_images = set()
 
         for item in resources:
             if not isinstance(item, dict):
@@ -229,7 +286,15 @@ class AIClient:
                 }
             )
 
-        return sources
+            for image in self._images_from_mapping(mapping):
+                dedupe_key = image.get("image_id") or image.get("url")
+                if not dedupe_key or dedupe_key in seen_images:
+                    continue
+                seen_images.add(dedupe_key)
+                images.append(image)
+
+        # 防止一次返回太多图片；后续可改成配置项。
+        return sources, images[:8]
 
     async def query(
         self,
@@ -276,8 +341,11 @@ class AIClient:
 
         data = response.json()
 
+        sources, images = self._extract_sources(data)
+
         return {
             "answer": self._clean_answer(data.get("answer", "")),
             "status": "answered",
-            "sources": self._extract_sources(data),
+            "sources": sources,
+            "images": images,
         }

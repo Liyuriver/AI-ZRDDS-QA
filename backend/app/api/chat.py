@@ -8,8 +8,15 @@ from sqlalchemy.orm import Session
 
 from app.database.database import get_db
 from app.database.repository import ConversationRepository, RepositoryError, UserRepository
-from app.schemas.chat import (ChatData, ChatRequest, ChatResponse, ConversationCreate,
-                               ConversationRead, MessageCreate, MessageRead)
+from app.schemas.chat import (
+    ChatData,
+    ChatRequest,
+    ChatResponse,
+    ConversationCreate,
+    ConversationRead,
+    MessageCreate,
+    MessageRead,
+)
 from app.services.ai_client import AIClient
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
 from app.services.user_service import UserNotFoundError
@@ -27,7 +34,10 @@ def get_conversation_service(db: Session = Depends(get_db)) -> ConversationServi
 
 
 @conversation_router.post("/conversations", response_model=ConversationRead, status_code=201)
-def create_conversation(payload: ConversationCreate, service: ConversationService = Depends(get_conversation_service)) -> ConversationRead:
+def create_conversation(
+    payload: ConversationCreate,
+    service: ConversationService = Depends(get_conversation_service),
+) -> ConversationRead:
     try:
         return service.create_conversation(payload.user_id, payload.version, payload.title)
     except UserNotFoundError as exc:
@@ -35,15 +45,25 @@ def create_conversation(payload: ConversationCreate, service: ConversationServic
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     except RepositoryError as exc:
-        logger.exception("Create conversation API failed: user_id=%s title=%s", payload.user_id, payload.title)
+        logger.exception(
+            "Create conversation API failed: user_id=%s title=%s",
+            payload.user_id,
+            payload.title,
+        )
         raise HTTPException(
             status_code=500,
-            detail={"message": "创建会话时发生数据库错误", "error_type": type(exc.__cause__ or exc).__name__},
+            detail={
+                "message": "创建会话时发生数据库错误",
+                "error_type": type(exc.__cause__ or exc).__name__,
+            },
         ) from exc
 
 
 @conversation_router.get("/users/{user_id}/conversations", response_model=list[ConversationRead])
-def list_conversations(user_id: str, service: ConversationService = Depends(get_conversation_service)) -> list[ConversationRead]:
+def list_conversations(
+    user_id: str,
+    service: ConversationService = Depends(get_conversation_service),
+) -> list[ConversationRead]:
     try:
         return service.list_user_conversations(user_id)
     except UserNotFoundError as exc:
@@ -51,7 +71,10 @@ def list_conversations(user_id: str, service: ConversationService = Depends(get_
 
 
 @conversation_router.get("/conversations/{conversation_id}", response_model=ConversationRead)
-def get_conversation(conversation_id: str, service: ConversationService = Depends(get_conversation_service)) -> ConversationRead:
+def get_conversation(
+    conversation_id: str,
+    service: ConversationService = Depends(get_conversation_service),
+) -> ConversationRead:
     try:
         return service.get_conversation(conversation_id)
     except ConversationNotFoundError as exc:
@@ -60,8 +83,16 @@ def get_conversation(conversation_id: str, service: ConversationService = Depend
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
-@conversation_router.post("/conversations/{conversation_id}/messages", response_model=MessageRead, status_code=201)
-def add_message(conversation_id: str, payload: MessageCreate, service: ConversationService = Depends(get_conversation_service)) -> MessageRead:
+@conversation_router.post(
+    "/conversations/{conversation_id}/messages",
+    response_model=MessageRead,
+    status_code=201,
+)
+def add_message(
+    conversation_id: str,
+    payload: MessageCreate,
+    service: ConversationService = Depends(get_conversation_service),
+) -> MessageRead:
     try:
         return service.add_message(conversation_id, payload.role, payload.content)
     except ConversationNotFoundError as exc:
@@ -70,8 +101,14 @@ def add_message(conversation_id: str, payload: MessageCreate, service: Conversat
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
-@conversation_router.get("/conversations/{conversation_id}/messages", response_model=list[MessageRead])
-def get_messages(conversation_id: str, service: ConversationService = Depends(get_conversation_service)) -> list[MessageRead]:
+@conversation_router.get(
+    "/conversations/{conversation_id}/messages",
+    response_model=list[MessageRead],
+)
+def get_messages(
+    conversation_id: str,
+    service: ConversationService = Depends(get_conversation_service),
+) -> list[MessageRead]:
     try:
         return service.get_conversation_messages(conversation_id)
     except ConversationNotFoundError as exc:
@@ -91,7 +128,10 @@ async def chat(
             conversation = conversation_service.get_conversation(request.conversation_id)
             conversation_id = conversation.id
         else:
-            conversation = conversation_service.create_conversation(request.user_id, request.version)
+            conversation = conversation_service.create_conversation(
+                request.user_id,
+                request.version,
+            )
             conversation_id = conversation.id
 
         conversation_service.save_user_message(conversation_id, request.question)
@@ -117,5 +157,6 @@ async def chat(
         answer=result["answer"],
         status=result["status"],
         sources=result.get("sources", []),
+        images=result.get("images", []),
     )
     return ChatResponse(code=0, message="success", data=data)
