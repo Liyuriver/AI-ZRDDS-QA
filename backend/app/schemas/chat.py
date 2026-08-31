@@ -1,9 +1,9 @@
 """Pydantic schemas used by the chat API."""
 
+from datetime import datetime
 from typing import Literal, Optional
 
 from pydantic import BaseModel, Field
-from datetime import datetime
 
 
 ChatStatus = Literal["answered", "insufficient_evidence", "error"]
@@ -24,11 +24,21 @@ class Source(BaseModel):
     quote: str
 
 
+class ImageSource(BaseModel):
+    image_id: Optional[str] = None
+    url: str
+    caption: Optional[str] = None
+    page: Optional[int] = None
+    document: Optional[str] = None
+    section: Optional[str] = None
+
+
 class ChatData(BaseModel):
     conversation_id: str
     answer: str
     status: ChatStatus
     sources: list[Source] = Field(default_factory=list)
+    images: list[ImageSource] = Field(default_factory=list)
 
 
 class ChatResponse(BaseModel):

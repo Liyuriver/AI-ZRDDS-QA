@@ -4,5 +4,6 @@ pydantic
 sqlalchemy
 pymysql
 python-dotenv
-rank-bm25
 httpx
+pdfplumber==0.11.7
+rank-bm25

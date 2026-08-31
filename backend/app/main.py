@@ -10,8 +10,19 @@ from .api.user import router as user_router
 from .config import API_V1_PREFIX, PROJECT_NAME, PROJECT_VERSION
 from .database.database import init_db
 
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+
 
 app = FastAPI(title=PROJECT_NAME, version=PROJECT_VERSION)
+HYBRID_DATA_DIR = Path(__file__).resolve().parents[1] / "data" / "hybrid"
+HYBRID_DATA_DIR.mkdir(parents=True, exist_ok=True)
+app.mount(
+    "/static/hybrid",
+    StaticFiles(directory=str(HYBRID_DATA_DIR)),
+    name="hybrid-static",
+)
+
 logger = logging.getLogger(__name__)
 
 
