@@ -1,24 +1,83 @@
 """Chat API endpoints."""
 
+import logging
 from collections.abc import Generator
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.database.database import get_db
-from app.database.repository import ConversationRepository, RepositoryError
-from app.schemas.chat import ChatData, ChatRequest, ChatResponse
+from app.database.repository import ConversationRepository, RepositoryError, UserRepository
+from app.schemas.chat import (ChatData, ChatRequest, ChatResponse, ConversationCreate,
+                               ConversationRead, MessageCreate, MessageRead)
 from app.services.ai_client import AIClient
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
+from app.services.user_service import UserNotFoundError
 
 
 router = APIRouter(prefix="/chat", tags=["chat"])
+conversation_router = APIRouter(tags=["conversations"])
 ai_client = AIClient()
+logger = logging.getLogger(__name__)
 
 
 def get_conversation_service(db: Session = Depends(get_db)) -> ConversationService:
     """Build the service for one request; the API layer never executes SQL."""
-    return ConversationService(ConversationRepository(db))
+    return ConversationService(ConversationRepository(db), UserRepository(db))
+
+
+@conversation_router.post("/conversations", response_model=ConversationRead, status_code=201)
+def create_conversation(payload: ConversationCreate, service: ConversationService = Depends(get_conversation_service)) -> ConversationRead:
+    try:
+        return service.create_conversation(payload.user_id, payload.version, payload.title)
+    except UserNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except RepositoryError as exc:
+        logger.exception("Create conversation API failed: user_id=%s title=%s", payload.user_id, payload.title)
+        raise HTTPException(
+            status_code=500,
+            detail={"message": "创建会话时发生数据库错误", "error_type": type(exc.__cause__ or exc).__name__},
+        ) from exc
+
+
+@conversation_router.get("/users/{user_id}/conversations", response_model=list[ConversationRead])
+def list_conversations(user_id: str, service: ConversationService = Depends(get_conversation_service)) -> list[ConversationRead]:
+    try:
+        return service.list_user_conversations(user_id)
+    except UserNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@conversation_router.get("/conversations/{conversation_id}", response_model=ConversationRead)
+def get_conversation(conversation_id: str, service: ConversationService = Depends(get_conversation_service)) -> ConversationRead:
+    try:
+        return service.get_conversation(conversation_id)
+    except ConversationNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@conversation_router.post("/conversations/{conversation_id}/messages", response_model=MessageRead, status_code=201)
+def add_message(conversation_id: str, payload: MessageCreate, service: ConversationService = Depends(get_conversation_service)) -> MessageRead:
+    try:
+        return service.add_message(conversation_id, payload.role, payload.content)
+    except ConversationNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except (ValueError, RepositoryError) as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@conversation_router.get("/conversations/{conversation_id}/messages", response_model=list[MessageRead])
+def get_messages(conversation_id: str, service: ConversationService = Depends(get_conversation_service)) -> list[MessageRead]:
+    try:
+        return service.get_conversation_messages(conversation_id)
+    except ConversationNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 @router.post("", response_model=ChatResponse)
