@@ -12,8 +12,9 @@ class ConversationNotFoundError(LookupError):
 
 
 class ConversationService:
-    def __init__(self, repository: ConversationRepository):
+    def __init__(self, repository: ConversationRepository, user_repository=None):
         self.repository = repository
+        self.user_repository = user_repository
 
     @staticmethod
     def _validate_id(conversation_id: str) -> None:
@@ -22,10 +23,28 @@ class ConversationService:
         except (ValueError, TypeError, AttributeError) as exc:
             raise ValueError("conversation_id 必须是有效 UUID") from exc
 
-    def create_conversation(self, user_id: str, version: Optional[str] = None) -> Conversation:
+    def create_conversation(self, user_id: str, version: Optional[str] = None, title: str = "新会话") -> Conversation:
         if not user_id or not user_id.strip():
             raise ValueError("user_id 不能为空")
-        return self.repository.create_conversation(user_id=user_id, version=version)
+        if self.user_repository is not None and self.user_repository.get(user_id) is None:
+            from app.services.user_service import UserNotFoundError
+            raise UserNotFoundError(f"用户不存在: {user_id}")
+        return self.repository.create_conversation(user_id=user_id, title=title, version=version)
+
+    def list_user_conversations(self, user_id: str) -> List[Conversation]:
+        if self.user_repository is not None and self.user_repository.get(user_id) is None:
+            from app.services.user_service import UserNotFoundError
+            raise UserNotFoundError(f"用户不存在: {user_id}")
+        return self.repository.list_by_user_id(user_id)
+
+    def add_message(self, conversation_id: str, role: str, content: str) -> Message:
+        return self._save_message(conversation_id, role, content)
+
+    def get_conversation_messages(self, conversation_id: str) -> List[Message]:
+        return self.get_conversation_history(conversation_id)
+
+    def delete_conversation(self, conversation_id: str) -> None:
+        self.repository.delete(self.get_conversation(conversation_id))
 
     def save_user_message(self, conversation_id: str, content: str) -> Message:
         return self._save_message(conversation_id, "user", content)
