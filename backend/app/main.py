@@ -5,10 +5,10 @@ import logging
 from fastapi import FastAPI
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.api.chat import conversation_router, router as chat_router
-from app.api.user import router as user_router
-from app.config import API_V1_PREFIX, PROJECT_NAME, PROJECT_VERSION
-from app.database.database import init_db
+from .api.chat import conversation_router, router as chat_router
+from .api.user import router as user_router
+from .config import API_V1_PREFIX, PROJECT_NAME, PROJECT_VERSION
+from .database.database import init_db
 
 
 app = FastAPI(title=PROJECT_NAME, version=PROJECT_VERSION)
