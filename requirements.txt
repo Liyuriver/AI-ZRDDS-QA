@@ -1,4 +1,5 @@
 sqlalchemy
 pymysql
 python-dotenv
+rank-bm25
 pytest

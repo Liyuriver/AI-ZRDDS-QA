@@ -3,6 +3,7 @@
 from typing import Literal, Optional
 
 from pydantic import BaseModel, Field
+from datetime import datetime
 
 
 ChatStatus = Literal["answered", "insufficient_evidence", "error"]
@@ -34,3 +35,35 @@ class ChatResponse(BaseModel):
     code: int
     message: str
     data: Optional[ChatData] = None
+
+
+class ConversationCreate(BaseModel):
+    user_id: str = Field(..., min_length=1)
+    title: str = Field(default="新会话", min_length=1, max_length=255)
+    version: Optional[str] = None
+
+
+class ConversationRead(BaseModel):
+    model_config = {"from_attributes": True}
+
+    id: str
+    user_id: str
+    title: str
+    version: Optional[str] = None
+    created_at: datetime
+    updated_at: datetime
+
+
+class MessageCreate(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str = Field(..., min_length=1)
+
+
+class MessageRead(BaseModel):
+    model_config = {"from_attributes": True}
+
+    id: str
+    conversation_id: str
+    role: Literal["user", "assistant"]
+    content: str
+    created_at: datetime
