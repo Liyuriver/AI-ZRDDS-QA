@@ -4,4 +4,5 @@ pydantic
 sqlalchemy
 pymysql
 python-dotenv
+rank-bm25
 httpx
