@@ -530,7 +530,11 @@ class AIClient:
                 json=payload,
                 headers=headers,
             )
-            response.raise_for_status()
+
+            if response.status_code >= 400:
+                raise RuntimeError(
+                    f"Dify 请求失败: status={response.status_code}, body={response.text}"
+                )
 
         data = response.json()
 
