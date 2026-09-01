@@ -60,6 +60,29 @@ def _migrate_legacy_schema() -> None:
                     text("ALTER TABLE conversations ADD COLUMN title VARCHAR(255) NOT NULL DEFAULT '新会话'")
                 )
                 logger.info("conversations.title 兼容迁移完成")
+            if "dify_conversation_id" not in columns:
+                logger.warning("旧 conversations 表缺少 dify_conversation_id 列，正在执行兼容迁移")
+                connection.execute(
+                    text(
+                        "ALTER TABLE conversations "
+                        "ADD COLUMN dify_conversation_id VARCHAR(128) NULL"
+                    )
+                )
+
+        if "messages" in tables:
+            message_columns = {column["name"] for column in inspector.get_columns("messages")}
+            message_column_sql = {
+                "sequence_no": "BIGINT NULL",
+                "answer_status": "VARCHAR(32) NULL",
+                "sources": "JSON NULL",
+                "images": "JSON NULL",
+            }
+            for column_name, column_type in message_column_sql.items():
+                if column_name not in message_columns:
+                    logger.warning("旧 messages 表缺少 %s 列，正在执行兼容迁移", column_name)
+                    connection.execute(
+                        text(f"ALTER TABLE messages ADD COLUMN {column_name} {column_type}")
+                    )
 
         if "users" not in tables:
             return

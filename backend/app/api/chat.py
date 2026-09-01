@@ -3,7 +3,7 @@
 import logging
 from collections.abc import Generator
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 
 from app.database.database import get_db
@@ -14,10 +14,11 @@ from app.schemas.chat import (
     ChatResponse,
     ConversationCreate,
     ConversationRead,
+    ConversationUpdate,
     MessageCreate,
     MessageRead,
 )
-from app.services.ai_client import AIClient
+from app.services.ai_client import AIClient, AIServiceError
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
 from app.services.user_service import UserNotFoundError
 
@@ -83,6 +84,40 @@ def get_conversation(
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
+@conversation_router.patch("/conversations/{conversation_id}", response_model=ConversationRead)
+def update_conversation(
+    conversation_id: str,
+    payload: ConversationUpdate,
+    service: ConversationService = Depends(get_conversation_service),
+) -> ConversationRead:
+    try:
+        return service.update_conversation_title(conversation_id, payload.title)
+    except ConversationNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except RepositoryError as exc:
+        raise HTTPException(status_code=503, detail="会话标题暂时无法保存") from exc
+
+
+@conversation_router.delete(
+    "/conversations/{conversation_id}", status_code=status.HTTP_204_NO_CONTENT
+)
+def delete_conversation(
+    conversation_id: str,
+    service: ConversationService = Depends(get_conversation_service),
+) -> Response:
+    try:
+        service.delete_conversation(conversation_id)
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
+    except ConversationNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except RepositoryError as exc:
+        raise HTTPException(status_code=503, detail="会话暂时无法删除") from exc
+
+
 @conversation_router.post(
     "/conversations/{conversation_id}/messages",
     response_model=MessageRead,
@@ -126,6 +161,8 @@ async def chat(
     try:
         if request.conversation_id:
             conversation = conversation_service.get_conversation(request.conversation_id)
+            if conversation.user_id != request.user_id:
+                raise ConversationNotFoundError(f"会话不存在: {request.conversation_id}")
             conversation_id = conversation.id
         else:
             conversation = conversation_service.create_conversation(
@@ -134,14 +171,25 @@ async def chat(
             )
             conversation_id = conversation.id
 
-        conversation_service.save_user_message(conversation_id, request.question)
         result = await ai_client.query(
             question=request.question,
             version=request.version,
-            conversation_id=conversation_id,
+            conversation_id=conversation.dify_conversation_id,
             user_id=request.user_id,
         )
-        conversation_service.save_ai_message(conversation_id, result["answer"])
+        dify_conversation_id = result.get("dify_conversation_id")
+        if dify_conversation_id and dify_conversation_id != conversation.dify_conversation_id:
+            conversation_service.save_dify_conversation_id(
+                conversation_id, dify_conversation_id
+            )
+        conversation_service.save_user_message(conversation_id, request.question)
+        conversation_service.save_ai_message(
+            conversation_id,
+            result["answer"],
+            answer_status=result["status"],
+            sources=result.get("sources", []),
+            images=result.get("images", []),
+        )
     except ConversationNotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
     except ValueError as exc:
@@ -150,6 +198,11 @@ async def chat(
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=f"数据库暂时不可用: {exc}",
+        ) from exc
+    except AIServiceError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail=str(exc),
         ) from exc
 
     data = ChatData(

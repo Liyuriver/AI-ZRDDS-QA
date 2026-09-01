@@ -1,6 +1,6 @@
 """Business operations for conversations, independent of the API layer."""
 
-from typing import List, Optional
+from typing import Any, List, Optional
 from uuid import UUID
 
 from app.database.repository import ConversationRepository
@@ -46,11 +46,44 @@ class ConversationService:
     def delete_conversation(self, conversation_id: str) -> None:
         self.repository.delete(self.get_conversation(conversation_id))
 
+    def update_conversation_title(self, conversation_id: str, title: str) -> Conversation:
+        normalized = title.strip()
+        if not normalized:
+            raise ValueError("会话标题不能为空")
+        if len(normalized) > 255:
+            raise ValueError("会话标题不能超过 255 个字符")
+        return self.repository.update_title(self.get_conversation(conversation_id), normalized)
+
+    def save_dify_conversation_id(
+        self, conversation_id: str, dify_conversation_id: str
+    ) -> Conversation:
+        normalized = dify_conversation_id.strip()
+        if not normalized:
+            raise ValueError("Dify conversation_id 不能为空")
+        return self.repository.update_dify_conversation_id(
+            self.get_conversation(conversation_id), normalized
+        )
+
     def save_user_message(self, conversation_id: str, content: str) -> Message:
         return self._save_message(conversation_id, "user", content)
 
-    def save_ai_message(self, conversation_id: str, content: str) -> Message:
-        return self._save_message(conversation_id, "assistant", content)
+    def save_ai_message(
+        self,
+        conversation_id: str,
+        content: str,
+        *,
+        answer_status: str = "answered",
+        sources: Optional[list[dict[str, Any]]] = None,
+        images: Optional[list[dict[str, Any]]] = None,
+    ) -> Message:
+        return self._save_message(
+            conversation_id,
+            "assistant",
+            content,
+            answer_status=answer_status,
+            sources=sources,
+            images=images,
+        )
 
     def get_conversation(self, conversation_id: str) -> Conversation:
         """Return a conversation or raise a domain-level not-found error."""
@@ -60,12 +93,28 @@ class ConversationService:
             raise ConversationNotFoundError(f"会话不存在: {conversation_id}")
         return conversation
 
-    def _save_message(self, conversation_id: str, role: str, content: str) -> Message:
+    def _save_message(
+        self,
+        conversation_id: str,
+        role: str,
+        content: str,
+        *,
+        answer_status: Optional[str] = None,
+        sources: Optional[list[dict[str, Any]]] = None,
+        images: Optional[list[dict[str, Any]]] = None,
+    ) -> Message:
         self._validate_id(conversation_id)
         if not content or not content.strip():
             raise ValueError("消息内容不能为空")
         self.get_conversation(conversation_id)
-        return self.repository.save_message(conversation_id, role, content)
+        return self.repository.save_message(
+            conversation_id,
+            role,
+            content,
+            answer_status=answer_status,
+            sources=sources,
+            images=images,
+        )
 
     def get_conversation_history(self, conversation_id: str) -> List[Message]:
         self._validate_id(conversation_id)

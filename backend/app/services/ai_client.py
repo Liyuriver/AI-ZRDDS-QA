@@ -1,3 +1,4 @@
+import asyncio
 import json
 import os
 import re
@@ -9,6 +10,10 @@ import httpx
 from dotenv import load_dotenv
 
 load_dotenv()
+
+
+class AIServiceError(RuntimeError):
+    """Raised when Dify cannot complete a chat request safely."""
 
 
 class AIClient:
@@ -511,8 +516,7 @@ class AIClient:
             "inputs": {},
             "query": question,
             "response_mode": "blocking",
-            # 当前后端 conversation_id 不是 Dify conversation_id，暂时不要直接传给 Dify
-            "conversation_id": "",
+            "conversation_id": conversation_id or "",
             "user": user_id or "test-user",
         }
 
@@ -521,16 +525,23 @@ class AIClient:
             "Content-Type": "application/json",
         }
 
-        async with httpx.AsyncClient(
-            timeout=60.0,
-            trust_env=False,
-        ) as client:
-            response = await client.post(
-                url,
-                json=payload,
-                headers=headers,
-            )
-            response.raise_for_status()
+        retryable_statuses = {400, 408, 409, 429, 500, 502, 503, 504}
+        async with httpx.AsyncClient(timeout=60.0, trust_env=False) as client:
+            for attempt in range(2):
+                try:
+                    response = await client.post(url, json=payload, headers=headers)
+                    response.raise_for_status()
+                    break
+                except httpx.HTTPStatusError as exc:
+                    if attempt == 0 and exc.response.status_code in retryable_statuses:
+                        await asyncio.sleep(0.5)
+                        continue
+                    raise AIServiceError("Dify 暂时无法完成回答，请稍后重试") from exc
+                except httpx.RequestError as exc:
+                    if attempt == 0:
+                        await asyncio.sleep(0.5)
+                        continue
+                    raise AIServiceError("Dify 连接失败，请稍后重试") from exc
 
         data = response.json()
 
@@ -541,4 +552,5 @@ class AIClient:
             "status": "answered",
             "sources": sources,
             "images": images,
+            "dify_conversation_id": data.get("conversation_id") or conversation_id,
         }
