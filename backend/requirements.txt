@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+sqlalchemy
+pymysql
+python-dotenv
+httpx
+pdfplumber==0.11.7
+rank-bm25
