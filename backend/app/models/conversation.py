@@ -21,6 +21,7 @@ class Conversation(Base):
     )
     title: Mapped[str] = mapped_column(String(255), nullable=False, default="新会话")
     version: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    dify_conversation_id: Mapped[Optional[str]] = mapped_column(String(128), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=beijing_now)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime, nullable=False, default=beijing_now, onupdate=beijing_now

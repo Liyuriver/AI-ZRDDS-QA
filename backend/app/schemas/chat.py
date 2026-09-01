@@ -53,6 +53,10 @@ class ConversationCreate(BaseModel):
     version: Optional[str] = None
 
 
+class ConversationUpdate(BaseModel):
+    title: str = Field(..., min_length=1, max_length=255)
+
+
 class ConversationRead(BaseModel):
     model_config = {"from_attributes": True}
 
@@ -76,4 +80,7 @@ class MessageRead(BaseModel):
     conversation_id: str
     role: Literal["user", "assistant"]
     content: str
+    answer_status: Optional[ChatStatus] = None
+    sources: Optional[list[Source]] = None
+    images: Optional[list[ImageSource]] = None
     created_at: datetime
