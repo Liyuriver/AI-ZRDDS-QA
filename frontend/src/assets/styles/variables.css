@@ -1,0 +1,12 @@
+:root {
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-text: #172033;
+  --color-text-secondary: #667085;
+  --color-border: #e3e8ef;
+  --color-surface: #ffffff;
+  --color-background: #f4f7fb;
+  --sidebar-width: 260px;
+  --header-height: 72px;
+  --content-max-width: 1440px;
+}
