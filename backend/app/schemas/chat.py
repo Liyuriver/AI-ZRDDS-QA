@@ -3,17 +3,25 @@
 from datetime import datetime
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 ChatStatus = Literal["answered", "insufficient_evidence", "error"]
 
 
 class ChatRequest(BaseModel):
-    question: str = Field(..., min_length=1, description="User's question")
+    question: str = Field(..., min_length=1, max_length=2000, description="User's question")
     version: Optional[str] = None
     conversation_id: Optional[str] = None
     user_id: str = Field(..., min_length=1)
+
+    @field_validator("question")
+    @classmethod
+    def normalize_question(cls, value: str) -> str:
+        normalized = value.strip()
+        if not normalized:
+            raise ValueError("问题不能为空")
+        return normalized
 
 
 class Source(BaseModel):

@@ -543,13 +543,24 @@ class AIClient:
                         continue
                     raise AIServiceError("Dify 连接失败，请稍后重试") from exc
 
-        data = response.json()
+        try:
+            data = response.json()
+        except (ValueError, json.JSONDecodeError) as exc:
+            raise AIServiceError("Dify 返回了无法解析的响应，请稍后重试") from exc
+
+        if not isinstance(data, dict):
+            raise AIServiceError("Dify 返回了无效响应，请稍后重试")
 
         sources, images = self._extract_sources(data)
+        answer = self._clean_answer(data.get("answer", ""))
+        answer_status = "answered"
+        if not answer:
+            answer = "当前知识库中没有找到足够证据回答这个问题，请补充更具体的信息后重试。"
+            answer_status = "insufficient_evidence"
 
         return {
-            "answer": self._clean_answer(data.get("answer", "")),
-            "status": "answered",
+            "answer": answer,
+            "status": answer_status,
             "sources": sources,
             "images": images,
             "dify_conversation_id": data.get("conversation_id") or conversation_id,
