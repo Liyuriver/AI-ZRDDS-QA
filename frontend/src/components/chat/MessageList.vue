@@ -48,13 +48,20 @@ watch(
   () => [props.messages.length, props.messages.at(-1)?.status, props.sending],
   async () => {
     await nextTick()
-    endRef.value?.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    endRef.value?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'end' })
   },
 )
 </script>
 
 <template>
-  <div v-loading="loading" class="message-list">
+  <div
+    v-loading="loading"
+    :aria-busy="loading || sending"
+    aria-live="polite"
+    class="message-list"
+    role="log"
+  >
     <template v-for="message in messages" :key="message.id">
       <UserMessage
         v-if="message.role === 'user'"

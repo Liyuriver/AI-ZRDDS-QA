@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessage } from 'element-plus'
 import { storeToRefs } from 'pinia'
-import { onMounted, watch } from 'vue'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import ChatComposer from '@/components/chat/ChatComposer.vue'
 import ChatWelcome from '@/components/chat/ChatWelcome.vue'
 import ConversationSidebar from '@/components/chat/ConversationSidebar.vue'
+import ConversationDialog from '@/components/chat/ConversationDialog.vue'
 import MessageList from '@/components/chat/MessageList.vue'
 import AppHeader from '@/components/layout/AppHeader.vue'
+import ProfileDialog from '@/components/profile/ProfileDialog.vue'
 import { useChatStore } from '@/stores/chat'
 import { useConversationStore } from '@/stores/conversation'
 import { useUserStore } from '@/stores/user'
@@ -21,7 +23,38 @@ const conversationStore = useConversationStore()
 const chatStore = useChatStore()
 const { currentUser } = storeToRefs(userStore)
 const { items, currentId, currentConversation, loading, creating } = storeToRefs(conversationStore)
-const { messages, historyLoading, sending, error: chatError } = storeToRefs(chatStore)
+const {
+  messages,
+  historyLoading,
+  sending,
+  error: chatError,
+  missingConversationId,
+} = storeToRefs(chatStore)
+const profileVisible = ref(false)
+const isOnline = ref(navigator.onLine)
+const composerRef = ref<InstanceType<typeof ChatComposer>>()
+const conversationDialogVisible = ref(false)
+const conversationDialogMode = ref<'rename' | 'delete'>('rename')
+const pendingConversation = ref<Conversation | null>(null)
+const conversationActionLoading = ref(false)
+
+function updateNetworkState(): void {
+  const restored = !isOnline.value && navigator.onLine
+  isOnline.value = navigator.onLine
+  if (restored) ElMessage.success('网络已恢复，可以继续提问')
+}
+
+function focusComposerShortcut(event: KeyboardEvent): void {
+  const target = event.target
+  const editing =
+    target instanceof HTMLInputElement ||
+    target instanceof HTMLTextAreaElement ||
+    (target instanceof HTMLElement && target.isContentEditable)
+  if (event.key === '/' && !editing) {
+    event.preventDefault()
+    composerRef.value?.focus()
+  }
+}
 async function syncRouteWithSelection(): Promise<void> {
   const routeId =
     typeof route.params.conversationId === 'string' ? route.params.conversationId : null
@@ -50,43 +83,45 @@ async function handleSelect(id: string): Promise<void> {
   await router.push({ name: 'chat', params: { conversationId: id } })
 }
 
-async function handleRename(conversation: Conversation): Promise<void> {
-  let submitted = false
-  try {
-    const { value } = await ElMessageBox.prompt('请输入新的会话标题', '重命名会话', {
-      inputValue: conversation.title,
-      inputPattern: /\S+/,
-      inputErrorMessage: '会话标题不能为空',
-      inputValidator: (title) => title.trim().length <= 255 || '会话标题不能超过 255 个字符',
-      confirmButtonText: '保存',
-      cancelButtonText: '取消',
-    })
-    submitted = true
-    await conversationStore.renameConversation(conversation.id, value)
-    ElMessage.success('会话标题已保存')
-  } catch {
-    if (submitted) ElMessage.error(conversationStore.error || '会话重命名失败')
-  }
+function handleRename(conversation: Conversation): void {
+  pendingConversation.value = conversation
+  conversationDialogMode.value = 'rename'
+  conversationDialogVisible.value = true
 }
 
-async function handleDelete(conversation: Conversation): Promise<void> {
-  let confirmed = false
+function handleDelete(conversation: Conversation): void {
+  pendingConversation.value = conversation
+  conversationDialogMode.value = 'delete'
+  conversationDialogVisible.value = true
+}
+
+async function confirmConversationAction(title?: string): Promise<void> {
+  const conversation = pendingConversation.value
+  if (!conversation || conversationActionLoading.value) return
+  conversationActionLoading.value = true
   try {
-    await ElMessageBox.confirm(`删除“${conversation.title}”及其全部消息？`, '删除会话', {
-      type: 'warning',
-      confirmButtonText: '删除',
-      cancelButtonText: '取消',
-      confirmButtonClass: 'el-button--danger',
-    })
-    confirmed = true
-    if (!currentUser.value) return
-    const nextId = await conversationStore.deleteConversation(conversation.id, currentUser.value.id)
-    await router.replace(
-      nextId ? { name: 'chat', params: { conversationId: nextId } } : { name: 'chat' },
-    )
-    ElMessage.success('会话已删除')
+    if (conversationDialogMode.value === 'rename' && title) {
+      await conversationStore.renameConversation(conversation.id, title)
+      ElMessage.success('会话标题已保存')
+    } else if (conversationDialogMode.value === 'delete' && currentUser.value) {
+      const nextId = await conversationStore.deleteConversation(
+        conversation.id,
+        currentUser.value.id,
+      )
+      await router.replace(
+        nextId ? { name: 'chat', params: { conversationId: nextId } } : { name: 'chat' },
+      )
+      ElMessage.success('会话已删除')
+    }
+    conversationDialogVisible.value = false
+    pendingConversation.value = null
   } catch {
-    if (confirmed) ElMessage.error(conversationStore.error || '会话删除失败')
+    ElMessage.error(
+      conversationStore.error ||
+        (conversationDialogMode.value === 'delete' ? '会话删除失败' : '会话重命名失败'),
+    )
+  } finally {
+    conversationActionLoading.value = false
   }
 }
 
@@ -100,6 +135,10 @@ async function handleLogout(): Promise<void> {
 
 async function handleSend(query: string): Promise<void> {
   if (!currentUser.value) return
+  if (!isOnline.value) {
+    ElMessage.warning('网络连接已断开，请恢复网络后重试')
+    return
+  }
   let conversationId = currentId.value
   if (!conversationId) {
     const conversation = await conversationStore.createConversation(currentUser.value.id)
@@ -111,6 +150,9 @@ async function handleSend(query: string): Promise<void> {
 }
 
 onMounted(async () => {
+  window.addEventListener('online', updateNetworkState)
+  window.addEventListener('offline', updateNetworkState)
+  window.addEventListener('keydown', focusComposerShortcut)
   if (!currentUser.value) {
     await router.replace('/login')
     return
@@ -119,16 +161,41 @@ onMounted(async () => {
   await syncRouteWithSelection()
 })
 
+onBeforeUnmount(() => {
+  window.removeEventListener('online', updateNetworkState)
+  window.removeEventListener('offline', updateNetworkState)
+  window.removeEventListener('keydown', focusComposerShortcut)
+})
+
 watch(() => route.params.conversationId, syncRouteWithSelection)
 watch(currentId, async (id) => {
   if (id) await chatStore.loadMessages(id)
   else chatStore.reset()
 })
+watch(missingConversationId, async (id) => {
+  if (!id || !currentUser.value) return
+  ElMessage.warning('当前会话已不存在，已为你刷新会话列表')
+  await conversationStore.loadConversations(currentUser.value.id)
+  await syncRouteWithSelection()
+})
 </script>
 
 <template>
   <main class="chat-page">
-    <AppHeader :username="currentUser?.displayName || '当前用户'" @logout="handleLogout" />
+    <AppHeader
+      :avatar-url="currentUser?.avatarUrl"
+      :username="currentUser?.displayName || '当前用户'"
+      @logout="handleLogout"
+      @profile="profileVisible = true"
+    />
+    <ProfileDialog v-model="profileVisible" :user="currentUser" />
+    <ConversationDialog
+      v-model="conversationDialogVisible"
+      :conversation="pendingConversation"
+      :loading="conversationActionLoading"
+      :mode="conversationDialogMode"
+      @confirm="confirmConversationAction"
+    />
     <section class="chat-page__workspace">
       <ConversationSidebar
         :conversations="items"
@@ -141,15 +208,23 @@ watch(currentId, async (id) => {
         @select="handleSelect"
       />
       <section class="chat-page__main">
+        <div v-if="!isOnline" class="chat-page__offline" role="alert">
+          网络连接已断开，请恢复网络后继续提问。
+        </div>
         <header class="chat-page__titlebar">
           <div>
             <p>当前会话</p>
-            <h1>{{ currentConversation?.title || '新的知识问答' }}</h1>
+            <h1 :title="currentConversation?.title || '新的知识问答'">
+              {{ currentConversation?.title || '新的知识问答' }}
+            </h1>
           </div>
           <span>{{ currentConversation ? '已保存' : '未开始' }}</span>
         </header>
         <div class="chat-page__messages">
-          <ChatWelcome v-if="!historyLoading && messages.length === 0 && !sending" />
+          <ChatWelcome
+            v-if="!historyLoading && messages.length === 0 && !sending"
+            @suggest="handleSend"
+          />
           <MessageList
             v-else
             :loading="historyLoading"
@@ -159,7 +234,12 @@ watch(currentId, async (id) => {
             @retry="chatStore.retryMessage($event, currentUser?.id || '')"
           />
         </div>
-        <ChatComposer :sending="sending" @send="handleSend" />
+        <ChatComposer
+          ref="composerRef"
+          :disabled="!isOnline"
+          :sending="sending"
+          @send="handleSend"
+        />
       </section>
     </section>
   </main>
@@ -200,8 +280,12 @@ watch(currentId, async (id) => {
   text-transform: uppercase;
 }
 .chat-page__titlebar h1 {
+  max-width: min(60vw, 720px);
+  overflow: hidden;
   margin: 0;
   font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .chat-page__titlebar > span {
   padding: 6px 10px;
@@ -216,5 +300,19 @@ watch(currentId, async (id) => {
   min-height: 0;
   overflow-y: auto;
   padding: 48px 48px 24px;
+}
+.chat-page__offline {
+  position: absolute;
+  z-index: 2;
+  top: 74px;
+  left: 50%;
+  padding: 9px 16px;
+  transform: translateX(-50%);
+  border: 1px solid #fed7aa;
+  border-radius: 10px;
+  color: #9a3412;
+  background: #fff7ed;
+  box-shadow: 0 8px 24px rgb(154 52 18 / 10%);
+  font-size: 13px;
 }
 </style>

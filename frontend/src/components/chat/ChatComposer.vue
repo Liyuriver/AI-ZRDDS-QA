@@ -4,6 +4,9 @@ import { ref } from 'vue'
 defineProps<{ sending?: boolean; disabled?: boolean }>()
 const emit = defineEmits<{ send: [query: string] }>()
 const query = ref('')
+const textareaRef = ref<HTMLTextAreaElement>()
+
+defineExpose({ focus: () => textareaRef.value?.focus() })
 
 function handleSend(): void {
   const value = query.value.trim()
@@ -25,6 +28,7 @@ function handleKeydown(event: KeyboardEvent): void {
   <footer class="chat-composer">
     <div class="chat-composer__box">
       <textarea
+        ref="textareaRef"
         v-model="query"
         aria-label="问题输入框"
         :disabled="disabled || sending"
@@ -41,7 +45,10 @@ function handleKeydown(event: KeyboardEvent): void {
         >发送</el-button
       >
     </div>
-    <p>Enter 发送，Shift + Enter 换行 · 回答内容请以引用文档为准</p>
+    <p>
+      <span>Enter 发送，Shift + Enter 换行 · 按 / 聚焦输入框</span>
+      <span>{{ query.length }}/2000</span>
+    </p>
   </footer>
 </template>
 
@@ -89,6 +96,8 @@ function handleKeydown(event: KeyboardEvent): void {
   border-radius: 11px;
 }
 .chat-composer > p {
+  display: flex;
+  justify-content: space-between;
   margin: 9px 0 0;
   color: #98a2b3;
   text-align: center;

@@ -50,7 +50,9 @@ function formatTime(value: string): string {
         :class="{ 'conversation-sidebar__item--active': conversation.id === currentId }"
       >
         <button
+          :aria-current="conversation.id === currentId ? 'page' : undefined"
           class="conversation-sidebar__select"
+          :title="conversation.title"
           type="button"
           @click="$emit('select', conversation.id)"
         >
@@ -62,12 +64,16 @@ function formatTime(value: string): string {
         </button>
         <span class="conversation-sidebar__actions">
           <button
+            class="conversation-sidebar__rename"
             type="button"
             title="重命名会话"
             aria-label="重命名会话"
             @click="$emit('rename', conversation)"
           >
-            改
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M4 20h4l10.5-10.5a2.8 2.8 0 0 0-4-4L4 16v4Z" />
+              <path d="m13.5 6.5 4 4" />
+            </svg>
           </button>
           <button
             class="conversation-sidebar__delete"
@@ -76,7 +82,10 @@ function formatTime(value: string): string {
             aria-label="删除会话"
             @click="$emit('delete', conversation)"
           >
-            删
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7" />
+              <path d="M10 11v5m4-5v5" />
+            </svg>
           </button>
         </span>
       </div>
@@ -90,7 +99,7 @@ function formatTime(value: string): string {
 
     <div class="conversation-sidebar__footer">
       <span class="conversation-sidebar__indicator" />
-      <span>知识库服务待联调</span>
+      <span>知识库问答服务</span>
     </div>
   </aside>
 </template>
@@ -204,22 +213,42 @@ function formatTime(value: string): string {
 }
 
 .conversation-sidebar__actions button {
-  width: 26px;
-  height: 26px;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
   padding: 0;
   border: 0;
   border-radius: 7px;
   color: #64748b;
   background: transparent;
-  font-size: 11px;
   cursor: pointer;
+  transition:
+    color 0.16s ease,
+    background 0.16s ease,
+    transform 0.16s ease;
 }
 
-.conversation-sidebar__actions button:hover {
-  background: #e2e8f0;
+.conversation-sidebar__actions button:hover,
+.conversation-sidebar__actions button:focus-visible {
+  color: var(--color-primary);
+  background: #eff6ff;
+  transform: translateY(-1px);
+  outline: none;
 }
 
-.conversation-sidebar__actions .conversation-sidebar__delete:hover {
+.conversation-sidebar__actions svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.conversation-sidebar__actions .conversation-sidebar__delete:hover,
+.conversation-sidebar__actions .conversation-sidebar__delete:focus-visible {
   color: #dc2626;
   background: #fee2e2;
 }
@@ -303,6 +332,6 @@ function formatTime(value: string): string {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #f59e0b;
+  background: #22c55e;
 }
 </style>

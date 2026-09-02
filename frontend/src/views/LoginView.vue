@@ -5,7 +5,6 @@ import { reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import AuthLayout from '@/components/layout/AuthLayout.vue'
-import { appConfig } from '@/config/app'
 import { useUserStore } from '@/stores/user'
 
 interface LoginForm {
@@ -28,9 +27,7 @@ const form = reactive<LoginForm>({
 
 const rules: FormRules<LoginForm> = {
   username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-  ...(appConfig.useMock
-    ? { password: [{ required: true, message: '请输入密码', trigger: 'blur' }] }
-    : { email: [{ required: true, message: '请输入邮箱', trigger: 'blur' }] }),
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 }
 
 async function handleSubmit(): Promise<void> {
@@ -64,7 +61,7 @@ async function handleSubmit(): Promise<void> {
       <el-form-item label="用户名" prop="username">
         <el-input v-model="form.username" autocomplete="username" placeholder="请输入用户名" />
       </el-form-item>
-      <el-form-item v-if="appConfig.useMock" label="密码" prop="password">
+      <el-form-item label="密码" prop="password">
         <el-input
           v-model="form.password"
           autocomplete="current-password"
@@ -74,9 +71,6 @@ async function handleSubmit(): Promise<void> {
           @keyup.enter="handleSubmit"
         />
       </el-form-item>
-      <el-form-item v-else label="邮箱" prop="email">
-        <el-input v-model="form.email" autocomplete="email" placeholder="请输入注册邮箱" />
-      </el-form-item>
 
       <div class="auth-form__options">
         <el-checkbox v-model="form.remember">记住登录状态</el-checkbox>
@@ -84,11 +78,7 @@ async function handleSubmit(): Promise<void> {
       </div>
 
       <div class="auth-form__demo">
-        {{
-          appConfig.useMock
-            ? '演示账号：demo / demo123'
-            : '当前后端未提供密码认证，使用用户名和邮箱识别用户'
-        }}
+        {{ '演示环境账号：123 / 87654321；真实环境请使用已注册账号' }}
       </div>
 
       <el-button

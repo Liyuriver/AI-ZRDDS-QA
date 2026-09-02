@@ -1,3 +1,25 @@
+<script setup lang="ts">
+defineEmits<{ suggest: [question: string] }>()
+
+const suggestions = [
+  {
+    title: '开发问题',
+    description: '查询依赖、配置和构建相关知识',
+    question: 'ZRDDS 开发环境需要哪些依赖和配置？',
+  },
+  {
+    title: '故障排查',
+    description: '根据错误信息定位可能原因',
+    question: 'ZRDDS 构建失败时应该如何排查？',
+  },
+  {
+    title: '使用指南',
+    description: '了解常见功能与操作流程',
+    question: '请介绍 ZRDDS 的主要功能和基本使用流程。',
+  },
+]
+</script>
+
 <template>
   <section class="chat-welcome">
     <div class="chat-welcome__icon" aria-hidden="true">Z</div>
@@ -7,9 +29,15 @@
       请输入关于 ZRDDS 开发、配置或故障排查的问题。回答将同时展示可追溯的文档依据。
     </p>
     <div class="chat-welcome__suggestions">
-      <div><strong>开发问题</strong><span>查询依赖、配置和构建相关知识</span></div>
-      <div><strong>故障排查</strong><span>根据错误信息定位可能原因</span></div>
-      <div><strong>版本适用性</strong><span>查看回答依据对应的版本状态</span></div>
+      <button
+        v-for="suggestion in suggestions"
+        :key="suggestion.title"
+        type="button"
+        @click="$emit('suggest', suggestion.question)"
+      >
+        <strong>{{ suggestion.title }}</strong
+        ><span>{{ suggestion.description }}</span>
+      </button>
     </div>
   </section>
 </template>
@@ -59,12 +87,26 @@
   gap: 14px;
   text-align: left;
 }
-.chat-welcome__suggestions div {
+.chat-welcome__suggestions button {
   padding: 18px;
   border: 1px solid var(--color-border);
   border-radius: 14px;
   background: #fff;
   box-shadow: 0 8px 24px rgb(15 23 42 / 4%);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.chat-welcome__suggestions button:hover,
+.chat-welcome__suggestions button:focus-visible {
+  border-color: #bfdbfe;
+  box-shadow: 0 12px 28px rgb(37 99 235 / 10%);
+  transform: translateY(-2px);
+  outline: none;
 }
 .chat-welcome__suggestions strong,
 .chat-welcome__suggestions span {

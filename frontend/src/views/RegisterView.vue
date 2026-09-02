@@ -5,7 +5,6 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import AuthLayout from '@/components/layout/AuthLayout.vue'
-import { appConfig } from '@/config/app'
 import { useUserStore } from '@/stores/user'
 
 interface RegisterForm {
@@ -34,27 +33,23 @@ const rules: FormRules<RegisterForm> = {
     { required: true, message: '请输入邮箱', trigger: 'blur' },
     { type: 'email', message: '请输入有效的邮箱地址', trigger: 'blur' },
   ],
-  ...(appConfig.useMock
-    ? {
-        password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 6, message: '密码长度不能少于 6 位', trigger: 'blur' },
-        ],
-        confirmPassword: [
-          { required: true, message: '请再次输入密码', trigger: 'blur' },
-          {
-            validator: (_rule, value, callback) => {
-              if (value !== form.password) {
-                callback(new Error('两次输入的密码不一致'))
-                return
-              }
-              callback()
-            },
-            trigger: 'blur',
-          },
-        ],
-      }
-    : {}),
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 8, message: '密码长度不能少于 8 位', trigger: 'blur' },
+  ],
+  confirmPassword: [
+    { required: true, message: '请再次输入密码', trigger: 'blur' },
+    {
+      validator: (_rule, value, callback) => {
+        if (value !== form.password) {
+          callback(new Error('两次输入的密码不一致'))
+          return
+        }
+        callback()
+      },
+      trigger: 'blur',
+    },
+  ],
 }
 
 async function handleSubmit(): Promise<void> {
@@ -91,16 +86,16 @@ async function handleSubmit(): Promise<void> {
       <el-form-item label="邮箱" prop="email">
         <el-input v-model="form.email" autocomplete="email" placeholder="请输入邮箱" />
       </el-form-item>
-      <el-form-item v-if="appConfig.useMock" label="密码" prop="password">
+      <el-form-item label="密码" prop="password">
         <el-input
           v-model="form.password"
           autocomplete="new-password"
-          placeholder="请输入至少 6 位密码"
+          placeholder="请输入至少 8 位密码"
           show-password
           type="password"
         />
       </el-form-item>
-      <el-form-item v-if="appConfig.useMock" label="确认密码" prop="confirmPassword">
+      <el-form-item label="确认密码" prop="confirmPassword">
         <el-input
           v-model="form.confirmPassword"
           autocomplete="new-password"
@@ -110,10 +105,6 @@ async function handleSubmit(): Promise<void> {
           @keyup.enter="handleSubmit"
         />
       </el-form-item>
-
-      <div v-if="!appConfig.useMock" class="auth-form__backend-note">
-        当前后端用户模型不包含密码字段，注册后将直接进入系统。
-      </div>
 
       <el-button
         class="auth-form__submit"

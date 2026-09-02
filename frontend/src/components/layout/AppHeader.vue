@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import BrandLogo from '@/components/common/BrandLogo.vue'
+import defaultAvatar from '@/assets/default-avatar.png'
 
 withDefaults(
   defineProps<{
     username?: string
+    avatarUrl?: string
   }>(),
   {
     username: '当前用户',
+    avatarUrl: undefined,
   },
 )
 
 defineEmits<{
+  profile: []
   logout: []
 }>()
 </script>
@@ -24,13 +28,15 @@ defineEmits<{
       <span class="app-header__divider" aria-hidden="true" />
       <el-dropdown trigger="click">
         <button class="app-header__user" type="button">
-          <span class="app-header__avatar">{{ username.slice(0, 1).toUpperCase() }}</span>
+          <span class="app-header__avatar">
+            <img :alt="`${username}的头像`" :src="avatarUrl || defaultAvatar" />
+          </span>
           <span>{{ username }}</span>
           <span class="app-header__chevron" aria-hidden="true">⌄</span>
         </button>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item disabled>基础用户</el-dropdown-item>
+            <el-dropdown-item @click="$emit('profile')">个人资料</el-dropdown-item>
             <el-dropdown-item divided @click="$emit('logout')">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -103,6 +109,13 @@ defineEmits<{
   background: #334155;
   font-size: 13px;
   font-weight: 800;
+}
+
+.app-header__avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
 }
 
 .app-header__chevron {

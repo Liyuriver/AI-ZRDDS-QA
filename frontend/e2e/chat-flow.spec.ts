@@ -6,12 +6,12 @@ test('registers, chats, restores evidence, renames and deletes a conversation', 
   await page.goto('/register')
   await page.getByPlaceholder('请输入用户名').fill('e2e-user')
   await page.getByPlaceholder('请输入邮箱').fill('e2e@example.com')
-  await page.getByPlaceholder('请输入至少 6 位密码').fill('e2e-pass')
+  await page.getByPlaceholder('请输入至少 8 位密码').fill('e2e-pass')
   await page.getByPlaceholder('请再次输入密码').fill('e2e-pass')
   await page.getByRole('button', { name: '创建账号' }).click()
 
   await expect(page).toHaveURL(/\/chat/)
-  await expect(page.getByText('历史会话')).toBeVisible()
+  await expect(page.getByRole('heading', { name: '历史会话' })).toBeVisible()
 
   await page.getByLabel('问题输入框').fill('如何排查 ZRDDS 构建错误？')
   await page.getByRole('button', { name: '发送' }).click()
@@ -37,10 +37,24 @@ test('registers, chats, restores evidence, renames and deletes a conversation', 
 
 test('logs in with the demo account', async ({ page }) => {
   await page.goto('/login')
-  await page.getByPlaceholder('请输入用户名').fill('demo')
-  await page.getByPlaceholder('请输入密码').fill('demo123')
+  await page.getByPlaceholder('请输入用户名').fill('123')
+  await page.getByPlaceholder('请输入密码').fill('87654321')
   await page.getByRole('button', { name: '登录', exact: true }).click()
 
   await expect(page).toHaveURL(/\/chat/)
   await expect(page.getByText('当前会话')).toBeVisible()
+})
+
+test('starts a conversation from a desktop suggestion card', async ({ page }) => {
+  await page.goto('/login')
+  await page.getByPlaceholder('请输入用户名').fill('123')
+  await page.getByPlaceholder('请输入密码').fill('87654321')
+  await page.getByRole('button', { name: '登录', exact: true }).click()
+
+  await page.getByRole('button', { name: /开发问题/ }).click()
+
+  await expect(
+    page.getByRole('heading', { name: 'ZRDDS 开发环境需要哪些依赖和配置？' }),
+  ).toBeVisible()
+  await expect(page.getByText('参考来源')).toBeVisible()
 })

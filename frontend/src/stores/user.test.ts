@@ -13,7 +13,7 @@ describe('user store', () => {
   it('logs in with the default Mock account and persists the session', async () => {
     const store = useUserStore()
 
-    await store.login({ username: 'demo', password: 'demo123' }, true)
+    await store.login({ username: '123', password: '87654321' }, true)
 
     expect(store.isAuthenticated).toBe(true)
     expect(store.currentUser?.displayName).toBe('演示用户')

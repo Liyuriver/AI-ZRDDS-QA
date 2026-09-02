@@ -1,7 +1,13 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 
-import { login as apiLogin, register as apiRegister } from '@/api/user'
+import {
+  login as apiLogin,
+  register as apiRegister,
+  updateAvatar as apiUpdateAvatar,
+  updatePassword as apiUpdatePassword,
+  updateProfile as apiUpdateProfile,
+} from '@/api/user'
 import type { LoginRequest, RegisterRequest, User } from '@/types/user'
 import { clearAuthSession, readAuthSession, writeAuthSession } from '@/utils/auth'
 import { getErrorMessage } from '@/utils/error'
@@ -46,11 +52,50 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
+  async function updateProfile(payload: {
+    username: string
+    email: string
+    currentPassword: string
+  }): Promise<void> {
+    const user = await apiUpdateProfile(payload)
+    const session = readAuthSession()
+    if (session)
+      writeAuthSession({ ...session, user }, Boolean(localStorage.getItem('zrdss_qa_auth_session')))
+    currentUser.value = user
+  }
+
+  async function updatePassword(payload: {
+    currentPassword: string
+    newPassword: string
+  }): Promise<void> {
+    await apiUpdatePassword(payload)
+  }
+
+  async function updateAvatar(dataUrl: string): Promise<void> {
+    const user = await apiUpdateAvatar(dataUrl)
+    const session = readAuthSession()
+    if (session)
+      writeAuthSession({ ...session, user }, Boolean(localStorage.getItem('zrdss_qa_auth_session')))
+    currentUser.value = user
+  }
+
   function logout(): void {
     clearAuthSession()
     currentUser.value = null
     error.value = null
   }
 
-  return { currentUser, loading, error, isAuthenticated, restoreSession, login, register, logout }
+  return {
+    currentUser,
+    loading,
+    error,
+    isAuthenticated,
+    restoreSession,
+    login,
+    register,
+    updateProfile,
+    updatePassword,
+    updateAvatar,
+    logout,
+  }
 })

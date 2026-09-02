@@ -57,28 +57,44 @@ export const mapHistoryMessage = (item: BackendMessage): ChatMessage => ({
 })
 
 function mapCitations(sources: BackendSource[], images: BackendImage[]): Citation[] {
-  return sources.map((source) => ({
-    sourceFile: source.document,
-    section: source.section || undefined,
-    page: source.page || undefined,
-    versionStatus: 'unknown',
-    snippet: source.quote,
-    images: images.filter((image) => image.document === source.document).map((image) => image.url),
-  }))
+  const validImages = Array.isArray(images)
+    ? images.filter(
+        (image) =>
+          image && typeof image === 'object' && typeof (image as BackendImage).url === 'string',
+      )
+    : []
+  return (Array.isArray(sources) ? sources : [])
+    .filter((source) => source && typeof source === 'object')
+    .map((source) => {
+      const document =
+        typeof source.document === 'string' && source.document.trim() ? source.document : '未知文档'
+      return {
+        sourceFile: document,
+        section: typeof source.section === 'string' ? source.section : undefined,
+        page: typeof source.page === 'number' ? source.page : undefined,
+        versionStatus: 'unknown' as const,
+        snippet: typeof source.quote === 'string' ? source.quote : '',
+        images: validImages
+          .filter((image) => image.document === document)
+          .map((image) => image.url),
+      }
+    })
 }
 
 export function mapChatResponse(response: BackendChatResponse): ChatMessage {
   if (!response.data || response.code !== 0 || response.data.status === 'error') {
     throw new Error(response.message || 'AI 服务暂时不可用')
   }
+  const answer = typeof response.data.answer === 'string' ? response.data.answer.trim() : ''
   return {
     id: crypto.randomUUID(),
     conversationId: response.data.conversation_id,
     role: 'assistant',
-    content: response.data.answer,
+    content: answer || 'AI 服务没有返回有效内容，请稍后重试。',
     status: 'success',
     createdAt: new Date().toISOString(),
-    answerStatus: response.data.status === 'insufficient_evidence' ? 'no_answer' : 'answered',
+    answerStatus:
+      response.data.status === 'insufficient_evidence' || !answer ? 'no_answer' : 'answered',
     citations: mapCitations(response.data.sources, response.data.images),
   }
 }

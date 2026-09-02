@@ -44,4 +44,15 @@ describe('chat store', () => {
     expect(store.messages[1]?.answerStatus).toBe('no_answer')
     expect(store.messages[1]?.citations).toEqual([])
   })
+
+  it('does not append a late answer after switching conversations', async () => {
+    const store = useChatStore()
+    const pending = store.sendMessage('old-conversation', 'user-1', '旧会话问题')
+
+    await store.loadMessages('new-conversation')
+    await pending
+
+    expect(store.messages.every((item) => item.conversationId === 'new-conversation')).toBe(true)
+    expect(store.sending).toBe(false)
+  })
 })

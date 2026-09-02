@@ -42,6 +42,26 @@ describe('real chat response mapping', () => {
     expect(message.answerStatus).toBe('no_answer')
   })
 
+  it('uses a safe fallback for an empty answer and malformed evidence arrays', () => {
+    const payload = {
+      code: 0,
+      message: 'success',
+      data: {
+        conversation_id: 'conversation-1',
+        answer: '   ',
+        status: 'answered',
+        sources: null,
+        images: { invalid: true },
+      },
+    } as unknown as Parameters<typeof mapChatResponse>[0]
+
+    const message = mapChatResponse(payload)
+
+    expect(message.content).toContain('没有返回有效内容')
+    expect(message.answerStatus).toBe('no_answer')
+    expect(message.citations).toEqual([])
+  })
+
   it('restores persisted citations and images from assistant history', () => {
     const message = mapHistoryMessage({
       id: 'message-1',
