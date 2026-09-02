@@ -63,6 +63,85 @@ def _image_markdown(item: dict[str, Any], output_dir: Path) -> str:
     return boxed + ("\n\n" + code_block if code_block else "")
 
 
+def rewrite_recovered_visual_anchors(markdown_path: Path, visuals: dict[str, dict[str, Any]], root: Path) -> dict[str, int]:
+    """Replace resolved UNRESOLVED_VISUAL anchors in-place and remove duplicates.
+
+    Recovery scripts operate after page rendering, so the original layout
+    already contains a stable image_id anchor.  This function deliberately
+    uses that identity rather than page/chapter/image-number rules.
+    """
+    markdown_path = Path(markdown_path)
+    root = Path(root)
+    text = markdown_path.read_text(encoding="utf-8") if markdown_path.is_file() else ""
+    valid: dict[str, dict[str, Any]] = {}
+    for image_id, item in visuals.items():
+        path = root / str(item.get("path") or "")
+        if not image_id or not path.is_file():
+            continue
+        if item.get("binding_status") not in (None, "resolved"):
+            continue
+        if item.get("resolution_status") not in (None, "resolved"):
+            continue
+        valid[image_id] = item
+
+    def block(item: dict[str, Any]) -> list[str]:
+        image_id = str(item.get("image_id") or "image")
+        path = str(item.get("path") or "").replace("\\", "/")
+        rel = path[path.find("images/"):] if "images/" in path else path
+        caption = str(item.get("caption") or (item.get("vlm") or {}).get("caption") or "源文档图像").strip()
+        description = str((item.get("vlm") or {}).get("description") or item.get("description") or "").strip()
+        result = [f"> ![{caption}]({rel})", ">"]
+        if description:
+            result.extend(["> **图示信息：**", ">", f"> - {description}"])
+        return result
+
+    replaced = 0
+    lines = text.splitlines()
+    placeholder = re.compile(r"^\s*<!--\s*UNRESOLVED_VISUAL\s+image_id=([^\s]+)[^>]*-->\s*$")
+    expanded: list[str] = []
+    for line in lines:
+        match = placeholder.match(line)
+        image_id = match.group(1) if match else ""
+        if image_id in valid:
+            expanded.extend(block(valid[image_id]))
+            replaced += 1
+        else:
+            expanded.append(line)
+
+    # Keep the first valid visual block (normally the just-replaced anchor)
+    # and discard later copies, including old end-of-document append blocks.
+    image_ref = re.compile(r"images/([^\s)]+)")
+    seen: set[str] = set()
+    output: list[str] = []
+    removed = 0
+    index = 0
+    while index < len(expanded):
+        line = expanded[index]
+        ref = image_ref.search(line)
+        image_id = Path(ref.group(1)).stem if ref else ""
+        if image_id in valid:
+            if image_id in seen:
+                removed += 1
+                index += 1
+                while index < len(expanded) and (expanded[index].startswith(">") or not expanded[index].strip()):
+                    index += 1
+                continue
+            seen.add(image_id)
+        output.append(line)
+        index += 1
+
+    result = "\n".join(output).rstrip() + "\n"
+    markdown_path.write_text(result, encoding="utf-8")
+    refs = re.findall(r"!\[[^]]*\]\(images/([^)]*)\)", result)
+    return {
+        "resolved_placeholder_candidates": sum(1 for line in lines if (m := placeholder.match(line)) and m.group(1) in valid),
+        "placeholder_replaced": replaced,
+        "end_appended_visuals_removed": removed,
+        "duplicate_image_insertions": len(refs) - len(set(refs)),
+        "remaining_unresolved_visuals": len(re.findall(r"UNRESOLVED_VISUAL", result)),
+    }
+
+
 def _inline_code(value: Any) -> str:
     return f"`{str(value).replace('`', '')}`"
 
@@ -208,6 +287,28 @@ def _intersection_cover(left: tuple[float, float, float, float] | None, right: t
     la = max((left[2] - left[0]) * (left[3] - left[1]), 1e-9)
     ra = max((right[2] - right[0]) * (right[3] - right[1]), 1e-9)
     return inter / la, inter / ra
+
+
+def _covered_by_canonical_source(source_box: tuple[float, float, float, float], page: int, matches: list[dict[str, Any]]) -> bool:
+    """Detect a small native source image wholly contained by a known visual."""
+    source_area = max((source_box[2] - source_box[0]) * (source_box[3] - source_box[1]), 1e-9)
+    for match in matches:
+        if int(match.get("page") or 0) != page:
+            continue
+        canonical_box = _normalized_bbox(match.get("bbox"))
+        if not canonical_box:
+            continue
+        canonical_area = max((canonical_box[2] - canonical_box[0]) * (canonical_box[3] - canonical_box[1]), 1e-9)
+        source_cover, canonical_cover = _intersection_cover(source_box, canonical_box)
+        contains = (
+            source_box[0] >= canonical_box[0]
+            and source_box[1] >= canonical_box[1]
+            and source_box[2] <= canonical_box[2]
+            and source_box[3] <= canonical_box[3]
+        )
+        if source_area / canonical_area <= 0.30 and (contains or source_cover >= 0.80 or canonical_cover >= 0.80):
+            return True
+    return False
 
 
 
@@ -813,6 +914,7 @@ def _supplement_pdf_image_occurrences(
     plumber_pdf = pdfplumber.open(source_path)
     try:
         existing_ids = {str(item.get("image_id") or "") for item in matches}
+        suppressed = 0
         for occurrence_index, occurrence in enumerate(occurrences):
             page = int(occurrence.get("page") or 0)
             box = _normalized_bbox(occurrence.get("bbox"))
@@ -831,6 +933,9 @@ def _supplement_pdf_image_occurrences(
 
             occurrence_number = int(occurrence.get("occurrence_index") or occurrence_index + 1)
             match_index = assignment.get(occurrence_index)
+            if match_index is None and _covered_by_canonical_source(box, page, matches):
+                suppressed += 1
+                continue
             if match_index is not None:
                 image_id = str(matches[match_index].get("image_id") or f"source-p{page}-{occurrence_number:02d}")
             else:
@@ -902,6 +1007,8 @@ def _supplement_pdf_image_occurrences(
                 "needs_review": True,
                 "parse_status": "source_recovered_without_vlm",
             })
+        if matches:
+            matches[0]["suppressed_source_fragments"] = int(matches[0].get("suppressed_source_fragments", 0)) + suppressed
     finally:
         plumber_pdf.close()
         if fitz_doc is not None:
@@ -1111,7 +1218,7 @@ def build_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: dict[
             if match.get("chunk_id") != original.get("chunk_id") or not match.get("image_id") or _is_table_excluded(match, enrichments.get(match.get("image_id"), {})):
                 continue
             path = image_paths.get(match["image_id"])
-            records.append({"image_id": match["image_id"], "path": path, "type": enrichments.get(match["image_id"], {}).get("image_type", "unknown"), "page": match.get("page"), "bbox": match.get("bbox"), "needs_review": bool(enrichments.get(match["image_id"], {}).get("needs_review", False) or match.get("match_status") != "auto_matched"), "binding_status": match.get("binding_status"), "resolution_status": "resolved" if path else "missing_source"})
+            records.append({"image_id": match["image_id"], "path": path, "type": enrichments.get(match["image_id"], {}).get("image_type", "unknown"), "page": match.get("page"), "bbox": match.get("bbox"), "description": enrichments.get(match["image_id"], {}).get("description", ""), "needs_review": bool(enrichments.get(match["image_id"], {}).get("needs_review", False) or match.get("match_status") != "auto_matched"), "binding_status": match.get("binding_status"), "resolution_status": "resolved" if path else "missing_source"})
         for code in code_matches:
             if code.get("chunk_id") == original.get("chunk_id") and code.get("source_image_path"):
                 records.append({"image_id": code.get("code_id"), "path": code.get("source_image_path"), "type": "code_original", "page": code.get("page"), "bbox": code.get("bbox"), "needs_review": True, "binding_status": code.get("binding_status"), "resolution_status": "resolved"})
@@ -1250,6 +1357,11 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
         if item.get("path") and not source.is_file():
             missing_images.append(item.get("image_id"))
 
+    knowledge_visuals_without_description = [
+        image_id for image_id in missing_visual_information
+        if str((enrichments.get(image_id, {}) or {}).get("parse_status") or "") not in {"vlm_disabled", "source_recovered_vlm_disabled", "offline_mock"}
+    ]
+
     chunk_ids = {str(chunk.get("chunk_id")) for chunk in getattr(parsed, "chunks", []) if chunk.get("chunk_id")}
     binding_without_owner = [
         item.get("image_id") for item in expected
@@ -1281,6 +1393,7 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
     if unclosed_code_fences: failures.append("unclosed_code_fences")
     if missing_images: failures.append("missing_images")
     if missing_visual_information: failures.append("missing_visual_information")
+    if knowledge_visuals_without_description: failures.append("knowledge_visuals_without_description")
     if late_source_vlm_failed: failures.append("late_source_vlm")
     if invalid_unresolved: failures.append("invalid_unresolved_visuals")
     if binding_without_owner: failures.append("binding_without_owner")
@@ -1325,6 +1438,8 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
         "unclosed_code_fences": unclosed_code_fences,
         "missing_images": missing_images,
         "missing_visual_information": missing_visual_information,
+        "knowledge_visuals_without_description": knowledge_visuals_without_description,
+        "suppressed_source_fragments": int((matches[0].get("suppressed_source_fragments", 0) if matches else 0)),
         "missing_source_visuals": missing_source_visuals,
         "unresolved_visuals": unresolved_visuals,
         "ignored_non_knowledge_visuals": ignored_non_knowledge_visuals,
