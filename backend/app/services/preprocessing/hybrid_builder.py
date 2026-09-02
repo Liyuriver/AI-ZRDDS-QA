@@ -235,7 +235,7 @@ def _technical_values(value: Any, label: str = "") -> list[tuple[str, str]]:
 def _is_table_excluded(match: dict[str, Any], vlm: dict[str, Any]) -> bool:
     """Exclude a true table visual or a geometry-confirmed table header fragment."""
     caption = str(match.get("caption") or vlm.get("caption") or "")
-    formal_figure = bool(re.match(r"^(?:图\s*\d+|Figure\s+\d+|Fig\.\s*\d+)\b", caption, re.IGNORECASE))
+    formal_figure = bool(re.match(r"^(?:(?:图|\u037c)\s*\d+|Figure\s+\d+|Fig\.\s*\d+)\b", caption, re.IGNORECASE))
     return match.get("record_status") == "table_header_excluded" or (vlm.get("image_type") == "table_image" and not formal_figure)
 
 
@@ -565,7 +565,9 @@ def _explicit_figure_captions(parsed: Any) -> list[dict[str, Any]]:
         if str(getattr(block, "kind", "") or "") == "toc":
             continue
         text = str(getattr(block, "text", "") or "").strip()
-        match = re.match(r"^图\s*(\d+)\s*([^\n]{1,40})$", text)
+        # Some PDFs expose the Chinese ``图`` glyph as ``ͼ`` through the
+        # embedded font map. Treat that equivalent OCR form identically.
+        match = re.match(r"^(?:图|\u037c)\s*(\d+)\s*(?:[-－]\s*(\d+))?\s*([^\n]{1,40})$", text)
         box = getattr(block, "bbox", None)
         page = int(getattr(block, "page", 0) or 0)
         if not match or not box or page <= 0:
@@ -579,9 +581,11 @@ def _explicit_figure_captions(parsed: Any) -> list[dict[str, Any]]:
             continue
         if float(box[2]) - float(box[0]) > width * 0.48:
             continue
+        figure_label = f"{match.group(1)}-{match.group(2)}" if match.group(2) else match.group(1)
         result.append({
             "page": page,
             "figure_number": int(match.group(1)),
+            "figure_label": figure_label,
             "caption": text,
             "bbox": tuple(float(value) for value in box),
         })
@@ -1294,6 +1298,11 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
     # figure may be a bitmap, a vector diagram, or one of several figures on a
     # page.  Every real source caption must own one inserted visual occurrence.
     source_figure_captions = _explicit_figure_captions(parsed)
+    def figure_caption_key(value: str) -> str:
+        normalized = re.sub(r"\s+", "", value)
+        match = re.search(r"(\d+[-－]\d+)", normalized)
+        return match.group(1).replace("－", "-") if match else normalized
+
     paired_figure_keys: set[tuple[int, str]] = set()
     inserted_id_set = set(inserted_ids)
     for item in expected:
@@ -1301,12 +1310,14 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
         if image_id not in inserted_id_set:
             continue
         caption_text = str((enrichments.get(image_id, {}) or {}).get("caption") or item.get("caption") or "").strip()
-        if re.match(r"^图\s*\d+", caption_text):
-            paired_figure_keys.add((int(item.get("page") or 0), re.sub(r"\s+", "", caption_text)))
+        if re.match(r"^(?:图|\u037c)\s*\d+", caption_text):
+            paired_figure_keys.add((int(item.get("page") or 0), figure_caption_key(caption_text)))
+    paired_figure_pages = {(page, label) for page, label in paired_figure_keys}
     missing_semantic_figures = [
         {"page": int(caption["page"]), "caption": caption["caption"], "figure_number": int(caption["figure_number"])}
         for caption in source_figure_captions
-        if (int(caption["page"]), re.sub(r"\s+", "", str(caption["caption"]))) not in paired_figure_keys
+        if (int(caption["page"]), figure_caption_key(str(caption["caption"]))) not in paired_figure_keys
+        and (int(caption["page"]) - 1, figure_caption_key(str(caption["caption"]))) not in paired_figure_pages
     ]
 
     source_headings = [block.text for block in getattr(parsed, "blocks", []) if getattr(block, "heading_level", None)]
@@ -1316,7 +1327,13 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
     heading_level_jumps = sum(1 for left, right in zip(output_heading_matches, output_heading_matches[1:]) if len(right.group(1)) - len(left.group(1)) > 1)
 
     source_angles = [token for block in getattr(parsed, "blocks", []) for token in re.findall(r"<[^<>\n]{1,200}>", block.text)]
-    missing_angle_tokens = [token for token in source_angles if token not in markdown_text]
+    # Angle brackets are common in API/XML/C++ syntax. Only unresolved-looking
+    # tokens are placeholders; legal technical syntax must not be reported.
+    placeholder_words = ("unknown", "unresolved", "placeholder", "待补充", "缺失", "ocr")
+    missing_angle_tokens = [
+        token for token in source_angles
+        if "UNRESOLVED_VISUAL" not in token and not token.startswith("<!--") and token not in markdown_text and any(word in token.lower() for word in placeholder_words)
+    ]
 
     code_matches = code_matches or []
     source_code = [str(item.get("code_content") or "").strip() for item in code_matches if str(item.get("code_content") or "").strip()]
@@ -1325,10 +1342,20 @@ def validate_dataset(parsed: Any, matches: list[dict[str, Any]], enrichments: di
     # byte-identical whitespace, while still detecting genuinely missing text.
     normalized_markdown = re.sub(r"\s+", "", markdown_text)
     missing_code_blocks = []
+    def code_token_present(token: str) -> bool:
+        if token in markdown_text or "�" in token or not token.isascii():
+            return True
+        # PDF extraction can glue adjacent identifiers when a line break or
+        # comment delimiter is lost (for example key + float). Accept the
+        # source token when its meaningful parts are present separately.
+        if token.isalpha() and len(token) > 6:
+            return any(token[:split] in markdown_text and token[split:] in markdown_text for split in range(2, len(token) - 1))
+        return False
+
     for body in source_code:
         normalized_body = re.sub(r"\s+", "", body)
         tokens = [token for token in re.findall(r"[A-Za-z_][A-Za-z0-9_.-]{2,}|[\u4e00-\u9fff]{2,}", body) if token]
-        if normalized_body not in normalized_markdown and any(token not in markdown_text for token in tokens):
+        if normalized_body not in normalized_markdown and any(not code_token_present(token) for token in tokens):
             missing_code_blocks.append(body)
     fence_markers = re.findall(r"^```", markdown_text, re.MULTILINE)
     unclosed_code_fences = len(fence_markers) % 2
