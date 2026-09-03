@@ -10,6 +10,19 @@ INCOMPATIBLE = "incompatible"
 UNKNOWN = "unknown"
 
 
+def extract_version(query: Optional[str]) -> Optional[str]:
+    """Extract only explicit version-shaped tokens; ordinary numbers are ignored."""
+    if not query:
+        return None
+    patterns = (r"\bv\s*(\d+(?:\.\d+){1,3})\b", r"\bZRDDS\s+(\d+(?:\.\d+){1,3})\b",
+                r"\b(\d+(?:\.\d+){1,3})\s*(?:版本|版)\b")
+    for pattern in patterns:
+        match = re.search(pattern, str(query), flags=re.IGNORECASE)
+        if match:
+            return "V" + match.group(1)
+    return None
+
+
 def normalize_version(version: Optional[str]) -> Optional[str]:
     if version is None:
         return None
