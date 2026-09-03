@@ -78,3 +78,17 @@ def merge_metadata_into_chunk(chunk: Mapping[str, Any], metadata: MetadataInput)
 
 def merge_metadata_into_chunks(chunks: Iterable[Mapping[str, Any]], metadata: MetadataInput) -> list[dict[str, Any]]:
     return [merge_metadata_into_chunk(chunk, metadata) for chunk in chunks]
+
+
+def sync_document_metadata_to_chunks(
+    chunks: Iterable[Mapping[str, Any]], metadata: MetadataInput
+) -> list[dict[str, Any]]:
+    """Copy only version metadata; preserve chunk content and identity fields."""
+    source = _as_metadata(metadata)
+    fields = {
+        "version": source.version,
+        "version_raw": source.version_raw,
+        "applicable_versions": list(source.applicable_versions),
+        "metadata_source": source.metadata_source,
+    }
+    return [{**dict(chunk), **fields} for chunk in chunks]

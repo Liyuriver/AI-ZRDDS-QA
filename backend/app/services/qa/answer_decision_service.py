@@ -8,9 +8,9 @@ def decide_answer(evidence: list[dict], confidence_level: str, version_status: s
                   version_sensitive: bool, requested_version: str | None) -> tuple[str, str | None]:
     if not evidence:
         return "NO_ANSWER", REFUSAL_LOW
-    if confidence_level == "LOW":
-        return "LOW_CONFIDENCE", REFUSAL_LOW
     if version_sensitive and (version_status in {"MIXED", "MISMATCH"} or
                               (requested_version is None and version_status == "MIXED")):
         return "VERSION_UNCERTAIN", REFUSAL_VERSION
+    if confidence_level == "LOW":
+        return "LOW_CONFIDENCE", REFUSAL_LOW
     return "ANSWER", None

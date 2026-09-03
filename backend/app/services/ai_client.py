@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 import os
 import re
 from pathlib import Path
@@ -8,6 +9,8 @@ from urllib.parse import quote
 
 import httpx
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -320,6 +323,22 @@ class AIClient:
             current = current.get(key)
         return current
 
+    @classmethod
+    def _extract_metadata_value(cls, item: dict, key: str):
+        """Read an evidence metadata value from supported Dify nesting shapes."""
+        paths = (
+            (key,),
+            ("metadata", key),
+            ("document_metadata", key),
+            ("segment", "metadata", key),
+            ("retriever_resource", "metadata", key),
+        )
+        for path in paths:
+            value = cls._get_nested(item, *path)
+            if value is not None:
+                return value
+        return None
+
     def _find_mapping(
         self,
         resource: dict,
@@ -481,7 +500,7 @@ class AIClient:
                     "section": section,
                     "page": page,
                     "quote": quote,
-                    "version": item.get("version") or self._get_nested(item, "metadata", "version") or (mapping or {}).get("version"),
+                    "version": self._extract_metadata_value(item, "version") or (mapping or {}).get("version"),
                 }
             raw_score = item.get("rerank_score", item.get("retrieval_score", item.get("score")))
             if isinstance(raw_score, (int, float)) and not isinstance(raw_score, bool):
@@ -567,6 +586,13 @@ class AIClient:
         data = response.json()
 
         sources, images = self._extract_sources(data)
+        logger.debug(
+            "Dify evidence diagnostics raw_dify_version=%s parsed_evidence_versions=%s",
+            [self._extract_metadata_value(item, "version") for item in (
+                (data.get("metadata") or {}).get("retriever_resources") or []
+            ) if isinstance(item, dict)],
+            [item.get("version") for item in sources],
+        )
 
         return {
             "answer": self._clean_answer(data.get("answer", "")),

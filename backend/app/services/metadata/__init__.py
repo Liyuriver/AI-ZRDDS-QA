@@ -7,6 +7,7 @@ from app.services.metadata.metadata_service import (
     load_metadata,
     merge_metadata_into_chunk,
     merge_metadata_into_chunks,
+    sync_document_metadata_to_chunks,
     validate_metadata,
 )
 from app.services.metadata.version_service import (
@@ -23,6 +24,7 @@ __all__ = [
     "COMPATIBLE", "INCOMPATIBLE", "UNKNOWN", "filter_by_version",
     "get_document_metadata", "get_metadata_by_source_file", "list_documents",
     "load_metadata", "merge_metadata_into_chunk", "merge_metadata_into_chunks",
+    "sync_document_metadata_to_chunks",
     "normalize_version", "validate_metadata", "version_matches", "version_status",
 ]
 
