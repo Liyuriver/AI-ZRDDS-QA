@@ -7,14 +7,17 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from dataclasses import replace
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+BACKEND_ROOT = REPO_ROOT / "backend"
+for import_root in (REPO_ROOT, BACKEND_ROOT):
+    if str(import_root) not in sys.path:
+        sys.path.insert(0, str(import_root))
 
 from app.services.preprocessing.hybrid_builder import build_dataset, validate_dataset
 from app.services.preprocessing.image_context_matcher import match_visual_records
@@ -51,10 +54,107 @@ def _find_content_list(output_dir: Path) -> Path | None:
     return candidates[0] if candidates else None
 
 
-def _run_mineru(pdf: Path, output_dir: Path) -> tuple[Path, bool]:
-    existing = _find_content_list(output_dir)
-    if existing:
-        return existing, True
+MINERU_BATCH_SIZE = 50
+MINERU_RETRIES = 3
+
+
+def _copy_with_merged_image_paths(value, batch_name: str, batch_root: Path, merged_images: Path):
+    """Copy batch image assets and rewrite only their relative content-list paths."""
+    if isinstance(value, dict):
+        return {key: _copy_with_merged_image_paths(item, batch_name, batch_root, merged_images) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_copy_with_merged_image_paths(item, batch_name, batch_root, merged_images) for item in value]
+    if not isinstance(value, str) or not value:
+        return value
+    candidate = Path(value)
+    if candidate.is_absolute():
+        source = candidate
+    else:
+        source = batch_root / candidate
+    if not source.is_file() or source.parent.name.lower() != "images":
+        matches = sorted(batch_root.rglob(candidate.name)) if not candidate.is_absolute() else []
+        source = next((item for item in matches if item.parent.name.lower() == "images"), source)
+    if not source.is_file() or source.parent.name.lower() != "images":
+        return value
+    target_name = f"{batch_name}__{source.name}"
+    target = merged_images / target_name
+    if not target.exists():
+        shutil.copy2(source, target)
+    return f"images/{target_name}"
+
+
+def _offset_content_payload(payload, offset: int, batch_name: str, batch_root: Path, merged_images: Path):
+    """Normalize batch-local page coordinates while retaining MinerU's record shape."""
+    if isinstance(payload, list) and payload and all(isinstance(page, list) for page in payload):
+        pages = []
+        for local_page, records in enumerate(payload):
+            updated = []
+            for record in records:
+                if not isinstance(record, dict):
+                    updated.append(record)
+                    continue
+                item = dict(record)
+                item["page_idx"] = int(item.get("page_idx", local_page)) + offset
+                for key in ("page_number", "page", "page_id"):
+                    if key in item and item[key] not in (None, ""):
+                        try:
+                            item[key] = int(item[key]) + offset
+                        except (TypeError, ValueError):
+                            pass
+                updated.append(_copy_with_merged_image_paths(item, batch_name, batch_root, merged_images))
+            pages.append(updated)
+        return pages
+    if isinstance(payload, list):
+        result = []
+        for record in payload:
+            if not isinstance(record, dict):
+                result.append(record)
+                continue
+            item = dict(record)
+            if "page_idx" in item:
+                try:
+                    item["page_idx"] = int(item["page_idx"]) + offset
+                except (TypeError, ValueError):
+                    pass
+            elif "page_number" in item:
+                try:
+                    page_number = int(item["page_number"])
+                    item["page_number"] = page_number + offset
+                    item["page_idx"] = page_number - 1 + offset
+                except (TypeError, ValueError):
+                    pass
+            else:
+                item["page_idx"] = offset
+            for key in ("page_number", "page", "page_id"):
+                if key in item and key != "page_number" and item[key] not in (None, ""):
+                    try:
+                        item[key] = int(item[key]) + offset
+                    except (TypeError, ValueError):
+                        pass
+            result.append(_copy_with_merged_image_paths(item, batch_name, batch_root, merged_images))
+        return result
+    if isinstance(payload, dict):
+        for key in ("content_list", "data", "items", "content"):
+            if isinstance(payload.get(key), list):
+                result = dict(payload)
+                result[key] = _offset_content_payload(payload[key], offset, batch_name, batch_root, merged_images)
+                return result
+    return payload
+
+
+def _split_pdf(pdf: Path, batch_pdf: Path, start: int, end: int) -> None:
+    from pypdf import PdfReader, PdfWriter
+
+    reader = PdfReader(str(pdf))
+    writer = PdfWriter()
+    for page in reader.pages[start:end]:
+        writer.add_page(page)
+    batch_pdf.parent.mkdir(parents=True, exist_ok=True)
+    with batch_pdf.open("wb") as handle:
+        writer.write(handle)
+
+
+def _run_one_mineru(pdf: Path, output_dir: Path) -> Path:
     command = os.getenv("MINERU_COMMAND")
     if not command:
         raise RuntimeError("【需要用户配置 MinerU】未配置 MINERU_COMMAND；请配置包含 {pdf} 和 {output} 占位符的 MinerU 命令。")
@@ -70,7 +170,76 @@ def _run_mineru(pdf: Path, output_dir: Path) -> tuple[Path, bool]:
     content_list = _find_content_list(output_dir)
     if not content_list:
         raise RuntimeError(f"MinerU completed but no content list was found under {output_dir}")
-    return content_list, False
+    return content_list
+
+
+def _run_mineru(pdf: Path, output_dir: Path) -> tuple[Path, bool, list[dict[str, object]]]:
+    """Run MinerU in resumable batches and return one standard merged content list."""
+    with pdfplumber.open(pdf) as source_pdf:
+        page_count = len(source_pdf.pages)
+    batch_size = max(1, int(os.getenv("MINERU_BATCH_SIZE", str(MINERU_BATCH_SIZE))))
+    retries = max(0, int(os.getenv("MINERU_RETRIES", str(MINERU_RETRIES))))
+    cache_root = BACKEND_DATA / "mineru_cache" / output_dir.name
+    merged_list = output_dir / f"{pdf.stem}_content_list_v2.json"
+    manifest = cache_root / "batches.json"
+    batch_count = (page_count + batch_size - 1) // batch_size
+    statuses = []
+    if merged_list.is_file() and manifest.is_file():
+        saved = json.loads(manifest.read_text(encoding="utf-8"))
+        if saved.get("merge_version") == 2 and saved.get("page_count") == page_count and saved.get("batch_size") == batch_size and len(saved.get("batches", [])) == batch_count and all(item.get("status") in {"PASS", "PASS_AFTER_RETRY", "REUSE"} for item in saved.get("batches", [])):
+            return merged_list, True, saved["batches"]
+
+    cache_root.mkdir(parents=True, exist_ok=True)
+    for index in range(batch_count):
+        start, end = index * batch_size, min(page_count, (index + 1) * batch_size)
+        batch_name = f"batch_{index + 1:03d}"
+        batch_root = cache_root / batch_name
+        batch_pdf = batch_root / "input.pdf"
+        batch_output = batch_root / "output"
+        pass_marker = batch_root / "PASS.json"
+        content_list = _find_content_list(batch_output)
+        if content_list and pass_marker.is_file():
+            status = "REUSE"
+        else:
+            _split_pdf(pdf, batch_pdf, start, end)
+            status = "RETRY"
+            last_error = None
+            for attempt in range(retries + 1):
+                try:
+                    content_list = _run_one_mineru(batch_pdf, batch_output)
+                    pass_marker.write_text(json.dumps({"start": start, "end": end, "attempt": attempt + 1}), encoding="utf-8")
+                    status = "PASS" if attempt == 0 else "PASS_AFTER_RETRY"
+                    break
+                except (RuntimeError, OSError) as exc:
+                    last_error = exc
+                    content_list = None
+                    if attempt < retries:
+                        shutil.rmtree(batch_output, ignore_errors=True)
+            if content_list is None:
+                statuses.append({"batch": batch_name, "pages": f"{start + 1}-{end}", "status": "FAIL"})
+                manifest.write_text(json.dumps({"page_count": page_count, "batch_size": batch_size, "batches": statuses}, ensure_ascii=False, indent=2), encoding="utf-8")
+                raise RuntimeError(f"MinerU {batch_name} failed after {retries} retries: {last_error}")
+        statuses.append({"batch": batch_name, "pages": f"{start + 1}-{end}", "status": status})
+
+    merged_images = output_dir / "images"
+    merged_images.mkdir(parents=True, exist_ok=True)
+    merged_records = []
+    for index in range(batch_count):
+        batch_name = f"batch_{index + 1:03d}"
+        batch_root = cache_root / batch_name
+        source = _find_content_list(batch_root / "output")
+        payload = json.loads(source.read_text(encoding="utf-8"))
+        adjusted = _offset_content_payload(payload, index * batch_size, batch_name, batch_root / "output", merged_images)
+        if isinstance(adjusted, list) and adjusted and all(isinstance(page, list) for page in adjusted):
+            merged_records.extend(adjusted)
+        elif isinstance(adjusted, list):
+            merged_records.extend(adjusted)
+        else:
+            raise RuntimeError(f"Unsupported MinerU content list shape in {source}")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    merged_list.write_text(json.dumps(merged_records, ensure_ascii=False), encoding="utf-8")
+    manifest.write_text(json.dumps({"merge_version": 2, "page_count": page_count, "batch_size": batch_size, "retries": retries, "batches": statuses}, ensure_ascii=False, indent=2), encoding="utf-8")
+    return merged_list, False, statuses
 
 
 def _write_pdfplumber_intermediate(parsed, directory: Path) -> None:
@@ -136,8 +305,10 @@ def main() -> None:
     print(f"OK chunks={len(parsed.chunks)}")
 
     print("[2/7] Running MinerU...")
-    content_list, reused = _run_mineru(pdf, mineru_dir)
+    content_list, reused, batch_statuses = _run_mineru(pdf, mineru_dir)
     print(f"MINERU_CACHE_HIT: {'YES' if reused else 'NO'}")
+    for batch in batch_statuses:
+        print(f"MINERU_{batch['batch']}: {batch['status']} pages={batch['pages']}")
     print(f"OK ({'reused' if reused else 'generated'})")
 
     print("[3/7] Reading MinerU output...")
@@ -190,7 +361,11 @@ def main() -> None:
             for item in json.loads(manifest_path.read_text(encoding="utf-8")):
                 if item.get("vlm", {}).get("parse_status") == "success" and item.get("cache_key"):
                     cache[item["cache_key"]] = item["vlm"]
-                    image_id_cache[str(item.get("image_id") or "")] = item["vlm"]
+                    # image_id is only stable within one PDF identity.  Across
+                    # documents, ids such as img-p8-02 are not unique enough
+                    # to carry a description safely.
+                    if manifest_path == hybrid_dir:
+                        image_id_cache[str(item.get("image_id") or "")] = item["vlm"]
                     legacy_path = Path(str(item.get("path") or ""))
                     if not legacy_path.is_absolute():
                         legacy_path = manifest_path.parent / legacy_path
@@ -258,6 +433,8 @@ def main() -> None:
     print(f"Validation: {report['status']}")
     print(f"hard_failures: {len(report.get('failures', [])) + int(report.get('qwen_failed', 0) > 0)}")
     print(f"missing_knowledge_visuals: {len(report.get('missing_insertions', []))}")
+    print(f"knowledge_visuals_without_description: {len(report.get('knowledge_visuals_without_description', []))}")
+    print(f"suppressed_source_fragments: {report.get('suppressed_source_fragments', 0)}")
     print(f"missing_source_visuals: {len(report.get('missing_source_visuals', []))}")
     duplicate_occurrences = report.get("duplicate_physical_occurrences", [])
     duplicate_references = report.get("duplicate_image_references", 0)

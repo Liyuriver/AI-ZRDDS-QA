@@ -1,4 +1,6 @@
+import asyncio
 import json
+import logging
 import os
 import re
 from pathlib import Path
@@ -7,8 +9,15 @@ from urllib.parse import quote
 
 import httpx
 from dotenv import load_dotenv
+from app.services.metadata.metadata_service import find_document_metadata
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()
+
+
+class AIServiceError(RuntimeError):
+    """Raised when Dify cannot complete a chat request safely."""
 
 
 class AIClient:
@@ -315,6 +324,22 @@ class AIClient:
             current = current.get(key)
         return current
 
+    @classmethod
+    def _extract_metadata_value(cls, item: dict, key: str):
+        """Read an evidence metadata value from supported Dify nesting shapes."""
+        paths = (
+            (key,),
+            ("metadata", key),
+            ("document_metadata", key),
+            ("segment", "metadata", key),
+            ("retriever_resource", "metadata", key),
+        )
+        for path in paths:
+            value = cls._get_nested(item, *path)
+            if value is not None:
+                return value
+        return None
+
     def _find_mapping(
         self,
         resource: dict,
@@ -469,15 +494,20 @@ class AIClient:
                 )
                 page = item.get("page") or 0
 
-            sources.append(
-                {
+            source = {
                     "document": document,
+                    "document_id": item.get("document_id") or item.get("dataset_id"),
+                    "chunk_id": item.get("chunk_id") or item.get("segment_id") or item.get("segmentId"),
                     "section": section,
                     "page": page,
-                    "score": item.get("score") or 0,
                     "quote": quote,
+                    "version": self._extract_metadata_value(item, "version") or (mapping or {}).get("version"),
                 }
-            )
+            raw_score = item.get("rerank_score", item.get("retrieval_score", item.get("score")))
+            if isinstance(raw_score, (int, float)) and not isinstance(raw_score, bool):
+                source["raw_score"] = raw_score
+                source["score"] = raw_score  # backward-compatible field
+            sources.append(source)
 
             for image in self._images_from_mapping(mapping):
                 dedupe_key = image.get("image_id") or image.get("url")
@@ -486,8 +516,35 @@ class AIClient:
                 seen_images.add(dedupe_key)
                 images.append(image)
 
+        sources = self._enrich_sources_with_backend_metadata(sources)
         # 防止一次返回太多图片；后续可改成配置项。
         return sources, images[:8]
+
+    @staticmethod
+    def _enrich_sources_with_backend_metadata(sources: list[dict]) -> list[dict]:
+        """Fill missing evidence version from authoritative backend metadata."""
+        enriched = []
+        for source in sources:
+            dify_version = source.get("version")
+            metadata, match_method = find_document_metadata(
+                document_id=source.get("document_id"),
+                document_name=source.get("document"),
+            )
+            backend_version = metadata.version if metadata else None
+            final_version = dify_version or backend_version
+            if dify_version and backend_version and dify_version != backend_version:
+                logger.warning(
+                    "evidence_metadata_version_conflict document=%s dify_version=%s backend_metadata_version=%s",
+                    source.get("document"), dify_version, backend_version,
+                )
+            logger.debug(
+                "evidence metadata enrichment document=%s dify_version=%s backend_metadata_version=%s final_evidence_version=%s metadata_match_method=%s",
+                source.get("document"), dify_version, backend_version, final_version, match_method,
+            )
+            item = dict(source)
+            item["version"] = final_version
+            enriched.append(item)
+        return enriched
 
     async def query(
         self,
@@ -511,8 +568,7 @@ class AIClient:
             "inputs": {},
             "query": question,
             "response_mode": "blocking",
-            # 当前后端 conversation_id 不是 Dify conversation_id，暂时不要直接传给 Dify
-            "conversation_id": "",
+            "conversation_id": conversation_id or "",
             "user": user_id or "test-user",
         }
 
@@ -521,24 +577,67 @@ class AIClient:
             "Content-Type": "application/json",
         }
 
-        async with httpx.AsyncClient(
-            timeout=60.0,
-            trust_env=False,
-        ) as client:
-            response = await client.post(
-                url,
-                json=payload,
-                headers=headers,
-            )
-            response.raise_for_status()
+        retryable_statuses = {400, 408, 409, 429, 500, 502, 503, 504}
 
-        data = response.json()
+        async with httpx.AsyncClient(timeout=60.0, trust_env=False) as client:
+            for attempt in range(2):
+                try:
+                    response = await client.post(
+                        url,
+                        json=payload,
+                        headers=headers,
+                    )
+                    response.raise_for_status()
+                    break
+
+                except httpx.HTTPStatusError as exc:
+                    if (
+                        attempt == 0
+                        and exc.response.status_code in retryable_statuses
+                    ):
+                        await asyncio.sleep(0.5)
+                        continue
+
+                    raise AIServiceError(
+                        "Dify 暂时无法完成回答，请稍后重试"
+                    ) from exc
+
+                except httpx.RequestError as exc:
+                    if attempt == 0:
+                        await asyncio.sleep(0.5)
+                        continue
+
+                    raise AIServiceError(
+                        "Dify 连接失败，请稍后重试"
+                    ) from exc
+
+        try:
+            data = response.json()
+        except (ValueError, json.JSONDecodeError) as exc:
+            raise AIServiceError("Dify 返回了无法解析的响应，请稍后重试") from exc
+
+        if not isinstance(data, dict):
+            raise AIServiceError("Dify 返回了无效响应，请稍后重试")
 
         sources, images = self._extract_sources(data)
+        answer = self._clean_answer(data.get("answer", ""))
+        answer_status = "answered"
+        if not answer:
+            answer = "当前知识库中没有找到足够证据回答这个问题，请补充更具体的信息后重试。"
+            answer_status = "insufficient_evidence"
+        logger.debug(
+            "Dify evidence diagnostics raw_dify_version=%s parsed_evidence_versions=%s",
+            [self._extract_metadata_value(item, "version") for item in (
+                (data.get("metadata") or {}).get("retriever_resources") or []
+            ) if isinstance(item, dict)],
+            [item.get("version") for item in sources],
+        )
 
         return {
-            "answer": self._clean_answer(data.get("answer", "")),
-            "status": "answered",
+            "answer": answer,
+            "status": answer_status,
             "sources": sources,
+            "evidence": sources,
             "images": images,
+            "dify_conversation_id": data.get("conversation_id") or conversation_id,
         }

@@ -1,7 +1,8 @@
 """Repository layer for conversation persistence."""
 
 import logging
-from typing import List, Optional
+from typing import Any, List, Optional
+from sqlalchemy import case, func
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session
 
@@ -24,8 +25,8 @@ class UserRepository:
     def __init__(self, db: Session):
         self.db = db
 
-    def create(self, username: str, email: str) -> User:
-        user = User(username=username, email=email)
+    def create(self, username: str, email: str, password_hash: Optional[str] = None) -> User:
+        user = User(username=username, email=email, password_hash=password_hash)
         try:
             self.db.add(user)
             self.db.commit()
@@ -49,6 +50,24 @@ class UserRepository:
             return self.db.query(User).filter(User.username == username).first()
         except SQLAlchemyError as exc:
             raise RepositoryError("查询用户失败") from exc
+
+    def update_password(self, user: User, password_hash: str) -> None:
+        user.password_hash = password_hash
+        try:
+            self.db.commit()
+        except SQLAlchemyError as exc:
+            self.db.rollback()
+            raise RepositoryError("修改密码失败") from exc
+
+    def update_avatar(self, user: User, avatar_url: str) -> User:
+        user.avatar_url = avatar_url
+        try:
+            self.db.commit()
+            self.db.refresh(user)
+            return user
+        except SQLAlchemyError as exc:
+            self.db.rollback()
+            raise RepositoryError("修改头像失败") from exc
 
     def list(self) -> List[User]:
         return self.db.query(User).order_by(User.created_at.asc(), User.id.asc()).all()
@@ -104,10 +123,56 @@ class ConversationRepository:
         except SQLAlchemyError as exc:
             raise RepositoryError("查询会话失败") from exc
 
-    def save_message(self, conversation_id: str, role: str, content: str) -> Message:
+    def update_title(self, conversation: Conversation, title: str) -> Conversation:
+        conversation.title = title
+        conversation.updated_at = beijing_now()
+        try:
+            self.db.commit()
+            self.db.refresh(conversation)
+            return conversation
+        except SQLAlchemyError as exc:
+            self.db.rollback()
+            raise RepositoryError("修改会话标题失败") from exc
+
+    def update_dify_conversation_id(
+        self, conversation: Conversation, dify_conversation_id: str
+    ) -> Conversation:
+        conversation.dify_conversation_id = dify_conversation_id
+        try:
+            self.db.commit()
+            self.db.refresh(conversation)
+            return conversation
+        except SQLAlchemyError as exc:
+            self.db.rollback()
+            raise RepositoryError("保存 Dify 会话映射失败") from exc
+
+    def save_message(
+        self,
+        conversation_id: str,
+        role: str,
+        content: str,
+        *,
+        answer_status: Optional[str] = None,
+        sources: Optional[list[dict[str, Any]]] = None,
+        images: Optional[list[dict[str, Any]]] = None,
+    ) -> Message:
         if role not in {"user", "assistant"}:
             raise ValueError("role 必须是 user 或 assistant")
-        message = Message(conversation_id=conversation_id, role=role, content=content)
+        next_sequence = (
+            self.db.query(func.coalesce(func.max(Message.sequence_no), 0))
+            .filter(Message.conversation_id == conversation_id)
+            .scalar()
+            + 1
+        )
+        message = Message(
+            conversation_id=conversation_id,
+            role=role,
+            content=content,
+            sequence_no=next_sequence,
+            answer_status=answer_status,
+            sources=sources,
+            images=images,
+        )
         try:
             self.db.add(message)
             conversation = self.db.get(Conversation, conversation_id)
@@ -125,7 +190,13 @@ class ConversationRepository:
             return (
                 self.db.query(Message)
                 .filter(Message.conversation_id == conversation_id)
-                .order_by(Message.created_at.asc(), Message.id.asc())
+                .order_by(
+                    case((Message.sequence_no.is_(None), 0), else_=1).asc(),
+                    Message.sequence_no.asc(),
+                    Message.created_at.asc(),
+                    case((Message.role == "user", 0), else_=1).asc(),
+                    Message.id.asc(),
+                )
                 .all()
             )
         except SQLAlchemyError as exc:
