@@ -1,0 +1,139 @@
+[chunk-0001] page=1 section=1. 安装环境要求 > 1.1. 硬件环境
+## 1. 安装环境要求
+
+### 1.1. 硬件环境
+
+CPU：奔腾 4 及以上级别 x86 兼容处理器；华睿 2 号等嵌入式处理器
+
+内存：256M
+
+磁盘空间：开发机 500M，运行机取决于应用大小
+
+网络：10M 及以上支持 TCP/IP 协议以太网、RapidIO
+
+[chunk-0002] page=1 section=1. 安装环境要求 > 1.2. 软件环境
+### 1.2. 软件环境
+
+表 1 臻融数据分发服务 DDS 系统软件软件环境要求
+
+| 操作系统 | 系统最低版本 | 依赖环境 |
+| --- | --- | --- |
+| Windows | Windows XP | Visual Sutdio 2008及以上版本的IDE及<br>运行库 |
+|  | MinGW | 4.4.0等 |
+| Linux | Linux2.6.0以上 | g++ 4.8以上版本，包含C++相关支持<br>库、工具链，Make工具链 |
+
+[chunk-0003] page=1 section=2. 安装与配置 > 2.1. Windows 安装
+## 2. 安装与配置
+
+### 2.1. Windows 安装
+
+第一步：双击安装包，启动安装程序，若杀毒软件或防火墙弹出警告，请允许安装程序
+
+运行或将安装程序添加到白名单。点击“下一步”。
+
+第二步：选择安装路径后，并点击“安装”。
+
+第三步：等待安装完成。
+
+第四步：若安装过程中出现如下图所示的提示框，代表在本次安装之前，机器中已经安
+
+装过 ZRDDS，此次安装会替换关于 ZRDDS 的环境变量。点击”确定”。
+
+第五步：安装程序会在系统中设置环境变量，为了使环境变量起效，需要重新启动计算
+
+机，用户在使用 ZRDDS 之前重启即可。
+
+第六步：安装完后，点击“完成”。
+
+至此，臻融数据分发服务 DDS 系统软件已经成功安装到计算机上。
+
+[chunk-0004] page=3 section=2. 安装与配置 > 2.2. Linux 安装
+### 2.2. Linux 安装
+
+- 解压 ZRDDS 开发包，可以双击解压至任意目录，或使用命令：tar xzvf
+
+ZRDDSSetupX64JDK1.8GCC4.8.4.tar.gz 解压后有一个目录 ZRDDS 以及一个安装脚
+
+本 install.sh；
+
+- 打开终端，进入安装脚本所在目录，为安装脚本添加执行权限：chmod +x
+
+install.sh 并以 root 权限执行安装脚本：sudo ./install.sh
+
+- 默认安装在目录/usr/ZRDDS 中，并会设置 ZRDDS_HOME 环境变量；
+
+[chunk-0005] page=4 section=2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤
+### 2.3. ZRDDS 授权文件获取步骤
+
+- Windows 平台双击运行安装目录/bin/LicenceInfoUtil.exe 获取授权信息；
+
+- Linux 平台使用终端进入安装目录的 bin 目录，并运行./LicenceInfoUtil 应用获取授
+
+权信息；
+
+- 运行成功将会有提示，将同一目录的 zrddsregInfo.txt 或二维码 zrddsregInfo.bmp 发
+
+送给臻融软件科技有限公司；
+
+- 接收臻融软件科技有限公司生成的授权文件 zrddslicence.lic；
+
+- 将授权文件放在 ZRDDS 安装目录或者 ZRDDS 运行程序运行目录即可完成 ZRDDS 应
+
+用授权；
+
+- 授权文件仅能够在获取授权信息的那台机器上面使用。
+
+[chunk-0006] page=4 section=2. 安装与配置 > 2.4. 创建数据类型支持文件
+### 2.4. 创建数据类型支持文件
+
+由于 DDS 中允许用户使用自定义的数据类型进行数据发布和订阅，因此需要用户在使
+
+用 DDS 编写应用程序前定义所使用的数据类型。数据类型通过 IDL 文件定义，IDL 文件具体
+
+格式见 ZRDDS 用户手册第 3 章。IDL 文件编写完成后，需要使用到安装目录中 bin 目录下的
+
+zrddsgen.exe/zrddsgen 进行编译，生成支持文件。zrddsgen.exe/zrddsgen 通过命令行运行，
+
+Windows 下通过命令提示符进入到其目录下运行，通常情况下的运行参数如下：
+
+zrddsgen.exe –i [inputFile] –d [outputDir] –l C++
+
+Linux下通过终端进入到ZRDDS安装目录/bin目录下运行，通常情况下的运行参数如下：
+
+zrddsgen –i [inputFile] –d [outputDir] –l C++
+
+其中[inputFile]替换为用户的 IDL 文件，[outputDir]替换为支持文件输出的目录。更多参
+
+数的信息见 ZRDDS 用户手册第 3 章。
+
+假定用户定义的数据类型名称为 Foo，使用 zrddsgen.exe 生成的支持文件总共有六个，
+
+分别为 ： Foo.h 、 Foo.cpp 、 FooDataReader.h 、 FooDataWriter.h 、 FooTypeSupport.h 、
+
+FooTypeSupport.cpp。如果使用 C 语言，生成的文件为：Foo.h、Foo.c、FooDataReader.h、
+
+FooDataWriter.h、FooTypeSupport.h、FooTypeSupport.c
+
+使用 zrddsgen.exe 生成的支持文件可以使用在所有 ZRDDS 支持的操作系统上。
+
+[chunk-0007] page=4 section=2. 安装与配置 > 2.5. Viusal Studio 配置工程
+### 2.5. Viusal Studio 配置工程
+
+在Windows平台上，臻融数据分发服务DDS支持的IDE包括：VS2008、VS2010和VS2013。
+
+下面以 VS2013 作为示例对配置过程进行说明。更详细的配置见 ZRDDS 用户手册。
+
+[chunk-0008] page=5 section=2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.1. 创建工程
+#### 2.5.1. 创建工程
+
+- 单击文件。
+
+- 单击新建。
+
+- 单击项目。
+
+- 选择 Visual C++中的空项目，创建一个工程。
+
+- 将 zrddsgen.exe 生成的文件添加到工程（Foo.h、Foo.cpp、FooDataReader.h、
+
+FooDataWriter.h、FooTypeSupport.h、FooTypeSupport.cpp）。

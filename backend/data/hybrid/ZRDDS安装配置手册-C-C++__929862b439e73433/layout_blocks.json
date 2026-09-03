@@ -1,0 +1,2923 @@
+[
+  {
+    "block_id": "src-000000",
+    "page": 1,
+    "bbox": [
+      90.024,
+      100.75963999999999,
+      195.61231999999998,
+      116.32999999999993
+    ],
+    "order": 0,
+    "kind": "heading",
+    "text": "## 1. 安装环境要求",
+    "heading_level": 2,
+    "heading_path": "1. 安装环境要求",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000001",
+    "page": 1,
+    "bbox": [
+      90.024,
+      151.75964,
+      174.61999999999998,
+      167.32999999999993
+    ],
+    "order": 1,
+    "kind": "heading",
+    "text": "### 1.1. 硬件环境",
+    "heading_level": 3,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000002",
+    "page": 1,
+    "bbox": [
+      111.26,
+      191.82895999999994,
+      422.83768,
+      203.53999999999996
+    ],
+    "order": 2,
+    "kind": "text",
+    "text": "CPU：奔腾 4 及以上级别 x86 兼容处理器；华睿 2 号等嵌入式处理器",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000003",
+    "page": 1,
+    "bbox": [
+      111.26,
+      211.26895999999988,
+      167.8088,
+      222.9799999999999
+    ],
+    "order": 3,
+    "kind": "text",
+    "text": "内存：256M",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000004",
+    "page": 1,
+    "bbox": [
+      111.26,
+      230.82895999999994,
+      338.47,
+      242.53999999999996
+    ],
+    "order": 4,
+    "kind": "text",
+    "text": "磁盘空间：开发机 500M，运行机取决于应用大小",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000005",
+    "page": 1,
+    "bbox": [
+      111.26,
+      250.29895999999997,
+      347.26648,
+      262.01
+    ],
+    "order": 5,
+    "kind": "text",
+    "text": "网络：10M 及以上支持 TCP/IP 协议以太网、RapidIO",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000006",
+    "page": 1,
+    "bbox": [
+      90.024,
+      287.02964,
+      174.61999999999998,
+      302.5999999999999
+    ],
+    "order": 6,
+    "kind": "heading",
+    "text": "### 1.2. 软件环境",
+    "heading_level": 3,
+    "heading_path": "1. 安装环境要求 > 1.2. 软件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000007",
+    "page": 1,
+    "bbox": [
+      186.77,
+      334.4599999999999,
+      408.42999999999995,
+      344.44987999999995
+    ],
+    "order": 7,
+    "kind": "text",
+    "text": "表 1 臻融数据分发服务 DDS 系统软件软件环境要求",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.2. 软件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000008",
+    "page": 1,
+    "bbox": [
+      117.08545454545455,
+      354.0099966666666,
+      478.23454909090907,
+      456.909995
+    ],
+    "order": 12,
+    "kind": "table",
+    "text": "| 操作系统 | 系统最低版本 | 依赖环境 |\n| --- | --- | --- |\n| Windows | Windows XP | Visual Sutdio 2008及以上版本的IDE及<br>运行库 |\n|  | MinGW | 4.4.0等 |\n| Linux | Linux2.6.0以上 | g++ 4.8以上版本，包含C++相关支持<br>库、工具链，Make工具链 |",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.2. 软件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000009",
+    "page": 1,
+    "bbox": [
+      90.024,
+      485.88963999999993,
+      181.57232,
+      501.4599999999999
+    ],
+    "order": 8,
+    "kind": "heading",
+    "text": "## 2. 安装与配置",
+    "heading_level": 2,
+    "heading_path": "2. 安装与配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000010",
+    "page": 1,
+    "bbox": [
+      90.024,
+      536.8896399999999,
+      201.26,
+      552.4599999999999
+    ],
+    "order": 9,
+    "kind": "heading",
+    "text": "### 2.1. Windows 安装",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000011",
+    "page": 1,
+    "bbox": [
+      111.26,
+      574.9489599999999,
+      505.52456,
+      585.50896
+    ],
+    "order": 10,
+    "kind": "text",
+    "text": "第一步：双击安装包，启动安装程序，若杀毒软件或防火墙弹出警告，请允许安装程序",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000012",
+    "page": 1,
+    "bbox": [
+      111.26,
+      590.54896,
+      347.70536000000004,
+      601.1089599999999
+    ],
+    "order": 11,
+    "kind": "text",
+    "text": "运行或将安装程序添加到白名单。点击“下一步”。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p2-02",
+    "page": 2,
+    "bbox": [
+      175.02408,
+      76.61471999999999,
+      438.75084000000004,
+      266.04672
+    ],
+    "order": 1000001,
+    "kind": "image",
+    "text": "> ![img-p2-02](images/img-p2-02.png)\n>\n> **图示信息：**\n> - ZRDDS 安装向导的欢迎界面, 显示安装指引和操作提示。\n> - 窗口标题: ZRDDS 安装\n> - 左侧图标文字: '臻融科技'\n> - 主标题: '欢迎使用 ZRDDS 安装向导'\n> - 说明文本: '这个向导将指引你完成 ZRDDS 的安装进程。'\n> - 建议操作: '在开始安装之前，建议先关闭其他所有应用程序。这将允许“安装程序”更新指定的系统文件，而不需要重新启动你的计算机。'\n> - 操作按钮: '[下一步 (N)]'（蓝色高亮）、'取消 (C)'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p2-02",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000013",
+    "page": 2,
+    "bbox": [
+      111.26,
+      277.41895999999997,
+      309.29,
+      289.13
+    ],
+    "order": 13,
+    "kind": "text",
+    "text": "第二步：选择安装路径后，并点击“安装”。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p2-03",
+    "page": 2,
+    "bbox": [
+      175.02408,
+      294.67199999999997,
+      438.75084000000004,
+      484.94591999999994
+    ],
+    "order": 1000002,
+    "kind": "image",
+    "text": "> ![img-p2-03](images/img-p2-03.png)\n>\n> **图示信息：**\n> - ZRDDS installation setup window showing target directory selection and disk space information.\n> - Window title: 'ZRDDS 安装'\n> - Target folder field: 'D:\\ZRDDS'\n> - Required space: '16.7 MB'\n> - Available space: '536.6 GB'\n> - Installer system: 'Nullsoft Install System v3.04'\n> - Buttons: '[上一步 (B)]', '[安装 (I)]' (highlighted), '[取消 (C)]'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p2-03",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000014",
+    "page": 2,
+    "bbox": [
+      111.26,
+      495.83896,
+      226.94768,
+      506.39896
+    ],
+    "order": 14,
+    "kind": "text",
+    "text": "第三步：等待安装完成。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p2-04",
+    "page": 2,
+    "bbox": [
+      175.02408,
+      512.72928,
+      438.75084000000004,
+      703.0032
+    ],
+    "order": 1000003,
+    "kind": "image",
+    "text": "> ![img-p2-04](images/img-p2-04.png)\n>\n> **图示信息：**\n> - ZRDDS installation progress window using Nullsoft Install System v3.04, showing extraction of multiple LifespanQos_Subscription_x64Win64VS*.vcxproj and .filters files with 100% completion.\n> - Window title: 'ZRDDS 安装'\n> - Status message: '正在安装 ZRDDS 正在安装，请等候。'\n> - Extraction list includes: 'LifespanQos_Subscription_x64Win64VS2015.vcxproj.filters', 'LifespanQos_Subscription_x86Win32VS2015.vcxproj.filters', 'LifespanQos_Subscription_x64Win64VS2008.vcxproj', 'LifespanQos_Subscription_x64Win64VS2008.vcxproj.FLH.Administra...', 'LifespanQos_Subscription_x64Win64VS2010.vcxproj.filters', 'LifespanQos_Subscription_x64Win64VS2013.vcxproj.filters' (all at 100%)\n> - Installer version: 'Nullsoft Install System v3.04'\n> - Bottom buttons: '< 上一步 (B) >', '< 下一步 (N) >', '取消 (C)'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p2-04",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000015",
+    "page": 2,
+    "bbox": [
+      111.26,
+      714.26896,
+      505.66,
+      724.8289599999999
+    ],
+    "order": 15,
+    "kind": "text",
+    "text": "第四步：若安装过程中出现如下图所示的提示框，代表在本次安装之前，机器中已经安",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000016",
+    "page": 2,
+    "bbox": [
+      111.26,
+      729.86896,
+      426.31,
+      741.5799999999999
+    ],
+    "order": 16,
+    "kind": "text",
+    "text": "装过 ZRDDS，此次安装会替换关于 ZRDDS 的环境变量。点击”确定”。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p3-05",
+    "page": 3,
+    "bbox": [
+      178.00068000000002,
+      75.77279999999999,
+      436.96488000000005,
+      205.42847999999998
+    ],
+    "order": 1000004,
+    "kind": "image",
+    "text": "> ![img-p3-05](images/img-p3-05.png)\n>\n> **图示信息：**\n> - ZRDDS 安装完成后的提示对话框，显示环境变量已更新并保留旧版本文件路径。\n> - 窗口标题：ZRDDS 安装\n> - 提示文本：系统环境变量已更新，旧版本文件仍为您保留原路径\n> - 确认按钮标签：确定",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p3-05",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000017",
+    "page": 3,
+    "bbox": [
+      111.26,
+      230.58895999999993,
+      505.65016,
+      241.14896
+    ],
+    "order": 17,
+    "kind": "text",
+    "text": "第五步：安装程序会在系统中设置环境变量，为了使环境变量起效，需要重新启动计算",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000018",
+    "page": 3,
+    "bbox": [
+      111.26,
+      246.21895999999992,
+      292.01384,
+      257.92999999999995
+    ],
+    "order": 18,
+    "kind": "text",
+    "text": "机，用户在使用 ZRDDS 之前重启即可。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p3-06",
+    "page": 3,
+    "bbox": [
+      217.88712,
+      263.52096,
+      397.07844000000006,
+      393.17664
+    ],
+    "order": 1000005,
+    "kind": "image",
+    "text": "> ![img-p3-06](images/img-p3-06.png)\n>\n> **图示信息：**\n> - A ZRDDS installation dialog box prompting the user to restart the computer to apply environment variables.\n> - Window title: 'ZRDDS 安装'\n> - Main message: '请重启计算机，使环境变量生效'\n> - Button label: '确定'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p3-06",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000019",
+    "page": 3,
+    "bbox": [
+      111.26,
+      402.21896,
+      274.25384,
+      412.77896
+    ],
+    "order": 19,
+    "kind": "text",
+    "text": "第六步：安装完后，点击“完成”。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p3-07",
+    "page": 3,
+    "bbox": [
+      175.02408,
+      420.96,
+      438.75084000000004,
+      610.3919999999999
+    ],
+    "order": 1000006,
+    "kind": "image",
+    "text": "> ![img-p3-07](images/img-p3-07.png)\n>\n> **图示信息：**\n> - ZRDDS 安装向导完成界面, 显示安装已成功并提供后续手册打开选项。\n> - 标题: 正在完成 ZRDDS 安装向导\n> - 状态文本: ZRDDS 已安装在你的系统。\n> - 操作提示: 单击 [完成(F)] 关闭此向导。\n> - 复选框1: 打开编程手册 (已勾选)\n> - 复选框2: 打开安装配置手册 (已勾选)\n> - 按钮: <上一步(B)>, 完成(F) (蓝色高亮), 取消(C)",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p3-07",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000020",
+    "page": 3,
+    "bbox": [
+      111.26,
+      636.2689599999999,
+      417.9092,
+      647.9799999999999
+    ],
+    "order": 20,
+    "kind": "text",
+    "text": "至此，臻融数据分发服务 DDS 系统软件已经成功安装到计算机上。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. Windows 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000021",
+    "page": 3,
+    "bbox": [
+      90.024,
+      670.9596399999999,
+      178.82,
+      686.53
+    ],
+    "order": 21,
+    "kind": "heading",
+    "text": "### 2.2. Linux 安装",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.2. Linux 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000022",
+    "page": 3,
+    "bbox": [
+      125.42,
+      711.02896,
+      505.24912,
+      722.74
+    ],
+    "order": 22,
+    "kind": "text",
+    "text": "- 解压 ZRDDS 开发包，可以双击解压至任意目录，或使用命令：tar xzvf",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. Linux 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000023",
+    "page": 3,
+    "bbox": [
+      146.42,
+      730.4689599999999,
+      505.54768,
+      742.18
+    ],
+    "order": 23,
+    "kind": "text",
+    "text": "ZRDDSSetupX64JDK1.8GCC4.8.4.tar.gz 解压后有一个目录 ZRDDS 以及一个安装脚",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. Linux 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000024",
+    "page": 3,
+    "bbox": [
+      146.42,
+      750.04896,
+      207.53,
+      761.76
+    ],
+    "order": 24,
+    "kind": "text",
+    "text": "本 install.sh；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. Linux 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000025",
+    "page": 4,
+    "bbox": [
+      125.42,
+      76.50895999999989,
+      505.5112,
+      88.21999999999991
+    ],
+    "order": 25,
+    "kind": "text",
+    "text": "- 打开终端，进入安装脚本所在目录，为安装脚本添加执行权限：chmod +x",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. Linux 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000026",
+    "page": 4,
+    "bbox": [
+      146.42,
+      95.94895999999994,
+      392.61015999999995,
+      107.65999999999997
+    ],
+    "order": 26,
+    "kind": "text",
+    "text": "install.sh 并以 root 权限执行安装脚本：sudo ./install.sh",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. Linux 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000027",
+    "page": 4,
+    "bbox": [
+      125.42,
+      115.50895999999989,
+      454.42,
+      127.21999999999991
+    ],
+    "order": 27,
+    "kind": "text",
+    "text": "- 默认安装在目录/usr/ZRDDS 中，并会设置 ZRDDS_HOME 环境变量；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. Linux 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000028",
+    "page": 4,
+    "bbox": [
+      90.024,
+      152.11964,
+      270.85999999999996,
+      167.68999999999994
+    ],
+    "order": 28,
+    "kind": "heading",
+    "text": "### 2.3. ZRDDS 授权文件获取步骤",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000029",
+    "page": 4,
+    "bbox": [
+      111.38,
+      192.18895999999995,
+      458.48152000000005,
+      203.89999999999998
+    ],
+    "order": 29,
+    "kind": "text",
+    "text": "- Windows 平台双击运行安装目录/bin/LicenceInfoUtil.exe 获取授权信息；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000030",
+    "page": 4,
+    "bbox": [
+      111.38,
+      211.7489599999999,
+      505.54384000000005,
+      223.45999999999992
+    ],
+    "order": 30,
+    "kind": "text",
+    "text": "- Linux 平台使用终端进入安装目录的 bin 目录，并运行./LicenceInfoUtil 应用获取授",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000031",
+    "page": 4,
+    "bbox": [
+      132.62,
+      231.18895999999995,
+      174.74384,
+      241.74896
+    ],
+    "order": 31,
+    "kind": "text",
+    "text": "权信息；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000032",
+    "page": 4,
+    "bbox": [
+      111.38,
+      250.77895999999987,
+      505.66,
+      262.4899999999999
+    ],
+    "order": 32,
+    "kind": "text",
+    "text": "- 运行成功将会有提示，将同一目录的 zrddsregInfo.txt 或二维码 zrddsregInfo.bmp 发",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000033",
+    "page": 4,
+    "bbox": [
+      132.62,
+      270.2189599999999,
+      269.3192,
+      280.77896
+    ],
+    "order": 33,
+    "kind": "text",
+    "text": "送给臻融软件科技有限公司；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000034",
+    "page": 4,
+    "bbox": [
+      111.38,
+      289.77895999999987,
+      409.87,
+      301.4899999999999
+    ],
+    "order": 34,
+    "kind": "text",
+    "text": "- 接收臻融软件科技有限公司生成的授权文件 zrddslicence.lic；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000035",
+    "page": 4,
+    "bbox": [
+      111.38,
+      309.2189599999999,
+      505.42,
+      320.92999999999995
+    ],
+    "order": 35,
+    "kind": "text",
+    "text": "- 将授权文件放在 ZRDDS 安装目录或者 ZRDDS 运行程序运行目录即可完成 ZRDDS 应",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000036",
+    "page": 4,
+    "bbox": [
+      132.62,
+      328.77896,
+      174.74384,
+      339.33896
+    ],
+    "order": 36,
+    "kind": "text",
+    "text": "用授权；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000037",
+    "page": 4,
+    "bbox": [
+      111.38,
+      348.21896,
+      384.8984,
+      359.4548
+    ],
+    "order": 37,
+    "kind": "text",
+    "text": "- 授权文件仅能够在获取授权信息的那台机器上面使用。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000038",
+    "page": 4,
+    "bbox": [
+      90.024,
+      384.94963999999993,
+      258.85231999999996,
+      400.5199999999999
+    ],
+    "order": 38,
+    "kind": "heading",
+    "text": "### 2.4. 创建数据类型支持文件",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000039",
+    "page": 4,
+    "bbox": [
+      111.26,
+      422.99895999999995,
+      505.66,
+      434.7099999999999
+    ],
+    "order": 39,
+    "kind": "text",
+    "text": "由于 DDS 中允许用户使用自定义的数据类型进行数据发布和订阅，因此需要用户在使",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000040",
+    "page": 4,
+    "bbox": [
+      90.024,
+      438.59896,
+      505.54,
+      450.30999999999995
+    ],
+    "order": 40,
+    "kind": "text",
+    "text": "用 DDS 编写应用程序前定义所使用的数据类型。数据类型通过 IDL 文件定义，IDL 文件具体",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000041",
+    "page": 4,
+    "bbox": [
+      90.024,
+      454.19896,
+      505.54,
+      465.90999999999997
+    ],
+    "order": 41,
+    "kind": "text",
+    "text": "格式见 ZRDDS 用户手册第 3 章。IDL 文件编写完成后，需要使用到安装目录中 bin 目录下的",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000042",
+    "page": 4,
+    "bbox": [
+      90.024,
+      469.79895999999997,
+      501.7,
+      481.50999999999993
+    ],
+    "order": 42,
+    "kind": "text",
+    "text": "zrddsgen.exe/zrddsgen 进行编译，生成支持文件。zrddsgen.exe/zrddsgen 通过命令行运行，",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000043",
+    "page": 4,
+    "bbox": [
+      111.26,
+      485.39896,
+      479.5,
+      497.10999999999996
+    ],
+    "order": 43,
+    "kind": "text",
+    "text": "Windows 下通过命令提示符进入到其目录下运行，通常情况下的运行参数如下：",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p4-08",
+    "page": 4,
+    "bbox": [
+      81.55884000000002,
+      496.73279999999994,
+      500.0688,
+      546.40608
+    ],
+    "order": 1000007,
+    "kind": "image",
+    "text": "> ![img-p4-08](images/img-p4-08.jpg)\n\n```text\nzrdsgen.exe -i [inputFile] -d [outputDir] -l C++\n\nLinux下通过终端进入到ZRDDS安装目录/bin目录下运行,通常情况下的运行参数如下:\n\nzrdsgen -i [inputFile] -d [outputDir] -l C++\n```",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p4-08",
+      "mineru_type": "table",
+      "image_type": "code_or_config"
+    }
+  },
+  {
+    "block_id": "src-000047",
+    "page": 4,
+    "bbox": [
+      111.26,
+      549.83896,
+      505.66,
+      561.55
+    ],
+    "order": 47,
+    "kind": "text",
+    "text": "其中[inputFile]替换为用户的 IDL 文件，[outputDir]替换为支持文件输出的目录。更多参",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000048",
+    "page": 4,
+    "bbox": [
+      90.024,
+      565.43896,
+      260.33,
+      577.1499999999999
+    ],
+    "order": 48,
+    "kind": "text",
+    "text": "数的信息见 ZRDDS 用户手册第 3 章。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000049",
+    "page": 4,
+    "bbox": [
+      111.26,
+      581.06896,
+      510.94,
+      592.78
+    ],
+    "order": 49,
+    "kind": "text",
+    "text": "假定用户定义的数据类型名称为 Foo，使用 zrddsgen.exe 生成的支持文件总共有六个，",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000050",
+    "page": 4,
+    "bbox": [
+      90.024,
+      596.66896,
+      505.54,
+      608.3799999999999
+    ],
+    "order": 50,
+    "kind": "text",
+    "text": "分别为 ： Foo.h 、 Foo.cpp 、 FooDataReader.h 、 FooDataWriter.h 、 FooTypeSupport.h 、",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000051",
+    "page": 4,
+    "bbox": [
+      90.024,
+      612.2689599999999,
+      505.66,
+      623.9799999999999
+    ],
+    "order": 51,
+    "kind": "text",
+    "text": "FooTypeSupport.cpp。如果使用 C 语言，生成的文件为：Foo.h、Foo.c、FooDataReader.h、",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000052",
+    "page": 4,
+    "bbox": [
+      90.024,
+      627.86896,
+      336.44744,
+      639.5799999999999
+    ],
+    "order": 52,
+    "kind": "text",
+    "text": "FooDataWriter.h、FooTypeSupport.h、FooTypeSupport.c",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000053",
+    "page": 4,
+    "bbox": [
+      111.26,
+      643.4689599999999,
+      468.3292,
+      655.18
+    ],
+    "order": 53,
+    "kind": "text",
+    "text": "使用 zrddsgen.exe 生成的支持文件可以使用在所有 ZRDDS 支持的操作系统上。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000054",
+    "page": 4,
+    "bbox": [
+      90.024,
+      678.15964,
+      249.04999999999998,
+      693.73
+    ],
+    "order": 54,
+    "kind": "heading",
+    "text": "### 2.5. Viusal Studio 配置工程",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000055",
+    "page": 4,
+    "bbox": [
+      111.26,
+      716.30896,
+      505.66,
+      728.02
+    ],
+    "order": 55,
+    "kind": "text",
+    "text": "在Windows平台上，臻融数据分发服务DDS支持的IDE包括：VS2008、VS2010和VS2013。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000056",
+    "page": 4,
+    "bbox": [
+      90.024,
+      731.90896,
+      465.67768,
+      743.62
+    ],
+    "order": 56,
+    "kind": "text",
+    "text": "下面以 VS2013 作为示例对配置过程进行说明。更详细的配置见 ZRDDS 用户手册。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000057",
+    "page": 5,
+    "bbox": [
+      90.024,
+      79.59199999999998,
+      173.66,
+      92.89999999999998
+    ],
+    "order": 57,
+    "kind": "heading",
+    "text": "#### 2.5.1. 创建工程",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000058",
+    "page": 5,
+    "bbox": [
+      111.38,
+      116.58895999999993,
+      185.3,
+      127.82479999999998
+    ],
+    "order": 58,
+    "kind": "text",
+    "text": "- 单击文件。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000059",
+    "page": 5,
+    "bbox": [
+      111.38,
+      136.02895999999987,
+      185.3,
+      147.26479999999992
+    ],
+    "order": 59,
+    "kind": "text",
+    "text": "- 单击新建。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000060",
+    "page": 5,
+    "bbox": [
+      111.38,
+      155.58895999999993,
+      185.3,
+      166.82479999999998
+    ],
+    "order": 60,
+    "kind": "text",
+    "text": "- 单击项目。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000061",
+    "page": 5,
+    "bbox": [
+      111.38,
+      175.02895999999987,
+      336.91,
+      186.7399999999999
+    ],
+    "order": 61,
+    "kind": "text",
+    "text": "- 选择 Visual C++中的空项目，创建一个工程。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p5-09",
+    "page": 5,
+    "bbox": [
+      130.9704,
+      194.48352,
+      479.23260000000005,
+      434.43072
+    ],
+    "order": 1000008,
+    "kind": "image",
+    "text": "> ![img-p5-09](images/img-p5-09.png)\n>\n> **图示信息：**\n> - Visual Studio 'New Project' dialog showing Visual C++ template selection with project name and location fields filled.\n> - Selected template: '空项目' (Empty Project) under Visual C++\n> - Project name field: 'DDSAppl'\n> - Location field: 'D:\\Workspace\\'\n> - Solution name field: 'DDSAppl'\n> - Checkbox '为解决方案创建目录(D)' is checked\n> - Target framework: '.NET Framework 4.5'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.1. 创建工程",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p5-09",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000062",
+    "page": 5,
+    "bbox": [
+      111.38,
+      444.23895999999996,
+      505.54,
+      455.94999999999993
+    ],
+    "order": 62,
+    "kind": "text",
+    "text": "- 将 zrddsgen.exe 生成的文件添加到工程（Foo.h、Foo.cpp、FooDataReader.h、",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000063",
+    "page": 5,
+    "bbox": [
+      132.62,
+      463.67895999999996,
+      405.91,
+      475.38999999999993
+    ],
+    "order": 63,
+    "kind": "text",
+    "text": "FooDataWriter.h、FooTypeSupport.h、FooTypeSupport.cpp）。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000064",
+    "page": 5,
+    "bbox": [
+      90.024,
+      499.282,
+      221.756,
+      512.5899999999999
+    ],
+    "order": 64,
+    "kind": "heading",
+    "text": "#### 2.5.2. 配置包含文件目录",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000065",
+    "page": 5,
+    "bbox": [
+      111.38,
+      536.27896,
+      279.89,
+      547.5147999999999
+    ],
+    "order": 65,
+    "kind": "text",
+    "text": "- 在菜单栏点击项目，选择属性。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000066",
+    "page": 5,
+    "bbox": [
+      111.38,
+      555.7189599999999,
+      192.65,
+      567.43
+    ],
+    "order": 66,
+    "kind": "text",
+    "text": "- 选择 C/C++。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000067",
+    "page": 5,
+    "bbox": [
+      111.38,
+      575.30896,
+      508.41616,
+      587.02
+    ],
+    "order": 67,
+    "kind": "text",
+    "text": "- 选择常规 ， 在附加包含目录中添加 “ $(ZRDDS_HOME)/include/",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000068",
+    "page": 5,
+    "bbox": [
+      132.62,
+      594.7489599999999,
+      508.42384000000004,
+      606.4599999999999
+    ],
+    "order": 68,
+    "kind": "text",
+    "text": "ZRDDSCoreInterface;$(ZRDDS_HOME)/include/CPlusPlusInterface”，如果使用 C 语言开",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000069",
+    "page": 5,
+    "bbox": [
+      132.62,
+      614.30896,
+      508.41616,
+      626.02
+    ],
+    "order": 69,
+    "kind": "text",
+    "text": "发 ， 则需要添加 “ $(ZRDDS_HOME)/include/",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000070",
+    "page": 5,
+    "bbox": [
+      132.62,
+      633.7489599999999,
+      393.43,
+      645.4599999999999
+    ],
+    "order": 70,
+    "kind": "text",
+    "text": "ZRDDSCoreInterface;$(ZRDDS_HOME)/include/CInterface”。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p6-10",
+    "page": 6,
+    "bbox": [
+      130.9704,
+      72.40512,
+      492.92496,
+      303.93312
+    ],
+    "order": 1000009,
+    "kind": "image",
+    "text": "> ![img-p6-10](images/img-p6-10.png)\n>\n> **图示信息：**\n> - Visual Studio project property page for C/C++ > General settings, showing include directories and compiler options for a project named 'CPlusPlusInterfaceTest'.\n> - Project configuration: '活动(Debug)'\n> - Platform: '活动(Win32)'\n> - 附加包含目录: '$(ZRDDS_HOME)\\include\\ZRDDSCoreInterface;$(ZRDDS_HOME)\\include\\CPlusPlusInterface;% Additional'\n> - 其他 #using 指令: '用于“编辑并继续”的程序数据库 (ZI)'\n> - 警告等级: '是 (/W3)'\n> - 将警告视为错误: '否 (/WX-)'\n> - SDL 检查: '是 (/sdl)'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.2. 配置包含文件目录",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p6-10",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000071",
+    "page": 6,
+    "bbox": [
+      90.024,
+      326.582,
+      185.648,
+      339.89
+    ],
+    "order": 71,
+    "kind": "heading",
+    "text": "#### 2.5.3. 配置链接库",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000072",
+    "page": 6,
+    "bbox": [
+      111.26,
+      361.65896,
+      494.62,
+      373.36999999999995
+    ],
+    "order": 72,
+    "kind": "text",
+    "text": "臻融数据分发服务 DDS 系统软件 Windows 平台运行库文件的命名规则如表 2 所示。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000073",
+    "page": 6,
+    "bbox": [
+      244.25,
+      386.6599999999999,
+      350.90912000000003,
+      396.64987999999994
+    ],
+    "order": 73,
+    "kind": "text",
+    "text": "表 2DDS 运行库命名规则",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "code-p6-01",
+    "page": 6,
+    "bbox": [
+      102.99036,
+      404.12159999999994,
+      513.16584,
+      644.91072
+    ],
+    "order": 2000000,
+    "kind": "code",
+    "text": "```text\nZRDDS(C|Cpp)[z][d]_(VS2008|VS2010|VS2013).lib其中：ZRDDS 固定前缀；C 或者Cpp表明当前库是用于C 或者 C++语言；z 表明当前为静态库，否则为动态库；d 表明当前库是Debug版本，否则为 Release版本固定分隔符VS2008/VS2010/VS2013 表明当前库用于哪个 IDE。工程配置如下： 在菜单栏点击项目，选择属性。 选择链接器。 选择常规，在附加库目录中添加“$(ZRDDS_HOME)/lib”。 选择输入，在附加依赖项中根据需要，选择添加表3 中的一个库文件。 在项目->属性->链接器->输入->附加依赖项中根据表3 配置运行时库。\n```",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "code_content": "ZRDDS(C|Cpp)[z][d]_(VS2008|VS2010|VS2013).lib其中：ZRDDS 固定前缀；C 或者Cpp表明当前库是用于C 或者 C++语言；z 表明当前为静态库，否则为动态库；d 表明当前库是Debug版本，否则为 Release版本固定分隔符VS2008/VS2010/VS2013 表明当前库用于哪个 IDE。工程配置如下： 在菜单栏点击项目，选择属性。 选择链接器。 选择常规，在附加库目录中添加“$(ZRDDS_HOME)/lib”。 选择输入，在附加依赖项中根据需要，选择添加表3 中的一个库文件。 在项目->属性->链接器->输入->附加依赖项中根据表3 配置运行时库。",
+      "source_image_path": null,
+      "source_visual_id": null,
+      "code_verification_status": "native_source_missing",
+      "code_content_candidate": null,
+      "code_transcription_confidence": null,
+      "mineru_code_content": "ZRDDS(C|Cpp)[z][d]_(VS2008|VS2010|VS2013).lib其中：ZRDDS 固定前缀；C 或者Cpp表明当前库是用于C 或者 C++语言；z 表明当前为静态库，否则为动态库；d 表明当前库是Debug版本，否则为 Release版本固定分隔符VS2008/VS2010/VS2013 表明当前库用于哪个 IDE。工程配置如下： 在菜单栏点击项目，选择属性。 选择链接器。 选择常规，在附加库目录中添加“$(ZRDDS_HOME)/lib”。 选择输入，在附加依赖项中根据需要，选择添加表3 中的一个库文件。 在项目->属性->链接器->输入->附加依赖项中根据表3 配置运行时库。",
+      "code_context_corrections": []
+    }
+  },
+  {
+    "block_id": "img-p7-11",
+    "page": 7,
+    "bbox": [
+      122.0406,
+      77.45664,
+      491.73432,
+      314.03616
+    ],
+    "order": 1000010,
+    "kind": "image",
+    "text": "> ![img-p7-11](images/img-p7-11.png)\n>\n> **图示信息：**\n> - Visual Studio project property page for 'CPlusPlusInterfaceTest', showing the Linker > Input settings under VC++ configuration.\n> - Configuration: Debug\n> - Platform: Win32\n> - Additional Dependencies field contains: ZRDDSCppzd_VS2013.lib;%(AdditionalDependencies)\n> - Left navigation tree shows expanded 'VC++' > 'Linker' > 'Input'\n> - Bottom help text: '指定要添加到链接命令行的附加项(例如 kernel32.lib)'\n> - Buttons at bottom: '确定', '取消', '应用(A)'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p7-11",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000088",
+    "page": 7,
+    "bbox": [
+      111.38,
+      326.13896,
+      475.3,
+      337.84999999999997
+    ],
+    "order": 88,
+    "kind": "text",
+    "text": "- 在项目->属性->C/C++->预处理器->预处理器定义中根据表 3 添加预编译符。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p7-12",
+    "page": 7,
+    "bbox": [
+      120.84996000000002,
+      345.18719999999996,
+      492.92496,
+      583.4505599999999
+    ],
+    "order": 1000011,
+    "kind": "image",
+    "text": "> ![ 在项目->属性->C/C++->预处理器->预处理器定义中根据表 3添加预编译符。](images/img-p7-12.png)\n>\n> **图示信息：**\n> - Visual Studio project properties window showing C/C++ Preprocessor settings for a Debug configuration on Win32 platform.\n> - Configuration: 活动(Debug)\n> - Platform: 活动(Win32)\n> - Selected left navigation item: 预处理器 (under C/C++)\n> - Preprocessor Definitions value: _ZRDDSCPPINTERFACE;%(PreprocessorDefinitions)\n> - Ignore Standard Include Path: 否\n> - Preprocess to File: 否\n> - Preprocess Suppress Line Numbers: 否\n> - Keep Comments: 否",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p7-12",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000089",
+    "page": 7,
+    "bbox": [
+      111.38,
+      595.2289599999999,
+      505.42,
+      606.9399999999999
+    ],
+    "order": 89,
+    "kind": "text",
+    "text": "- 在项目->属性->C/C++->代码生成->运行库中根据选择的库版本进行配置，debug 库",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000090",
+    "page": 7,
+    "bbox": [
+      111.38,
+      614.78896,
+      262.96999999999997,
+      626.5
+    ],
+    "order": 90,
+    "kind": "text",
+    "text": "使用/MDd，release 库使用/MD。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p8-13",
+    "page": 8,
+    "bbox": [
+      122.0406,
+      76.61471999999999,
+      495.90156,
+      346.87103999999994
+    ],
+    "order": 1000012,
+    "kind": "image",
+    "text": "> ![img-p8-13](images/img-p8-13.jpg)\n>\n> **图示信息：**\n> - Visual Studio project property page for 'CPlusPlusInterfaceTest', showing C/C++ > Code Generation settings under Debug|Win32 configuration.\n> - Configuration: Debug|2013\n> - Platform: Active (Win32)\n> - Selected category: C/C++ > Code Generation\n> - Runtime Library: Multi-threaded DLL (/MDd)\n> - Enable Minimal Rebuild: Yes (/Gm)\n> - Exception Handling: Yes (/EHsc)\n> - Basic Runtime Checks: Default\n> - Floating Point Model: Precise (/fp:precise)",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p8-13",
+      "mineru_type": "table",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000091",
+    "page": 8,
+    "bbox": [
+      244.01,
+      384.25999999999993,
+      351.29956,
+      394.24987999999996
+    ],
+    "order": 91,
+    "kind": "text",
+    "text": "表 3Windows 库文件选择",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000092",
+    "page": 8,
+    "bbox": [
+      84.64722580645163,
+      403.84866333333326,
+      510.79612000000003,
+      765.7199800000001
+    ],
+    "order": 92,
+    "kind": "table",
+    "text": "|  | 库文件 | 预编译符 |\n| --- | --- | --- |\n|  | ZRDDSCpp_VS2008.lib | _ZRDDSDLLIMPORT<br>_ZRDDSCPPINTERFACE |\n|  | ZRDDSCppd_VS2008.lib | _ZRDDSDLLIMPORT<br>_ZRDDSCPPINTERFACE |\n|  | ZRDDSCppz_VS2008.lib | _ZRDDSCPPINTERFACE |\n|  | ZRDDSCppzd_VS2008.lib | _ZRDDSCPPINTERFACE |\n|  | ZRDDSCpp_VS2010.lib | _ZRDDSDLLIMPORT<br>_ZRDDSCPPINTERFACE |\n|  | ZRDDSCppd_VS2010.lib | _ZRDDSDLLIMPORT<br>_ZRDDSCPPINTERFACE |\n|  | ZRDDSCppz_VS2010.lib | _ZRDDSCPPINTERFACE |\n|  | ZRDDSCppzd_VS2010.lib | _ZRDDSCPPINTERFACE |\n|  | ZRDDSCpp_VS2013.lib | _ZRDDSDLLIMPORT<br>_ZRDDSCPPINTERFACE |\n|  | ZRDDSCppd_VS2013.lib | _ZRDDSDLLIMPORT<br>_ZRDDSCPPINTERFACE |\n|  | ZRDDSCppz_VS2013.lib | _ZRDDSCPPINTERFACE |\n|  | ZRDDSCppzd_VS2013.lib | _ZRDDSCPPINTERFACE |\n|  | ZRDDSC_VS2008.lib | _ZRDDSDLLIMPORT |\n|  | ZRDDSCd_VS2008.lib | _ZRDDSDLLIMPORT |\n|  | ZRDDSCz_VS2008.lib |  |\n|  | ZRDDSCzd_VS2008.lib |  |\n| VS2010 | ZRDDSC_VS2010.lib | _ZRDDSDLLIMPORT |\n|  | ZRDDSCd_VS2010.lib | _ZRDDSDLLIMPORT |\n|  | ZRDDSCz_VS2010.lib |  |\n|  | ZRDDSCzd_VS2010.lib |  |\n| VS2013 | ZRDDSC_VS2013.lib | _ZRDDSDLLIMPORT |\n|  | ZRDDSCd_VS2013.lib | _ZRDDSDLLIMPORT |\n|  | ZRDDSCz_VS2013.lib |  |\n|  | ZRDDSCzd_VS2013.lib |  |",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000093",
+    "page": 9,
+    "bbox": [
+      111.26,
+      267.81895999999995,
+      481.06,
+      279.53
+    ],
+    "order": 93,
+    "kind": "text",
+    "text": "至此，工程配置完成，可以编写相关代码使用臻融数据分发服务 DDS 系统软件。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000094",
+    "page": 9,
+    "bbox": [
+      90.024,
+      301.38199999999995,
+      149.54,
+      314.68999999999994
+    ],
+    "order": 94,
+    "kind": "heading",
+    "text": "#### 2.5.4. 运行",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000095",
+    "page": 9,
+    "bbox": [
+      111.26,
+      336.45896,
+      510.93688000000003,
+      347.01896
+    ],
+    "order": 95,
+    "kind": "text",
+    "text": "如果使用静态库进行编译时，可以直接运行生成的应用程序，如果使用动态库进行编译，",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000096",
+    "page": 9,
+    "bbox": [
+      90.024,
+      352.05895999999996,
+      510.82,
+      363.7699999999999
+    ],
+    "order": 96,
+    "kind": "text",
+    "text": "需要将安装目录中\\lib 文件夹下的对应动态链接库（dll 文件）拷贝到应用程序的运行目录下。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000097",
+    "page": 9,
+    "bbox": [
+      90.024,
+      367.65896,
+      505.42,
+      379.36999999999995
+    ],
+    "order": 97,
+    "kind": "text",
+    "text": "例如，当使用 ZRDDSCppd_VS2013.lib 库进行编译时，需要将 ZRDDSCppd_VS2013.dll 文件拷",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000098",
+    "page": 9,
+    "bbox": [
+      90.024,
+      383.25896,
+      505.66768,
+      394.96999999999997
+    ],
+    "order": 98,
+    "kind": "text",
+    "text": "贝到应用程序运行目录下才能正常运行。同时也可以将安装目录中的\\lib 目录配置到操作系",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000099",
+    "page": 9,
+    "bbox": [
+      90.024,
+      398.85895999999997,
+      232.49384,
+      410.56999999999994
+    ],
+    "order": 99,
+    "kind": "text",
+    "text": "统的 PATH 中，可以避免拷贝。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000100",
+    "page": 9,
+    "bbox": [
+      90.024,
+      433.56963999999994,
+      252.64999999999998,
+      449.13999999999993
+    ],
+    "order": 100,
+    "kind": "heading",
+    "text": "### 2.6. Eclipse 配置 C/C++工程",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000101",
+    "page": 9,
+    "bbox": [
+      111.26,
+      471.71896,
+      505.57168,
+      483.42999999999995
+    ],
+    "order": 101,
+    "kind": "text",
+    "text": "在 Linux 平台上，臻融数据分发服务 ZRDDS 支持多种 IDE，此处以 Eclipse 为例。在 Linux",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000102",
+    "page": 9,
+    "bbox": [
+      90.024,
+      487.31896,
+      357.31,
+      499.03
+    ],
+    "order": 102,
+    "kind": "text",
+    "text": "平台上需要安装 g++编译器，Eclipse 需要 C/C++开发插件。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000103",
+    "page": 9,
+    "bbox": [
+      90.024,
+      520.882,
+      173.636,
+      534.1899999999999
+    ],
+    "order": 103,
+    "kind": "heading",
+    "text": "#### 2.6.1. 创建工程",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000104",
+    "page": 9,
+    "bbox": [
+      111.38,
+      557.87896,
+      204.29,
+      569.5899999999999
+    ],
+    "order": 104,
+    "kind": "text",
+    "text": "- 单击 Project…。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000105",
+    "page": 9,
+    "bbox": [
+      111.38,
+      577.34896,
+      192.65,
+      589.06
+    ],
+    "order": 105,
+    "kind": "text",
+    "text": "- 选择 C/C++。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000106",
+    "page": 9,
+    "bbox": [
+      111.38,
+      596.90896,
+      311.69,
+      608.6199999999999
+    ],
+    "order": 106,
+    "kind": "text",
+    "text": "- 单击 C++ Project（C 语言为 C Project）。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000107",
+    "page": 9,
+    "bbox": [
+      111.38,
+      616.3489599999999,
+      376.87,
+      628.06
+    ],
+    "order": 107,
+    "kind": "text",
+    "text": "- 在 Project type 中选择 Executable 中的 Empty Project。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000108",
+    "page": 9,
+    "bbox": [
+      111.38,
+      635.90896,
+      377.47,
+      647.6199999999999
+    ],
+    "order": 108,
+    "kind": "text",
+    "text": "- 在 Toolchains 中选择工具链，这里以 Linux GCC 为例。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000109",
+    "page": 9,
+    "bbox": [
+      111.38,
+      655.3489599999999,
+      275.70536,
+      667.06
+    ],
+    "order": 109,
+    "kind": "text",
+    "text": "- 单击 Finish，创建一个空项目。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p10-16",
+    "page": 10,
+    "bbox": [
+      203.00412000000003,
+      69.87936,
+      435.17892,
+      289.62048
+    ],
+    "order": 1000015,
+    "kind": "image",
+    "text": "> ![img-p10-16](images/img-p10-16.png)\n>\n> **图示信息：**\n> - Eclipse C++ Project creation dialog showing project name, location, project type selection, and toolchain selection.\n> - Project name field: 'DDSAp'\n> - Location field: '/home/wby/workspace/DDSAp'\n> - Selected project type: 'Empty Project' under 'Executable'\n> - Selected toolchain: 'Linux GCC' (highlighted in orange)\n> - Other visible toolchains: 'Cross GCC', 'LLVM with Clang (Linux)', 'LLVM with GCC (Linux)', 'XL C/C++ Tool Chain'\n> - Checkbox 'Use default location' is checked",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p10-16",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000110",
+    "page": 10,
+    "bbox": [
+      111.38,
+      314.3789599999999,
+      510.82,
+      326.0899999999999
+    ],
+    "order": 110,
+    "kind": "text",
+    "text": "- 将 zrddsgen.exe/zrddsgen 生成的文件添加到项目（Foo.h、Foo.cpp、FooDataReader.h、",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000111",
+    "page": 10,
+    "bbox": [
+      132.62,
+      333.93895999999995,
+      405.91,
+      345.6499999999999
+    ],
+    "order": 111,
+    "kind": "text",
+    "text": "FooDataWriter.h、FooTypeSupport.h、FooTypeSupport.cpp）。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000112",
+    "page": 10,
+    "bbox": [
+      90.024,
+      369.42199999999997,
+      221.74400000000003,
+      382.72999999999996
+    ],
+    "order": 112,
+    "kind": "heading",
+    "text": "#### 2.6.2. 配置包含文件目录",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000113",
+    "page": 10,
+    "bbox": [
+      111.38,
+      406.43895999999995,
+      263.45,
+      418.1499999999999
+    ],
+    "order": 113,
+    "kind": "text",
+    "text": "- 右键项目，选择 Properties。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000114",
+    "page": 10,
+    "bbox": [
+      111.38,
+      425.99895999999995,
+      276.65,
+      437.7099999999999
+    ],
+    "order": 114,
+    "kind": "text",
+    "text": "- 选择 C/C++ Build 下的 Settings。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000115",
+    "page": 10,
+    "bbox": [
+      111.38,
+      445.43895999999995,
+      505.54,
+      457.1499999999999
+    ],
+    "order": 115,
+    "kind": "text",
+    "text": "- 在 ToolSetting 选项卡中选择 GCC C++ Compiler（C 语言则为 GCC C Compiler）下的",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000116",
+    "page": 10,
+    "bbox": [
+      132.62,
+      464.99895999999995,
+      505.60528,
+      476.7099999999999
+    ],
+    "order": 116,
+    "kind": "text",
+    "text": "Includes，在Include paths中添加头文件所在目录，$(ZRDDS_HOME)为Linux上ZRDDS",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000117",
+    "page": 10,
+    "bbox": [
+      132.62,
+      484.43895999999995,
+      505.68,
+      494.99895999999995
+    ],
+    "order": 117,
+    "kind": "text",
+    "text": "的安装目录 ，",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000118",
+    "page": 10,
+    "bbox": [
+      132.62,
+      504.90999999999997,
+      504.03376000000003,
+      515.47
+    ],
+    "order": 118,
+    "kind": "text",
+    "text": "$(ZRDDS_HOME)/include/ZRDDSCoreInterface$(ZRDDS_HOME)/include/CPlusPlusInter",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000119",
+    "page": 10,
+    "bbox": [
+      132.62,
+      523.43896,
+      160.94,
+      535.1499999999999
+    ],
+    "order": 119,
+    "kind": "text",
+    "text": "face。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.2. 配置包含文件目录",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p10-17",
+    "page": 10,
+    "bbox": [
+      161.92704000000003,
+      540.51264,
+      473.8747200000001,
+      768.67296
+    ],
+    "order": 1000016,
+    "kind": "image",
+    "text": "> ![img-p10-17](images/img-p10-17.png)\n>\n> **图示信息：**\n> - Eclipse C/C++ project properties dialog showing include paths configuration for GCC C++ Compiler under Settings > Includes.\n> - Configuration: Debug [Active]\n> - Selected node: GCC C++ Compiler > Includes\n> - Include paths (-I): $(ZRDDS_HOME)/include/ZRDDSCoreInterface\n> - Include paths (-I): $(ZRDDS_HOME)/include/CPlusPlusInterface\n> - Left navigation pane shows expanded categories: Resource, Builders, C/C++ Build, Settings (selected), C/C++ General, etc.\n> - Bottom buttons: Cancel and OK",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.2. 配置包含文件目录",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p10-17",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000120",
+    "page": 11,
+    "bbox": [
+      90.024,
+      79.59199999999998,
+      185.636,
+      92.89999999999998
+    ],
+    "order": 120,
+    "kind": "heading",
+    "text": "#### 2.6.3. 配置链接库",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000121",
+    "page": 11,
+    "bbox": [
+      111.38,
+      116.58895999999993,
+      263.45,
+      128.29999999999995
+    ],
+    "order": 121,
+    "kind": "text",
+    "text": "- 右键项目，选择 Properties。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000122",
+    "page": 11,
+    "bbox": [
+      111.38,
+      136.02895999999987,
+      276.65,
+      147.7399999999999
+    ],
+    "order": 122,
+    "kind": "text",
+    "text": "- 选择 C/C++ Build 下的 Settings。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000123",
+    "page": 11,
+    "bbox": [
+      111.38,
+      155.58895999999993,
+      510.82,
+      167.29999999999995
+    ],
+    "order": 123,
+    "kind": "text",
+    "text": "- 在 ToolSetting 选项卡中选择 GCC C++ Linke（r C 语言则为 GCC C Linker）下的 Libraries，",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000124",
+    "page": 11,
+    "bbox": [
+      132.62,
+      175.02895999999987,
+      505.61584000000005,
+      186.7399999999999
+    ],
+    "order": 124,
+    "kind": "text",
+    "text": "在 Library search path 中添加运行库所在目录，$(ZRDDS_HOME)为 Linux 上 ZRDDS",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000125",
+    "page": 11,
+    "bbox": [
+      132.62,
+      194.58895999999993,
+      293.57,
+      206.29999999999995
+    ],
+    "order": 125,
+    "kind": "text",
+    "text": "的安装目录，$(ZRDDS_HOME)/lib。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000126",
+    "page": 11,
+    "bbox": [
+      111.38,
+      214.02895999999987,
+      505.66384000000005,
+      225.7399999999999
+    ],
+    "order": 126,
+    "kind": "text",
+    "text": "- 在 Libraries 中添加库名，包括 pthread 和 ZRDDS 库名。不同版本的 ZRDDS 库文件",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000127",
+    "page": 11,
+    "bbox": [
+      132.62,
+      233.58895999999993,
+      477.7,
+      245.29999999999995
+    ],
+    "order": 127,
+    "kind": "text",
+    "text": "可根据表 4 选择。注意：输入库文件的名字时需去除“lib”部分和文件后缀。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p11-18",
+    "page": 11,
+    "bbox": [
+      164.90364000000002,
+      250.89216,
+      472.68408000000005,
+      478.21055999999993
+    ],
+    "order": 1000017,
+    "kind": "image",
+    "text": "> ![img-p11-18](images/img-p11-18.png)\n>\n> **图示信息：**\n> - Eclipse C/C++ project properties window showing library configuration under GCC C++ Linker > Libraries.\n> - Selected section: GCC C++ Linker > Libraries\n> - Libraries list contains: ZRDDSCppzd, pthread\n> - Library search path (-L) set to: ${ZRDDS_HOME}/lib\n> - Window title: Properties for DDSApp",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p11-18",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000128",
+    "page": 11,
+    "bbox": [
+      250.97,
+      494.55999999999995,
+      344.18912,
+      504.54988
+    ],
+    "order": 128,
+    "kind": "text",
+    "text": "表 4 Linux 库文件选择",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000129",
+    "page": 11,
+    "bbox": [
+      90.29828571428573,
+      514.1099866666667,
+      505.1447661904762,
+      666.3400099999999
+    ],
+    "order": 131,
+    "kind": "table",
+    "text": "| 编译所需库文件 | 说明 | 预编译符 |\n| --- | --- | --- |\n| libZRDDSCppzd.a | Debug版本静态库 | _ZRDDSCPPINTERFACE |\n| libZRDDSCppz.a | Release版本静态库 | _ZRDDSCPPINTERFACE |\n| libZRDDSCppd.so | Debug版本动态库 | _ZRDDSCPPINTERFACE |\n| libZRDDSCpp.so | Release版本动态库 | _ZRDDSCPPINTERFACE |\n| libZRDDSCzd.a | Debug版本静态库 |  |\n| libZRDDSCz.a | Release版本静态库 |  |\n| libZRDDSCd.so | Debug版本动态库 |  |\n| libZRDDSC.so | Release版本动态库 |  |",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000130",
+    "page": 11,
+    "bbox": [
+      111.38,
+      671.06896,
+      505.62352000000004,
+      682.78
+    ],
+    "order": 129,
+    "kind": "text",
+    "text": "- 在ToolSetting选项卡中选择GCC C++ Compiler下的Preprocessor，在Defined symbols",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000131",
+    "page": 11,
+    "bbox": [
+      132.62,
+      690.5089599999999,
+      408.92536,
+      702.2199999999999
+    ],
+    "order": 130,
+    "kind": "text",
+    "text": "中添加所选库文件对应的预编译符（C 语言无需预编译符）。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p12-20",
+    "page": 12,
+    "bbox": [
+      161.92704000000003,
+      74.93087999999999,
+      475.06536000000006,
+      300.56543999999997
+    ],
+    "order": 1000019,
+    "kind": "image",
+    "text": "> ![至此，工程配置完成，可以编写相关代码使用臻融数据分发服务DDS系统软件。](images/img-p12-20.png)\n>\n> **图示信息：**\n> - Eclipse C/C++ project properties window showing Preprocessor settings under GCC C++ Compiler for the DDSApp project.\n> - Left navigation: 'Settings' > 'C/C++ General' > 'Preprocessor' selected under 'GCC C++ Compiler'\n> - Right panel tab: 'Preprocessor' active\n> - Defined symbols (-D) section contains one entry: '_ZRDDSCPPIINTERFACE'\n> - Two unchecked options: 'Do not search system directories (-nostdinc)' and 'Preprocess only (-E)'\n> - Bottom buttons: 'Cancel' and 'OK'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p12-20",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000132",
+    "page": 12,
+    "bbox": [
+      90.024,
+      308.6189599999999,
+      459.79768,
+      320.3299999999999
+    ],
+    "order": 132,
+    "kind": "text",
+    "text": "至此，工程配置完成，可以编写相关代码使用臻融数据分发服务 DDS 系统软件。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.3. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000133",
+    "page": 12,
+    "bbox": [
+      90.024,
+      342.18199999999996,
+      149.54,
+      355.48999999999995
+    ],
+    "order": 133,
+    "kind": "heading",
+    "text": "#### 2.6.4. 运行",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000134",
+    "page": 12,
+    "bbox": [
+      111.02,
+      377.25896,
+      505.66384,
+      387.81896
+    ],
+    "order": 134,
+    "kind": "text",
+    "text": "如果使用静态库进行编译时，可以直接在终端运行生成的可执行文件，如果使用动态库",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000135",
+    "page": 12,
+    "bbox": [
+      90.024,
+      392.85895999999997,
+      505.66768,
+      404.56999999999994
+    ],
+    "order": 135,
+    "kind": "text",
+    "text": "进行编译，需要将安装目录中/lib 文件夹下的对应动态链接库（so 文件）拷贝到可执行文件",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000136",
+    "page": 12,
+    "bbox": [
+      90.024,
+      408.47896,
+      505.42,
+      420.18999999999994
+    ],
+    "order": 136,
+    "kind": "text",
+    "text": "的运行目录下。例如，当使用 libZRDDSCppd.so 库进行编译时，需要将 libZRDDSCppd.so 文件",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000137",
+    "page": 12,
+    "bbox": [
+      90.024,
+      424.07896,
+      505.66768,
+      435.78999999999996
+    ],
+    "order": 137,
+    "kind": "text",
+    "text": "拷贝到可执行文件运行目录下才能正常运行。同时也可以将安装目录中的/lib 目录配置到操",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000138",
+    "page": 12,
+    "bbox": [
+      90.024,
+      439.67895999999996,
+      253.47536000000002,
+      451.38999999999993
+    ],
+    "order": 138,
+    "kind": "text",
+    "text": "作系统的 PATH 中，可以避免拷贝。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.6. Eclipse 配置 C/C++工程 > 2.6.4. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000139",
+    "page": 12,
+    "bbox": [
+      90.024,
+      474.36963999999995,
+      233.08999999999997,
+      489.93999999999994
+    ],
+    "order": 139,
+    "kind": "heading",
+    "text": "### 2.7. QtCreator 项目配置",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000140",
+    "page": 12,
+    "bbox": [
+      111.02,
+      512.51896,
+      505.50924,
+      524.23
+    ],
+    "order": 140,
+    "kind": "text",
+    "text": "要使用 ZRDDS 中间件需要包含头文件所在目录，库文件所在目录，库文件名，使用 C++",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000141",
+    "page": 12,
+    "bbox": [
+      90.024,
+      528.11896,
+      505.5292,
+      539.8299999999999
+    ],
+    "order": 141,
+    "kind": "text",
+    "text": "库需要添加预编译符。以上配置可在 QtCreator 创建的项目中的.pro 文件中手动设置，具体",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000142",
+    "page": 12,
+    "bbox": [
+      90.024,
+      543.7189599999999,
+      163.71168,
+      554.27896
+    ],
+    "order": 142,
+    "kind": "text",
+    "text": "设置方式如下：",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000143",
+    "page": 12,
+    "bbox": [
+      111.38,
+      561.2389599999999,
+      505.66768,
+      572.9499999999999
+    ],
+    "order": 143,
+    "kind": "text",
+    "text": "- 头文件目录：在.pro 文件中键入 INCLUDEPATH += dir1 dir2，dir1，dir2 为头文件目",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000144",
+    "page": 12,
+    "bbox": [
+      132.62,
+      580.7089599999999,
+      505.54,
+      592.42
+    ],
+    "order": 144,
+    "kind": "text",
+    "text": "录 ， 用 C++ 语言为 $(ZRDDS_HOME)/include/ZRDDSCoreInterface 和",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000145",
+    "page": 12,
+    "bbox": [
+      132.62,
+      600.2689599999999,
+      505.51312,
+      611.9799999999999
+    ],
+    "order": 145,
+    "kind": "text",
+    "text": "$(ZRDDS_HOME)/include/CPlusPlusInterface ， 用 C 语言为",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000146",
+    "page": 12,
+    "bbox": [
+      132.62,
+      619.7089599999999,
+      510.82,
+      631.42
+    ],
+    "order": 146,
+    "kind": "text",
+    "text": "$(ZRDDS_HOME)/include/ZRDDSCoreInterface 和$(ZRDDS_HOME)/include/CInterface。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000147",
+    "page": 12,
+    "bbox": [
+      132.62,
+      639.2689599999999,
+      323.21768,
+      650.9799999999999
+    ],
+    "order": 147,
+    "kind": "text",
+    "text": "其中$(ZRDDS_HOME)为 ZRDDS 安装目录。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000148",
+    "page": 12,
+    "bbox": [
+      111.38,
+      658.7089599999999,
+      505.52536000000003,
+      670.42
+    ],
+    "order": 148,
+    "kind": "text",
+    "text": "- 库文件及其所在目录：在.pro 文件中键入 LIBS += -L dir –llib。dir 为库文件所在目录，",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000149",
+    "page": 12,
+    "bbox": [
+      132.62,
+      678.2689599999999,
+      505.54768,
+      689.9799999999999
+    ],
+    "order": 149,
+    "kind": "text",
+    "text": "跟在-L 之后，为$(ZRDDS_HOME)/lib。lib 为库文件名，不带后缀，跟在-l 之后，分",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000150",
+    "page": 12,
+    "bbox": [
+      132.62,
+      697.7089599999999,
+      486.21999999999997,
+      709.42
+    ],
+    "order": 150,
+    "kind": "text",
+    "text": "为 ZRDDS 库（见表 1）以及 Windows 相关库（ws2_32，wsock32，iphlpapi）。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000151",
+    "page": 12,
+    "bbox": [
+      223.01,
+      724.75,
+      372.28911999999997,
+      734.73988
+    ],
+    "order": 151,
+    "kind": "text",
+    "text": "表 1 Window 下 qt 环境库文件选择",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000152",
+    "page": 12,
+    "bbox": [
+      90.408,
+      744.2960066666666,
+      505.03200200000003,
+      767.5600066666666
+    ],
+    "order": 152,
+    "kind": "table",
+    "text": "| 语言 | 编译所需库文件 | 说明 | 预编译符 |\n| --- | --- | --- | --- |\n| C++ | ZRDDSCppzd.lib | Debug版本静态库 | _ZRDDSCPPINTERFACE |\n|  | ZRDDSCppz.lib | Release版本静态库 | _ZRDDSCPPINTERFACE |\n| C | ZRDDSCzd.lib | Debug版本静态库 |  |\n|  | ZRDDSCz.lib | Release版本静态库 |  |",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000153",
+    "page": 13,
+    "bbox": [
+      111.02,
+      155.1089599999999,
+      505.50924,
+      166.81999999999994
+    ],
+    "order": 153,
+    "kind": "text",
+    "text": " 预编译符：在.pro 文件中键入 DEFINES += _ZRDDSCPPINTERFACE。使用 ZRDDS 的 C++",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000154",
+    "page": 13,
+    "bbox": [
+      132.02,
+      170.70895999999993,
+      268.71920000000006,
+      181.26896
+    ],
+    "order": 154,
+    "kind": "text",
+    "text": "库时需要添加这个预编译符。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000155",
+    "page": 13,
+    "bbox": [
+      111.02,
+      186.30895999999996,
+      515.86,
+      198.01999999999998
+    ],
+    "order": 155,
+    "kind": "text",
+    "text": " 编译设置：若出现 not permitted with -fno-rtti 问题，在.pro 文件中键入 CONFIG += rtti。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000156",
+    "page": 13,
+    "bbox": [
+      111.02,
+      201.90895999999987,
+      503.9692,
+      213.6199999999999
+    ],
+    "order": 156,
+    "kind": "text",
+    "text": "至此，Windows 下 qt 环境 ZRDDS 项目配置完成，以 C++为例，下面为具体配置示例。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "source-p13-01",
+    "page": 13,
+    "bbox": [
+      135.4,
+      221.69999999999993,
+      486.58000000000004,
+      382.28999999999996
+    ],
+    "order": 1000022,
+    "kind": "image",
+    "text": "> ![源文档图像](images/source-p13-01.png)\n\n```text\nQT += core\nQT -= gui\n\nTARGET = DDSApp\nCONFIG += console\nCONFIG -= app_bundle\n\nTEMPLATE = app\n\nSOURCES += \\\n    CharSeq.cpp \\\n    CharSeq_publication.cpp \\\n    CharSeqTypeSupport.cpp\n\nHEADERS += \\\n    CharSeq.h \\\n    CharSeqDataReader.h \\\n    CharSeqDataWriter.h \\\n    CharSeqTypeSupport.h\n\nINCLUDEPATH += $(ZRDDS_HOME)\\include\\ZRDDSCoreInterface $(ZRDDS_HOME)\\include\\CPlusPlusInterface\n\nLIBS += -L $(ZRDDS_HOME)\\lib -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\n\nDEFINES += _ZRDDSCPPINTERFACE\n\nTARGET = CharSeq_pub\n```",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "source-p13-01",
+      "mineru_type": "pdf_source_image",
+      "image_type": "code_or_config"
+    }
+  }
+]

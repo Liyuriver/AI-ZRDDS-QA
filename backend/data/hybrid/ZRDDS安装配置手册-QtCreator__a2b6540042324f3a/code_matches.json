@@ -1,0 +1,199 @@
+[
+  {
+    "code_id": "code-p1-01",
+    "source_occurrence_id": "pdf-image:p1:o3:xref41",
+    "page": 1,
+    "bbox": [
+      0.149,
+      0.724,
+      0.852,
+      0.746
+    ],
+    "order": 10,
+    "code_content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [
+          {
+            "type": "text",
+            "content": "图 2 C++头文件目录"
+          },
+          {
+            "type": "text",
+            "content": "图 3 C 头文件目录"
+          }
+        ],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        149,
+        724,
+        852,
+        746
+      ],
+      "page_idx": 0
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "not_used",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": "images/source-p1-03.png",
+    "source_visual_id": "source-p1-03",
+    "source_image_status": "reused_native_embedded_occurrence",
+    "mineru_code_content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+    "code_content_candidate": "|INCLUDEPATH += $$quote($$(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($$(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+    "code_verification_status": "verified_primary",
+    "code_transcription_confidence": "high",
+    "code_context_corrections": [
+      {
+        "from": "$$(ZRDDS_HOME)",
+        "to": "$(ZRDDS_HOME)",
+        "reason": "source_env_anchor"
+      },
+      {
+        "from": "$$(ZRDDS_HOME)",
+        "to": "$(ZRDDS_HOME)",
+        "reason": "source_env_anchor"
+      },
+      {
+        "from": "|INCLUDEPATH",
+        "to": "INCLUDEPATH",
+        "reason": "source_keyword_anchor"
+      }
+    ]
+  },
+  {
+    "code_id": "code-p2-02",
+    "source_occurrence_id": "pdf-image:p2:o1:xref48",
+    "page": 2,
+    "bbox": [
+      0.326,
+      0.222,
+      0.741,
+      0.249
+    ],
+    "order": 15,
+    "code_content": "DEFINES += _ZRDDSCPPINTERFACE",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [
+          {
+            "type": "text",
+            "content": "图 4 预编译符"
+          }
+        ],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "DEFINES +=ZRDDSCPPINTERFACE"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        326,
+        222,
+        741,
+        249
+      ],
+      "page_idx": 1
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": "images/source-p2-01.png",
+    "source_visual_id": "source-p2-01",
+    "source_image_status": "reused_native_embedded_occurrence",
+    "mineru_code_content": "DEFINES +=ZRDDSCPPINTERFACE",
+    "code_content_candidate": "DEFINES += _ZRDDSCPPIINTERFACE",
+    "code_verification_status": "verified_primary",
+    "code_transcription_confidence": "high",
+    "code_context_corrections": [
+      {
+        "from": "_ZRDDSCPPIINTERFACE",
+        "to": "_ZRDDSCPPINTERFACE",
+        "reason": "source_identifier_anchor"
+      }
+    ]
+  },
+  {
+    "code_id": "code-p2-03",
+    "source_occurrence_id": "pdf-image:p2:o3:xref51",
+    "page": 2,
+    "bbox": [
+      0.184,
+      0.411,
+      0.845,
+      0.653
+    ],
+    "order": 19,
+    "code_content": "1 QT += core\n2 QT -= gui\n3 \n4 TARGET = DDSApp\n5 CONFIG += console\n6 CONFIG -= app_bundle\n7 CONFIG    += rtti\n8 \n9 TEMPLATE = app\n10 \n11 SOURCES += \\\n12     CharSeq.cpp \\\n13     CharSeq_publication.cpp \\\n14     CharSeqTypeSupport.cpp\n15 \n16 HEADERS += \\\n17     CharSeq.h \\\n18     CharSeqDataReader.h \\\n19     CharSeqDataWriter.h \\\n20     CharSeqTypeSupport.h\n21 \n22 INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)\n23 \n24 LIBS += -L $$quote($(ZRDDS_HOME)\\lib) -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\n25 \n26 DEFINES += _ZRDDSCPPINTERFACE\n27 \n28 TARGET = CharSeq_pub",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [
+          {
+            "type": "text",
+            "content": "图 6 pro 配置"
+          }
+        ],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "QT += core QT -= gui TARGET = DDSApp CONFIG += console 6CONFIG -= app bundle CONFIG G += rtti TEMPLATE = app SOURCES +=\\ Charseq.cpp\\ Charseq_publication.cpp CharSeqTypeSupport.cpp HEADERS += CharSeq.h\\ CharSegDataReader.h  CharSeqDataWriter.h \\ CharSeqTypeSupport.h INCLUDEPATH += $$quote($(ZRDDS HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS HOME)\\include\\CPlusPlusInterface) LIBS += -L $$quote($(ZRDDS HOME)\\lib) -1zRDDSCppzd -1ws2 32 -1wsock32 -liphlpapi DEFINES += ZRDDSCPPINTERFACE TARGET = CharSeq_pub"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        184,
+        411,
+        845,
+        653
+      ],
+      "page_idx": 1
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "not_used",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": "images/source-p2-03.png",
+    "source_visual_id": "source-p2-03",
+    "source_image_status": "reused_native_embedded_occurrence",
+    "mineru_code_content": "QT += core QT -= gui TARGET = DDSApp CONFIG += console 6CONFIG -= app bundle CONFIG G += rtti TEMPLATE = app SOURCES +=\\ Charseq.cpp\\ Charseq_publication.cpp CharSeqTypeSupport.cpp HEADERS += CharSeq.h\\ CharSegDataReader.h  CharSeqDataWriter.h \\ CharSeqTypeSupport.h INCLUDEPATH += $$quote($(ZRDDS HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS HOME)\\include\\CPlusPlusInterface) LIBS += -L $$quote($(ZRDDS HOME)\\lib) -1zRDDSCppzd -1ws2 32 -1wsock32 -liphlpapi DEFINES += ZRDDSCPPINTERFACE TARGET = CharSeq_pub",
+    "code_content_candidate": "1 QT += core\n2 QT -= gui\n3 \n4 TARGET = DDSApp\n5 CONFIG += console\n6 CONFIG -= app_bundle\n7 CONFIG    += rtti\n8 \n9 TEMPLATE = app\n10 \n11 SOURCES += \\\n12     CharSeq.cpp \\\n13     CharSeq_publication.cpp \\\n14     CharSeqTypeSupport.cpp\n15 \n16 HEADERS += \\\n17     CharSeq.h \\\n18     CharSeqDataReader.h \\\n19     CharSeqDataWriter.h \\\n20     CharSeqTypeSupport.h\n21 \n22 INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)\n23 \n24 LIBS += -L $$quote($(ZRDDS_HOME)\\lib) -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\n25 \n26 DEFINES += _ZRDDSCPPINTERFACE\n27 \n28 TARGET = CharSeq_pub",
+    "code_verification_status": "primary_review",
+    "code_transcription_confidence": "high",
+    "code_context_corrections": []
+  }
+]

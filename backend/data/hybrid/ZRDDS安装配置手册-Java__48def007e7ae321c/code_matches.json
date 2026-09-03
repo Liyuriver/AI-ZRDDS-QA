@@ -1,0 +1,100 @@
+[
+  {
+    "code_id": "code-p4-01",
+    "source_occurrence_id": "mineru-code:4:28:code-p4-01",
+    "page": 4,
+    "bbox": [
+      0.146,
+      0.16,
+      0.848,
+      0.216
+    ],
+    "order": 28,
+    "code_content": "假定用户定义的数据类型名称为 Foo，使用 zrddsgen.exe 生成的支持文件总共有五个，分别为：Foo.java、FooDataRreader.java、FooSeq.java、FooDataWriter.java、FooTypeSupport.java。使用zrddsgen.exe 生成的支持文件可以使用在所有ZRDDS支持的操作系统上。",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "假定用户定义的数据类型名称为 Foo，使用 zrddsgen.exe 生成的支持文件总共有五个，分别为：Foo.java、FooDataRreader.java、FooSeq.java、FooDataWriter.java、FooTypeSupport.java。使用zrddsgen.exe 生成的支持文件可以使用在所有ZRDDS支持的操作系统上。"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        146,
+        160,
+        848,
+        216
+      ],
+      "page_idx": 3
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0005",
+    "section": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "binding_score": 0.92,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "假定用户定义的数据类型名称为 Foo，使用 zrddsgen.exe 生成的支持文件总共有五个，分别为：Foo.java、FooDataRreader.java、FooSeq.java、FooDataWriter.java、FooTypeSupport.java。使用zrddsgen.exe 生成的支持文件可以使用在所有ZRDDS支持的操作系统上。",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p4-02",
+    "source_occurrence_id": "mineru-code:4:30:code-p4-02",
+    "page": 4,
+    "bbox": [
+      0.142,
+      0.104,
+      0.684,
+      0.121
+    ],
+    "order": 30,
+    "code_content": "zrddsgen.exe –i [inputFile] –d [outputDir] –l java",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "zrddsgen.exe –i [inputFile] –d [outputDir] –l java"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        142,
+        104,
+        684,
+        121
+      ],
+      "page_idx": 3
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0005",
+    "section": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "binding_score": 0.92,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "zrddsgen.exe –i [inputFile] –d [outputDir] –l java",
+    "code_verification_status": "native_source_missing"
+  }
+]

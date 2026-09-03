@@ -1,0 +1,387 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1. 环境简述"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                117,
+                284,
+                137
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "在 Windows中，ZRDDS可在QT环境下使用。具体环境如下："
+                    }
+                ]
+            },
+            "bbox": [
+                179,
+                171,
+                653,
+                187
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup></sup> mingw 版本为 4.8.2。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                190,
+                378,
+                205
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup></sup> qt 安装版本为 4.8.3（qt-win-opensource-4.8.3-mingw.exe）。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                208,
+                667,
+                224
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup></sup> Qt Creator 安装版本为 3.4.0（qt-creator-opensource-windows-x86-3.4.0.exe）。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                227,
+                798,
+                243
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2. 项目配置"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                275,
+                284,
+                296
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "要使用ZRDDS中间件需要包含头文件所在目录，库文件所在目录，库文件名，使用C++库需要添加预编译符。以上配置可在 Qt Creator 创建的项目中的.pro 文件中手动设置，具体设置方式如下："
+                    }
+                ]
+            },
+            "bbox": [
+                144,
+                329,
+                852,
+                382
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "头文件目录：在.pro 文件（图 1）中键入 INCLUDEPATH += dir1 dir2，dir1，dir2 为头文件目录，用 C++语言为$$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface)和$$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface) ； 用 C 语 言 为 $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) 和 $$quote($(ZRDDS_HOME)\\include\\CInterface)。其中$(ZRDDS_HOME)为 ZRDDS 安装目录，用$$quote()包住每条路径（图2、图3），以避免路径中包含空格所引起的编译错误。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                385,
+                852,
+                495
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/faa827a3f19cd4a4f9af4838312c92ab9d41c61c857ffebee484e1b9cc245265.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                384,
+                500,
+                684,
+                600
+            ]
+        },
+        {
+            "type": "algorithm",
+            "content": {
+                "algorithm_caption": [
+                    {
+                        "type": "text",
+                        "content": "图 1 项目的 pro 文件"
+                    }
+                ],
+                "algorithm_content": [],
+                "algorithm_footnote": []
+            },
+            "bbox": [
+                151,
+                648,
+                850,
+                674
+            ]
+        },
+        {
+            "type": "algorithm",
+            "content": {
+                "algorithm_caption": [
+                    {
+                        "type": "text",
+                        "content": "图 2 C++头文件目录"
+                    },
+                    {
+                        "type": "text",
+                        "content": "图 3 C 头文件目录"
+                    }
+                ],
+                "algorithm_content": [
+                    {
+                        "type": "text",
+                        "content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)"
+                    }
+                ],
+                "algorithm_footnote": []
+            },
+            "bbox": [
+                149,
+                724,
+                852,
+                746
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 库文件及其所在目录：在.pro 文件中键入 LIBS+=-L dir –llib。dir 为库文件所在目录，跟在-L 之后，为$$quote($(ZRDDS_HOME)\\lib)。lib 为库文件名，不带后缀，跟在-l之后，分为 ZRDDS 库（见表 1）以及 Windows 相关库（ws2_32，wsock32，iphlpapi）。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                793,
+                852,
+                847
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/a4d62b5f34dcccd6bdcfd0cca28a3a894ecb9fe188159004da641b09f2de294e.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "表 1 Window 下 qt 环境库文件选择"
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>语言</td><td>编译所需库文件</td><td>说明</td><td>预编译符</td></tr><tr><td colspan=\"1\" rowspan=\"2\">C++</td><td colspan=\"1\" rowspan=\"1\">ZRDDSCppzd.lib</td><td colspan=\"1\" rowspan=\"1\">Debug版本静态库</td><td colspan=\"1\" rowspan=\"1\">_ZRDDSCPPINTERFACE</td></tr><tr><td colspan=\"1\" rowspan=\"1\">ZRDDSCppz.lib</td><td colspan=\"1\" rowspan=\"1\">Release版本静态库</td><td colspan=\"1\" rowspan=\"1\">_ZRDDSCPPINTERFACE</td></tr><tr><td colspan=\"1\" rowspan=\"2\">C</td><td colspan=\"1\" rowspan=\"1\">ZRDDSCzd.lib</td><td colspan=\"1\" rowspan=\"1\">Debug 版本静态库</td><td colspan=\"1\" rowspan=\"1\"></td></tr><tr><td colspan=\"1\" rowspan=\"1\">ZRDDSCz.lib</td><td colspan=\"1\" rowspan=\"1\">Release版本静态库</td><td colspan=\"1\" rowspan=\"1\"></td></tr></table>",
+                "table_type": "complex_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                149,
+                882,
+                848,
+                913
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                149,
+                83,
+                848,
+                161
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup></sup> 预编译符：在.pro 文件中键入 DEFINES += _ZRDDSCPPINTERFACE。使用 ZRDDS 的 C++库时需要添加这个预编译符。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                181,
+                850,
+                216
+            ]
+        },
+        {
+            "type": "algorithm",
+            "content": {
+                "algorithm_caption": [
+                    {
+                        "type": "text",
+                        "content": "图 4 预编译符"
+                    }
+                ],
+                "algorithm_content": [
+                    {
+                        "type": "text",
+                        "content": "DEFINES +=ZRDDSCPPINTERFACE"
+                    }
+                ],
+                "algorithm_footnote": []
+            },
+            "bbox": [
+                326,
+                222,
+                741,
+                249
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup></sup> 编译设置：若出现 not permitted with -fno-rtti 问题，在.pro 文件中键入 CONFIG += rtti。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                293,
+                857,
+                310
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/35e0bef8a1321b72d04322f27bb40caa632c08b8895b49c9fcbfd21f1160df9e.jpg"
+                },
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "图 5 编译设置 rtti"
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                391,
+                313,
+                673,
+                343
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "至此，Windows下qt环境ZRDDS项目配置完成，以C++为例，图 6为具体配置示例。"
+                    }
+                ]
+            },
+            "bbox": [
+                183,
+                386,
+                838,
+                403
+            ]
+        },
+        {
+            "type": "algorithm",
+            "content": {
+                "algorithm_caption": [
+                    {
+                        "type": "text",
+                        "content": "图 6 pro 配置"
+                    }
+                ],
+                "algorithm_content": [
+                    {
+                        "type": "text",
+                        "content": "QT += core QT -= gui TARGET = DDSApp CONFIG += console 6CONFIG -= app bundle CONFIG G += rtti TEMPLATE = app SOURCES +=\\ Charseq.cpp\\ Charseq_publication.cpp CharSeqTypeSupport.cpp HEADERS += CharSeq.h\\ CharSegDataReader.h  CharSeqDataWriter.h \\ CharSeqTypeSupport.h INCLUDEPATH += $$quote($(ZRDDS HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS HOME)\\include\\CPlusPlusInterface) LIBS += -L $$quote($(ZRDDS HOME)\\lib) -1zRDDSCppzd -1ws2 32 -1wsock32 -liphlpapi DEFINES += ZRDDSCPPINTERFACE TARGET = CharSeq_pub"
+                    }
+                ],
+                "algorithm_footnote": []
+            },
+            "bbox": [
+                184,
+                411,
+                845,
+                653
+            ]
+        }
+    ]
+]

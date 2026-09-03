@@ -1,0 +1,3405 @@
+{
+    "pdf_info": [
+        {
+            "preproc_blocks": [
+                {
+                    "score": 0.9433,
+                    "bbox": [
+                        87,
+                        99,
+                        169,
+                        116
+                    ],
+                    "index": 1,
+                    "type": "title",
+                    "lines": [
+                        {
+                            "bbox": [
+                                87,
+                                99,
+                                168,
+                                116
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        87,
+                                        99,
+                                        168,
+                                        116
+                                    ],
+                                    "type": "text",
+                                    "content": "1. 环境简述",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "level": 2
+                },
+                {
+                    "score": 0.9327,
+                    "bbox": [
+                        107,
+                        144,
+                        389,
+                        158
+                    ],
+                    "index": 2,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                145,
+                                385,
+                                156
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        145,
+                                        385,
+                                        156
+                                    ],
+                                    "type": "text",
+                                    "content": "在 Windows中，ZRDDS可在QT环境下使用。具体环境如下：",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "score": 0.9255,
+                    "bbox": [
+                        108,
+                        160,
+                        225,
+                        173
+                    ],
+                    "index": 3,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                160,
+                                223,
+                                172
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        160,
+                                        223,
+                                        172
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> mingw 版本为 4.8.2。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "score": 0.922,
+                    "bbox": [
+                        108,
+                        175,
+                        397,
+                        189
+                    ],
+                    "index": 4,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                176,
+                                394,
+                                189
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        176,
+                                        394,
+                                        189
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> qt 安装版本为 4.8.3（qt-win-opensource-4.8.3-mingw.exe）。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "score": 0.9111,
+                    "bbox": [
+                        108,
+                        191,
+                        475,
+                        205
+                    ],
+                    "index": 5,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                109,
+                                191,
+                                473,
+                                204
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        109,
+                                        191,
+                                        473,
+                                        204
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> Qt Creator 安装版本为 3.4.0（qt-creator-opensource-windows-x86-3.4.0.exe）。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "score": 0.9401,
+                    "bbox": [
+                        87,
+                        232,
+                        169,
+                        249
+                    ],
+                    "index": 6,
+                    "type": "title",
+                    "lines": [
+                        {
+                            "bbox": [
+                                87,
+                                233,
+                                168,
+                                249
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        87,
+                                        233,
+                                        168,
+                                        249
+                                    ],
+                                    "type": "text",
+                                    "content": "2. 项目配置",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "level": 2
+                },
+                {
+                    "score": 0.982,
+                    "bbox": [
+                        86,
+                        277,
+                        507,
+                        322
+                    ],
+                    "index": 7,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                111,
+                                279,
+                                505,
+                                289
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        111,
+                                        279,
+                                        505,
+                                        289
+                                    ],
+                                    "type": "text",
+                                    "content": "要使用ZRDDS中间件需要包含头文件所在目录，库文件所在目录，库文件名，使用C++",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                89,
+                                294,
+                                505,
+                                306
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        89,
+                                        294,
+                                        505,
+                                        306
+                                    ],
+                                    "type": "text",
+                                    "content": "库需要添加预编译符。以上配置可在 Qt Creator 创建的项目中的.pro 文件中手动设置，具体",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                90,
+                                310,
+                                156,
+                                321
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        90,
+                                        310,
+                                        156,
+                                        321
+                                    ],
+                                    "type": "text",
+                                    "content": "设置方式如下：",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "score": 0.9564,
+                    "bbox": [
+                        108,
+                        324,
+                        507,
+                        417
+                    ],
+                    "index": 8,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                131,
+                                325,
+                                505,
+                                336
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        325,
+                                        505,
+                                        336
+                                    ],
+                                    "type": "text",
+                                    "content": "头文件目录：在.pro 文件（图 1）中键入 INCLUDEPATH += dir1 dir2，dir1，dir2 为头",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                340,
+                                505,
+                                352
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        340,
+                                        505,
+                                        352
+                                    ],
+                                    "type": "text",
+                                    "content": "文件目录，用 C++语言为$$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface)和",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                356,
+                                506,
+                                368
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        356,
+                                        506,
+                                        368
+                                    ],
+                                    "type": "text",
+                                    "content": "$$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface) ； 用 C 语 言 为 $$quote",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                372,
+                                506,
+                                385
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        373,
+                                        336,
+                                        384
+                                    ],
+                                    "type": "text",
+                                    "content": "($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface)",
+                                    "score": 1.0
+                                },
+                                {
+                                    "bbox": [
+                                        396,
+                                        372,
+                                        409,
+                                        383
+                                    ],
+                                    "type": "text",
+                                    "content": "和",
+                                    "score": 1.0
+                                },
+                                {
+                                    "bbox": [
+                                        468,
+                                        372,
+                                        506,
+                                        385
+                                    ],
+                                    "type": "text",
+                                    "content": "$$quote",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                130,
+                                388,
+                                505,
+                                399
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        130,
+                                        388,
+                                        505,
+                                        399
+                                    ],
+                                    "type": "text",
+                                    "content": "($(ZRDDS_HOME)\\include\\CInterface)。其中$(ZRDDS_HOME)为 ZRDDS 安装目录，用",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                403,
+                                505,
+                                414
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        403,
+                                        505,
+                                        414
+                                    ],
+                                    "type": "text",
+                                    "content": "$$quote()包住每条路径（图2、图3），以避免路径中包含空格所引起的编译错误。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "image",
+                    "bbox": [
+                        229,
+                        421,
+                        407,
+                        505
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9785,
+                            "bbox": [
+                                229,
+                                421,
+                                407,
+                                505
+                            ],
+                            "index": 9,
+                            "type": "image_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        229,
+                                        421,
+                                        407,
+                                        505
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                229,
+                                                421,
+                                                407,
+                                                505
+                                            ],
+                                            "type": "image",
+                                            "image_path": "faa827a3f19cd4a4f9af4838312c92ab9d41c61c857ffebee484e1b9cc245265.jpg"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 9,
+                    "score": 0.9785
+                },
+                {
+                    "type": "code",
+                    "bbox": [
+                        90,
+                        545,
+                        506,
+                        567
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9382,
+                            "bbox": [
+                                250,
+                                519,
+                                344,
+                                533
+                            ],
+                            "index": 10,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        252,
+                                        520,
+                                        342,
+                                        533
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                252,
+                                                520,
+                                                342,
+                                                533
+                                            ],
+                                            "type": "text",
+                                            "content": "图 1 项目的 pro 文件",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.8092,
+                            "bbox": [
+                                90,
+                                545,
+                                506,
+                                567
+                            ],
+                            "index": 11,
+                            "type": "code_body",
+                            "lines": []
+                        }
+                    ],
+                    "index": 11,
+                    "score": 0.8092,
+                    "sub_type": "algorithm"
+                },
+                {
+                    "type": "code",
+                    "bbox": [
+                        89,
+                        609,
+                        507,
+                        628
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9384,
+                            "bbox": [
+                                252,
+                                581,
+                                342,
+                                595
+                            ],
+                            "index": 12,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        254,
+                                        583,
+                                        340,
+                                        595
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                254,
+                                                583,
+                                                340,
+                                                595
+                                            ],
+                                            "type": "text",
+                                            "content": "图 2 C++头文件目录",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.6834,
+                            "bbox": [
+                                89,
+                                609,
+                                507,
+                                628
+                            ],
+                            "index": 13,
+                            "type": "code_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        93,
+                                        614,
+                                        502,
+                                        622
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                93,
+                                                614,
+                                                502,
+                                                622
+                                            ],
+                                            "type": "text",
+                                            "content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+                                            "score": 0.981
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9357,
+                            "bbox": [
+                                255,
+                                644,
+                                339,
+                                658
+                            ],
+                            "index": 14,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        257,
+                                        645,
+                                        336,
+                                        657
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                257,
+                                                645,
+                                                336,
+                                                657
+                                            ],
+                                            "type": "text",
+                                            "content": "图 3 C 头文件目录",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 13,
+                    "score": 0.6834,
+                    "sub_type": "algorithm"
+                },
+                {
+                    "score": 0.9771,
+                    "bbox": [
+                        108,
+                        667,
+                        507,
+                        713
+                    ],
+                    "index": 15,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                668,
+                                499,
+                                679
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        668,
+                                        499,
+                                        679
+                                    ],
+                                    "type": "text",
+                                    "content": " 库文件及其所在目录：在.pro 文件中键入 LIBS+=-L dir –llib。dir 为库文件所在目录，",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                684,
+                                505,
+                                695
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        684,
+                                        505,
+                                        695
+                                    ],
+                                    "type": "text",
+                                    "content": "跟在-L 之后，为$$quote($(ZRDDS_HOME)\\lib)。lib 为库文件名，不带后缀，跟在-l",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                130,
+                                698,
+                                499,
+                                712
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        130,
+                                        698,
+                                        499,
+                                        712
+                                    ],
+                                    "type": "text",
+                                    "content": "之后，分为 ZRDDS 库（见表 1）以及 Windows 相关库（ws2_32，wsock32，iphlpapi）。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "table",
+                    "bbox": [
+                        89,
+                        742,
+                        505,
+                        768
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9403,
+                            "bbox": [
+                                219,
+                                722,
+                                375,
+                                736
+                            ],
+                            "index": 16,
+                            "type": "table_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        222,
+                                        723,
+                                        372,
+                                        735
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                222,
+                                                723,
+                                                372,
+                                                735
+                                            ],
+                                            "type": "text",
+                                            "content": "表 1 Window 下 qt 环境库文件选择",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9743,
+                            "bbox": [
+                                89,
+                                742,
+                                505,
+                                768
+                            ],
+                            "index": 17,
+                            "type": "table_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        89,
+                                        742,
+                                        505,
+                                        768
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                89,
+                                                742,
+                                                505,
+                                                768
+                                            ],
+                                            "type": "table",
+                                            "html": "<table><tr><td>语言</td><td>编译所需库文件</td><td>说明</td><td>预编译符</td></tr></table>",
+                                            "image_path": "a4d62b5f34dcccd6bdcfd0cca28a3a894ecb9fe188159004da641b09f2de294e.jpg"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 17,
+                    "score": 0.9743
+                }
+            ],
+            "page_idx": 0,
+            "page_size": [
+                595,
+                841
+            ],
+            "discarded_blocks": [],
+            "para_blocks": [
+                {
+                    "score": 0.9433,
+                    "bbox": [
+                        87,
+                        99,
+                        169,
+                        116
+                    ],
+                    "index": 1,
+                    "type": "title",
+                    "lines": [
+                        {
+                            "bbox": [
+                                87,
+                                99,
+                                168,
+                                116
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        87,
+                                        99,
+                                        168,
+                                        116
+                                    ],
+                                    "type": "text",
+                                    "content": "1. 环境简述",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "level": 2
+                },
+                {
+                    "score": 0.9327,
+                    "bbox": [
+                        107,
+                        144,
+                        389,
+                        158
+                    ],
+                    "index": 2,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                145,
+                                385,
+                                156
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        145,
+                                        385,
+                                        156
+                                    ],
+                                    "type": "text",
+                                    "content": "在 Windows中，ZRDDS可在QT环境下使用。具体环境如下：",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        110,
+                        145,
+                        385,
+                        156
+                    ]
+                },
+                {
+                    "score": 0.9255,
+                    "bbox": [
+                        108,
+                        160,
+                        225,
+                        173
+                    ],
+                    "index": 3,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                160,
+                                223,
+                                172
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        160,
+                                        223,
+                                        172
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> mingw 版本为 4.8.2。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        110,
+                        160,
+                        223,
+                        172
+                    ]
+                },
+                {
+                    "score": 0.922,
+                    "bbox": [
+                        108,
+                        175,
+                        397,
+                        189
+                    ],
+                    "index": 4,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                176,
+                                394,
+                                189
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        176,
+                                        394,
+                                        189
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> qt 安装版本为 4.8.3（qt-win-opensource-4.8.3-mingw.exe）。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        110,
+                        176,
+                        394,
+                        189
+                    ]
+                },
+                {
+                    "score": 0.9111,
+                    "bbox": [
+                        108,
+                        191,
+                        475,
+                        205
+                    ],
+                    "index": 5,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                109,
+                                191,
+                                473,
+                                204
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        109,
+                                        191,
+                                        473,
+                                        204
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> Qt Creator 安装版本为 3.4.0（qt-creator-opensource-windows-x86-3.4.0.exe）。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        109,
+                        191,
+                        473,
+                        204
+                    ]
+                },
+                {
+                    "score": 0.9401,
+                    "bbox": [
+                        87,
+                        232,
+                        169,
+                        249
+                    ],
+                    "index": 6,
+                    "type": "title",
+                    "lines": [
+                        {
+                            "bbox": [
+                                87,
+                                233,
+                                168,
+                                249
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        87,
+                                        233,
+                                        168,
+                                        249
+                                    ],
+                                    "type": "text",
+                                    "content": "2. 项目配置",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "level": 2
+                },
+                {
+                    "score": 0.982,
+                    "bbox": [
+                        86,
+                        277,
+                        507,
+                        322
+                    ],
+                    "index": 7,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                111,
+                                279,
+                                505,
+                                289
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        111,
+                                        279,
+                                        505,
+                                        289
+                                    ],
+                                    "type": "text",
+                                    "content": "要使用ZRDDS中间件需要包含头文件所在目录，库文件所在目录，库文件名，使用C++",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                89,
+                                294,
+                                505,
+                                306
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        89,
+                                        294,
+                                        505,
+                                        306
+                                    ],
+                                    "type": "text",
+                                    "content": "库需要添加预编译符。以上配置可在 Qt Creator 创建的项目中的.pro 文件中手动设置，具体",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                90,
+                                310,
+                                156,
+                                321
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        90,
+                                        310,
+                                        156,
+                                        321
+                                    ],
+                                    "type": "text",
+                                    "content": "设置方式如下：",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        89,
+                        279,
+                        505,
+                        321
+                    ]
+                },
+                {
+                    "score": 0.9564,
+                    "bbox": [
+                        108,
+                        324,
+                        507,
+                        417
+                    ],
+                    "index": 8,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                131,
+                                325,
+                                505,
+                                336
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        325,
+                                        505,
+                                        336
+                                    ],
+                                    "type": "text",
+                                    "content": "头文件目录：在.pro 文件（图 1）中键入 INCLUDEPATH += dir1 dir2，dir1，dir2 为头",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                340,
+                                505,
+                                352
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        340,
+                                        505,
+                                        352
+                                    ],
+                                    "type": "text",
+                                    "content": "文件目录，用 C++语言为$$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface)和",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                356,
+                                506,
+                                368
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        356,
+                                        506,
+                                        368
+                                    ],
+                                    "type": "text",
+                                    "content": "$$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface) ； 用 C 语 言 为 $$quote",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                372,
+                                506,
+                                385
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        373,
+                                        336,
+                                        384
+                                    ],
+                                    "type": "text",
+                                    "content": "($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface)",
+                                    "score": 1.0
+                                },
+                                {
+                                    "bbox": [
+                                        396,
+                                        372,
+                                        409,
+                                        383
+                                    ],
+                                    "type": "text",
+                                    "content": "和",
+                                    "score": 1.0
+                                },
+                                {
+                                    "bbox": [
+                                        468,
+                                        372,
+                                        506,
+                                        385
+                                    ],
+                                    "type": "text",
+                                    "content": "$$quote",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                130,
+                                388,
+                                505,
+                                399
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        130,
+                                        388,
+                                        505,
+                                        399
+                                    ],
+                                    "type": "text",
+                                    "content": "($(ZRDDS_HOME)\\include\\CInterface)。其中$(ZRDDS_HOME)为 ZRDDS 安装目录，用",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                403,
+                                505,
+                                414
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        403,
+                                        505,
+                                        414
+                                    ],
+                                    "type": "text",
+                                    "content": "$$quote()包住每条路径（图2、图3），以避免路径中包含空格所引起的编译错误。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        130,
+                        325,
+                        506,
+                        414
+                    ]
+                },
+                {
+                    "type": "image",
+                    "bbox": [
+                        229,
+                        421,
+                        407,
+                        505
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9785,
+                            "bbox": [
+                                229,
+                                421,
+                                407,
+                                505
+                            ],
+                            "index": 9,
+                            "type": "image_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        229,
+                                        421,
+                                        407,
+                                        505
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                229,
+                                                421,
+                                                407,
+                                                505
+                                            ],
+                                            "type": "image",
+                                            "image_path": "faa827a3f19cd4a4f9af4838312c92ab9d41c61c857ffebee484e1b9cc245265.jpg"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 9,
+                    "score": 0.9785
+                },
+                {
+                    "type": "code",
+                    "bbox": [
+                        90,
+                        545,
+                        506,
+                        567
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9382,
+                            "bbox": [
+                                250,
+                                519,
+                                344,
+                                533
+                            ],
+                            "index": 10,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        252,
+                                        520,
+                                        342,
+                                        533
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                252,
+                                                520,
+                                                342,
+                                                533
+                                            ],
+                                            "type": "text",
+                                            "content": "图 1 项目的 pro 文件",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.8092,
+                            "bbox": [
+                                90,
+                                545,
+                                506,
+                                567
+                            ],
+                            "index": 11,
+                            "type": "code_body",
+                            "lines": []
+                        }
+                    ],
+                    "index": 11,
+                    "score": 0.8092,
+                    "sub_type": "algorithm"
+                },
+                {
+                    "type": "code",
+                    "bbox": [
+                        89,
+                        609,
+                        507,
+                        628
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9384,
+                            "bbox": [
+                                252,
+                                581,
+                                342,
+                                595
+                            ],
+                            "index": 12,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        254,
+                                        583,
+                                        340,
+                                        595
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                254,
+                                                583,
+                                                340,
+                                                595
+                                            ],
+                                            "type": "text",
+                                            "content": "图 2 C++头文件目录",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.6834,
+                            "bbox": [
+                                89,
+                                609,
+                                507,
+                                628
+                            ],
+                            "index": 13,
+                            "type": "code_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        93,
+                                        614,
+                                        502,
+                                        622
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                93,
+                                                614,
+                                                502,
+                                                622
+                                            ],
+                                            "type": "text",
+                                            "content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+                                            "score": 0.981
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9357,
+                            "bbox": [
+                                255,
+                                644,
+                                339,
+                                658
+                            ],
+                            "index": 14,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        257,
+                                        645,
+                                        336,
+                                        657
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                257,
+                                                645,
+                                                336,
+                                                657
+                                            ],
+                                            "type": "text",
+                                            "content": "图 3 C 头文件目录",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 13,
+                    "score": 0.6834,
+                    "sub_type": "algorithm"
+                },
+                {
+                    "score": 0.9771,
+                    "bbox": [
+                        108,
+                        667,
+                        507,
+                        713
+                    ],
+                    "index": 15,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                668,
+                                499,
+                                679
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        668,
+                                        499,
+                                        679
+                                    ],
+                                    "type": "text",
+                                    "content": " 库文件及其所在目录：在.pro 文件中键入 LIBS+=-L dir –llib。dir 为库文件所在目录，",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                684,
+                                505,
+                                695
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        684,
+                                        505,
+                                        695
+                                    ],
+                                    "type": "text",
+                                    "content": "跟在-L 之后，为$$quote($(ZRDDS_HOME)\\lib)。lib 为库文件名，不带后缀，跟在-l",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                130,
+                                698,
+                                499,
+                                712
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        130,
+                                        698,
+                                        499,
+                                        712
+                                    ],
+                                    "type": "text",
+                                    "content": "之后，分为 ZRDDS 库（见表 1）以及 Windows 相关库（ws2_32，wsock32，iphlpapi）。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        110,
+                        668,
+                        505,
+                        712
+                    ]
+                },
+                {
+                    "type": "table",
+                    "bbox": [
+                        89,
+                        742,
+                        505,
+                        768
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9403,
+                            "bbox": [
+                                219,
+                                722,
+                                375,
+                                736
+                            ],
+                            "index": 16,
+                            "type": "table_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        222,
+                                        723,
+                                        372,
+                                        735
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                222,
+                                                723,
+                                                372,
+                                                735
+                                            ],
+                                            "type": "text",
+                                            "content": "表 1 Window 下 qt 环境库文件选择",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9743,
+                            "bbox": [
+                                89,
+                                742,
+                                505,
+                                768
+                            ],
+                            "index": 17,
+                            "type": "table_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        89,
+                                        742,
+                                        505,
+                                        768
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                89,
+                                                742,
+                                                505,
+                                                768
+                                            ],
+                                            "type": "table",
+                                            "html": "<table><tr><td>语言</td><td>编译所需库文件</td><td>说明</td><td>预编译符</td></tr><tr><td colspan=\"1\" rowspan=\"2\">C++</td><td colspan=\"1\" rowspan=\"1\">ZRDDSCppzd.lib</td><td colspan=\"1\" rowspan=\"1\">Debug版本静态库</td><td colspan=\"1\" rowspan=\"1\">_ZRDDSCPPINTERFACE</td></tr><tr><td colspan=\"1\" rowspan=\"1\">ZRDDSCppz.lib</td><td colspan=\"1\" rowspan=\"1\">Release版本静态库</td><td colspan=\"1\" rowspan=\"1\">_ZRDDSCPPINTERFACE</td></tr><tr><td colspan=\"1\" rowspan=\"2\">C</td><td colspan=\"1\" rowspan=\"1\">ZRDDSCzd.lib</td><td colspan=\"1\" rowspan=\"1\">Debug 版本静态库</td><td colspan=\"1\" rowspan=\"1\"></td></tr><tr><td colspan=\"1\" rowspan=\"1\">ZRDDSCz.lib</td><td colspan=\"1\" rowspan=\"1\">Release版本静态库</td><td colspan=\"1\" rowspan=\"1\"></td></tr></table>",
+                                            "image_path": "a4d62b5f34dcccd6bdcfd0cca28a3a894ecb9fe188159004da641b09f2de294e.jpg"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 17,
+                    "score": 0.9743
+                }
+            ]
+        },
+        {
+            "preproc_blocks": [
+                {
+                    "type": "table",
+                    "bbox": [
+                        89,
+                        70,
+                        505,
+                        136
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9874,
+                            "bbox": [
+                                89,
+                                70,
+                                505,
+                                136
+                            ],
+                            "index": 1,
+                            "type": "table_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        89,
+                                        70,
+                                        505,
+                                        136
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                89,
+                                                70,
+                                                505,
+                                                136
+                                            ],
+                                            "type": "table",
+                                            "html": "<table><tr><td rowspan=2 colspan=1>C++</td><td rowspan=1 colspan=1>ZRDDSCppzd.lib</td><td rowspan=1 colspan=1>Debug版本静态库</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppz.lib</td><td rowspan=1 colspan=1>Release版本静态库</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=2 colspan=1>C</td><td rowspan=1 colspan=1>ZRDDSCzd.lib</td><td rowspan=1 colspan=1>Debug 版本静态库</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>ZRDDSCz.lib</td><td rowspan=1 colspan=1>Release版本静态库</td><td rowspan=1 colspan=1></td></tr></table>",
+                                            "image_path": "4f59bece1a6c7d078b6cf635465af52ea8819831a02b16c7642fd09abe6a5db6.jpg"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 1,
+                    "score": 0.9874
+                },
+                {
+                    "score": 0.9709,
+                    "bbox": [
+                        108,
+                        153,
+                        506,
+                        182
+                    ],
+                    "index": 2,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                153,
+                                505,
+                                167
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        153,
+                                        505,
+                                        167
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> 预编译符：在.pro 文件中键入 DEFINES += _ZRDDSCPPINTERFACE。使用 ZRDDS 的 C++",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                170,
+                                262,
+                                182
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        170,
+                                        262,
+                                        182
+                                    ],
+                                    "type": "text",
+                                    "content": "库时需要添加这个预编译符。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "code",
+                    "bbox": [
+                        194,
+                        187,
+                        441,
+                        210
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.6292,
+                            "bbox": [
+                                194,
+                                187,
+                                441,
+                                210
+                            ],
+                            "index": 3,
+                            "type": "code_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        195,
+                                        193,
+                                        436,
+                                        205
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                195,
+                                                193,
+                                                436,
+                                                205
+                                            ],
+                                            "type": "text",
+                                            "content": "DEFINES +=ZRDDSCPPINTERFACE",
+                                            "score": 0.998
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9328,
+                            "bbox": [
+                                264,
+                                223,
+                                329,
+                                237
+                            ],
+                            "index": 4,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        266,
+                                        225,
+                                        327,
+                                        236
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                266,
+                                                225,
+                                                327,
+                                                236
+                                            ],
+                                            "type": "text",
+                                            "content": "图 4 预编译符",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 3,
+                    "score": 0.6292,
+                    "sub_type": "algorithm"
+                },
+                {
+                    "score": 0.9479,
+                    "bbox": [
+                        108,
+                        247,
+                        510,
+                        261
+                    ],
+                    "index": 5,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                109,
+                                247,
+                                509,
+                                260
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        109,
+                                        247,
+                                        509,
+                                        260
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> 编译设置：若出现 not permitted with -fno-rtti 问题，在.pro 文件中键入 CONFIG += rtti。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "image",
+                    "bbox": [
+                        233,
+                        264,
+                        401,
+                        289
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.753,
+                            "bbox": [
+                                233,
+                                264,
+                                401,
+                                289
+                            ],
+                            "index": 6,
+                            "type": "image_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        233,
+                                        264,
+                                        401,
+                                        289
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                233,
+                                                264,
+                                                401,
+                                                289
+                                            ],
+                                            "type": "image",
+                                            "image_path": "35e0bef8a1321b72d04322f27bb40caa632c08b8895b49c9fcbfd21f1160df9e.jpg"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9326,
+                            "bbox": [
+                                257,
+                                302,
+                                336,
+                                315
+                            ],
+                            "index": 7,
+                            "type": "image_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        259,
+                                        303,
+                                        334,
+                                        315
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                259,
+                                                303,
+                                                334,
+                                                315
+                                            ],
+                                            "type": "text",
+                                            "content": "图 5 编译设置 rtti",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 6,
+                    "score": 0.753
+                },
+                {
+                    "score": 0.9502,
+                    "bbox": [
+                        109,
+                        325,
+                        499,
+                        339
+                    ],
+                    "index": 8,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                326,
+                                498,
+                                337
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        326,
+                                        498,
+                                        337
+                                    ],
+                                    "type": "text",
+                                    "content": "至此，Windows下qt环境ZRDDS项目配置完成，以C++为例，图 6为具体配置示例。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "code",
+                    "bbox": [
+                        110,
+                        346,
+                        503,
+                        550
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9767,
+                            "bbox": [
+                                110,
+                                346,
+                                503,
+                                550
+                            ],
+                            "index": 9,
+                            "type": "code_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        118,
+                                        347,
+                                        155,
+                                        354
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                118,
+                                                347,
+                                                155,
+                                                354
+                                            ],
+                                            "type": "text",
+                                            "content": "QT += core",
+                                            "score": 0.994
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        354,
+                                        151,
+                                        362
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                354,
+                                                151,
+                                                362
+                                            ],
+                                            "type": "text",
+                                            "content": "QT -= gui",
+                                            "score": 0.942
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        369,
+                                        172,
+                                        376
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                369,
+                                                172,
+                                                376
+                                            ],
+                                            "type": "text",
+                                            "content": "TARGET = DDSApp",
+                                            "score": 0.991
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        376,
+                                        178,
+                                        383
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                376,
+                                                178,
+                                                383
+                                            ],
+                                            "type": "text",
+                                            "content": "CONFIG += console",
+                                            "score": 0.994
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        114,
+                                        382,
+                                        188,
+                                        390
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                114,
+                                                382,
+                                                188,
+                                                390
+                                            ],
+                                            "type": "text",
+                                            "content": "6CONFIG -= app bundle",
+                                            "score": 0.982
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        390,
+                                        175,
+                                        397
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                390,
+                                                144,
+                                                397
+                                            ],
+                                            "type": "text",
+                                            "content": "CONFIG",
+                                            "score": 1.0
+                                        },
+                                        {
+                                            "bbox": [
+                                                140,
+                                                390,
+                                                175,
+                                                397
+                                            ],
+                                            "type": "text",
+                                            "content": "G += rtti",
+                                            "score": 0.904
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        404,
+                                        168,
+                                        412
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                404,
+                                                168,
+                                                412
+                                            ],
+                                            "type": "text",
+                                            "content": "TEMPLATE = app",
+                                            "score": 1.0
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        419,
+                                        161,
+                                        425
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                419,
+                                                161,
+                                                425
+                                            ],
+                                            "type": "text",
+                                            "content": "SOURCES +=\\",
+                                            "score": 0.946
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        426,
+                                        178,
+                                        434
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                426,
+                                                178,
+                                                434
+                                            ],
+                                            "type": "text",
+                                            "content": "Charseq.cpp\\",
+                                            "score": 0.946
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        433,
+                                        218,
+                                        441
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                433,
+                                                218,
+                                                441
+                                            ],
+                                            "type": "text",
+                                            "content": "Charseq_publication.cpp",
+                                            "score": 0.969
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        440,
+                                        208,
+                                        448
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                440,
+                                                208,
+                                                448
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSeqTypeSupport.cpp",
+                                            "score": 0.981
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        454,
+                                        160,
+                                        461
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                454,
+                                                160,
+                                                461
+                                            ],
+                                            "type": "text",
+                                            "content": "HEADERS +=",
+                                            "score": 0.955
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        461,
+                                        172,
+                                        469
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                461,
+                                                172,
+                                                469
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSeq.h\\",
+                                            "score": 0.972
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        469,
+                                        205,
+                                        475
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                469,
+                                                205,
+                                                475
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSegDataReader.h ",
+                                            "score": 0.969
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        477,
+                                        205,
+                                        483
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                477,
+                                                205,
+                                                483
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSeqDataWriter.h \\",
+                                            "score": 0.961
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        134,
+                                        484,
+                                        202,
+                                        490
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                134,
+                                                484,
+                                                202,
+                                                490
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSeqTypeSupport.h",
+                                            "score": 0.998
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        498,
+                                        501,
+                                        504
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                498,
+                                                501,
+                                                504
+                                            ],
+                                            "type": "text",
+                                            "content": "INCLUDEPATH += $$quote($(ZRDDS HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS HOME)\\include\\CPlusPlusInterface)",
+                                            "score": 0.991
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        511,
+                                        389,
+                                        519
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                511,
+                                                389,
+                                                519
+                                            ],
+                                            "type": "text",
+                                            "content": "LIBS += -L $$quote($(ZRDDS HOME)\\lib) -1zRDDSCppzd -1ws2 32 -1wsock32 -liphlpapi",
+                                            "score": 0.965
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        527,
+                                        218,
+                                        532
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                527,
+                                                218,
+                                                532
+                                            ],
+                                            "type": "text",
+                                            "content": "DEFINES += ZRDDSCPPINTERFACE",
+                                            "score": 0.987
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        540,
+                                        189,
+                                        548
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                540,
+                                                189,
+                                                548
+                                            ],
+                                            "type": "text",
+                                            "content": "TARGET = CharSeq_pub",
+                                            "score": 0.949
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9425,
+                            "bbox": [
+                                267,
+                                567,
+                                326,
+                                580
+                            ],
+                            "index": 10,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        268,
+                                        568,
+                                        326,
+                                        581
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                268,
+                                                568,
+                                                326,
+                                                581
+                                            ],
+                                            "type": "text",
+                                            "content": "图 6 pro 配置",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 9,
+                    "score": 0.9767,
+                    "sub_type": "algorithm"
+                }
+            ],
+            "page_idx": 1,
+            "page_size": [
+                595,
+                841
+            ],
+            "discarded_blocks": [],
+            "para_blocks": [
+                {
+                    "type": "table",
+                    "bbox": [
+                        89,
+                        70,
+                        505,
+                        136
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9874,
+                            "bbox": [
+                                89,
+                                70,
+                                505,
+                                136
+                            ],
+                            "index": 1,
+                            "type": "table_body",
+                            "lines": [],
+                            "lines_deleted": true
+                        }
+                    ],
+                    "index": 1,
+                    "score": 0.9874
+                },
+                {
+                    "score": 0.9709,
+                    "bbox": [
+                        108,
+                        153,
+                        506,
+                        182
+                    ],
+                    "index": 2,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                153,
+                                505,
+                                167
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        153,
+                                        505,
+                                        167
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> 预编译符：在.pro 文件中键入 DEFINES += _ZRDDSCPPINTERFACE。使用 ZRDDS 的 C++",
+                                    "score": 1.0
+                                }
+                            ]
+                        },
+                        {
+                            "bbox": [
+                                131,
+                                170,
+                                262,
+                                182
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        131,
+                                        170,
+                                        262,
+                                        182
+                                    ],
+                                    "type": "text",
+                                    "content": "库时需要添加这个预编译符。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        110,
+                        153,
+                        505,
+                        182
+                    ]
+                },
+                {
+                    "type": "code",
+                    "bbox": [
+                        194,
+                        187,
+                        441,
+                        210
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.6292,
+                            "bbox": [
+                                194,
+                                187,
+                                441,
+                                210
+                            ],
+                            "index": 3,
+                            "type": "code_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        195,
+                                        193,
+                                        436,
+                                        205
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                195,
+                                                193,
+                                                436,
+                                                205
+                                            ],
+                                            "type": "text",
+                                            "content": "DEFINES +=ZRDDSCPPINTERFACE",
+                                            "score": 0.998
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9328,
+                            "bbox": [
+                                264,
+                                223,
+                                329,
+                                237
+                            ],
+                            "index": 4,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        266,
+                                        225,
+                                        327,
+                                        236
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                266,
+                                                225,
+                                                327,
+                                                236
+                                            ],
+                                            "type": "text",
+                                            "content": "图 4 预编译符",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 3,
+                    "score": 0.6292,
+                    "sub_type": "algorithm"
+                },
+                {
+                    "score": 0.9479,
+                    "bbox": [
+                        108,
+                        247,
+                        510,
+                        261
+                    ],
+                    "index": 5,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                109,
+                                247,
+                                509,
+                                260
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        109,
+                                        247,
+                                        509,
+                                        260
+                                    ],
+                                    "type": "text",
+                                    "content": "<sup></sup> 编译设置：若出现 not permitted with -fno-rtti 问题，在.pro 文件中键入 CONFIG += rtti。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        109,
+                        247,
+                        509,
+                        260
+                    ]
+                },
+                {
+                    "type": "image",
+                    "bbox": [
+                        233,
+                        264,
+                        401,
+                        289
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.753,
+                            "bbox": [
+                                233,
+                                264,
+                                401,
+                                289
+                            ],
+                            "index": 6,
+                            "type": "image_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        233,
+                                        264,
+                                        401,
+                                        289
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                233,
+                                                264,
+                                                401,
+                                                289
+                                            ],
+                                            "type": "image",
+                                            "image_path": "35e0bef8a1321b72d04322f27bb40caa632c08b8895b49c9fcbfd21f1160df9e.jpg"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9326,
+                            "bbox": [
+                                257,
+                                302,
+                                336,
+                                315
+                            ],
+                            "index": 7,
+                            "type": "image_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        259,
+                                        303,
+                                        334,
+                                        315
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                259,
+                                                303,
+                                                334,
+                                                315
+                                            ],
+                                            "type": "text",
+                                            "content": "图 5 编译设置 rtti",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 6,
+                    "score": 0.753
+                },
+                {
+                    "score": 0.9502,
+                    "bbox": [
+                        109,
+                        325,
+                        499,
+                        339
+                    ],
+                    "index": 8,
+                    "type": "text",
+                    "lines": [
+                        {
+                            "bbox": [
+                                110,
+                                326,
+                                498,
+                                337
+                            ],
+                            "spans": [
+                                {
+                                    "bbox": [
+                                        110,
+                                        326,
+                                        498,
+                                        337
+                                    ],
+                                    "type": "text",
+                                    "content": "至此，Windows下qt环境ZRDDS项目配置完成，以C++为例，图 6为具体配置示例。",
+                                    "score": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "bbox_fs": [
+                        110,
+                        326,
+                        498,
+                        337
+                    ]
+                },
+                {
+                    "type": "code",
+                    "bbox": [
+                        110,
+                        346,
+                        503,
+                        550
+                    ],
+                    "blocks": [
+                        {
+                            "score": 0.9767,
+                            "bbox": [
+                                110,
+                                346,
+                                503,
+                                550
+                            ],
+                            "index": 9,
+                            "type": "code_body",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        118,
+                                        347,
+                                        155,
+                                        354
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                118,
+                                                347,
+                                                155,
+                                                354
+                                            ],
+                                            "type": "text",
+                                            "content": "QT += core",
+                                            "score": 0.994
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        354,
+                                        151,
+                                        362
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                354,
+                                                151,
+                                                362
+                                            ],
+                                            "type": "text",
+                                            "content": "QT -= gui",
+                                            "score": 0.942
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        369,
+                                        172,
+                                        376
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                369,
+                                                172,
+                                                376
+                                            ],
+                                            "type": "text",
+                                            "content": "TARGET = DDSApp",
+                                            "score": 0.991
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        376,
+                                        178,
+                                        383
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                376,
+                                                178,
+                                                383
+                                            ],
+                                            "type": "text",
+                                            "content": "CONFIG += console",
+                                            "score": 0.994
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        114,
+                                        382,
+                                        188,
+                                        390
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                114,
+                                                382,
+                                                188,
+                                                390
+                                            ],
+                                            "type": "text",
+                                            "content": "6CONFIG -= app bundle",
+                                            "score": 0.982
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        390,
+                                        175,
+                                        397
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                390,
+                                                144,
+                                                397
+                                            ],
+                                            "type": "text",
+                                            "content": "CONFIG",
+                                            "score": 1.0
+                                        },
+                                        {
+                                            "bbox": [
+                                                140,
+                                                390,
+                                                175,
+                                                397
+                                            ],
+                                            "type": "text",
+                                            "content": "G += rtti",
+                                            "score": 0.904
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        404,
+                                        168,
+                                        412
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                404,
+                                                168,
+                                                412
+                                            ],
+                                            "type": "text",
+                                            "content": "TEMPLATE = app",
+                                            "score": 1.0
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        419,
+                                        161,
+                                        425
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                419,
+                                                161,
+                                                425
+                                            ],
+                                            "type": "text",
+                                            "content": "SOURCES +=\\",
+                                            "score": 0.946
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        426,
+                                        178,
+                                        434
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                426,
+                                                178,
+                                                434
+                                            ],
+                                            "type": "text",
+                                            "content": "Charseq.cpp\\",
+                                            "score": 0.946
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        433,
+                                        218,
+                                        441
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                433,
+                                                218,
+                                                441
+                                            ],
+                                            "type": "text",
+                                            "content": "Charseq_publication.cpp",
+                                            "score": 0.969
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        440,
+                                        208,
+                                        448
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                440,
+                                                208,
+                                                448
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSeqTypeSupport.cpp",
+                                            "score": 0.981
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        454,
+                                        160,
+                                        461
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                454,
+                                                160,
+                                                461
+                                            ],
+                                            "type": "text",
+                                            "content": "HEADERS +=",
+                                            "score": 0.955
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        461,
+                                        172,
+                                        469
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                461,
+                                                172,
+                                                469
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSeq.h\\",
+                                            "score": 0.972
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        469,
+                                        205,
+                                        475
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                469,
+                                                205,
+                                                475
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSegDataReader.h ",
+                                            "score": 0.969
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        133,
+                                        477,
+                                        205,
+                                        483
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                133,
+                                                477,
+                                                205,
+                                                483
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSeqDataWriter.h \\",
+                                            "score": 0.961
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        134,
+                                        484,
+                                        202,
+                                        490
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                134,
+                                                484,
+                                                202,
+                                                490
+                                            ],
+                                            "type": "text",
+                                            "content": "CharSeqTypeSupport.h",
+                                            "score": 0.998
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        498,
+                                        501,
+                                        504
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                498,
+                                                501,
+                                                504
+                                            ],
+                                            "type": "text",
+                                            "content": "INCLUDEPATH += $$quote($(ZRDDS HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS HOME)\\include\\CPlusPlusInterface)",
+                                            "score": 0.991
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        511,
+                                        389,
+                                        519
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                511,
+                                                389,
+                                                519
+                                            ],
+                                            "type": "text",
+                                            "content": "LIBS += -L $$quote($(ZRDDS HOME)\\lib) -1zRDDSCppzd -1ws2 32 -1wsock32 -liphlpapi",
+                                            "score": 0.965
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        120,
+                                        527,
+                                        218,
+                                        532
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                120,
+                                                527,
+                                                218,
+                                                532
+                                            ],
+                                            "type": "text",
+                                            "content": "DEFINES += ZRDDSCPPINTERFACE",
+                                            "score": 0.987
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                },
+                                {
+                                    "bbox": [
+                                        119,
+                                        540,
+                                        189,
+                                        548
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                119,
+                                                540,
+                                                189,
+                                                548
+                                            ],
+                                            "type": "text",
+                                            "content": "TARGET = CharSeq_pub",
+                                            "score": 0.949
+                                        }
+                                    ],
+                                    "is_list_start_line": true
+                                }
+                            ]
+                        },
+                        {
+                            "score": 0.9425,
+                            "bbox": [
+                                267,
+                                567,
+                                326,
+                                580
+                            ],
+                            "index": 10,
+                            "type": "code_caption",
+                            "lines": [
+                                {
+                                    "bbox": [
+                                        268,
+                                        568,
+                                        326,
+                                        581
+                                    ],
+                                    "spans": [
+                                        {
+                                            "bbox": [
+                                                268,
+                                                568,
+                                                326,
+                                                581
+                                            ],
+                                            "type": "text",
+                                            "content": "图 6 pro 配置",
+                                            "score": 1.0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "index": 9,
+                    "score": 0.9767,
+                    "sub_type": "algorithm"
+                }
+            ]
+        }
+    ],
+    "_backend": "pipeline",
+    "_version_name": "3.4.5"
+}

@@ -1,0 +1,3548 @@
+[
+    {
+        "layout_dets": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9519,
+                "bbox": [
+                    243,
+                    276,
+                    549,
+                    323
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9539,
+                "bbox": [
+                    243,
+                    418,
+                    491,
+                    464
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9484,
+                "bbox": [
+                    298,
+                    529,
+                    1180,
+                    567
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.914,
+                "bbox": [
+                    302,
+                    583,
+                    475,
+                    619
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.948,
+                "bbox": [
+                    301,
+                    637,
+                    947,
+                    675
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9444,
+                "bbox": [
+                    302,
+                    692,
+                    971,
+                    730
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9522,
+                "bbox": [
+                    243,
+                    793,
+                    492,
+                    841
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9431,
+                "bbox": [
+                    510,
+                    921,
+                    1141,
+                    959
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9884,
+                "bbox": [
+                    322,
+                    978,
+                    1330,
+                    1269
+                ],
+                "index": 9,
+                "html": "<table><tr><td rowspan=1 colspan=1>操作系统</td><td rowspan=1 colspan=1>系统最低版本</td><td rowspan=1 colspan=1>依赖环境</td></tr><tr><td rowspan=2 colspan=1>Windows</td><td rowspan=1 colspan=1>Windows XP</td><td rowspan=1 colspan=1>Visual Sutdio 2008 及以上版本的 IDE 及运行库</td></tr><tr><td rowspan=1 colspan=1>MinGW</td><td rowspan=1 colspan=1>4.4.0等</td></tr><tr><td rowspan=1 colspan=1>Linux</td><td rowspan=1 colspan=1>Linux2.6.0 以上</td><td rowspan=1 colspan=1>g++4.8以上版本，包含C++相关支持库、工具链，Make工具链</td></tr></table>"
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9523,
+                "bbox": [
+                    243,
+                    1346,
+                    509,
+                    1393
+                ],
+                "index": 10
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9518,
+                "bbox": [
+                    243,
+                    1490,
+                    565,
+                    1535
+                ],
+                "index": 11
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9767,
+                "bbox": [
+                    299,
+                    1593,
+                    1409,
+                    1676
+                ],
+                "index": 12
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    248,
+                    277,
+                    542,
+                    322
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    246,
+                    419,
+                    486,
+                    464
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    309,
+                    533,
+                    1172,
+                    562
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    583,
+                    468,
+                    622
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    309,
+                    640,
+                    938,
+                    670
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    693,
+                    964,
+                    728
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    248,
+                    796,
+                    486,
+                    841
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    519,
+                    928,
+                    1133,
+                    953
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    244,
+                    1348,
+                    506,
+                    1392
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    246,
+                    1490,
+                    560,
+                    1532
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    1599,
+                    1401,
+                    1625
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    1641,
+                    949,
+                    1669
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 0,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9775,
+                "bbox": [
+                    488,
+                    216,
+                    1221,
+                    741
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.4969,
+                "bbox": [
+                    302,
+                    765,
+                    846,
+                    805
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9746,
+                "bbox": [
+                    488,
+                    821,
+                    1220,
+                    1349
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.7066,
+                "bbox": [
+                    302,
+                    1373,
+                    618,
+                    1412
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9728,
+                "bbox": [
+                    488,
+                    1427,
+                    1222,
+                    1955
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8619,
+                "bbox": [
+                    301,
+                    1979,
+                    1410,
+                    2064
+                ],
+                "index": 6
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    773,
+                    841,
+                    798
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1375,
+                    613,
+                    1410
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    1986,
+                    1402,
+                    2012
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    2030,
+                    1168,
+                    2056
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 1,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9812,
+                "bbox": [
+                    497,
+                    213,
+                    1215,
+                    574
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9607,
+                "bbox": [
+                    300,
+                    636,
+                    1410,
+                    719
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9804,
+                "bbox": [
+                    606,
+                    734,
+                    1104,
+                    1093
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.744,
+                "bbox": [
+                    302,
+                    1113,
+                    749,
+                    1152
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9862,
+                "bbox": [
+                    488,
+                    1170,
+                    1220,
+                    1695
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.8424,
+                "bbox": [
+                    302,
+                    1763,
+                    1150,
+                    1803
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9441,
+                "bbox": [
+                    243,
+                    1861,
+                    505,
+                    1907
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9779,
+                "bbox": [
+                    339,
+                    1971,
+                    1412,
+                    2119
+                ],
+                "index": 8
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    309,
+                    642,
+                    1402,
+                    668
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    309,
+                    686,
+                    792,
+                    712
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1116,
+                    744,
+                    1149
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    1769,
+                    1141,
+                    1796
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    244,
+                    1858,
+                    500,
+                    1909
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    346,
+                    1975,
+                    1405,
+                    2006
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    401,
+                    2027,
+                    1406,
+                    2063
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    403,
+                    2082,
+                    560,
+                    2117
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 2,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9648,
+                "bbox": [
+                    339,
+                    208,
+                    1411,
+                    302
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9446,
+                "bbox": [
+                    340,
+                    316,
+                    1249,
+                    355
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9614,
+                "bbox": [
+                    243,
+                    419,
+                    759,
+                    466
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.951,
+                "bbox": [
+                    300,
+                    530,
+                    1261,
+                    568
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9753,
+                "bbox": [
+                    301,
+                    583,
+                    1408,
+                    676
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9762,
+                "bbox": [
+                    301,
+                    692,
+                    1409,
+                    784
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9528,
+                "bbox": [
+                    301,
+                    801,
+                    1126,
+                    839
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9738,
+                "bbox": [
+                    302,
+                    854,
+                    1409,
+                    947
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9486,
+                "bbox": [
+                    302,
+                    963,
+                    1058,
+                    1002
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.961,
+                "bbox": [
+                    243,
+                    1065,
+                    724,
+                    1113
+                ],
+                "index": 10
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9799,
+                "bbox": [
+                    239,
+                    1171,
+                    1410,
+                    1341
+                ],
+                "index": 11
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.5566,
+                "bbox": [
+                    299,
+                    1346,
+                    1319,
+                    1381
+                ],
+                "index": 12
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9236,
+                "bbox": [
+                    230,
+                    1383,
+                    1391,
+                    1518
+                ],
+                "index": 13,
+                "html": "<table><tr><td>zrddsgen.exe -i [inputFile] -d [outputDir] -l C++</td></tr><tr><td>Linux下通过终端进入到ZRDDS安装目录/bin目录下运行，通常情况下的运行参数如下：</td></tr><tr><td>zrddsgen -i [inputFile] -d [outputDir] -l C++</td></tr></table>"
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.8392,
+                "bbox": [
+                    241,
+                    1525,
+                    1407,
+                    1605
+                ],
+                "index": 14
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9351,
+                "bbox": [
+                    240,
+                    1611,
+                    1404,
+                    1779
+                ],
+                "index": 15
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9134,
+                "bbox": [
+                    301,
+                    1784,
+                    1289,
+                    1823
+                ],
+                "index": 16
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9591,
+                "bbox": [
+                    243,
+                    1881,
+                    697,
+                    1927
+                ],
+                "index": 17
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9728,
+                "bbox": [
+                    244,
+                    1986,
+                    1392,
+                    2069
+                ],
+                "index": 18
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    345,
+                    211,
+                    1405,
+                    243
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    404,
+                    266,
+                    1090,
+                    297
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    345,
+                    318,
+                    1244,
+                    354
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    251,
+                    422,
+                    751,
+                    463
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    527,
+                    1256,
+                    566
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    587,
+                    1403,
+                    616
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    364,
+                    639,
+                    470,
+                    674
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    692,
+                    1406,
+                    731
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    367,
+                    750,
+                    729,
+                    780
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    803,
+                    1118,
+                    836
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    858,
+                    1404,
+                    888
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    364,
+                    913,
+                    468,
+                    946
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    969,
+                    1051,
+                    996
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    252,
+                    1070,
+                    714,
+                    1107
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    309,
+                    1174,
+                    1403,
+                    1203
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    250,
+                    1218,
+                    1402,
+                    1246
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    1260,
+                    1402,
+                    1291
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    1301,
+                    1374,
+                    1335
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    311,
+                    1351,
+                    1309,
+                    1376
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1527,
+                    1404,
+                    1561
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    1571,
+                    705,
+                    1603
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1613,
+                    1400,
+                    1645
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    247,
+                    1656,
+                    1388,
+                    1692
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    248,
+                    1699,
+                    1388,
+                    1733
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    247,
+                    1744,
+                    937,
+                    1780
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1785,
+                    1282,
+                    1819
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    246,
+                    1882,
+                    693,
+                    1924
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    1987,
+                    1387,
+                    2022
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    251,
+                    2030,
+                    1277,
+                    2063
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 3,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9483,
+                "bbox": [
+                    243,
+                    218,
+                    489,
+                    259
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9403,
+                "bbox": [
+                    302,
+                    319,
+                    503,
+                    357
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9377,
+                "bbox": [
+                    303,
+                    374,
+                    503,
+                    411
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9359,
+                "bbox": [
+                    303,
+                    428,
+                    503,
+                    464
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9181,
+                "bbox": [
+                    303,
+                    482,
+                    923,
+                    520
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9879,
+                "bbox": [
+                    365,
+                    542,
+                    1332,
+                    1207
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.8097,
+                "bbox": [
+                    303,
+                    1230,
+                    1391,
+                    1324
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9519,
+                "bbox": [
+                    243,
+                    1383,
+                    622,
+                    1425
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.952,
+                "bbox": [
+                    302,
+                    1485,
+                    765,
+                    1523
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9458,
+                "bbox": [
+                    303,
+                    1540,
+                    523,
+                    1578
+                ],
+                "index": 10
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9763,
+                "bbox": [
+                    303,
+                    1593,
+                    1420,
+                    1797
+                ],
+                "index": 11
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    247,
+                    218,
+                    484,
+                    258
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    316,
+                    500,
+                    362
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    303,
+                    371,
+                    500,
+                    415
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    427,
+                    499,
+                    466
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    486,
+                    918,
+                    515
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    1232,
+                    1388,
+                    1266
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    364,
+                    1287,
+                    1109,
+                    1322
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    1385,
+                    617,
+                    1423
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1489,
+                    758,
+                    1520
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    1539,
+                    519,
+                    1579
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    1596,
+                    1413,
+                    1631
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    365,
+                    1652,
+                    1412,
+                    1683
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    362,
+                    1703,
+                    418,
+                    1740
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    542,
+                    1702,
+                    953,
+                    1743
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1020,
+                    1706,
+                    1036,
+                    1725
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1100,
+                    1710,
+                    1413,
+                    1740
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    366,
+                    1761,
+                    1076,
+                    1793
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 4,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9672,
+                "bbox": [
+                    364,
+                    203,
+                    1371,
+                    845
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9428,
+                "bbox": [
+                    243,
+                    904,
+                    522,
+                    944
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9139,
+                "bbox": [
+                    301,
+                    1001,
+                    1362,
+                    1039
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9313,
+                "bbox": [
+                    671,
+                    1066,
+                    981,
+                    1104
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 1,
+                "label": "algorithm",
+                "score": 0.5103,
+                "bbox": [
+                    287,
+                    1124,
+                    1425,
+                    1792
+                ],
+                "index": 5
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    248,
+                    908,
+                    514,
+                    942
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    311,
+                    1006,
+                    1354,
+                    1032
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    674,
+                    1067,
+                    974,
+                    1103
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    526,
+                    1136,
+                    1124,
+                    1167
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    1176,
+                    383,
+                    1213
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1223,
+                    522,
+                    1253
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1269,
+                    895,
+                    1298
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    1317,
+                    326,
+                    1342
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    392,
+                    1313,
+                    839,
+                    1338
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    1354,
+                    332,
+                    1385
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    393,
+                    1354,
+                    1002,
+                    1383
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    393,
+                    1396,
+                    541,
+                    1426
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1440,
+                    979,
+                    1469
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    309,
+                    1485,
+                    495,
+                    1511
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1531,
+                    758,
+                    1563
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1585,
+                    525,
+                    1620
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1640,
+                    1073,
+                    1673
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1695,
+                    1254,
+                    1725
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1750,
+                    1233,
+                    1779
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 5,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.8231,
+                "bbox": [
+                    339,
+                    218,
+                    1369,
+                    874
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.5158,
+                "bbox": [
+                    304,
+                    901,
+                    1307,
+                    940
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.848,
+                "bbox": [
+                    337,
+                    961,
+                    1371,
+                    1622
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.7784,
+                "bbox": [
+                    302,
+                    1649,
+                    1407,
+                    1745
+                ],
+                "index": 4
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    907,
+                    1301,
+                    934
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1654,
+                    1401,
+                    1684
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    309,
+                    1706,
+                    711,
+                    1740
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 6,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9834,
+                "bbox": [
+                    341,
+                    215,
+                    1380,
+                    966
+                ],
+                "index": 1,
+                "html": "<table><tr><td colspan=\"4\">CPlusPlusinterfaceTest 压性质</td></tr><tr><td colspan=\"4\">配置(C): Debug2013 平台(P):</td></tr><tr><td>p 通用雕性 应用字符举油</td><td></td><td>活动(Win32)</td><td>配置管理器(O)..</td></tr><tr><td>配置服性</td><td>启用最小重新生成 是(/Gm)</td><td></td><td></td></tr><tr><td>常观</td><td>应用C++ 异常</td><td>星(/EHsc)</td><td></td></tr><tr><td>调试</td><td>较小类型检查</td><td>否</td><td></td></tr><tr><td>VC++ 目录</td><td>基本运行时检查</td><td>两者(/RTC1.等同于/RTCsu) (/RTC1)</td><td></td></tr><tr><td>C/C++</td><td>运行库</td><td>多线程试 DLL (/MDd)</td><td>日</td></tr><tr><td>常观</td><td>结构成员对齐</td><td>默认设置</td><td></td></tr><tr><td>优化</td><td>安全检查</td><td>应用安全检查(/GS)</td><td></td></tr><tr><td>预处理器 代码生成</td><td>应用值数设链接</td><td></td><td></td></tr><tr><td>语言</td><td>应用并行代码生成 应用增续指令集</td><td>未设置</td><td></td></tr><tr><td>预编课头 输出文件</td><td>浮点模型</td><td>精度(/fp:precise)</td><td></td></tr><tr><td>浏亮信息 高级 所有选项</td><td>应用浮点鼻第 创建可热修补缺像</td><td></td><td></td></tr><tr><td>自令行 链接器</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td>消单工具</td><td></td><td></td><td></td></tr><tr><td>XML 文相生成器</td><td></td><td></td><td></td></tr><tr><td>浏范信息 生成事体</td><td></td><td></td><td></td></tr><tr><td>自定义生成步骤 代码分析</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td>运行库</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td>指定运行库以进行链接。</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td>(/MT, /MTd, /MD, /MDd)</td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>确定 取消 应用(A)</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></table>"
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.7029,
+                "bbox": [
+                    671,
+                    1061,
+                    981,
+                    1096
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9906,
+                "bbox": [
+                    231,
+                    1118,
+                    1421,
+                    2126
+                ],
+                "index": 3,
+                "html": "<table><tr><td rowspan=1 colspan=1>语言</td><td rowspan=1 colspan=1>Visual Studio 版本</td><td rowspan=1 colspan=1>库文件</td><td rowspan=1 colspan=1>预编译符</td></tr><tr><td rowspan=12 colspan=1>C++</td><td rowspan=4 colspan=1>VS2008</td><td rowspan=1 colspan=1>ZRDDSCpp_VS2008.lib</td><td rowspan=1 colspan=1>_ZRDDSDLLIMPORTZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppd_VS2008.lib</td><td rowspan=1 colspan=1>_ZRDDSDLLIMPORTZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppz_VS2008.lib</td><td rowspan=1 colspan=1>ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppzd_VS2008.lib</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=4 colspan=1>VS2010</td><td rowspan=1 colspan=1>ZRDDSCpp_VS2010.lib</td><td rowspan=1 colspan=1>ZRDDSDLLIMPORT_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppd_VS2010.lib</td><td rowspan=1 colspan=1>_ZRDDSDLLIMPORTZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppz_VS2010.lib</td><td rowspan=1 colspan=1>ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppzd_VS2010.lib</td><td rowspan=1 colspan=1>ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=4 colspan=1>VS2013</td><td rowspan=1 colspan=1>ZRDDSCpp_VS2013.lib</td><td rowspan=1 colspan=1>_ZRDDSDLLIMPORTZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppd_VS2013.lib</td><td rowspan=1 colspan=1>ZRDDSDLLIMPORT_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppz_VS2013.lib</td><td rowspan=1 colspan=1>ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppzd_VS2013.lib</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>C</td><td rowspan=1 colspan=1>VS2008</td><td rowspan=1 colspan=1>ZRDDSC_VS2008.lib</td><td rowspan=1 colspan=1>_ZRDDSDLLIMPORT</td></tr></table>"
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    674,
+                    1060,
+                    977,
+                    1095
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 7,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9898,
+                "bbox": [
+                    230,
+                    195,
+                    1422,
+                    692
+                ],
+                "index": 1,
+                "html": "<table><tr><td rowspan=3 colspan=1></td><td rowspan=1 colspan=1>ZRDDSCd_VS2008.lib</td><td rowspan=1 colspan=1>_ZRDDSDLLIMPORT</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCz_VS2008.lib</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>ZRDDSCzd_VS2008.lib</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=4 colspan=1>VS2010</td><td rowspan=1 colspan=1>ZRDDSC_VS2010.lib</td><td rowspan=1 colspan=1>_ZRDDSDLLIMPORT</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCd_VS2010.lib</td><td rowspan=1 colspan=1>_ZRDDSDLLIMPORT</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCz_VS2010.lib</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>ZRDDSCzd_VS2010.lib</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=4 colspan=1>VS2013</td><td rowspan=1 colspan=1>ZRDDSC_VS2013.lib</td><td rowspan=1 colspan=1>_ZRDDSDLLIMPORT</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCd_VS2013.lib</td><td rowspan=1 colspan=1>ZRDDSDLLIMPORT</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCz_VS2013.lib</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>ZRDDSCzd_VS2013.lib</td><td rowspan=1 colspan=1></td></tr></table>"
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.8756,
+                "bbox": [
+                    302,
+                    739,
+                    1323,
+                    778
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9491,
+                "bbox": [
+                    242,
+                    834,
+                    421,
+                    874
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9878,
+                "bbox": [
+                    241,
+                    930,
+                    1410,
+                    1143
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9586,
+                "bbox": [
+                    243,
+                    1202,
+                    708,
+                    1249
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9789,
+                "bbox": [
+                    242,
+                    1307,
+                    1410,
+                    1390
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9527,
+                "bbox": [
+                    242,
+                    1443,
+                    489,
+                    1485
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9523,
+                "bbox": [
+                    301,
+                    1546,
+                    556,
+                    1584
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9547,
+                "bbox": [
+                    302,
+                    1600,
+                    524,
+                    1637
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9616,
+                "bbox": [
+                    301,
+                    1655,
+                    853,
+                    1693
+                ],
+                "index": 10
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9584,
+                "bbox": [
+                    301,
+                    1709,
+                    1035,
+                    1747
+                ],
+                "index": 11
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9586,
+                "bbox": [
+                    301,
+                    1763,
+                    1036,
+                    1801
+                ],
+                "index": 12
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9543,
+                "bbox": [
+                    302,
+                    1816,
+                    754,
+                    1854
+                ],
+                "index": 13
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    745,
+                    1318,
+                    770
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    246,
+                    832,
+                    417,
+                    878
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    937,
+                    1399,
+                    961
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    252,
+                    976,
+                    1401,
+                    1004
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    1021,
+                    1402,
+                    1053
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    252,
+                    1066,
+                    1402,
+                    1094
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    250,
+                    1109,
+                    627,
+                    1137
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    248,
+                    1204,
+                    703,
+                    1246
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    1307,
+                    1406,
+                    1344
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    1353,
+                    977,
+                    1387
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    247,
+                    1443,
+                    484,
+                    1484
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    1545,
+                    550,
+                    1585
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    1599,
+                    520,
+                    1639
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    1656,
+                    848,
+                    1690
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    1711,
+                    1029,
+                    1745
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    1764,
+                    1032,
+                    1798
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1819,
+                    748,
+                    1852
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 8,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9848,
+                "bbox": [
+                    564,
+                    196,
+                    1211,
+                    807
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.688,
+                "bbox": [
+                    302,
+                    869,
+                    1404,
+                    965
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9483,
+                "bbox": [
+                    243,
+                    1022,
+                    623,
+                    1065
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9499,
+                "bbox": [
+                    303,
+                    1125,
+                    721,
+                    1164
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9465,
+                "bbox": [
+                    303,
+                    1180,
+                    756,
+                    1219
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9821,
+                "bbox": [
+                    303,
+                    1233,
+                    1408,
+                    1487
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.983,
+                "bbox": [
+                    451,
+                    1501,
+                    1319,
+                    2136
+                ],
+                "index": 7
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    303,
+                    869,
+                    1404,
+                    908
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    365,
+                    927,
+                    1110,
+                    962
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    1025,
+                    617,
+                    1062
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1127,
+                    713,
+                    1160
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1180,
+                    751,
+                    1217
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1236,
+                    1404,
+                    1269
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    367,
+                    1292,
+                    1404,
+                    1322
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    362,
+                    1340,
+                    404,
+                    1381
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    562,
+                    1342,
+                    604,
+                    1381
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    763,
+                    1342,
+                    805,
+                    1380
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    970,
+                    1343,
+                    1004,
+                    1380
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1166,
+                    1343,
+                    1209,
+                    1381
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    367,
+                    1402,
+                    1399,
+                    1431
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    361,
+                    1449,
+                    436,
+                    1491
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 9,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9507,
+                "bbox": [
+                    242,
+                    217,
+                    521,
+                    259
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9487,
+                "bbox": [
+                    301,
+                    320,
+                    721,
+                    358
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9452,
+                "bbox": [
+                    302,
+                    374,
+                    757,
+                    413
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9832,
+                "bbox": [
+                    302,
+                    427,
+                    1410,
+                    576
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9776,
+                "bbox": [
+                    301,
+                    590,
+                    1409,
+                    684
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.9866,
+                "bbox": [
+                    459,
+                    699,
+                    1314,
+                    1330
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9453,
+                "bbox": [
+                    688,
+                    1367,
+                    961,
+                    1404
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9898,
+                "bbox": [
+                    247,
+                    1422,
+                    1405,
+                    1850
+                ],
+                "index": 8,
+                "html": "<table><tr><td rowspan=1 colspan=1>语言</td><td rowspan=1 colspan=1>编译所需库文件</td><td rowspan=1 colspan=1>说明</td><td rowspan=1 colspan=1>预编译符</td></tr><tr><td rowspan=4 colspan=1>C++</td><td rowspan=1 colspan=1>libZRDDSCppzd.a</td><td rowspan=1 colspan=1>Debug 版本静态库</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>libZRDDSCppz.a</td><td rowspan=1 colspan=1>Release 版本静态库</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>libZRDDSCppd.so</td><td rowspan=1 colspan=1>Debug 版本动态库</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>libZRDDSCpp.so</td><td rowspan=1 colspan=1>Release版本动态库</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=4 colspan=1>C</td><td rowspan=1 colspan=1>libZRDDSCzd.a</td><td rowspan=1 colspan=1>Debug 版本静态库</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>libZRDDSCz.a</td><td rowspan=1 colspan=1>Release 版本静态库</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>libZRDDSCd.so</td><td rowspan=1 colspan=1>Debug版本动态库</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>libZRDDSC.so</td><td rowspan=1 colspan=1>Release版本动态库</td><td rowspan=1 colspan=1></td></tr></table>"
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.6258,
+                "bbox": [
+                    301,
+                    1861,
+                    1409,
+                    1955
+                ],
+                "index": 9
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    221,
+                    515,
+                    256
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    321,
+                    714,
+                    356
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    374,
+                    751,
+                    411
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    428,
+                    1398,
+                    465
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    362,
+                    478,
+                    1407,
+                    525
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    365,
+                    539,
+                    798,
+                    575
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    595,
+                    1402,
+                    624
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    368,
+                    649,
+                    1311,
+                    677
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    694,
+                    1369,
+                    957,
+                    1402
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    1862,
+                    1405,
+                    1897
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    368,
+                    1918,
+                    1118,
+                    1948
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 10,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.985,
+                "bbox": [
+                    451,
+                    210,
+                    1320,
+                    837
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.6953,
+                "bbox": [
+                    244,
+                    853,
+                    1265,
+                    892
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9386,
+                "bbox": [
+                    242,
+                    947,
+                    421,
+                    988
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.987,
+                "bbox": [
+                    240,
+                    1044,
+                    1411,
+                    1258
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9475,
+                "bbox": [
+                    243,
+                    1315,
+                    652,
+                    1361
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9841,
+                "bbox": [
+                    242,
+                    1420,
+                    1411,
+                    1545
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9858,
+                "bbox": [
+                    300,
+                    1555,
+                    1411,
+                    1811
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9796,
+                "bbox": [
+                    300,
+                    1826,
+                    1410,
+                    1976
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9431,
+                "bbox": [
+                    611,
+                    2006,
+                    1041,
+                    2043
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9741,
+                "bbox": [
+                    249,
+                    2063,
+                    1405,
+                    2133
+                ],
+                "index": 10,
+                "html": "<table><tr><td>语言</td><td>编译所需库文件</td><td>说明</td><td>预编译符</td></tr></table>"
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    251,
+                    859,
+                    1259,
+                    884
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    247,
+                    947,
+                    416,
+                    990
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    310,
+                    1050,
+                    1401,
+                    1074
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    250,
+                    1092,
+                    1401,
+                    1120
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    250,
+                    1134,
+                    1403,
+                    1166
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    250,
+                    1179,
+                    1401,
+                    1207
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    250,
+                    1222,
+                    686,
+                    1251
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    247,
+                    1317,
+                    648,
+                    1358
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    1425,
+                    1403,
+                    1453
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    250,
+                    1467,
+                    1403,
+                    1495
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    250,
+                    1511,
+                    437,
+                    1540
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    1557,
+                    1402,
+                    1590
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    364,
+                    1611,
+                    1407,
+                    1646
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    364,
+                    1662,
+                    1408,
+                    1703
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    366,
+                    1721,
+                    1404,
+                    1755
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    366,
+                    1774,
+                    883,
+                    1808
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1828,
+                    1387,
+                    1859
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    365,
+                    1879,
+                    1406,
+                    1918
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    365,
+                    1935,
+                    1334,
+                    1973
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    617,
+                    2008,
+                    1035,
+                    2041
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 11,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9872,
+                "bbox": [
+                    248,
+                    196,
+                    1405,
+                    379
+                ],
+                "index": 1,
+                "html": "<table><tr><td rowspan=2 colspan=1>C++</td><td rowspan=1 colspan=1>ZRDDSCppzd.lib</td><td rowspan=1 colspan=1>Debug 版本静态库</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=1 colspan=1>ZRDDSCppz.lib</td><td rowspan=1 colspan=1>Release 版本静态库</td><td rowspan=1 colspan=1>_ZRDDSCPPINTERFACE</td></tr><tr><td rowspan=2 colspan=1>C</td><td rowspan=1 colspan=1>ZRDDSCzd.lib</td><td rowspan=1 colspan=1>Debug 版本静态库</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1>ZRDDSCz.lib</td><td rowspan=1 colspan=1>Release 版本静态库</td><td rowspan=1 colspan=1></td></tr></table>"
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9725,
+                "bbox": [
+                    302,
+                    427,
+                    1410,
+                    506
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9751,
+                "bbox": [
+                    301,
+                    515,
+                    1419,
+                    595
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 1,
+                "label": "algorithm",
+                "score": 0.9693,
+                "bbox": [
+                    368,
+                    611,
+                    1346,
+                    1067
+                ],
+                "index": 4
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    309,
+                    423,
+                    1406,
+                    465
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    367,
+                    473,
+                    729,
+                    506
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    516,
+                    1416,
+                    549
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    308,
+                    559,
+                    1384,
+                    592
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    464,
+                    614,
+                    652,
+                    629
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    397,
+                    632,
+                    442,
+                    644
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    564,
+                    636,
+                    573,
+                    650
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    574,
+                    634,
+                    657,
+                    650
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    400,
+                    646,
+                    468,
+                    658
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    564,
+                    649,
+                    649,
+                    666
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    399,
+                    657,
+                    444,
+                    673
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    564,
+                    663,
+                    573,
+                    678
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    398,
+                    671,
+                    444,
+                    687
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    565,
+                    679,
+                    696,
+                    697
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    565,
+                    697,
+                    574,
+                    709
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    576,
+                    695,
+                    711,
+                    710
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    564,
+                    708,
+                    575,
+                    743
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    576,
+                    712,
+                    733,
+                    727
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    563,
+                    738,
+                    575,
+                    777
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    575,
+                    740,
+                    688,
+                    759
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    557,
+                    773,
+                    573,
+                    790
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    576,
+                    773,
+                    673,
+                    789
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    553,
+                    781,
+                    576,
+                    859
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    605,
+                    788,
+                    710,
+                    804
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    605,
+                    804,
+                    802,
+                    819
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    607,
+                    818,
+                    781,
+                    837
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    555,
+                    849,
+                    673,
+                    870
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    553,
+                    861,
+                    576,
+                    1065
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    606,
+                    864,
+                    695,
+                    882
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    607,
+                    881,
+                    773,
+                    897
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    608,
+                    897,
+                    773,
+                    912
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    607,
+                    911,
+                    766,
+                    928
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    576,
+                    943,
+                    1322,
+                    958
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    576,
+                    975,
+                    1128,
+                    990
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    577,
+                    1007,
+                    803,
+                    1019
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    576,
+                    1037,
+                    733,
+                    1052
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 12,
+            "width": 1654,
+            "height": 2339
+        }
+    }
+]

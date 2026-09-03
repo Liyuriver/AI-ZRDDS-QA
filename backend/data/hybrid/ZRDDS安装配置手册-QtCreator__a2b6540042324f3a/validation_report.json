@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "failures": [],
+  "image_total": 8,
+  "pdf_image_total": null,
+  "pdf_image_total_policy": "informational_only",
+  "inserted_image_total": 6,
+  "inserted_image_ids": [
+    "img-p1-01",
+    "img-p2-04",
+    "source-p1-02",
+    "source-p1-03",
+    "source-p2-01",
+    "source-p2-03"
+  ],
+  "expected_non_table_image_total": 6,
+  "image_accounted_total": 8,
+  "image_accounting_ok": true,
+  "missing_insertions": [],
+  "duplicate_image_references": 0,
+  "image_coverage": 1.0,
+  "semantic_figure_total": 6,
+  "semantic_figure_paired_total": 6,
+  "missing_semantic_figures": [],
+  "table_excluded_total": 2,
+  "table_excluded_image_ids": [
+    "img-p1-02",
+    "img-p2-03"
+  ],
+  "table_header_excluded_total": 1,
+  "table_header_excluded_image_ids": [
+    "img-p1-02"
+  ],
+  "heading_sequence_ok": true,
+  "heading_level_jumps": 0,
+  "source_heading_total": 2,
+  "output_heading_total": 2,
+  "missing_angle_tokens": [],
+  "code_total": 3,
+  "missing_code_blocks": 0,
+  "unclosed_code_fences": 0,
+  "missing_images": [],
+  "missing_visual_information": [],
+  "missing_source_visuals": [],
+  "unresolved_visuals": [],
+  "ignored_non_knowledge_visuals": [
+    "img-p2-03"
+  ],
+  "invalid_unresolved_visuals": [],
+  "knowledge_visual_without_path": [],
+  "processed_visual_count": 6,
+  "binding_without_owner": [],
+  "multiple_owners": [],
+  "duplicate_physical_occurrences": [],
+  "late_source_vlm_failed": [],
+  "qwen_failed": 0,
+  "image_type_counts": {
+    "operation_screenshot": 1,
+    "table_image": 2,
+    "code_or_config": 5
+  },
+  "slot_total": 0,
+  "matched_slot_total": 0,
+  "unfilled_slots": [],
+  "generated_files": [
+    "enriched.md",
+    "chunks.json",
+    "chunks.jsonl",
+    "image_manifest.json",
+    "layout_blocks.json",
+    "preview.txt",
+    "validation_report.json"
+  ]
+}

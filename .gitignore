@@ -26,6 +26,10 @@ Thumbs.db
 # Project-local npm cache
 .npm-cache/
 
+# Local data bundles and runtime uploads
+backend/data(1).zip
+backend/data/avatars/
+
 # Test / coverage cache
 .pytest_cache/
 .coverage

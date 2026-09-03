@@ -1,0 +1,108 @@
+[
+  {
+    "code_id": "code-p6-01",
+    "source_occurrence_id": "mineru-code:6:55:code-p6-01",
+    "page": 6,
+    "bbox": [
+      0.173,
+      0.48,
+      0.862,
+      0.766
+    ],
+    "order": 55,
+    "code_content": "ZRDDS(C|Cpp)[z][d]_(VS2008|VS2010|VS2013).lib其中：ZRDDS 固定前缀；C 或者Cpp表明当前库是用于C 或者 C++语言；z 表明当前为静态库，否则为动态库；d 表明当前库是Debug版本，否则为 Release版本固定分隔符VS2008/VS2010/VS2013 表明当前库用于哪个 IDE。工程配置如下： 在菜单栏点击项目，选择属性。 选择链接器。 选择常规，在附加库目录中添加“$(ZRDDS_HOME)/lib”。 选择输入，在附加依赖项中根据需要，选择添加表3 中的一个库文件。 在项目->属性->链接器->输入->附加依赖项中根据表3 配置运行时库。",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [
+          {
+            "type": "text",
+            "content": "表 2DDS 运行库命名规则"
+          }
+        ],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "ZRDDS(C|Cpp)[z][d]_(VS2008|VS2010|VS2013).lib其中：ZRDDS 固定前缀；C 或者Cpp表明当前库是用于C 或者 C++语言；z 表明当前为静态库，否则为动态库；d 表明当前库是Debug版本，否则为 Release版本固定分隔符VS2008/VS2010/VS2013 表明当前库用于哪个 IDE。工程配置如下： 在菜单栏点击项目，选择属性。 选择链接器。 选择常规，在附加库目录中添加“$(ZRDDS_HOME)/lib”。 选择输入，在附加依赖项中根据需要，选择添加表3 中的一个库文件。 在项目->属性->链接器->输入->附加依赖项中根据表3 配置运行时库。"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        173,
+        480,
+        862,
+        766
+      ],
+      "page_idx": 5
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0010",
+    "section": "2. 安装与配置 > 2.5. Viusal Studio 配置工程 > 2.5.3. 配置链接库",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "ZRDDS(C|Cpp)[z][d]_(VS2008|VS2010|VS2013).lib其中：ZRDDS 固定前缀；C 或者Cpp表明当前库是用于C 或者 C++语言；z 表明当前为静态库，否则为动态库；d 表明当前库是Debug版本，否则为 Release版本固定分隔符VS2008/VS2010/VS2013 表明当前库用于哪个 IDE。工程配置如下： 在菜单栏点击项目，选择属性。 选择链接器。 选择常规，在附加库目录中添加“$(ZRDDS_HOME)/lib”。 选择输入，在附加依赖项中根据需要，选择添加表3 中的一个库文件。 在项目->属性->链接器->输入->附加依赖项中根据表3 配置运行时库。",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p13-02",
+    "source_occurrence_id": "pdf-image:p13:o1:xref88",
+    "page": 13,
+    "bbox": [
+      0.221,
+      0.26,
+      0.813,
+      0.456
+    ],
+    "order": 98,
+    "code_content": "QT += core\nQT -= gui\n\nTARGET = DDSApp\nCONFIG += console\nCONFIG -= app_bundle\n\nTEMPLATE = app\n\nSOURCES += \\\n    CharSeq.cpp \\\n    CharSeq_publication.cpp \\\n    CharSeqTypeSupport.cpp\n\nHEADERS += \\\n    CharSeq.h \\\n    CharSeqDataReader.h \\\n    CharSeqDataWriter.h \\\n    CharSeqTypeSupport.h\n\nINCLUDEPATH += $(ZRDDS_HOME)\\include\\ZRDDSCoreInterface $(ZRDDS_HOME)\\include\\CPlusPlusInterface\n\nLIBS += -L $(ZRDDS_HOME)\\lib -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\n\nDEFINES += _ZRDDSCPPINTERFACE\n\nTARGET = CharSeq_pub",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "DDSApp. pr DDSApP QT += core DDSApp.pro 头文件 源文件 4 TARGET = DDSApp CONFIG += console CONFIG -= app bundle TEMPLATE = app CharSeq.cpp CharSeg publication.cpp CharSeqTypeSupport.cpp Charseq.h\\ CharSeqDataReader.h\\ CharSeqDataWriter.h\\ CharSeqTypeSupport.h INCLUDEPATH += S(ZRDDS HOME)\\include\\ZRDDSCoreInterface S(ZRDDS HOME)\\include\\CPlusPlusInterface LIBS += -L $(ZRDDS HOME)\\lib -1ZRDDSCppzd -lws2 32 -lwsock32 -liphlpapi DEFINES += ZRDDSCPPINTERFACE TARGET = CharSeq pub"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        221,
+        260,
+        813,
+        456
+      ],
+      "page_idx": 12
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0017",
+    "section": "2. 安装与配置 > 2.7. QtCreator 项目配置",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "not_used",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": "images/source-p13-01.png",
+    "source_visual_id": "source-p13-01",
+    "source_image_status": "reused_native_embedded_occurrence",
+    "mineru_code_content": "DDSApp. pr DDSApP QT += core DDSApp.pro 头文件 源文件 4 TARGET = DDSApp CONFIG += console CONFIG -= app bundle TEMPLATE = app CharSeq.cpp CharSeg publication.cpp CharSeqTypeSupport.cpp Charseq.h\\ CharSeqDataReader.h\\ CharSeqDataWriter.h\\ CharSeqTypeSupport.h INCLUDEPATH += S(ZRDDS HOME)\\include\\ZRDDSCoreInterface S(ZRDDS HOME)\\include\\CPlusPlusInterface LIBS += -L $(ZRDDS HOME)\\lib -1ZRDDSCppzd -lws2 32 -lwsock32 -liphlpapi DEFINES += ZRDDSCPPINTERFACE TARGET = CharSeq pub",
+    "code_content_candidate": "QT += core\nQT -= gui\n\nTARGET = DDSApp\nCONFIG += console\nCONFIG -= app_bundle\n\nTEMPLATE = app\n\nSOURCES += \\\n    CharSeq.cpp \\\n    CharSeq_publication.cpp \\\n    CharSeqTypeSupport.cpp\n\nHEADERS += \\\n    CharSeq.h \\\n    CharSeqDataReader.h \\\n    CharSeqDataWriter.h \\\n    CharSeqTypeSupport.h\n\nINCLUDEPATH += $(ZRDDS_HOME)\\include\\ZRDDSCoreInterface $(ZRDDS_HOME)\\include\\CPlusPlusInterface\n\nLIBS += -L $(ZRDDS_HOME)\\lib -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\n\nDEFINES += _ZRDDSCPPINTERFACE\n\nTARGET = CharSeq_pub",
+    "code_verification_status": "primary_review",
+    "code_transcription_confidence": "high",
+    "code_context_corrections": []
+  }
+]

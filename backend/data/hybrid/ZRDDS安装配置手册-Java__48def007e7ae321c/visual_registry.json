@@ -1,0 +1,301 @@
+[
+  {
+    "occurrence_id": "img-p1-01",
+    "source_kind": "mineru",
+    "page": 1,
+    "bbox": [
+      0.193,
+      0.418,
+      0.803,
+      0.467
+    ],
+    "path": "images/6725590b1c0f57b6231bb32d590166487b95caf59f3bf8223c174e890d69abdc.jpg",
+    "caption": "表 1 臻融数据分发服务 DDS 系统软件软件环境要求",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate"
+  },
+  {
+    "occurrence_id": "img-p1-02",
+    "source_kind": "pdf_native",
+    "page": 1,
+    "bbox": [
+      0.295,
+      0.648,
+      0.737,
+      0.872
+    ],
+    "path": "images/img-p1-02.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p2-03",
+    "source_kind": "pdf_native",
+    "page": 2,
+    "bbox": [
+      0.295,
+      0.091,
+      0.737,
+      0.316
+    ],
+    "path": "images/img-p2-03.png",
+    "caption": "",
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p2-04",
+    "source_kind": "pdf_native",
+    "page": 2,
+    "bbox": [
+      0.295,
+      0.35,
+      0.737,
+      0.576
+    ],
+    "path": "images/img-p2-04.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p2-05",
+    "source_kind": "pdf_native",
+    "page": 2,
+    "bbox": [
+      0.299,
+      0.629,
+      0.734,
+      0.783
+    ],
+    "path": "images/img-p2-05.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p3-06",
+    "source_kind": "pdf_native",
+    "page": 3,
+    "bbox": [
+      0.366,
+      0.091,
+      0.667,
+      0.243
+    ],
+    "path": "images/img-p3-06.png",
+    "caption": null,
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p3-07",
+    "source_kind": "pdf_native",
+    "page": 3,
+    "bbox": [
+      0.295,
+      0.278,
+      0.736,
+      0.502
+    ],
+    "path": "images/img-p3-07.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p4-08",
+    "source_kind": "pdf_native",
+    "page": 4,
+    "bbox": [
+      0.221,
+      0.436,
+      0.631,
+      0.84
+    ],
+    "path": "images/img-p4-08.png",
+    "caption": null,
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0007",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p5-09",
+    "source_kind": "pdf_native",
+    "page": 5,
+    "bbox": [
+      0.149,
+      0.227,
+      0.847,
+      0.596
+    ],
+    "path": "images/img-p5-09.png",
+    "caption": null,
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0008",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p6-10",
+    "source_kind": "pdf_native",
+    "page": 6,
+    "bbox": [
+      0.149,
+      0.085,
+      0.848,
+      0.455
+    ],
+    "path": "images/img-p6-10.png",
+    "caption": null,
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0009",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p6-11",
+    "source_kind": "pdf_native",
+    "page": 6,
+    "bbox": [
+      0.188,
+      0.74,
+      0.877,
+      0.829
+    ],
+    "path": "images/img-p6-11.png",
+    "caption": "",
+    "visual_type": "terminal_or_log",
+    "roles": [
+      "terminal_or_log"
+    ],
+    "semantic_owner_chunk_id": "chunk-0011",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p7-12",
+    "source_kind": "pdf_native",
+    "page": 7,
+    "bbox": [
+      0.186,
+      0.09,
+      0.798,
+      0.239
+    ],
+    "path": "images/img-p7-12.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0011",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p7-13",
+    "source_kind": "pdf_native",
+    "page": 7,
+    "bbox": [
+      0.184,
+      0.344,
+      0.88,
+      0.589
+    ],
+    "path": "images/img-p7-13.png",
+    "caption": "",
+    "visual_type": "terminal_or_log",
+    "roles": [
+      "terminal_or_log"
+    ],
+    "semantic_owner_chunk_id": "chunk-0011",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  }
+]

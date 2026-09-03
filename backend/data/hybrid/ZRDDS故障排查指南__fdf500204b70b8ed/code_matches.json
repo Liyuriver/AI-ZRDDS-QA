@@ -1,0 +1,927 @@
+[
+  {
+    "code_id": "code-p15-01",
+    "source_occurrence_id": "mineru-code:15:76:code-p15-01",
+    "page": 15,
+    "bbox": [
+      0.215,
+      0.536,
+      0.712,
+      0.589
+    ],
+    "order": 76,
+    "code_content": "client:udp: iperf –u –c 192.168.31.11(server 端的 ip) –b 1000M –l 1024tcp: iperf –c 192.168.31.11 –l 1024",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "client:udp: iperf –u –c 192.168.31.11(server 端的 ip) –b 1000M –l 1024tcp: iperf –c 192.168.31.11 –l 1024"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        215,
+        536,
+        712,
+        589
+      ],
+      "page_idx": 14
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0009",
+    "section": "2. 排故手段 > 2.1. 网络工具 > 2.1.2. iperf",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "client:udp: iperf –u –c 192.168.31.11(server 端的 ip) –b 1000M –l 1024tcp: iperf –c 192.168.31.11 –l 1024",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p25-02",
+    "source_occurrence_id": "mineru-code:25:149:code-p25-02",
+    "page": 25,
+    "bbox": [
+      0.142,
+      0.684,
+      0.715,
+      0.796
+    ],
+    "order": 149,
+    "code_content": "配置dpf的dds_log的qos；dds只会打印在界面上，而不会输出到文件里 <participantfactory_qos> <dds_log> <file_mask>0</file_mask> </dds_log> </participantfactory_qos>",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "配置dpf的dds_log的qos；dds只会打印在界面上，而不会输出到文件里 <participantfactory_qos> <dds_log> <file_mask>0</file_mask> </dds_log> </participantfactory_qos>"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        142,
+        684,
+        715,
+        796
+      ],
+      "page_idx": 24
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0017",
+    "section": "2. 排故手段 > 2.2. 交互式日志 > 2.2.1. ZRDDS 日志系统 > 2.2.1.3. 日志输出控制 > 2.2.1.3.1. 关闭日志文件输出",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "配置dpf的dds_log的qos；dds只会打印在界面上，而不会输出到文件里 <participantfactory_qos> <dds_log> <file_mask>0</file_mask> </dds_log> </participantfactory_qos>",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p26-03",
+    "source_occurrence_id": "mineru-code:26:157:code-p26-03",
+    "page": 26,
+    "bbox": [
+      0.174,
+      0.252,
+      0.838,
+      0.393
+    ],
+    "order": 157,
+    "code_content": "**************************时间 **************************LEVEL：日志级别FILE：源码文件名FUNC：函数名 (LINE：源码文件中日志行号)具体日志内容*******************************************************************",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "**************************时间 **************************LEVEL：日志级别FILE：源码文件名FUNC：函数名 (LINE：源码文件中日志行号)具体日志内容*******************************************************************"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        174,
+        252,
+        838,
+        393
+      ],
+      "page_idx": 25
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0019",
+    "section": "2. 排故手段 > 2.2. 交互式日志 > 2.2.1. ZRDDS 日志系统 > 2.2.1.4. 日志输出格式",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "**************************时间 **************************LEVEL：日志级别FILE：源码文件名FUNC：函数名 (LINE：源码文件中日志行号)具体日志内容*******************************************************************",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p28-04",
+    "source_occurrence_id": "mineru-code:28:181:code-p28-04",
+    "page": 28,
+    "bbox": [
+      0.141,
+      0.486,
+      0.855,
+      0.712
+    ],
+    "order": 181,
+    "code_content": "//开启日志号为 3002 到 4003 区间内的日志（包括 3002 与 4003）debug_cmd 0 3002 4003//取消使能日志号为3020到3030区间内的日志（包括3020与3030）debug_cmd 1 3020 3030//使能域参与者工厂调试主题相关调试信息debug_cmd 2 ZRDDS_DOMAINPARTICIPANT_TOPIC//取消使能域参与者相关调试信息debug_cmd 3 ZRDDS_DOMAINPARTICIPANT_TOPIC//使能指定实体debug_cmd 4 00000000000000000000000000000000//使能级别掩码为允许控制台，文件，分布式日志都使能所有等级的日志debug_cmd 6 1E 1E 1E",
+    "raw": {
+      "type": "code",
+      "content": {
+        "code_caption": [],
+        "code_content": [
+          {
+            "type": "text",
+            "content": "//开启日志号为 3002 到 4003 区间内的日志（包括 3002 与 4003）debug_cmd 0 3002 4003//取消使能日志号为3020到3030区间内的日志（包括3020与3030）debug_cmd 1 3020 3030//使能域参与者工厂调试主题相关调试信息debug_cmd 2 ZRDDS_DOMAINPARTICIPANT_TOPIC//取消使能域参与者相关调试信息debug_cmd 3 ZRDDS_DOMAINPARTICIPANT_TOPIC//使能指定实体debug_cmd 4 00000000000000000000000000000000//使能级别掩码为允许控制台，文件，分布式日志都使能所有等级的日志debug_cmd 6 1E 1E 1E"
+          }
+        ],
+        "code_footnote": [],
+        "code_language": "c"
+      },
+      "bbox": [
+        141,
+        486,
+        855,
+        712
+      ],
+      "page_idx": 27
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0023",
+    "section": "2. 排故手段 > 2.2. 交互式日志 > 2.2.2. ZRDDS 日志控制 > 2.2.2.1. 交互式日志调试文件 > 2.2.2.1.3. 调试文件示例",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "//开启日志号为 3002 到 4003 区间内的日志（包括 3002 与 4003）debug_cmd 0 3002 4003//取消使能日志号为3020到3030区间内的日志（包括3020与3030）debug_cmd 1 3020 3030//使能域参与者工厂调试主题相关调试信息debug_cmd 2 ZRDDS_DOMAINPARTICIPANT_TOPIC//取消使能域参与者相关调试信息debug_cmd 3 ZRDDS_DOMAINPARTICIPANT_TOPIC//使能指定实体debug_cmd 4 00000000000000000000000000000000//使能级别掩码为允许控制台，文件，分布式日志都使能所有等级的日志debug_cmd 6 1E 1E 1E",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p36-05",
+    "source_occurrence_id": "mineru-code:36:234:code-p36-05",
+    "page": 36,
+    "bbox": [
+      0.2,
+      0.179,
+      0.885,
+      0.253
+    ],
+    "order": 234,
+    "code_content": "",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [
+          {
+            "type": "text",
+            "content": "图 21 选择抓取网卡"
+          }
+        ],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "捕获…使用这个过滤器：输入捕获过滤器…VMware Network Adapter VMnet8本地连接 VMware Network Adapter VMnet1"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        200,
+        179,
+        885,
+        253
+      ],
+      "page_idx": 35
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0031",
+    "section": "2. 排故手段 > 2.3. 抓包工具 > 2.3.3. WireShark > 2.3.3.1. WireShark 数据抓包",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "missing_code_content",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "record_status": "non_code_visual_excluded",
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "non_code_visual_excluded",
+    "mineru_code_content": "捕获…使用这个过滤器：输入捕获过滤器…VMware Network Adapter VMnet8本地连接 VMware Network Adapter VMnet1",
+    "code_verification_status": "non_code_visual_excluded"
+  },
+  {
+    "code_id": "code-p44-06",
+    "source_occurrence_id": "pdf-image:p44:o1:xref343",
+    "page": 44,
+    "bbox": [
+      0.147,
+      0.565,
+      0.848,
+      0.708
+    ],
+    "order": 294,
+    "code_content": "说明\n4 error C2039: “clear” : 不是 “DDS_StringSeq” 的成员\n2 error C2039: “ensure_length” : 不是 “DDS_StringSeq” 的成员\n3 error C2039: “set_at” : 不是 “DDS_StringSeq” 的成员\n7 IntelliSense: class “DDS_StringSeq” 没有成员 “clear”\n5 IntelliSense: class “DDS_StringSeq” 没有成员 “ensure_length”\n6 IntelliSense: class “DDS_StringSeq” 没有成员 “set_at”\n1 warning MSB8028: The intermediate directory (Debug\\) contains files shared from another project (test_subscription.vcxproj). This can lead to incorrect clean and rebuild behavior.",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [
+          {
+            "type": "text",
+            "content": "图 33 预编译符缺失导致的编译失败报错图"
+          }
+        ],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "说明 文件 项目 4 error C2039:“clear”：不是“DDS_StringSeq”的成员 test_publication.cpp 1 58 test_publication 2 error C2039: “ensure_length”:不是“DDS_StringSeq”的成员 test_publication.cpp 1 56 test_publication 3 error C2039: “set_at\"：不是“DDS_StringSeq”的成员 test_publication.cpp test_publication 7 IntelliSense: class \"DDS_StringSeq\" 没有成员 \"clear\" test_publication.cpp 50 58 test_publication  5 IntelliSense: class \"DDS_StringSeq\"没有成员 \"ensure_length\" test_publication.cpp 51 56 test_publication 6 IntelliSense: class \"DDS_StringSeq* 没有成员 \"set_at test_publication.cpp 47 57 test_publication A1 warning MSB8028: The intermediate directory (Debug) contains files shared from another project Microsoft.CppBuild.targets 5 388 test_publication (test_subscription.vcxproj). This can lead to incorrect clean and rebuild behavior. 错误列表 输出 查找结果 1 查找符号结果"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        147,
+        565,
+        848,
+        708
+      ],
+      "page_idx": 43
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0037",
+    "section": "3. 典型故障 > 3.1. 编译失败 > 3.1.2. 预编译符缺失",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "not_used",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": "images/source-p44-01.png",
+    "source_visual_id": "source-p44-01",
+    "source_image_status": "reused_native_embedded_occurrence",
+    "mineru_code_content": "说明 文件 项目 4 error C2039:“clear”：不是“DDS_StringSeq”的成员 test_publication.cpp 1 58 test_publication 2 error C2039: “ensure_length”:不是“DDS_StringSeq”的成员 test_publication.cpp 1 56 test_publication 3 error C2039: “set_at\"：不是“DDS_StringSeq”的成员 test_publication.cpp test_publication 7 IntelliSense: class \"DDS_StringSeq\" 没有成员 \"clear\" test_publication.cpp 50 58 test_publication  5 IntelliSense: class \"DDS_StringSeq\"没有成员 \"ensure_length\" test_publication.cpp 51 56 test_publication 6 IntelliSense: class \"DDS_StringSeq* 没有成员 \"set_at test_publication.cpp 47 57 test_publication A1 warning MSB8028: The intermediate directory (Debug) contains files shared from another project Microsoft.CppBuild.targets 5 388 test_publication (test_subscription.vcxproj). This can lead to incorrect clean and rebuild behavior. 错误列表 输出 查找结果 1 查找符号结果",
+    "code_content_candidate": "说明\n4 error C2039: “clear” : 不是 “DDS_StringSeq” 的成员\n2 error C2039: “ensure_length” : 不是 “DDS_StringSeq” 的成员\n3 error C2039: “set_at” : 不是 “DDS_StringSeq” 的成员\n7 IntelliSense: class “DDS_StringSeq” 没有成员 “clear”\n5 IntelliSense: class “DDS_StringSeq” 没有成员 “ensure_length”\n6 IntelliSense: class “DDS_StringSeq” 没有成员 “set_at”\n1 warning MSB8028: The intermediate directory (Debug\\) contains files shared from another project (test_subscription.vcxproj). This can lead to incorrect clean and rebuild behavior.",
+    "code_verification_status": "primary_review",
+    "code_transcription_confidence": "high",
+    "code_context_corrections": []
+  },
+  {
+    "code_id": "code-p46-07",
+    "source_occurrence_id": "mineru-code:46:326:code-p46-07",
+    "page": 46,
+    "bbox": [
+      0.181,
+      0.489,
+      0.889,
+      0.59
+    ],
+    "order": 326,
+    "code_content": "",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": ".⊥.me风用洲口誤坏，止风用里，付冰士快“/LTCG”规范)版本\\vs_2008_x32\\ZRDDS\\ZRDDS-2.3.3\\examples\\cpp\\ide\\Debug\\DataReceiveByListener_Subscription_i8f:error LNK2001:无法解析的外部符号 EnumProcessModules@16:errorLNK2001:无法解析的外部符号_GetModuleFileNameExA@1632\\ZRDDS\\ZRDDS-2.3.3\\examples\\cpp\\ide\\Debug\\DataReceiveByListener_Subscription_i86Win32VS2008.e:20220928\\版本\\vs 2008 x32\\ZRDDS\\ZRDDS-2.3.3\\examples\\cpp\\ide\\DataReceiveByListener Subscription'- 3 个错误，1 个警告姚讨 0个=========="
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        181,
+        489,
+        889,
+        590
+      ],
+      "page_idx": 45
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0042",
+    "section": "3. 典型故障 > 3.1. 编译失败 > 3.1.7. 丢失 Psapi.lib",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "missing_code_content",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "record_status": "non_code_visual_excluded",
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "non_code_visual_excluded",
+    "mineru_code_content": ".⊥.me风用洲口誤坏，止风用里，付冰士快“/LTCG”规范)版本\\vs_2008_x32\\ZRDDS\\ZRDDS-2.3.3\\examples\\cpp\\ide\\Debug\\DataReceiveByListener_Subscription_i8f:error LNK2001:无法解析的外部符号 EnumProcessModules@16:errorLNK2001:无法解析的外部符号_GetModuleFileNameExA@1632\\ZRDDS\\ZRDDS-2.3.3\\examples\\cpp\\ide\\Debug\\DataReceiveByListener_Subscription_i86Win32VS2008.e:20220928\\版本\\vs 2008 x32\\ZRDDS\\ZRDDS-2.3.3\\examples\\cpp\\ide\\DataReceiveByListener Subscription'- 3 个错误，1 个警告姚讨 0个==========",
+    "code_verification_status": "non_code_visual_excluded"
+  },
+  {
+    "code_id": "code-p46-08",
+    "source_occurrence_id": "mineru-code:46:330:code-p46-08",
+    "page": 46,
+    "bbox": [
+      0.147,
+      0.72,
+      0.855,
+      0.795
+    ],
+    "order": 330,
+    "code_content": "",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "示输出来源(S):生成 之1> 正在生成代码1> ZRDDSCppzd_VS2015.lib(ZRBuiltinTypeCPlusPlusSequence.obj)：找到 MSIL.netmodule或使用 /GL 编译的模块；正在使用 /LTCG 重新启动链接；将 /LTCG 添加到链接命令行以改1>LINK：warning LNK4075：忽略“/INCREMENTAL”(由于“/LTCG”规范）1>main_pub.obj:warning LNK4075:忽略“/EDITANDCONTINUE”(由于“/OPT:LBR”规范)1>LINK：fatal error C1900:“P1”(第“20150812”版)和“P2”(第“20130802”版)之间I1 不匹配1>LINK：fatal error LNK1257: 代码生成失败生成：成功0个，失败1个，最新0个，跳过0个"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        147,
+        720,
+        855,
+        795
+      ],
+      "page_idx": 45
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0043",
+    "section": "3. 典型故障 > 3.1. 编译失败 > 3.1.8. VS2015 版本（update 3）和库不匹配",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "missing_code_content",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "record_status": "non_code_visual_excluded",
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "non_code_visual_excluded",
+    "mineru_code_content": "示输出来源(S):生成 之1> 正在生成代码1> ZRDDSCppzd_VS2015.lib(ZRBuiltinTypeCPlusPlusSequence.obj)：找到 MSIL.netmodule或使用 /GL 编译的模块；正在使用 /LTCG 重新启动链接；将 /LTCG 添加到链接命令行以改1>LINK：warning LNK4075：忽略“/INCREMENTAL”(由于“/LTCG”规范）1>main_pub.obj:warning LNK4075:忽略“/EDITANDCONTINUE”(由于“/OPT:LBR”规范)1>LINK：fatal error C1900:“P1”(第“20150812”版)和“P2”(第“20130802”版)之间I1 不匹配1>LINK：fatal error LNK1257: 代码生成失败生成：成功0个，失败1个，最新0个，跳过0个",
+    "code_verification_status": "non_code_visual_excluded"
+  },
+  {
+    "code_id": "code-p51-09",
+    "source_occurrence_id": "mineru-code:51:359:code-p51-09",
+    "page": 51,
+    "bbox": [
+      0.166,
+      0.385,
+      0.831,
+      0.447
+    ],
+    "order": 359,
+    "code_content": "",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [
+          {
+            "type": "text",
+            "content": "图 42 日志文件中的 DDS 版本信息打印"
+          }
+        ],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "Wed Mar 16 15:38:14 2022 Current ZRDDS version(2.2.7) was compiled at Mar 16 2022 13:56:56 大火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        166,
+        385,
+        831,
+        447
+      ],
+      "page_idx": 50
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0047",
+    "section": "3. 典型故障 > 3.2. 初始化失败 > 3.2.2. 崩溃",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "missing_code_content",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "record_status": "non_code_visual_excluded",
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "non_code_visual_excluded",
+    "mineru_code_content": "Wed Mar 16 15:38:14 2022 Current ZRDDS version(2.2.7) was compiled at Mar 16 2022 13:56:56 大火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火火",
+    "code_verification_status": "non_code_visual_excluded"
+  },
+  {
+    "code_id": "code-p52-10",
+    "source_occurrence_id": "mineru-code:52:379:code-p52-10",
+    "page": 52,
+    "bbox": [
+      0.233,
+      0.705,
+      0.84,
+      0.912
+    ],
+    "order": 379,
+    "code_content": "<participantfactory_qos> <property> <value> <element> <name>sysctl.global.network.disabled_interface</name> <value>docker0</value> <propagate>false</propagate> </element> </value> </property> </participantfactory_qos>",
+    "raw": {
+      "type": "code",
+      "content": {
+        "code_caption": [],
+        "code_content": [
+          {
+            "type": "text",
+            "content": "<participantfactory_qos> <property> <value> <element> <name>sysctl.global.network.disabled_interface</name> <value>docker0</value> <propagate>false</propagate> </element> </value> </property> </participantfactory_qos>"
+          }
+        ],
+        "code_footnote": [],
+        "code_language": "xml"
+      },
+      "bbox": [
+        233,
+        705,
+        840,
+        912
+      ],
+      "page_idx": 51
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0049",
+    "section": "3. 典型故障 > 3.3. 收不到数据 > 3.3.1. 网络环境检测",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "<participantfactory_qos> <property> <value> <element> <name>sysctl.global.network.disabled_interface</name> <value>docker0</value> <propagate>false</propagate> </element> </value> </property> </participantfactory_qos>",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p56-11",
+    "source_occurrence_id": "pdf-image:p56:o1:xref397",
+    "page": 56,
+    "bbox": [
+      0.176,
+      0.092,
+      0.848,
+      0.223
+    ],
+    "order": 410,
+    "code_content": "submessageId: DATA (0x15)\n▸ Flags: 0x05, Data present, Endianness bit\noctetsToNextHeader: 64\n0000 0000 0000 0000 = Extra flags: 0x0000\nOctets to inline QoS: 16\n▸ readerEntityId: 0xb0000004 (Application-defined reader (no key): 0x0b0000)\n▸ writerEntityId: 0xd0000003 (Application-defined writer (no key): 0x0d0000)\nwriterSeqNumber: 3\n▸ serializedData",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [
+          {
+            "type": "text",
+            "content": "图 52 DATA 子消息"
+          }
+        ],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "submessageId: DATA (0x15) Flags: 0x05, Data present, Endianness bit octetsToNextHeader: 64 0000 0000 0000 0000 = Extra flags: 0x0000 Octets to inline QoS: 16 readerEntityId: 0x0b000004 (Application-defined reader (no key): 0x0b0000) writerEntityId: 0x0d000003 (Application-defined writer (no key): 0x0d0000) writerSeqNumber: 3  serializedData"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        176,
+        92,
+        848,
+        223
+      ],
+      "page_idx": 55
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0051",
+    "section": "3. 典型故障 > 3.3. 收不到数据 > 3.3.3. 高级诊断",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "not_used",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": "images/source-p56-01.png",
+    "source_visual_id": "source-p56-01",
+    "source_image_status": "reused_native_embedded_occurrence",
+    "mineru_code_content": "submessageId: DATA (0x15) Flags: 0x05, Data present, Endianness bit octetsToNextHeader: 64 0000 0000 0000 0000 = Extra flags: 0x0000 Octets to inline QoS: 16 readerEntityId: 0x0b000004 (Application-defined reader (no key): 0x0b0000) writerEntityId: 0x0d000003 (Application-defined writer (no key): 0x0d0000) writerSeqNumber: 3  serializedData",
+    "code_content_candidate": "submessageId: DATA (0x15)\n▸ Flags: 0x05, Data present, Endianness bit\noctetsToNextHeader: 64\n0000 0000 0000 0000 = Extra flags: 0x0000\nOctets to inline QoS: 16\n▸ readerEntityId: 0xb0000004 (Application-defined reader (no key): 0x0b0000)\n▸ writerEntityId: 0xd0000003 (Application-defined writer (no key): 0x0d0000)\nwriterSeqNumber: 3\n▸ serializedData",
+    "code_verification_status": "verified_primary",
+    "code_transcription_confidence": "high",
+    "code_context_corrections": []
+  },
+  {
+    "code_id": "code-p56-12",
+    "source_occurrence_id": "pdf-image:p56:o2:xref398",
+    "page": 56,
+    "bbox": [
+      0.223,
+      0.457,
+      0.796,
+      0.556
+    ],
+    "order": 414,
+    "code_content": "submessageId: HEARTBEAT (0x07)\nFlags: 0x01, Endianness bit\noctetsToNextHeader: 28\n> readerEntityId: 0x0b000004 (Application-defined reader (no key): 0x0b00000)\n> writerEntityId: 0x0d000003 (Application-defined writer (no key): 0x0d00000)\nfirstAvailableSeqNumber: 3\nlastSeqNumber: 3\ncount: 5",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [
+          {
+            "type": "text",
+            "content": "图 53 HEARBEAT 子消息"
+          }
+        ],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "submessageId: HEARTBEAT (0x07) Flags: 0x01, Endianness bit octetsToNextHeader: 28 readerEntityId: 0x0b000004 (Application-defined reader (no key): 0x0b0000)  writerEntityId: 0x0d000003 (Application-defined writer (no key): 0x0d0000) firstAvailableSegNumber: 3 lastSeqNumber: 3 说明该DW的内存中的数据范围为[3,3] count: 5"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        223,
+        457,
+        796,
+        556
+      ],
+      "page_idx": 55
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0051",
+    "section": "3. 典型故障 > 3.3. 收不到数据 > 3.3.3. 高级诊断",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "not_used",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": "images/source-p56-02.png",
+    "source_visual_id": "source-p56-02",
+    "source_image_status": "reused_native_embedded_occurrence",
+    "mineru_code_content": "submessageId: HEARTBEAT (0x07) Flags: 0x01, Endianness bit octetsToNextHeader: 28 readerEntityId: 0x0b000004 (Application-defined reader (no key): 0x0b0000)  writerEntityId: 0x0d000003 (Application-defined writer (no key): 0x0d0000) firstAvailableSegNumber: 3 lastSeqNumber: 3 说明该DW的内存中的数据范围为[3,3] count: 5",
+    "code_content_candidate": "submessageId: HEARTBEAT (0x07)\nFlags: 0x01, Endianness bit\noctetsToNextHeader: 28\n> readerEntityId: 0x0b000004 (Application-defined reader (no key): 0x0b00000)\n> writerEntityId: 0x0d000003 (Application-defined writer (no key): 0x0d00000)\nfirstAvailableSeqNumber: 3\nlastSeqNumber: 3\ncount: 5",
+    "code_verification_status": "verified_primary",
+    "code_transcription_confidence": "high",
+    "code_context_corrections": []
+  },
+  {
+    "code_id": "code-p61-13",
+    "source_occurrence_id": "mineru-code:61:492:code-p61-13",
+    "page": 61,
+    "bbox": [
+      0.139,
+      0.845,
+      0.838,
+      0.902
+    ],
+    "order": 492,
+    "code_content": "# /etc/security/limits.conf # #Each line describes a limit for a user in the from",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "# /etc/security/limits.conf # #Each line describes a limit for a user in the from"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        139,
+        845,
+        838,
+        902
+      ],
+      "page_idx": 60
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0057",
+    "section": "3. 典型故障 > 3.5. 异常崩溃",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "# /etc/security/limits.conf # #Each line describes a limit for a user in the from",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p62-14",
+    "source_occurrence_id": "mineru-code:62:494:code-p62-14",
+    "page": 62,
+    "bbox": [
+      0.137,
+      0.083,
+      0.84,
+      0.14
+    ],
+    "order": 494,
+    "code_content": "# #<domain><type><item><value> * soft core unlimited",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "# #<domain><type><item><value> * soft core unlimited"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        137,
+        83,
+        840,
+        140
+      ],
+      "page_idx": 61
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0057",
+    "section": "3. 典型故障 > 3.5. 异常崩溃",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "# #<domain><type><item><value> * soft core unlimited",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p62-15",
+    "source_occurrence_id": "mineru-code:62:501:code-p62-15",
+    "page": 62,
+    "bbox": [
+      0.181,
+      0.607,
+      0.652,
+      0.661
+    ],
+    "order": 501,
+    "code_content": "“bt”是”backtrace”的缩写，使用“bt”或者“backtrace”都可以bt<n>：n是一个正整数，表示只打印栈顶上 n层的信息；bt<-n>：-n表示一个负整数，表示只打印栈底下n层的信息。",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "“bt”是”backtrace”的缩写，使用“bt”或者“backtrace”都可以bt<n>：n是一个正整数，表示只打印栈顶上 n层的信息；bt<-n>：-n表示一个负整数，表示只打印栈底下n层的信息。"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        181,
+        607,
+        652,
+        661
+      ],
+      "page_idx": 61
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0057",
+    "section": "3. 典型故障 > 3.5. 异常崩溃",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "“bt”是”backtrace”的缩写，使用“bt”或者“backtrace”都可以bt<n>：n是一个正整数，表示只打印栈顶上 n层的信息；bt<-n>：-n表示一个负整数，表示只打印栈底下n层的信息。",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p62-16",
+    "source_occurrence_id": "mineru-code:62:504:code-p62-16",
+    "page": 62,
+    "bbox": [
+      0.181,
+      0.739,
+      0.579,
+      0.794
+    ],
+    "order": 504,
+    "code_content": "info f：打印详细的当前栈层的信息info args：打印出当前函数的参数名及其值infolocals：打印出当前函数中所有局部变量及其值",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "info f：打印详细的当前栈层的信息info args：打印出当前函数的参数名及其值infolocals：打印出当前函数中所有局部变量及其值"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        181,
+        739,
+        579,
+        794
+      ],
+      "page_idx": 61
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0058",
+    "section": "3. 典型故障 > 3.5. 异常崩溃",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "info f：打印详细的当前栈层的信息info args：打印出当前函数的参数名及其值infolocals：打印出当前函数中所有局部变量及其值",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p62-17",
+    "source_occurrence_id": "mineru-code:62:506:code-p62-17",
+    "page": 62,
+    "bbox": [
+      0.141,
+      0.832,
+      0.835,
+      0.907
+    ],
+    "order": 506,
+    "code_content": "(gdb)help：查看命令帮助，具体命令查询在 gdb中输入 help+命令，简写 h(gdb)run：重新开始运行文件(run-text：加载文本文件；run-bin：加载二进制文件)，简写r(gdb)start：单步执行，运行程序，停在第一执行语句",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "(gdb)help：查看命令帮助，具体命令查询在 gdb中输入 help+命令，简写 h(gdb)run：重新开始运行文件(run-text：加载文本文件；run-bin：加载二进制文件)，简写r(gdb)start：单步执行，运行程序，停在第一执行语句"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        141,
+        832,
+        835,
+        907
+      ],
+      "page_idx": 61
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0058",
+    "section": "3. 典型故障 > 3.5. 异常崩溃",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "canonical_code",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": null,
+    "source_visual_id": null,
+    "source_image_status": "no_embedded_source_image",
+    "mineru_code_content": "(gdb)help：查看命令帮助，具体命令查询在 gdb中输入 help+命令，简写 h(gdb)run：重新开始运行文件(run-text：加载文本文件；run-bin：加载二进制文件)，简写r(gdb)start：单步执行，运行程序，停在第一执行语句",
+    "code_verification_status": "native_source_missing"
+  },
+  {
+    "code_id": "code-p65-18",
+    "source_occurrence_id": "pdf-image:p65:o2:xref441",
+    "page": 65,
+    "bbox": [
+      0.159,
+      0.619,
+      0.85,
+      0.809
+    ],
+    "order": 537,
+    "code_content": "68 DDS_ULong StringSeqStructGetSerializedSampleMaxSize()\n69 {\n70     return MAX_UINT32_VALUE;\n71 }\n73 DDS_ULong StringSeqStructGetSerializedKeyMaxSize()\n74 {\n75     return MAX_UINT32_VALUE;\n76 }",
+    "raw": {
+      "type": "algorithm",
+      "content": {
+        "algorithm_caption": [],
+        "algorithm_content": [
+          {
+            "type": "text",
+            "content": "68 DDS_ULong StringSeqStructGetSerializedSampleMaxSize() return MAX_UINT32_VALUE; DDS_ULong StringSeqStructGetSerializedKeyMaxSize() { return MAX_UINT32_VALUE; 一"
+          }
+        ],
+        "algorithm_footnote": []
+      },
+      "bbox": [
+        159,
+        619,
+        850,
+        809
+      ],
+      "page_idx": 64
+    },
+    "coordinate_space": "normalized_0_1",
+    "chunk_id": "chunk-0065",
+    "section": "3. 典型故障 > 3.6. 错误日志 > 3.6.3. 序列化失败 > 3.6.3.2. 原因",
+    "slot_id": null,
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_status": "not_used",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "source_image_path": "images/source-p65-02.png",
+    "source_visual_id": "source-p65-02",
+    "source_image_status": "reused_native_embedded_occurrence",
+    "mineru_code_content": "68 DDS_ULong StringSeqStructGetSerializedSampleMaxSize() return MAX_UINT32_VALUE; DDS_ULong StringSeqStructGetSerializedKeyMaxSize() { return MAX_UINT32_VALUE; 一",
+    "code_content_candidate": "68 DDS_ULong StringSeqStructGetSerializedSampleMaxSize()\n69 {\n70     return MAX_UINT32_VALUE;\n71 }\n73 DDS_ULong StringSeqStructGetSerializedKeyMaxSize()\n74 {\n75     return MAX_UINT32_VALUE;\n76 }",
+    "code_verification_status": "verified_primary",
+    "code_transcription_confidence": "high",
+    "code_context_corrections": []
+  }
+]

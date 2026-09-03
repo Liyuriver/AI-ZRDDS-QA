@@ -1,0 +1,572 @@
+[
+  {
+    "image_id": "img-p1-01",
+    "source_occurrence_id": "pdf-image:p1:o1:xref38",
+    "path": "images/img-p1-01.jpg",
+    "page": 1,
+    "bbox": [
+      0.384,
+      0.5,
+      0.684,
+      0.6
+    ],
+    "coordinate_space": "normalized_0_1",
+    "mineru_type": "image",
+    "caption": null,
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_id": null,
+    "slot_status": "not_used",
+    "mineru_root": "D:\\桌面\\大三上\\软件实训\\AI-ZRDDS-QA\\backend\\data\\mineru\\ZRDDS安装配置手册-QtCreator__a2b6540042324f3a\\document\\auto",
+    "image_content_sha256": "1a66508fdaa078ec271e57a1af692b2dcea50422bb35417a242ff0254582f177",
+    "cache_key": "c06402912d226d7deb2e9ebe533a43d0c3e397c999a56f5748d54d751d812110",
+    "source_occurrence_status": "native_source_extracted",
+    "source_xref": 38,
+    "source_native_size": [
+      368,
+      177
+    ],
+    "mineru_source_path": "images/faa827a3f19cd4a4f9af4838312c92ab9d41c61c857ffebee484e1b9cc245265.jpg",
+    "source_image_policy": "embedded_xobject_native_no_page_render",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "binding_score": 1.0,
+    "needs_review": false,
+    "record_status": "candidate",
+    "resolution_status": "resolved",
+    "visual_class": "knowledge_visual",
+    "vlm": {
+      "image_type": "operation_screenshot",
+      "description": "Qt Creator project explorer view showing a project named 'test-v227' with its .pro file and two folders: '头文件' (header files) and '源文件' (source files).",
+      "key_information": [
+        "Project name: test-v227",
+        "Project file: test-v227.pro",
+        "Folder label: 头文件 (with 'h' icon)",
+        "Folder label: 源文件 (with 'c++' icon)",
+        "Top-level item labeled '项目'"
+      ],
+      "code_content": null,
+      "technical_values": [],
+      "context_consistency": true,
+      "context_conflict": false,
+      "confidence": "high",
+      "raw_image_type": "operation_screenshot",
+      "technical_values_review": [],
+      "needs_review": false,
+      "parse_status": "success",
+      "raw_response": "{\n  \"image_type\": \"operation_screenshot\",\n  \"description\": \"Qt Creator project explorer view showing a project named 'test-v227' with its .pro file and two folders: '头文件' (header files) and '源文件' (source files).\",\n  \"key_information\": [\n    \"Project name: test-v227\",\n    \"Project file: test-v227.pro\",\n    \"Folder label: 头文件 (with 'h' icon)\",\n    \"Folder label: 源文件 (with 'c++' icon)\",\n    \"Top-level item labeled '项目'\"\n  ],\n  \"code_content\": null,\n  \"technical_values\": [],\n  \"context_consistency\": true,\n  \"context_conflict\": false,\n  \"confidence\": \"high\"\n}",
+      "caption": "图 1 项目的 pro 文件",
+      "caption_source": "pdf_source_nearest_caption"
+    }
+  },
+  {
+    "image_id": "img-p1-02",
+    "source_occurrence_id": "mineru:1:12:img-p1-02",
+    "path": "images/a4d62b5f34dcccd6bdcfd0cca28a3a894ecb9fe188159004da641b09f2de294e.jpg",
+    "page": 1,
+    "bbox": [
+      0.149,
+      0.882,
+      0.848,
+      0.913
+    ],
+    "coordinate_space": "normalized_0_1",
+    "mineru_type": "table",
+    "caption": "表 1 Window 下 qt 环境库文件选择",
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_id": null,
+    "slot_status": "table_not_slot",
+    "mineru_root": "D:\\桌面\\大三上\\软件实训\\AI-ZRDDS-QA\\backend\\data\\mineru\\ZRDDS安装配置手册-QtCreator__a2b6540042324f3a\\document\\auto",
+    "image_content_sha256": "255a25dd2274a87f172235564a632639546e9e010cb6ad1a3b041147858d514d",
+    "cache_key": "0a00be8b88a5731d3c91c27242841e61e2d1728680071f84e54ccfcecf8b1421",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "binding_score": 1.0,
+    "needs_review": false,
+    "record_status": "table_header_excluded",
+    "table_header_for": [
+      90.527,
+      744.936,
+      505.389,
+      768.24
+    ],
+    "resolution_status": "resolved",
+    "visual_class": "knowledge_visual",
+    "vlm": {
+      "image_type": "table_image",
+      "caption": "",
+      "description": "A table header row with four columns: '语言', '编译所需库文件', '说明', and '预编译符'.",
+      "code_content": null,
+      "key_information": [
+        "Column 1 header: '语言'",
+        "Column 2 header: '编译所需库文件'",
+        "Column 3 header: '说明'",
+        "Column 4 header: '预编译符'"
+      ],
+      "technical_values": [],
+      "context_consistency": true,
+      "context_conflict": false,
+      "confidence": "high",
+      "raw_image_type": "table_image",
+      "technical_values_review": [],
+      "needs_review": false,
+      "parse_status": "success",
+      "raw_response": "{\n  \"image_type\": \"table_image\",\n  \"caption\": \"\",\n  \"description\": \"A table header row with four columns: '语言', '编译所需库文件', '说明', and '预编译符'.\",\n  \"code_content\": null,\n  \"key_information\": [\n    \"Column 1 header: '语言'\",\n    \"Column 2 header: '编译所需库文件'\",\n    \"Column 3 header: '说明'\",\n    \"Column 4 header: '预编译符'\"\n  ],\n  \"technical_values\": [],\n  \"context_consistency\": true,\n  \"context_conflict\": false,\n  \"confidence\": \"high\"\n}"
+    }
+  },
+  {
+    "image_id": "img-p2-03",
+    "source_occurrence_id": "mineru:2:13:img-p2-03",
+    "path": null,
+    "page": 2,
+    "bbox": [
+      0.149,
+      0.083,
+      0.848,
+      0.161
+    ],
+    "coordinate_space": "normalized_0_1",
+    "mineru_type": "table",
+    "caption": null,
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_id": null,
+    "slot_status": "table_not_slot",
+    "mineru_root": "D:\\桌面\\大三上\\软件实训\\AI-ZRDDS-QA\\backend\\data\\mineru\\ZRDDS安装配置手册-QtCreator__a2b6540042324f3a\\document\\auto",
+    "image_content_sha256": null,
+    "cache_key": "ec81bb2e28e8a4d0425ed158fdaa9aa78bbaf0766ccabb361a3be1e81e8dec55",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "binding_score": 0.9,
+    "needs_review": false,
+    "record_status": "table_excluded",
+    "visual_class": "structured_table_duplicate",
+    "resolution_status": "ignored_non_knowledge",
+    "vlm": {
+      "parse_status": "failed",
+      "needs_review": true,
+      "error": "image not found: D:\\桌面\\大三上\\软件实训\\AI-ZRDDS-QA\\backend\\data\\mineru\\ZRDDS安装配置手册-QtCreator__a2b6540042324f3a\\document\\auto\\images",
+      "image_type": "table_image"
+    }
+  },
+  {
+    "image_id": "img-p2-04",
+    "source_occurrence_id": "pdf-image:p2:o2:xref50",
+    "path": "images/img-p2-04.png",
+    "page": 2,
+    "bbox": [
+      0.391,
+      0.313,
+      0.673,
+      0.343
+    ],
+    "coordinate_space": "normalized_0_1",
+    "mineru_type": "image",
+    "caption": "图 5 编译设置 rtti",
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "match_score": 100,
+    "match_status": "auto_matched",
+    "slot_id": null,
+    "slot_status": "not_used",
+    "mineru_root": "D:\\桌面\\大三上\\软件实训\\AI-ZRDDS-QA\\backend\\data\\mineru\\ZRDDS安装配置手册-QtCreator__a2b6540042324f3a\\document\\auto",
+    "image_content_sha256": "804ec51df64dae65774e45635940a4cc592ef1706140cb9cead42996407075de",
+    "cache_key": "a4caf6187892255e3a1f41d29564bfac22dc0ee852e6996d64c1fe2b81aa302a",
+    "source_occurrence_status": "native_source_extracted",
+    "source_xref": 50,
+    "source_native_size": [
+      221,
+      31
+    ],
+    "mineru_source_path": "images/35e0bef8a1321b72d04322f27bb40caa632c08b8895b49c9fcbfd21f1160df9e.jpg",
+    "source_image_policy": "embedded_xobject_native_no_page_render",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "binding_score": 1.0,
+    "needs_review": false,
+    "record_status": "candidate",
+    "resolution_status": "resolved",
+    "visual_class": "knowledge_visual",
+    "vlm": {
+      "image_type": "code_or_config",
+      "caption": "图 5 编译设置 rtti",
+      "description": "",
+      "code_content": "8 CONFIG  += rtti",
+      "key_information": [],
+      "technical_values": [],
+      "context_consistency": null,
+      "context_conflict": null,
+      "confidence": "high",
+      "raw_image_type": "code_or_config",
+      "technical_values_review": [],
+      "needs_review": true,
+      "classification_code_content": "CONFIG += rtti",
+      "code_content_candidate": "8 CONFIG  += rtti",
+      "code_content_corrected": "8 CONFIG  += rtti",
+      "code_context_corrections": [],
+      "code_transcription_confidence": "high",
+      "code_verification": {
+        "status": "primary_review",
+        "accepted": true,
+        "needs_review": true,
+        "mineru_similarity": 0.3478,
+        "context_similarity": null,
+        "vlm_confidence": "high",
+        "source_context_corrections": []
+      },
+      "code_transcription_raw_response": "{\"code_content\":\"8 CONFIG  += rtti\",\"confidence\":\"high\"}",
+      "parse_status": "success",
+      "raw_response": "{\n  \"image_type\": \"code_or_config\",\n  \"caption\": \"\",\n  \"description\": \"\",\n  \"code_content\": \"CONFIG += rtti\",\n  \"key_information\": [],\n  \"technical_values\": [],\n  \"context_consistency\": null,\n  \"context_conflict\": null,\n  \"confidence\": \"high\"\n}",
+      "caption_source": "pdf_source_nearest_caption"
+    }
+  },
+  {
+    "image_id": "source-p1-02",
+    "source_occurrence_id": "pdf-image:p1:o2:xref40",
+    "source_occurrence_status": "native_source_extracted",
+    "source_xref": 40,
+    "source_native_size": [
+      1298,
+      59
+    ],
+    "source_image_policy": "embedded_xobject_native_no_page_render",
+    "path": "images/source-p1-02.png",
+    "page": 1,
+    "bbox": [
+      0.15369885103809713,
+      0.6504062143671607,
+      0.8513068601760397,
+      0.6728549030786773
+    ],
+    "coordinate_space": "normalized_0_1",
+    "mineru_type": "pdf_source_image",
+    "caption": null,
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "match_score": 100,
+    "match_status": "source_recovered",
+    "slot_id": null,
+    "slot_status": "not_used",
+    "record_status": "candidate",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "binding_score": 1.0,
+    "needs_review": false,
+    "resolution_status": "resolved",
+    "visual_class": "knowledge_visual",
+    "vlm": {
+      "image_type": "code_or_config",
+      "caption": "图 2 C++头文件目录",
+      "description": "",
+      "key_information": [],
+      "technical_values": [],
+      "needs_review": true,
+      "parse_status": "success",
+      "caption_source": "pdf_source_nearest_caption",
+      "code_content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+      "context_consistency": true,
+      "context_conflict": false,
+      "confidence": "high",
+      "raw_image_type": "code_or_config",
+      "technical_values_review": [],
+      "classification_code_content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+      "code_content_candidate": "INCLUDEPATH += $$quote($$(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($$(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+      "code_content_corrected": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+      "code_context_corrections": [
+        {
+          "from": "$$(ZRDDS_HOME)",
+          "to": "$(ZRDDS_HOME)",
+          "reason": "source_env_anchor"
+        },
+        {
+          "from": "$$(ZRDDS_HOME)",
+          "to": "$(ZRDDS_HOME)",
+          "reason": "source_env_anchor"
+        }
+      ],
+      "code_transcription_confidence": "high",
+      "code_verification": {
+        "status": "primary_context_corrected",
+        "accepted": true,
+        "needs_review": true,
+        "mineru_similarity": null,
+        "context_similarity": 0.2009,
+        "vlm_confidence": "high",
+        "source_context_corrections": [
+          {
+            "from": "$$(ZRDDS_HOME)",
+            "to": "$(ZRDDS_HOME)",
+            "reason": "source_env_anchor"
+          },
+          {
+            "from": "$$(ZRDDS_HOME)",
+            "to": "$(ZRDDS_HOME)",
+            "reason": "source_env_anchor"
+          }
+        ]
+      },
+      "code_transcription_raw_response": "{\"code_content\":\"INCLUDEPATH += $$quote($$(ZRDDS_HOME)\\\\include\\\\ZRDDSCoreInterface) $$quote($$(ZRDDS_HOME)\\\\include\\\\CPlusPlusInterface)\",\"confidence\":\"high\"}",
+      "raw_response": "{\n  \"image_type\": \"code_or_config\",\n  \"caption\": \"\",\n  \"description\": \"\",\n  \"code_content\": \"INCLUDEPATH += $$quote($(ZRDDS_HOME)\\\\include\\\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\\\include\\\\CPlusPlusInterface)\",\n  \"key_information\": [],\n  \"technical_values\": [],\n  \"context_consistency\": true,\n  \"context_conflict\": false,\n  \"confidence\": \"high\"\n}"
+    }
+  },
+  {
+    "image_id": "source-p1-03",
+    "source_occurrence_id": "pdf-image:p1:o3:xref41",
+    "source_occurrence_status": "native_source_extracted",
+    "source_xref": 41,
+    "source_native_size": [
+      869,
+      38
+    ],
+    "source_image_policy": "embedded_xobject_native_no_page_render",
+    "path": "images/source-p1-03.png",
+    "page": 1,
+    "bbox": [
+      0.15117919774239064,
+      0.7252589319650322,
+      0.8518947792783712,
+      0.7469355758266818
+    ],
+    "coordinate_space": "normalized_0_1",
+    "mineru_type": "pdf_source_image",
+    "caption": null,
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "match_score": 100,
+    "match_status": "source_recovered",
+    "slot_id": null,
+    "slot_status": "not_used",
+    "record_status": "candidate",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "binding_score": 1.0,
+    "needs_review": false,
+    "resolution_status": "resolved",
+    "visual_class": "knowledge_visual",
+    "vlm": {
+      "image_type": "code_or_config",
+      "caption": "图 3 C 头文件目录",
+      "description": "",
+      "key_information": [],
+      "technical_values": [],
+      "needs_review": false,
+      "parse_status": "success",
+      "caption_source": "pdf_source_nearest_caption",
+      "code_content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+      "context_consistency": true,
+      "context_conflict": false,
+      "confidence": "high",
+      "raw_image_type": "code_or_config",
+      "technical_values_review": [],
+      "classification_code_content": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+      "code_content_candidate": "|INCLUDEPATH += $$quote($$(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($$(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+      "code_content_corrected": "INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)",
+      "code_context_corrections": [
+        {
+          "from": "$$(ZRDDS_HOME)",
+          "to": "$(ZRDDS_HOME)",
+          "reason": "source_env_anchor"
+        },
+        {
+          "from": "$$(ZRDDS_HOME)",
+          "to": "$(ZRDDS_HOME)",
+          "reason": "source_env_anchor"
+        },
+        {
+          "from": "|INCLUDEPATH",
+          "to": "INCLUDEPATH",
+          "reason": "source_keyword_anchor"
+        }
+      ],
+      "code_transcription_confidence": "high",
+      "code_verification": {
+        "status": "verified_primary",
+        "accepted": true,
+        "needs_review": false,
+        "mineru_similarity": 1.0,
+        "context_similarity": 0.2009,
+        "vlm_confidence": "high",
+        "source_context_corrections": [
+          {
+            "from": "$$(ZRDDS_HOME)",
+            "to": "$(ZRDDS_HOME)",
+            "reason": "source_env_anchor"
+          },
+          {
+            "from": "$$(ZRDDS_HOME)",
+            "to": "$(ZRDDS_HOME)",
+            "reason": "source_env_anchor"
+          },
+          {
+            "from": "|INCLUDEPATH",
+            "to": "INCLUDEPATH",
+            "reason": "source_keyword_anchor"
+          }
+        ]
+      },
+      "code_transcription_raw_response": "{\"code_content\":\"|INCLUDEPATH += $$quote($$(ZRDDS_HOME)\\\\include\\\\ZRDDSCoreInterface) $$quote($$(ZRDDS_HOME)\\\\include\\\\CPlusPlusInterface)\",\"confidence\":\"high\"}",
+      "raw_response": "{\n  \"image_type\": \"code_or_config\",\n  \"caption\": \"\",\n  \"description\": \"\",\n  \"code_content\": \"INCLUDEPATH += $$quote($(ZRDDS_HOME)\\\\include\\\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\\\include\\\\CPlusPlusInterface)\",\n  \"key_information\": [],\n  \"technical_values\": [],\n  \"context_consistency\": true,\n  \"context_conflict\": false,\n  \"confidence\": \"high\"\n}",
+      "roles": [
+        "code_or_config",
+        "code_original"
+      ]
+    }
+  },
+  {
+    "image_id": "source-p2-01",
+    "source_occurrence_id": "pdf-image:p2:o1:xref48",
+    "source_occurrence_status": "native_source_extracted",
+    "source_xref": 48,
+    "source_native_size": [
+      520,
+      57
+    ],
+    "source_image_policy": "embedded_xobject_native_no_page_render",
+    "path": "images/source-p2-01.png",
+    "page": 2,
+    "bbox": [
+      0.32562319424847136,
+      0.22047225389585698,
+      0.7448935026540348,
+      0.25295752565564417
+    ],
+    "coordinate_space": "normalized_0_1",
+    "mineru_type": "pdf_source_image",
+    "caption": null,
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "match_score": 100,
+    "match_status": "source_recovered",
+    "slot_id": null,
+    "slot_status": "not_used",
+    "record_status": "candidate",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "binding_score": 1.0,
+    "needs_review": false,
+    "resolution_status": "resolved",
+    "visual_class": "knowledge_visual",
+    "vlm": {
+      "image_type": "code_or_config",
+      "caption": "图 4 预编译符",
+      "description": "",
+      "key_information": [],
+      "technical_values": [],
+      "needs_review": false,
+      "parse_status": "success",
+      "caption_source": "pdf_source_nearest_caption",
+      "code_content": "DEFINES += _ZRDDSCPPINTERFACE",
+      "context_consistency": true,
+      "context_conflict": false,
+      "confidence": "high",
+      "raw_image_type": "code_or_config",
+      "technical_values_review": [],
+      "classification_code_content": "DEFINES += _ZRDDSCPPINTERFACE",
+      "code_content_candidate": "DEFINES += _ZRDDSCPPIINTERFACE",
+      "code_content_corrected": "DEFINES += _ZRDDSCPPINTERFACE",
+      "code_context_corrections": [
+        {
+          "from": "_ZRDDSCPPIINTERFACE",
+          "to": "_ZRDDSCPPINTERFACE",
+          "reason": "source_identifier_anchor"
+        }
+      ],
+      "code_transcription_confidence": "high",
+      "code_verification": {
+        "status": "verified_primary",
+        "accepted": true,
+        "needs_review": false,
+        "mineru_similarity": 0.9811,
+        "context_similarity": 0.2432,
+        "vlm_confidence": "high",
+        "source_context_corrections": [
+          {
+            "from": "_ZRDDSCPPIINTERFACE",
+            "to": "_ZRDDSCPPINTERFACE",
+            "reason": "source_identifier_anchor"
+          }
+        ]
+      },
+      "code_transcription_raw_response": "{\"code_content\":\"DEFINES += _ZRDDSCPPIINTERFACE\",\"confidence\":\"high\"}",
+      "raw_response": "{\n  \"image_type\": \"code_or_config\",\n  \"caption\": \"\",\n  \"description\": \"\",\n  \"code_content\": \"DEFINES += _ZRDDSCPPINTERFACE\",\n  \"key_information\": [],\n  \"technical_values\": [],\n  \"context_consistency\": true,\n  \"context_conflict\": false,\n  \"confidence\": \"high\"\n}"
+    }
+  },
+  {
+    "image_id": "source-p2-03",
+    "source_occurrence_id": "pdf-image:p2:o3:xref51",
+    "source_occurrence_status": "native_source_extracted",
+    "source_xref": 51,
+    "source_native_size": [
+      1285,
+      594
+    ],
+    "source_image_policy": "embedded_xobject_native_no_page_render",
+    "path": "images/source-p2-03.png",
+    "page": 2,
+    "bbox": [
+      0.1889739971779883,
+      0.41381603952869633,
+      0.8457636229254853,
+      0.6531499429874572
+    ],
+    "coordinate_space": "normalized_0_1",
+    "mineru_type": "pdf_source_image",
+    "caption": null,
+    "chunk_id": "chunk-0002",
+    "section": "2. 项目配置",
+    "match_score": 100,
+    "match_status": "source_recovered",
+    "slot_id": null,
+    "slot_status": "not_used",
+    "record_status": "candidate",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "binding_score": 1.0,
+    "needs_review": false,
+    "resolution_status": "resolved",
+    "visual_class": "knowledge_visual",
+    "vlm": {
+      "image_type": "code_or_config",
+      "caption": "图 6 pro 配置",
+      "description": "",
+      "key_information": [],
+      "technical_values": [],
+      "needs_review": true,
+      "parse_status": "success",
+      "caption_source": "pdf_source_nearest_caption",
+      "code_content": "1 QT += core\n2 QT -= gui\n3 \n4 TARGET = DDSApp\n5 CONFIG += console\n6 CONFIG -= app_bundle\n7 CONFIG    += rtti\n8 \n9 TEMPLATE = app\n10 \n11 SOURCES += \\\n12     CharSeq.cpp \\\n13     CharSeq_publication.cpp \\\n14     CharSeqTypeSupport.cpp\n15 \n16 HEADERS += \\\n17     CharSeq.h \\\n18     CharSeqDataReader.h \\\n19     CharSeqDataWriter.h \\\n20     CharSeqTypeSupport.h\n21 \n22 INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)\n23 \n24 LIBS += -L $$quote($(ZRDDS_HOME)\\lib) -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\n25 \n26 DEFINES += _ZRDDSCPPINTERFACE\n27 \n28 TARGET = CharSeq_pub",
+      "context_consistency": true,
+      "context_conflict": false,
+      "confidence": "high",
+      "raw_image_type": "code_or_config",
+      "technical_values_review": [],
+      "classification_code_content": "QT += core\nQT -= gui\nTARGET = DDSApp\nCONFIG += console\nCONFIG -= app bundle\nCONFIG += rtti\nTEMPLATE = app\nSOURCES += \\\n    CharSeq.cpp \\\n    CharSeq_publication.cpp \\\n    CharSeqTypeSupport.cpp\nHEADERS += \\\n    CharSeq.h \\\n    CharSeqDataReader.h \\\n    CharSeqDataWriter.h \\\n    CharSeqTypeSupport.h\nINCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)\nLIBS += -L $$quote($(ZRDDS_HOME)\\lib) -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\nDEFINES += _ZRDDSCPPINTERFACE\nTARGET = CharSeq_pub",
+      "code_content_candidate": "1 QT += core\n2 QT -= gui\n3 \n4 TARGET = DDSApp\n5 CONFIG += console\n6 CONFIG -= app_bundle\n7 CONFIG    += rtti\n8 \n9 TEMPLATE = app\n10 \n11 SOURCES += \\\n12     CharSeq.cpp \\\n13     CharSeq_publication.cpp \\\n14     CharSeqTypeSupport.cpp\n15 \n16 HEADERS += \\\n17     CharSeq.h \\\n18     CharSeqDataReader.h \\\n19     CharSeqDataWriter.h \\\n20     CharSeqTypeSupport.h\n21 \n22 INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)\n23 \n24 LIBS += -L $$quote($(ZRDDS_HOME)\\lib) -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\n25 \n26 DEFINES += _ZRDDSCPPINTERFACE\n27 \n28 TARGET = CharSeq_pub",
+      "code_content_corrected": "1 QT += core\n2 QT -= gui\n3 \n4 TARGET = DDSApp\n5 CONFIG += console\n6 CONFIG -= app_bundle\n7 CONFIG    += rtti\n8 \n9 TEMPLATE = app\n10 \n11 SOURCES += \\\n12     CharSeq.cpp \\\n13     CharSeq_publication.cpp \\\n14     CharSeqTypeSupport.cpp\n15 \n16 HEADERS += \\\n17     CharSeq.h \\\n18     CharSeqDataReader.h \\\n19     CharSeqDataWriter.h \\\n20     CharSeqTypeSupport.h\n21 \n22 INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)\n23 \n24 LIBS += -L $$quote($(ZRDDS_HOME)\\lib) -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\n25 \n26 DEFINES += _ZRDDSCPPINTERFACE\n27 \n28 TARGET = CharSeq_pub",
+      "code_context_corrections": [],
+      "code_transcription_confidence": "high",
+      "code_verification": {
+        "status": "primary_review",
+        "accepted": true,
+        "needs_review": true,
+        "mineru_similarity": 0.4274,
+        "context_similarity": 0.0938,
+        "vlm_confidence": "high",
+        "source_context_corrections": []
+      },
+      "code_transcription_raw_response": "{\n  \"code_content\": \"1 QT += core\\n2 QT -= gui\\n3 \\n4 TARGET = DDSApp\\n5 CONFIG += console\\n6 CONFIG -= app_bundle\\n7 CONFIG    += rtti\\n8 \\n9 TEMPLATE = app\\n10 \\n11 SOURCES += \\\\\\n12     CharSeq.cpp \\\\\\n13     CharSeq_publication.cpp \\\\\\n14     CharSeqTypeSupport.cpp\\n15 \\n16 HEADERS += \\\\\\n17     CharSeq.h \\\\\\n18     CharSeqDataReader.h \\\\\\n19     CharSeqDataWriter.h \\\\\\n20     CharSeqTypeSupport.h\\n21 \\n22 INCLUDEPATH += $$quote($(ZRDDS_HOME)\\\\include\\\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\\\include\\\\CPlusPlusInterface)\\n23 \\n24 LIBS += -L $$quote($(ZRDDS_HOME)\\\\lib) -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\\n25 \\n26 DEFINES += _ZRDDSCPPINTERFACE\\n27 \\n28 TARGET = CharSeq_pub\",\n  \"confidence\": \"high\"\n}",
+      "raw_response": "{\n  \"image_type\": \"code_or_config\",\n  \"caption\": \"\",\n  \"description\": \"\",\n  \"code_content\": \"QT += core\\nQT -= gui\\nTARGET = DDSApp\\nCONFIG += console\\nCONFIG -= app bundle\\nCONFIG += rtti\\nTEMPLATE = app\\nSOURCES += \\\\\\n    CharSeq.cpp \\\\\\n    CharSeq_publication.cpp \\\\\\n    CharSeqTypeSupport.cpp\\nHEADERS += \\\\\\n    CharSeq.h \\\\\\n    CharSeqDataReader.h \\\\\\n    CharSeqDataWriter.h \\\\\\n    CharSeqTypeSupport.h\\nINCLUDEPATH += $$quote($(ZRDDS_HOME)\\\\include\\\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\\\include\\\\CPlusPlusInterface)\\nLIBS += -L $$quote($(ZRDDS_HOME)\\\\lib) -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\\nDEFINES += _ZRDDSCPPINTERFACE\\nTARGET = CharSeq_pub\",\n  \"key_information\": [],\n  \"technical_values\": [],\n  \"context_consistency\": true,\n  \"context_conflict\": false,\n  \"confidence\": \"high\"\n}",
+      "roles": [
+        "code_or_config",
+        "code_original"
+      ]
+    }
+  }
+]

@@ -1,0 +1,1065 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1. 安装环境要求"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                117,
+                332,
+                137
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1.1. 硬件环境"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                178,
+                297,
+                198
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CPU：奔腾4及以上级别x86兼容处理器；华睿2号等嵌入式处理器"
+                    }
+                ]
+            },
+            "bbox": [
+                179,
+                225,
+                712,
+                242
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "内存：256M"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                248,
+                287,
+                265
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "磁盘空间：开发机500M，运行机取决于应用大小"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                271,
+                571,
+                288
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "网络：10M 及以上支持 TCP/IP 协议以太网、RapidIO"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                294,
+                586,
+                312
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1.2. 软件环境"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                338,
+                297,
+                359
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/6725590b1c0f57b6231bb32d590166487b95caf59f3bf8223c174e890d69abdc.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "表 1 臻融数据分发服务 DDS 系统软件软件环境要求"
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td rowspan=1 colspan=1>操作系统</td><td rowspan=1 colspan=1>系统最低版本</td><td rowspan=1 colspan=1>依赖环境</td></tr><tr><td rowspan=1 colspan=1>Windows</td><td rowspan=1 colspan=1>Windows XP</td><td rowspan=1 colspan=1>java-jdk1.8 以上</td></tr></table>",
+                "table_type": "complex_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                193,
+                418,
+                803,
+                467
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2. 安装与配置"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                500,
+                307,
+                520
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.1. 安装"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                561,
+                250,
+                581
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一步：双击安装包，启动安装程序，若杀毒软件或防火墙弹出警告，请允许安装程序运行或将安装程序添加到白名单。点击“下一步”。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                605,
+                852,
+                642
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/fcaa03516dbbc2667ab6525ac818e0b5988fc677cdb86cc5b74b81b1df534f85.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": [
+                    {
+                        "type": "text",
+                        "content": "第二步：选择安装路径后，并点击“安装”。"
+                    }
+                ]
+            },
+            "bbox": [
+                295,
+                648,
+                737,
+                872
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/aa2c28f36a3b42f17a67fbfc17be4503f6b16ce26a827242af55716db604d128.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                295,
+                91,
+                737,
+                316
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "第三步：等待安装完成。"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                183,
+                326,
+                373,
+                343
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/9f3c8098a033e60338c3019b6655ba3e61bdc1053547289bff10b05f23f3d580.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                295,
+                350,
+                737,
+                576
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第四步：若安装过程中出现如下图所示的提示框，代表在本次安装之前，机器中已经安装过ZRDDS，此次安装会替换关于 ZRDDS的环境变量。点击”确定”。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                587,
+                850,
+                623
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/8210a0b00c5e335ebb806a45aaecc330bd43f1fae7f9d2c5d0cb79d37f4902ea.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                299,
+                629,
+                734,
+                783
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第五步：安装程序会在系统中设置环境变量，为了使环境变量起效，需要重新启动计算机，用户在使用 ZRDDS之前重启即可。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                809,
+                852,
+                845
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/8ea34ee9549483a70713a1422b97183a0bc3c6a7549577fff857bca9d80f6717.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": [
+                    {
+                        "type": "text",
+                        "content": "第六步：安装完后，点击“完成”。"
+                    }
+                ]
+            },
+            "bbox": [
+                366,
+                91,
+                667,
+                243
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/2390608ebb936f12992429669e501e2eb4660e0efbac3664060d03030c7a3a2c.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": [
+                    {
+                        "type": "text",
+                        "content": "至此，臻融数据分发服务DDS系统软件已经成功安装到计算机上。"
+                    }
+                ]
+            },
+            "bbox": [
+                295,
+                278,
+                736,
+                502
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2. ZRDDS 授权文件获取步骤"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                554,
+                457,
+                574
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 双击运行安装目录/bin/LicenceInfoUtil.exe 获取授权信息；"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                601,
+                655,
+                618
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 运行成功将会有提示，将同一目录的 zrddsregInfo.txt 或二维码 zrddsregInfo.bmp 发送给臻融软件科技有限公司；"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                625,
+                852,
+                664
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 接收臻融软件科技有限公司生成的授权文件zrddslicence.lic；"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                671,
+                680,
+                687
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 将授权文件放在ZRDDS安装目录或者ZRDDS运行程序同一目录即可完成ZRDDS应用授权；"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                694,
+                850,
+                733
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 授权文件仅能够在获取授权信息的那台机器上面使用。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                740,
+                638,
+                757
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.3. 创建数据类型支持文件"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                784,
+                436,
+                804
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "由于 DDS 中允许用户使用自定义的数据类型进行数据发布和订阅，因此需要用户在使用 DDS 编写应用程序前定义所使用的数据类型。数据类型通过 IDL 文件定义，IDL 文件具体格式见ZRDDS用户手册第3 章。IDL文件编写完成后，需要使用到安装目录中bin目录下的zrddsgen.exe 进行编译，生成支持文件。zrddsgen.exe 通过命令行运行，需要使用 Windows中的命令提示符进入到其目录下运行，通常情况下的运行参数如下："
+                    }
+                ]
+            },
+            "bbox": [
+                144,
+                829,
+                853,
+                903
+            ]
+        }
+    ],
+    [
+        {
+            "type": "algorithm",
+            "content": {
+                "algorithm_caption": [],
+                "algorithm_content": [
+                    {
+                        "type": "text",
+                        "content": "假定用户定义的数据类型名称为 Foo，使用 zrddsgen.exe 生成的支持文件总共有五个，分别为：Foo.java、FooDataRreader.java、FooSeq.java、FooDataWriter.java、FooTypeSupport.java。使用zrddsgen.exe 生成的支持文件可以使用在所有ZRDDS支持的操作系统上。"
+                    }
+                ],
+                "algorithm_footnote": []
+            },
+            "bbox": [
+                146,
+                160,
+                848,
+                216
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                146,
+                85,
+                672,
+                102
+            ]
+        },
+        {
+            "type": "algorithm",
+            "content": {
+                "algorithm_caption": [],
+                "algorithm_content": [
+                    {
+                        "type": "text",
+                        "content": "zrddsgen.exe –i [inputFile] –d [outputDir] –l java"
+                    }
+                ],
+                "algorithm_footnote": []
+            },
+            "bbox": [
+                142,
+                104,
+                684,
+                121
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "其中[inputFile]替换为用户的 IDL 文件，[outputDir]替换为支持文件输出的目录。更多参数的信息见ZRDDS用户手册第3 章。"
+                    }
+                ]
+            },
+            "bbox": [
+                144,
+                124,
+                850,
+                159
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4. 配置工程"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                240,
+                297,
+                260
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "在Windows平台上，臻融数据分发服务DDS支持多种IDE，此处以eclipse为例"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                285,
+                794,
+                303
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4.1. 创建工程"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                324,
+                295,
+                343
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 单击 File。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                369,
+                297,
+                386
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 单击 New。"
+                    }
+                ]
+            },
+            "bbox": [
+                183,
+                392,
+                304,
+                409
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 选择 Java Project，填写项目名，创建一个工程。"
+                    }
+                ]
+            },
+            "bbox": [
+                183,
+                414,
+                586,
+                431
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/bc591fa1cbffc03300ac20be256afae5ff72cee3521fbace167180cdc4c2d85d.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                221,
+                436,
+                631,
+                840
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 将 zrddsgen.exe 生 成 的 文 件 添 加 到 工 程 （ Foo.java 、 FooDataRreader.java 、FooDataWriter.java、FooSeq、FooTypeSupport.java）。"
+                    }
+                ]
+            },
+            "bbox": [
+                183,
+                847,
+                842,
+                888
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4.2. 配置链接库"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                92,
+                314,
+                110
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4.2.1. 链接 ZRDDS_JAVA.jar"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                140,
+                396,
+                158
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 右键工程->properties->Java Bulid Path->Libraries 选择 Add External JARS…，选择安装目录下的 ZRDDS_JAVA.jar 文件。"
+                    }
+                ]
+            },
+            "bbox": [
+                179,
+                184,
+                852,
+                223
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/0315a7b896bcef6b48052fb1fcb064cf2099687634d5e50be979a1fcada43bda.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                149,
+                227,
+                847,
+                596
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4.2.2. 链接动态库 ZRDDS_JAVA.dll"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                620,
+                457,
+                638
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 右键工程->properties->Java Bulid Path->Source，展开工程目录，双击 Native librarylocation，External Folder…，选择安装目录下的 lib 目录。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                664,
+                852,
+                705
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/0b7ccfc281d8f1407bccb6e5a810332868e6dca4d4c8e7d55309a27aa515dbc5.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                149,
+                85,
+                848,
+                455
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4.3. 运行"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                479,
+                253,
+                497
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "直 接 添 加 main 函 数 或 者 使 用 编 译 器 –e 命 令 生 成 的 Foo_publication.java 或 者Foo_subscriber.java 编译运行即可。"
+                    }
+                ]
+            },
+            "bbox": [
+                146,
+                520,
+                850,
+                556
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.5. 命令行编译运行"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                146,
+                580,
+                366,
+                600
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "使用 zrddsgen.exe 生成文件（Foo.java、FooDataRreader.java、FooDataWriter.java、FooSeq、FooTypeSupport.java，Foo_publication.java）。"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                629,
+                840,
+                669
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": " 使用java 编译，将编译输出至文件夹 out下："
+                    }
+                ]
+            },
+            "bbox": [
+                205,
+                696,
+                589,
+                713
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "javac –cp 安装目录/lib/ZRDDS_JAVA.jar –d out *.java"
+                    }
+                ]
+            },
+            "bbox": [
+                181,
+                721,
+                603,
+                738
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/771e54dead9bd7fb62ed0e83251f42b8b8f4a83e0fa07bb6da0bc1a43de7a082.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                188,
+                740,
+                877,
+                829
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "输出"
+                    }
+                ]
+            },
+            "bbox": [
+                183,
+                837,
+                223,
+                852
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/d28e1ad4e23892d5e22ecff8982a88b2ba694804b8dd6c8539177f6a057dc609.jpg"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "<table><tr><td colspan=\"2\">名称</td><td>修改日期</td><td>类型</td><td>大小</td></tr><tr><td></td><td>Foo.class</td><td>2020/5/6 16:18</td><td>CLASS 文件</td><td>1 KB</td></tr><tr><td></td><td>Foo_publication.class</td><td>2020/5/6 16:18</td><td>CLASS 文件</td><td>4KB</td></tr><tr><td></td><td>Foo_subscription.class</td><td>2020/5/6 16:18</td><td>CLASS 文件</td><td>3 KB</td></tr><tr><td></td><td>FooDataReader.class</td><td>2020/5/6 16:18</td><td>CLASS 文件</td><td>1 KB</td></tr><tr><td></td><td>FooDataWriter.class</td><td>2020/5/6 16:18</td><td>CLASS 文件</td><td>1 KB</td></tr><tr><td></td><td>FooSeq.class</td><td>2020/5/6 16:18</td><td>CLASS 文件</td><td>1 KB</td></tr><tr><td></td><td>FooTypeSupport.class</td><td>2020/5/6 16:18</td><td>CLASS 文件</td><td>5 KB</td></tr><tr><td></td><td>TestDataReaderListener.class</td><td>2020/5/6 16:18</td><td>CLASS 文件</td><td>3KB</td></tr></table>",
+                "table_type": "complex_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                186,
+                90,
+                798,
+                239
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": " 进入 out 文件夹下使用 java 运行："
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                206,
+                273,
+                500,
+                290
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "java –cp [ZRDDS_JAVA.jar];[ZRDDS_JAVA.dll];. Foo_publication"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                238,
+                298,
+                692,
+                313
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Foo_publication.java 中带有 main 函数"
+                    }
+                ]
+            },
+            "bbox": [
+                183,
+                321,
+                473,
+                337
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/9878727ac5b9dfb36371af0c21f5659862ac6a89b60f8f42ed345f314d7263d8.jpg"
+                },
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                184,
+                344,
+                880,
+                589
+            ]
+        }
+    ]
+]

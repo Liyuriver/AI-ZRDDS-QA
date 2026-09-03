@@ -1,0 +1,1490 @@
+[
+  {
+    "block_id": "src-000000",
+    "page": 1,
+    "bbox": [
+      90.024,
+      100.75963999999999,
+      195.61231999999998,
+      116.32999999999993
+    ],
+    "order": 0,
+    "kind": "heading",
+    "text": "## 1. 安装环境要求",
+    "heading_level": 2,
+    "heading_path": "1. 安装环境要求",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000001",
+    "page": 1,
+    "bbox": [
+      90.024,
+      151.75964,
+      174.61999999999998,
+      167.32999999999993
+    ],
+    "order": 1,
+    "kind": "heading",
+    "text": "### 1.1. 硬件环境",
+    "heading_level": 3,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000002",
+    "page": 1,
+    "bbox": [
+      111.26,
+      191.82895999999994,
+      422.83768,
+      203.53999999999996
+    ],
+    "order": 2,
+    "kind": "text",
+    "text": "CPU：奔腾 4 及以上级别 x86 兼容处理器；华睿 2 号等嵌入式处理器",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000003",
+    "page": 1,
+    "bbox": [
+      111.26,
+      211.26895999999988,
+      167.8088,
+      222.9799999999999
+    ],
+    "order": 3,
+    "kind": "text",
+    "text": "内存：256M",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000004",
+    "page": 1,
+    "bbox": [
+      111.26,
+      230.82895999999994,
+      338.47,
+      242.53999999999996
+    ],
+    "order": 4,
+    "kind": "text",
+    "text": "磁盘空间：开发机 500M，运行机取决于应用大小",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000005",
+    "page": 1,
+    "bbox": [
+      111.26,
+      250.29895999999997,
+      347.26648,
+      262.01
+    ],
+    "order": 5,
+    "kind": "text",
+    "text": "网络：10M 及以上支持 TCP/IP 协议以太网、RapidIO",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.1. 硬件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000006",
+    "page": 1,
+    "bbox": [
+      90.024,
+      287.02964,
+      174.61999999999998,
+      302.5999999999999
+    ],
+    "order": 6,
+    "kind": "heading",
+    "text": "### 1.2. 软件环境",
+    "heading_level": 3,
+    "heading_path": "1. 安装环境要求 > 1.2. 软件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000007",
+    "page": 1,
+    "bbox": [
+      186.77,
+      334.4599999999999,
+      408.42999999999995,
+      344.44987999999995
+    ],
+    "order": 7,
+    "kind": "text",
+    "text": "表 1 臻融数据分发服务 DDS 系统软件软件环境要求",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.2. 软件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000008",
+    "page": 1,
+    "bbox": [
+      117.12285714285714,
+      354.0099966666666,
+      478.19714571428574,
+      393.52999500000004
+    ],
+    "order": 13,
+    "kind": "table",
+    "text": "| 操作系统 | 系统最低版本 | 依赖环境 |\n| --- | --- | --- |\n| Windows | Windows XP | java-jdk1.8以上 |",
+    "heading_level": null,
+    "heading_path": "1. 安装环境要求 > 1.2. 软件环境",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000009",
+    "page": 1,
+    "bbox": [
+      90.024,
+      422.52964,
+      181.57232,
+      438.09999999999997
+    ],
+    "order": 8,
+    "kind": "heading",
+    "text": "## 2. 安装与配置",
+    "heading_level": 2,
+    "heading_path": "2. 安装与配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000010",
+    "page": 1,
+    "bbox": [
+      90.024,
+      473.52964,
+      146.42,
+      489.09999999999997
+    ],
+    "order": 9,
+    "kind": "heading",
+    "text": "### 2.1. 安装",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000011",
+    "page": 1,
+    "bbox": [
+      111.26,
+      511.55895999999996,
+      505.52456,
+      522.11896
+    ],
+    "order": 10,
+    "kind": "text",
+    "text": "第一步：双击安装包，启动安装程序，若杀毒软件或防火墙弹出警告，请允许安装程序",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000012",
+    "page": 1,
+    "bbox": [
+      111.26,
+      527.15896,
+      347.70536000000004,
+      537.7189599999999
+    ],
+    "order": 11,
+    "kind": "text",
+    "text": "运行或将安装程序添加到白名单。点击“下一步”。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p1-02",
+    "page": 1,
+    "bbox": [
+      175.6194,
+      545.56416,
+      438.75084000000004,
+      734.15424
+    ],
+    "order": 1000001,
+    "kind": "image",
+    "text": "> ![img-p1-02](images/img-p1-02.png)\n>\n> **图示信息：**\n> - ZRDDS installation wizard welcome screen with instructions and navigation buttons.\n> - Window title: 'ZRDDS 安装'\n> - Logo text: '臻融科技'\n> - Main heading: '欢迎使用 ZRDDS 安装向导'\n> - Instruction: '在开始安装之前，建议先关闭其他所有应用程序。这将允许“安装程序”更新指定的系统文件，而不需要重新启动你的计算机。'\n> - Action button: '[下一步 (N)] 继续'\n> - Cancel button: '取消 (C)'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p1-02",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000013",
+    "page": 1,
+    "bbox": [
+      111.26,
+      745.60896,
+      309.29,
+      757.3199999999999
+    ],
+    "order": 12,
+    "kind": "text",
+    "text": "第二步：选择安装路径后，并点击“安装”。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p2-03",
+    "page": 2,
+    "bbox": [
+      175.6194,
+      76.61471999999999,
+      438.75084000000004,
+      266.04672
+    ],
+    "order": 1000002,
+    "kind": "image",
+    "text": "> ![img-p2-03](images/img-p2-03.png)\n>\n> **图示信息：**\n> - ZRDDS installation wizard window showing target directory selection and space requirements.\n> - Window title: 'ZRDDS 安装'\n> - Target folder field: 'D:\\ZRDDS'\n> - Required space: '16.7 MB'\n> - Available space: '536.6 GB'\n> - Installer system: 'Nullsoft Install System v3.04'\n> - Buttons: '[上一步 (B)]', '[安装 (I)]', '[取消 (C)]', and '[浏览 (B)...]'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p2-03",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000014",
+    "page": 2,
+    "bbox": [
+      111.26,
+      277.41895999999997,
+      226.94768,
+      287.97896000000003
+    ],
+    "order": 14,
+    "kind": "text",
+    "text": "第三步：等待安装完成。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p2-04",
+    "page": 2,
+    "bbox": [
+      175.6194,
+      294.67199999999997,
+      438.75084000000004,
+      484.94591999999994
+    ],
+    "order": 1000003,
+    "kind": "image",
+    "text": "> ![img-p2-04](images/img-p2-04.png)\n>\n> **图示信息：**\n> - ZRDDS installation window showing extraction progress of multiple Visual Studio project filter files using Nullsoft Install System v3.04.\n> - Window title: 'ZRDDS 安装'\n> - Status message: '正在安装，请等候。'\n> - Progress bar labeled: '抽取: LifespanQos_Subscription_x64Win64VS2015.vcxproj.filters'\n> - List of extracted files with 100% completion, including versions for VS2008, VS2010, VS2013, VS2015 (x64 and x86)\n> - Installer engine: 'Nullsoft Install System v3.04'\n> - Navigation buttons: '< 上一步 (B) >', '< 下一步 (N) >', '取消 (C)'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p2-04",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000015",
+    "page": 2,
+    "bbox": [
+      111.26,
+      495.83896,
+      505.66,
+      506.39896
+    ],
+    "order": 15,
+    "kind": "text",
+    "text": "第四步：若安装过程中出现如下图所示的提示框，代表在本次安装之前，机器中已经安",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000016",
+    "page": 2,
+    "bbox": [
+      111.26,
+      511.43895999999995,
+      426.31,
+      523.1499999999999
+    ],
+    "order": 16,
+    "kind": "text",
+    "text": "装过 ZRDDS，此次安装会替换关于 ZRDDS 的环境变量。点击”确定”。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p2-05",
+    "page": 2,
+    "bbox": [
+      178.00068000000002,
+      529.56768,
+      436.96488000000005,
+      659.22336
+    ],
+    "order": 1000004,
+    "kind": "image",
+    "text": "> ![img-p2-05](images/img-p2-05.png)\n>\n> **图示信息：**\n> - A ZRDDS installation dialog box showing a completion message after environment variable update.\n> - Window title: 'ZRDDS 安装'\n> - Message text: '系统环境变量已更新，旧版本文件仍为您保留原路径'\n> - Button label: '确定'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p2-05",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000017",
+    "page": 2,
+    "bbox": [
+      111.26,
+      683.06896,
+      505.65016,
+      693.62896
+    ],
+    "order": 17,
+    "kind": "text",
+    "text": "第五步：安装程序会在系统中设置环境变量，为了使环境变量起效，需要重新启动计算",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000018",
+    "page": 2,
+    "bbox": [
+      111.26,
+      698.66896,
+      292.01384,
+      710.3799999999999
+    ],
+    "order": 18,
+    "kind": "text",
+    "text": "机，用户在使用 ZRDDS 之前重启即可。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p3-06",
+    "page": 3,
+    "bbox": [
+      217.88712,
+      76.61471999999999,
+      397.07844000000006,
+      204.58656
+    ],
+    "order": 1000005,
+    "kind": "image",
+    "text": "> ![img-p3-06](images/img-p3-06.png)\n>\n> **图示信息：**\n> - A Windows-style dialog box titled 'ZRDDS 安装' displaying a reboot instruction and a confirmation button.\n> - Window title: 'ZRDDS 安装'\n> - Main message: '请重启计算机，使环境变量生效'\n> - Button label: '确定'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p3-06",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000019",
+    "page": 3,
+    "bbox": [
+      111.26,
+      214.9889599999999,
+      274.25384,
+      225.54895999999997
+    ],
+    "order": 19,
+    "kind": "text",
+    "text": "第六步：安装完后，点击“完成”。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p3-07",
+    "page": 3,
+    "bbox": [
+      175.6194,
+      234.05376,
+      438.15552,
+      422.64383999999995
+    ],
+    "order": 1000006,
+    "kind": "image",
+    "text": "> ![img-p3-07](images/img-p3-07.png)\n>\n> **图示信息：**\n> - ZRDDS installation wizard final screen indicating successful installation, with options to open manuals and a 'Finish' button.\n> - Title bar: 'ZRDDS 安装'\n> - Main message: '正在完成 ZRDDS 安装向导'\n> - Status line: 'ZRDDS 已安装在你的系统。单击 [完成(F)] 关闭此向导。'\n> - Checked checkbox: '打开编程手册'\n> - Checked checkbox: '打开安装配置手册'\n> - Bottom buttons: '< 上一步(B) >', '完成(F)', '取消(C)'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p3-07",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000020",
+    "page": 3,
+    "bbox": [
+      111.26,
+      433.43895999999995,
+      417.9092,
+      445.1499999999999
+    ],
+    "order": 20,
+    "kind": "text",
+    "text": "至此，臻融数据分发服务 DDS 系统软件已经成功安装到计算机上。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.1. 安装",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000021",
+    "page": 3,
+    "bbox": [
+      90.024,
+      468.12963999999994,
+      270.85999999999996,
+      483.69999999999993
+    ],
+    "order": 21,
+    "kind": "heading",
+    "text": "### 2.2. ZRDDS 授权文件获取步骤",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.2. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000022",
+    "page": 3,
+    "bbox": [
+      111.38,
+      508.19896,
+      395.11768,
+      519.91
+    ],
+    "order": 22,
+    "kind": "text",
+    "text": "- 双击运行安装目录/bin/LicenceInfoUtil.exe 获取授权信息；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000023",
+    "page": 3,
+    "bbox": [
+      111.38,
+      527.63896,
+      505.66,
+      539.3499999999999
+    ],
+    "order": 23,
+    "kind": "text",
+    "text": "- 运行成功将会有提示，将同一目录的 zrddsregInfo.txt 或二维码 zrddsregInfo.bmp 发",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000024",
+    "page": 3,
+    "bbox": [
+      132.62,
+      547.1989599999999,
+      269.3192,
+      557.75896
+    ],
+    "order": 24,
+    "kind": "text",
+    "text": "送给臻融软件科技有限公司；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000025",
+    "page": 3,
+    "bbox": [
+      111.38,
+      566.63896,
+      409.87,
+      578.3499999999999
+    ],
+    "order": 25,
+    "kind": "text",
+    "text": "- 接收臻融软件科技有限公司生成的授权文件 zrddslicence.lic；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000026",
+    "page": 3,
+    "bbox": [
+      111.38,
+      586.2289599999999,
+      505.42,
+      597.9399999999999
+    ],
+    "order": 26,
+    "kind": "text",
+    "text": "- 将授权文件放在 ZRDDS 安装目录或者 ZRDDS 运行程序同一目录即可完成 ZRDDS 应",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000027",
+    "page": 3,
+    "bbox": [
+      132.62,
+      605.66896,
+      174.74384,
+      616.2289599999999
+    ],
+    "order": 27,
+    "kind": "text",
+    "text": "用授权；",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000028",
+    "page": 3,
+    "bbox": [
+      111.38,
+      625.2289599999999,
+      384.8984,
+      636.4648
+    ],
+    "order": 28,
+    "kind": "text",
+    "text": "- 授权文件仅能够在获取授权信息的那台机器上面使用。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.2. ZRDDS 授权文件获取步骤",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000029",
+    "page": 3,
+    "bbox": [
+      90.024,
+      661.8396399999999,
+      258.85231999999996,
+      677.41
+    ],
+    "order": 29,
+    "kind": "heading",
+    "text": "### 2.3. 创建数据类型支持文件",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000030",
+    "page": 3,
+    "bbox": [
+      111.26,
+      699.9889599999999,
+      505.66,
+      711.6999999999999
+    ],
+    "order": 30,
+    "kind": "text",
+    "text": "由于 DDS 中允许用户使用自定义的数据类型进行数据发布和订阅，因此需要用户在使",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000031",
+    "page": 3,
+    "bbox": [
+      90.024,
+      715.5889599999999,
+      505.54,
+      727.3
+    ],
+    "order": 31,
+    "kind": "text",
+    "text": "用 DDS 编写应用程序前定义所使用的数据类型。数据类型通过 IDL 文件定义，IDL 文件具体",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000032",
+    "page": 3,
+    "bbox": [
+      90.024,
+      731.18896,
+      505.54,
+      742.9
+    ],
+    "order": 32,
+    "kind": "text",
+    "text": "格式见 ZRDDS 用户手册第 3 章。IDL 文件编写完成后，需要使用到安装目录中 bin 目录下的",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000033",
+    "page": 3,
+    "bbox": [
+      90.024,
+      746.80896,
+      505.70512,
+      758.52
+    ],
+    "order": 33,
+    "kind": "text",
+    "text": "zrddsgen.exe 进行编译，生成支持文件。zrddsgen.exe 通过命令行运行，需要使用 Windows",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000034",
+    "page": 4,
+    "bbox": [
+      90.024,
+      74.58895999999993,
+      405.31,
+      85.14895999999999
+    ],
+    "order": 34,
+    "kind": "text",
+    "text": "中的命令提示符进入到其目录下运行，通常情况下的运行参数如下：",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000035",
+    "page": 4,
+    "bbox": [
+      90.024,
+      91.47439999999995,
+      406.27096000000006,
+      102.0344
+    ],
+    "order": 35,
+    "kind": "text",
+    "text": "zrddsgen.exe –i [inputFile] –d [outputDir] –l java",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000036",
+    "page": 4,
+    "bbox": [
+      111.26,
+      106.7489599999999,
+      505.66,
+      118.45999999999992
+    ],
+    "order": 36,
+    "kind": "text",
+    "text": "其中[inputFile]替换为用户的 IDL 文件，[outputDir]替换为支持文件输出的目录。更多参",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000037",
+    "page": 4,
+    "bbox": [
+      90.024,
+      122.34895999999992,
+      260.33,
+      134.05999999999995
+    ],
+    "order": 37,
+    "kind": "text",
+    "text": "数的信息见 ZRDDS 用户手册第 3 章。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000038",
+    "page": 4,
+    "bbox": [
+      111.26,
+      137.94895999999994,
+      510.94,
+      149.65999999999997
+    ],
+    "order": 38,
+    "kind": "text",
+    "text": "假定用户定义的数据类型名称为 Foo，使用 zrddsgen.exe 生成的支持文件总共有五个，",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000039",
+    "page": 4,
+    "bbox": [
+      90.024,
+      153.54895999999997,
+      505.54,
+      165.26
+    ],
+    "order": 39,
+    "kind": "text",
+    "text": "分别为：Foo.java、FooDataRreader.java、FooSeq.java、FooDataWriter.java、FooTypeSupport.java。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000040",
+    "page": 4,
+    "bbox": [
+      111.26,
+      169.14895999999987,
+      468.3292,
+      180.8599999999999
+    ],
+    "order": 40,
+    "kind": "text",
+    "text": "使用 zrddsgen.exe 生成的支持文件可以使用在所有 ZRDDS 支持的操作系统上。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.3. 创建数据类型支持文件",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000041",
+    "page": 4,
+    "bbox": [
+      90.024,
+      203.83964000000003,
+      174.61999999999998,
+      219.40999999999997
+    ],
+    "order": 41,
+    "kind": "heading",
+    "text": "### 2.4. 配置工程",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000042",
+    "page": 4,
+    "bbox": [
+      111.26,
+      242.01895999999988,
+      472.3,
+      253.7299999999999
+    ],
+    "order": 42,
+    "kind": "text",
+    "text": "在 Windows 平台上，臻融数据分发服务 DDS 支持多种 IDE，此处以 eclipse 为例",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000043",
+    "page": 4,
+    "bbox": [
+      90.024,
+      275.582,
+      173.66,
+      288.89
+    ],
+    "order": 43,
+    "kind": "heading",
+    "text": "#### 2.4.1. 创建工程",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000044",
+    "page": 4,
+    "bbox": [
+      111.38,
+      312.57895999999994,
+      181.7,
+      324.28999999999996
+    ],
+    "order": 44,
+    "kind": "text",
+    "text": "- 单击 File。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000045",
+    "page": 4,
+    "bbox": [
+      111.38,
+      332.01896,
+      186.38,
+      343.72999999999996
+    ],
+    "order": 45,
+    "kind": "text",
+    "text": "- 单击 New。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000046",
+    "page": 4,
+    "bbox": [
+      111.38,
+      351.57896,
+      353.71,
+      363.28999999999996
+    ],
+    "order": 46,
+    "kind": "text",
+    "text": "- 选择 Java Project，填写项目名，创建一个工程。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p4-08",
+    "page": 4,
+    "bbox": [
+      131.56572,
+      367.07712,
+      375.64692,
+      707.2127999999999
+    ],
+    "order": 1000007,
+    "kind": "image",
+    "text": "> ![img-p4-08](images/img-p4-08.png)\n>\n> **图示信息：**\n> - Eclipse 'Create a Java Project' dialog with project name field empty, default location set, JRE selection showing 'JavaSE-1.8', and project layout option 'Create separate folders for sources and class files' selected.\n> - Project name field is empty\n> - Location: C:\\Users\\Show-3\\Desktop\\ZRDDSTestEclipse\n> - JRE selected: 'Use an execution environment JRE: JavaSE-1.8'\n> - Project layout: 'Create separate folders for sources and class files' is selected\n> - Working sets section: 'Add project to working sets' checkbox is unchecked",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.1. 创建工程",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p4-08",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000047",
+    "page": 4,
+    "bbox": [
+      111.38,
+      714.26896,
+      505.42,
+      725.98
+    ],
+    "order": 47,
+    "kind": "text",
+    "text": "- 将 zrddsgen.exe 生成的文件添加到工程 （ Foo.java 、 FooDataRreader.java 、",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000048",
+    "page": 4,
+    "bbox": [
+      132.62,
+      733.8249599999999,
+      372.07,
+      745.536
+    ],
+    "order": 48,
+    "kind": "text",
+    "text": "FooDataWriter.java、FooSeq、FooTypeSupport.java）。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.1. 创建工程",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000049",
+    "page": 5,
+    "bbox": [
+      90.024,
+      79.59199999999998,
+      185.648,
+      92.89999999999998
+    ],
+    "order": 49,
+    "kind": "heading",
+    "text": "#### 2.4.2. 配置链接库",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.2. 配置链接库",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000050",
+    "page": 5,
+    "bbox": [
+      90.024,
+      119.31200000000001,
+      234.72199999999998,
+      132.62
+    ],
+    "order": 50,
+    "kind": "heading",
+    "text": "##### 2.4.2.1. 链接 ZRDDS_JAVA.jar",
+    "heading_level": 5,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.2. 配置链接库 > 2.4.2.1. 链接 ZRDDS_JAVA.jar",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000051",
+    "page": 5,
+    "bbox": [
+      111.38,
+      156.42895999999996,
+      505.54,
+      168.14
+    ],
+    "order": 51,
+    "kind": "text",
+    "text": "- 右键工程->properties->Java Bulid Path->Libraries 选择 Add External JARS…，选择安装",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.2. 配置链接库 > 2.4.2.1. 链接 ZRDDS_JAVA.jar",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000052",
+    "page": 5,
+    "bbox": [
+      132.62,
+      175.9889599999999,
+      279.41,
+      187.69999999999993
+    ],
+    "order": 52,
+    "kind": "text",
+    "text": "目录下的 ZRDDS_JAVA.jar 文件。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.2. 配置链接库 > 2.4.2.1. 链接 ZRDDS_JAVA.jar",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p5-09",
+    "page": 5,
+    "bbox": [
+      88.70268,
+      191.11584,
+      504.23604,
+      501.78432
+    ],
+    "order": 1000008,
+    "kind": "image",
+    "text": "> ![img-p5-09](images/img-p5-09.png)\n>\n> **图示信息：**\n> - Eclipse IDE 'Properties for ZRDDSTest' dialog showing the 'Java Build Path' > 'Libraries' tab with two entries: ZRDDS_JAVA.jar and JRE System Library [JavaSE-1.8].\n> - Left navigation pane highlights 'Run/Debug Settings' under 'Resource'\n> - Main panel tab selected: 'Libraries'\n> - JAR entry: 'ZRDDS_JAVA.jar - C:\\Program Files (x86)\\ZRDDS\\Z'\n> - JAR metadata: 'Source attachment: (None)', 'Javadoc location: (None)', 'Native library location: (None)', 'Access rules: (No restrictions)'\n> - Second entry: 'JRE System Library [JavaSE-1.8]'\n> - Right-side action buttons: 'Add JARs...', 'Add External JARs...', 'Add Variable...', 'Add Library...', 'Add Class Folder...', 'Add External Class Folder...', 'Edit...', 'Remove', 'Migrate JAR File...'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.2. 配置链接库 > 2.4.2.1. 链接 ZRDDS_JAVA.jar",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p5-09",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000053",
+    "page": 5,
+    "bbox": [
+      90.024,
+      523.2819999999999,
+      269.83399999999995,
+      536.5899999999999
+    ],
+    "order": 53,
+    "kind": "heading",
+    "text": "##### 2.4.2.2. 链接动态库 ZRDDS_JAVA.dll",
+    "heading_level": 5,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.2. 配置链接库 > 2.4.2.2. 链接动态库 ZRDDS_JAVA.dll",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000054",
+    "page": 5,
+    "bbox": [
+      111.38,
+      560.51896,
+      505.51792,
+      572.23
+    ],
+    "order": 54,
+    "kind": "text",
+    "text": "- 右键工程->properties->Java Bulid Path->Source，展开工程目录，双击 Native library",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.2. 配置链接库 > 2.4.2.2. 链接动态库 ZRDDS_JAVA.dll",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000055",
+    "page": 5,
+    "bbox": [
+      132.62,
+      579.9889599999999,
+      390.67,
+      591.6999999999999
+    ],
+    "order": 55,
+    "kind": "text",
+    "text": "location，External Folder…，选择安装目录下的 lib 目录。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.2. 配置链接库 > 2.4.2.2. 链接动态库 ZRDDS_JAVA.dll",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p6-10",
+    "page": 6,
+    "bbox": [
+      88.70268,
+      71.5632,
+      504.83136,
+      383.0736
+    ],
+    "order": 1000009,
+    "kind": "image",
+    "text": "> ![img-p6-10](images/img-p6-10.png)\n>\n> **图示信息：**\n> - Eclipse IDE Properties dialog for project 'ZRDDSTest', showing the Java Build Path configuration tab.\n> - Project name in title: 'Properties for ZRDDSTest'\n> - Selected left-side category: 'Java Build Path'\n> - Source folder listed: 'ZRDDSTest/src' with 'Included: (All)' and 'Excluded: (None)'\n> - Native library location: 'C:/Program Files (x86)/ZRDDS'\n> - Default output folder: 'ZRDDSTest/bin'\n> - Button labels visible: 'Add Folder...', 'Link Source...', 'Edit...', 'Remove', 'Browse...', 'OK', 'Cancel'",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.2. 配置链接库 > 2.4.2.2. 链接动态库 ZRDDS_JAVA.dll",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p6-10",
+      "mineru_type": "image",
+      "image_type": "configuration_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000056",
+    "page": 6,
+    "bbox": [
+      90.024,
+      404.602,
+      149.54,
+      417.90999999999997
+    ],
+    "order": 56,
+    "kind": "heading",
+    "text": "#### 2.4.3. 运行",
+    "heading_level": 4,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.3. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000057",
+    "page": 6,
+    "bbox": [
+      111.26,
+      439.67895999999996,
+      505.66,
+      451.38999999999993
+    ],
+    "order": 57,
+    "kind": "text",
+    "text": "直接添加 main 函数或者使用编译器–e 命令生成的 Foo_publication.java 或者",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.3. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000058",
+    "page": 6,
+    "bbox": [
+      90.024,
+      455.27896,
+      250.01,
+      466.98999999999995
+    ],
+    "order": 58,
+    "kind": "text",
+    "text": "Foo_subscriber.java 编译运行即可。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.4. 配置工程 > 2.4.3. 运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000059",
+    "page": 6,
+    "bbox": [
+      90.024,
+      489.96963999999997,
+      216.76999999999998,
+      505.53999999999996
+    ],
+    "order": 59,
+    "kind": "heading",
+    "text": "### 2.5. 命令行编译运行",
+    "heading_level": 3,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000060",
+    "page": 6,
+    "bbox": [
+      111.26,
+      530.03896,
+      505.54,
+      541.75
+    ],
+    "order": 60,
+    "kind": "text",
+    "text": "使用 zrddsgen.exe 生成文件（Foo.java、FooDataRreader.java、FooDataWriter.java、FooSeq、",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000061",
+    "page": 6,
+    "bbox": [
+      111.26,
+      549.4789599999999,
+      315.55,
+      561.1899999999999
+    ],
+    "order": 61,
+    "kind": "text",
+    "text": "FooTypeSupport.java，Foo_publication.java）。",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000062",
+    "page": 6,
+    "bbox": [
+      125.42,
+      588.5089599999999,
+      356.71,
+      600.2199999999999
+    ],
+    "order": 62,
+    "kind": "text",
+    "text": "- 使用 java 编译，将编译输出至文件夹 out 下：",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000063",
+    "page": 6,
+    "bbox": [
+      111.26,
+      608.06896,
+      357.44824,
+      619.78
+    ],
+    "order": 63,
+    "kind": "text",
+    "text": "javac –cp 安装目录/lib/ZRDDS_JAVA.jar –d out *.java",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p6-11",
+    "page": 6,
+    "bbox": [
+      111.92016000000001,
+      623.0208,
+      522.09564,
+      697.9516799999999
+    ],
+    "order": 1000010,
+    "kind": "image",
+    "text": "> ![img-p6-11](images/img-p6-11.png)\n>\n> **图示信息：**\n> - Command-line terminal output showing execution of a Java command with explicit javac compilation and classpath specification.\n> - Working directory: C:\\Users\\Show-3\\Desktop\\ZRDDSTestEclipse\\ZRDDSTest\\command\n> - javac command: javac -cp \"C:\\Program Files (x86)\\ZRDDS\\ZRDDS-2.2.5\\lib\\ZRDDS_JAVA.jar\" -d out *.java\n> - Java runtime path referenced: javapath\\jdk1.8.0_05\\bin\\javac\n> - Compilation output directory: -d out\n> - Source files compiled: *.java",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p6-11",
+      "mineru_type": "image",
+      "image_type": "terminal_or_log"
+    }
+  },
+  {
+    "block_id": "src-000064",
+    "page": 6,
+    "bbox": [
+      111.26,
+      705.5089599999999,
+      132.38,
+      716.06896
+    ],
+    "order": 64,
+    "kind": "text",
+    "text": "输出",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p7-12",
+    "page": 7,
+    "bbox": [
+      110.72952000000001,
+      75.77279999999999,
+      475.06536000000006,
+      201.21887999999998
+    ],
+    "order": 1000011,
+    "kind": "image",
+    "text": "> ![img-p7-12](images/img-p7-12.png)\n>\n> **图示信息：**\n> - File explorer view listing Java .class files with columns for name, modification date, type, and size.\n> - File names: Foo.class, Foo_publication.class, Foo_subscription.class, FooDataReader.class, FooDataWriter.class, FooSeq.class, FooTypeSupport.class, TestDataReaderListener.class\n> - All files have modification date '2020/5/6 16:18'\n> - All files are of type 'CLASS 文件' (CLASS file)\n> - File sizes: Foo.class (1 KB), Foo_publication.class (4 KB), Foo_subscription.class (3 KB), FooDataReader.class (1 KB), FooDataWriter.class (1 KB), FooSeq.class (1 KB), FooTypeSupport.class (5 KB), TestDataReaderListener.class (3 KB)",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p7-12",
+      "mineru_type": "table",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000065",
+    "page": 7,
+    "bbox": [
+      125.42,
+      232.5089599999999,
+      304.13384,
+      244.2199999999999
+    ],
+    "order": 65,
+    "kind": "text",
+    "text": "- 进入 out 文件夹下使用 java 运行：",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000066",
+    "page": 7,
+    "bbox": [
+      146.42,
+      252.89,
+      410.30600000000015,
+      263.44999999999993
+    ],
+    "order": 66,
+    "kind": "text",
+    "text": "java –cp [ZRDDS_JAVA.jar];[ZRDDS_JAVA.dll];. Foo_publication",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000067",
+    "page": 7,
+    "bbox": [
+      111.26,
+      271.53896,
+      281.33,
+      283.25
+    ],
+    "order": 67,
+    "kind": "text",
+    "text": "Foo_publication.java 中带有 main 函数",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p7-13",
+    "page": 7,
+    "bbox": [
+      109.53888,
+      289.62048,
+      523.8816,
+      495.8908799999999
+    ],
+    "order": 1000012,
+    "kind": "image",
+    "text": "> ![img-p7-13](images/img-p7-13.png)\n>\n> **图示信息：**\n> - Console output showing execution of a Java program that loads the ZRDDS library and repeatedly prints 'Write a data.'\n> - Command line: java -cp \"C:\\Program Files (x86)\\ZRDDS\\ZRDDS-2.2.5\\lib\\ZRDDS_JAVA.dll\";\"C:\\Program Files (x86)\\ZRDDS\\ZRDDS-2.2.5\\lib\\ZRDDS_JAVA.jar\"; Foo_publication\n> - JNI Load ZRDDS Library.\n> - Current ZRDDS version was compiled at Sep 4 2019 15:53:58\n> - Timestamp: Wed May 6 16:21:47 2020\n> - Repeated output: 'Write a data.' (9 times)",
+    "heading_level": null,
+    "heading_path": "2. 安装与配置 > 2.5. 命令行编译运行",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p7-13",
+      "mineru_type": "image",
+      "image_type": "terminal_or_log"
+    }
+  }
+]

@@ -1,0 +1,188 @@
+[
+  {
+    "occurrence_id": "img-p1-01",
+    "source_kind": "pdf_native",
+    "page": 1,
+    "bbox": [
+      0.384,
+      0.5,
+      0.684,
+      0.6
+    ],
+    "path": "images/img-p1-01.jpg",
+    "caption": "图 1 项目的 pro 文件",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p1-02",
+    "source_kind": "mineru",
+    "page": 1,
+    "bbox": [
+      0.149,
+      0.882,
+      0.848,
+      0.913
+    ],
+    "path": "images/a4d62b5f34dcccd6bdcfd0cca28a3a894ecb9fe188159004da641b09f2de294e.jpg",
+    "caption": "表 1 Window 下 qt 环境库文件选择",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate"
+  },
+  {
+    "occurrence_id": "img-p2-03",
+    "source_kind": "mineru",
+    "page": 2,
+    "bbox": [
+      0.149,
+      0.083,
+      0.848,
+      0.161
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate"
+  },
+  {
+    "occurrence_id": "img-p2-04",
+    "source_kind": "pdf_native",
+    "page": 2,
+    "bbox": [
+      0.391,
+      0.313,
+      0.673,
+      0.343
+    ],
+    "path": "images/img-p2-04.png",
+    "caption": "图 5 编译设置 rtti",
+    "visual_type": "code_or_config",
+    "roles": [
+      "code_or_config"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "source-p1-02",
+    "source_kind": "pdf_native",
+    "page": 1,
+    "bbox": [
+      0.15369885103809713,
+      0.6504062143671607,
+      0.8513068601760397,
+      0.6728549030786773
+    ],
+    "path": "images/source-p1-02.png",
+    "caption": "图 2 C++头文件目录",
+    "visual_type": "code_or_config",
+    "roles": [
+      "code_or_config"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "source-p1-03",
+    "source_kind": "pdf_native",
+    "page": 1,
+    "bbox": [
+      0.15117919774239064,
+      0.7252589319650322,
+      0.8518947792783712,
+      0.7469355758266818
+    ],
+    "path": "images/source-p1-03.png",
+    "caption": "图 3 C 头文件目录",
+    "visual_type": "code_or_config",
+    "roles": [
+      "code_or_config",
+      "code_original"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "source-p2-01",
+    "source_kind": "pdf_native",
+    "page": 2,
+    "bbox": [
+      0.32562319424847136,
+      0.22047225389585698,
+      0.7448935026540348,
+      0.25295752565564417
+    ],
+    "path": "images/source-p2-01.png",
+    "caption": "图 4 预编译符",
+    "visual_type": "code_or_config",
+    "roles": [
+      "code_or_config"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "source-p2-03",
+    "source_kind": "pdf_native",
+    "page": 2,
+    "bbox": [
+      0.1889739971779883,
+      0.41381603952869633,
+      0.8457636229254853,
+      0.6531499429874572
+    ],
+    "path": "images/source-p2-03.png",
+    "caption": "图 6 pro 配置",
+    "visual_type": "code_or_config",
+    "roles": [
+      "code_or_config",
+      "code_original"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  }
+]

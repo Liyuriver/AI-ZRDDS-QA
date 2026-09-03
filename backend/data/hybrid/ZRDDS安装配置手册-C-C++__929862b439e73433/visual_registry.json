@@ -1,0 +1,532 @@
+[
+  {
+    "occurrence_id": "img-p1-01",
+    "source_kind": "mineru",
+    "page": 1,
+    "bbox": [
+      0.193,
+      0.418,
+      0.803,
+      0.542
+    ],
+    "path": "images/f9c0d57cc4a949836341b4cf2dee6c2b8026c1f5a0f0f7030e7d2d6e8a2bd867.jpg",
+    "caption": "表 1 臻融数据分发服务 DDS 系统软件软件环境要求",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0002",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate"
+  },
+  {
+    "occurrence_id": "img-p2-02",
+    "source_kind": "pdf_native",
+    "page": 2,
+    "bbox": [
+      0.294,
+      0.091,
+      0.737,
+      0.316
+    ],
+    "path": "images/img-p2-02.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p2-03",
+    "source_kind": "pdf_native",
+    "page": 2,
+    "bbox": [
+      0.294,
+      0.35,
+      0.737,
+      0.576
+    ],
+    "path": "images/img-p2-03.png",
+    "caption": "",
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p2-04",
+    "source_kind": "pdf_native",
+    "page": 2,
+    "bbox": [
+      0.294,
+      0.609,
+      0.737,
+      0.835
+    ],
+    "path": "images/img-p2-04.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p3-05",
+    "source_kind": "pdf_native",
+    "page": 3,
+    "bbox": [
+      0.299,
+      0.09,
+      0.734,
+      0.244
+    ],
+    "path": "images/img-p3-05.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p3-06",
+    "source_kind": "pdf_native",
+    "page": 3,
+    "bbox": [
+      0.366,
+      0.313,
+      0.667,
+      0.467
+    ],
+    "path": "images/img-p3-06.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p3-07",
+    "source_kind": "pdf_native",
+    "page": 3,
+    "bbox": [
+      0.294,
+      0.5,
+      0.737,
+      0.725
+    ],
+    "path": "images/img-p3-07.png",
+    "caption": "",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p4-08",
+    "source_kind": "mineru",
+    "page": 4,
+    "bbox": [
+      0.137,
+      0.59,
+      0.84,
+      0.649
+    ],
+    "path": "images/img-p4-08.jpg",
+    "caption": "",
+    "visual_type": "code_or_config",
+    "roles": [
+      "code_or_config"
+    ],
+    "semantic_owner_chunk_id": "chunk-0006",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p5-09",
+    "source_kind": "pdf_native",
+    "page": 5,
+    "bbox": [
+      0.22,
+      0.231,
+      0.805,
+      0.516
+    ],
+    "path": "images/img-p5-09.png",
+    "caption": null,
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0008",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p6-10",
+    "source_kind": "pdf_native",
+    "page": 6,
+    "bbox": [
+      0.22,
+      0.086,
+      0.828,
+      0.361
+    ],
+    "path": "images/img-p6-10.png",
+    "caption": null,
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0009",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p7-11",
+    "source_kind": "pdf_native",
+    "page": 7,
+    "bbox": [
+      0.205,
+      0.092,
+      0.826,
+      0.373
+    ],
+    "path": "images/img-p7-11.png",
+    "caption": "",
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0010",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p7-12",
+    "source_kind": "pdf_native",
+    "page": 7,
+    "bbox": [
+      0.203,
+      0.41,
+      0.828,
+      0.693
+    ],
+    "path": "images/img-p7-12.png",
+    "caption": " 在项目->属性->C/C++->预处理器->预处理器定义中根据表 3添加预编译符。",
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0010",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p8-13",
+    "source_kind": "pdf_native",
+    "page": 8,
+    "bbox": [
+      0.205,
+      0.091,
+      0.833,
+      0.412
+    ],
+    "path": "images/img-p8-13.jpg",
+    "caption": "",
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0010",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p8-14",
+    "source_kind": "mineru",
+    "page": 8,
+    "bbox": [
+      0.139,
+      0.478,
+      0.858,
+      0.909
+    ],
+    "path": "images/a77bcb7fa560fba55a5b5f815bcafdcaae993e63b909974263a123234059e8f3.jpg",
+    "caption": "表 3Windows 库文件选择",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0010",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate"
+  },
+  {
+    "occurrence_id": "img-p9-15",
+    "source_kind": "mineru",
+    "page": 9,
+    "bbox": [
+      0.137,
+      0.083,
+      0.858,
+      0.296
+    ],
+    "path": "images/91ab4a8fbfb5f1f2f60bb9c99ad3ac86705f7a08d58365f8dc5cf0ae33884a2c.jpg",
+    "caption": "",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0010",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate"
+  },
+  {
+    "occurrence_id": "img-p10-16",
+    "source_kind": "pdf_native",
+    "page": 10,
+    "bbox": [
+      0.341,
+      0.083,
+      0.731,
+      0.344
+    ],
+    "path": "images/img-p10-16.png",
+    "caption": null,
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0013",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p10-17",
+    "source_kind": "pdf_native",
+    "page": 10,
+    "bbox": [
+      0.272,
+      0.642,
+      0.796,
+      0.913
+    ],
+    "path": "images/img-p10-17.png",
+    "caption": null,
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0014",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p11-18",
+    "source_kind": "pdf_native",
+    "page": 11,
+    "bbox": [
+      0.277,
+      0.298,
+      0.794,
+      0.568
+    ],
+    "path": "images/img-p11-18.png",
+    "caption": null,
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0015",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p11-19",
+    "source_kind": "mineru",
+    "page": 11,
+    "bbox": [
+      0.147,
+      0.607,
+      0.848,
+      0.791
+    ],
+    "path": "images/0e9a57cf9acdc6be91de5f2f6fa6d92b6bc710484c42de23e6d9059510652939.jpg",
+    "caption": "表 4 Linux 库文件选择",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0015",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate"
+  },
+  {
+    "occurrence_id": "img-p12-20",
+    "source_kind": "pdf_native",
+    "page": 12,
+    "bbox": [
+      0.272,
+      0.089,
+      0.798,
+      0.357
+    ],
+    "path": "images/img-p12-20.png",
+    "caption": "至此，工程配置完成，可以编写相关代码使用臻融数据分发服务DDS系统软件。",
+    "visual_type": "configuration_screenshot",
+    "roles": [
+      "configuration_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0015",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  },
+  {
+    "occurrence_id": "img-p12-21",
+    "source_kind": "mineru",
+    "page": 12,
+    "bbox": [
+      0.149,
+      0.882,
+      0.848,
+      0.912
+    ],
+    "path": "images/1f53ba2b45146599a37455cd31e0b9b2e25d95bdcde36d3d9a33db32e48584da.jpg",
+    "caption": "表 1 Window 下 qt 环境库文件选择",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0017",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate"
+  },
+  {
+    "occurrence_id": "img-p13-22",
+    "source_kind": "mineru",
+    "page": 13,
+    "bbox": [
+      0.149,
+      0.083,
+      0.848,
+      0.161
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0017",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate"
+  },
+  {
+    "occurrence_id": "source-p13-01",
+    "source_kind": "pdf_native",
+    "page": 13,
+    "bbox": [
+      0.2274407041591077,
+      0.26332668187001135,
+      0.817341933749916,
+      0.45406927023945265
+    ],
+    "path": "images/source-p13-01.png",
+    "caption": "源文档图像",
+    "visual_type": "code_or_config",
+    "roles": [
+      "code_or_config",
+      "code_original"
+    ],
+    "semantic_owner_chunk_id": "chunk-0017",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual"
+  }
+]

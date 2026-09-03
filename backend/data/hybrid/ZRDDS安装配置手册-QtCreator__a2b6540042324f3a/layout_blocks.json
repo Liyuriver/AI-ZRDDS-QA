@@ -1,0 +1,685 @@
+[
+  {
+    "block_id": "src-000000",
+    "page": 1,
+    "bbox": [
+      90.024,
+      100.75963999999999,
+      167.53232,
+      116.32999999999993
+    ],
+    "order": 0,
+    "kind": "heading",
+    "text": "## 1. 环境简述",
+    "heading_level": 2,
+    "heading_path": "1. 环境简述",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000001",
+    "page": 1,
+    "bbox": [
+      111.02,
+      145.6289599999999,
+      393.43304000000006,
+      157.33999999999992
+    ],
+    "order": 1,
+    "kind": "text",
+    "text": "在 Windows 中，ZRDDS 可在 QT 环境下使用。具体环境如下：",
+    "heading_level": null,
+    "heading_path": "1. 环境简述",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000002",
+    "page": 1,
+    "bbox": [
+      111.02,
+      161.22895999999992,
+      229.49,
+      172.93999999999994
+    ],
+    "order": 2,
+    "kind": "text",
+    "text": " mingw 版本为 4.8.2。",
+    "heading_level": null,
+    "heading_path": "1. 环境简述",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000003",
+    "page": 1,
+    "bbox": [
+      111.02,
+      176.82895999999994,
+      400.51000000000005,
+      188.53999999999996
+    ],
+    "order": 3,
+    "kind": "text",
+    "text": " qt 安装版本为 4.8.3（qt-win-opensource-4.8.3-mingw.exe）。",
+    "heading_level": null,
+    "heading_path": "1. 环境简述",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000004",
+    "page": 1,
+    "bbox": [
+      111.02,
+      192.42895999999996,
+      479.97999999999996,
+      204.14
+    ],
+    "order": 4,
+    "kind": "text",
+    "text": " Qt Creator 安装版本为 3.4.0（qt-creator-opensource-windows-x86-3.4.0.exe）。",
+    "heading_level": null,
+    "heading_path": "1. 环境简述",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000005",
+    "page": 1,
+    "bbox": [
+      90.024,
+      234.19964000000004,
+      167.54,
+      249.76999999999998
+    ],
+    "order": 5,
+    "kind": "heading",
+    "text": "## 2. 项目配置",
+    "heading_level": 2,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000006",
+    "page": 1,
+    "bbox": [
+      111.02,
+      279.0989599999999,
+      505.50924,
+      290.80999999999995
+    ],
+    "order": 6,
+    "kind": "text",
+    "text": "要使用 ZRDDS 中间件需要包含头文件所在目录，库文件所在目录，库文件名，使用 C++",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000007",
+    "page": 1,
+    "bbox": [
+      90.024,
+      294.69895999999994,
+      505.64344,
+      306.40999999999997
+    ],
+    "order": 7,
+    "kind": "text",
+    "text": "库需要添加预编译符。以上配置可在 Qt Creator 创建的项目中的.pro 文件中手动设置，具体",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000008",
+    "page": 1,
+    "bbox": [
+      90.024,
+      310.29895999999997,
+      163.71168,
+      320.85896
+    ],
+    "order": 8,
+    "kind": "text",
+    "text": "设置方式如下：",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000009",
+    "page": 1,
+    "bbox": [
+      111.02,
+      325.89896,
+      505.54,
+      337.60999999999996
+    ],
+    "order": 9,
+    "kind": "text",
+    "text": " 头文件目录：在.pro 文件（图 1）中键入 INCLUDEPATH += dir1 dir2，dir1，dir2 为头",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000010",
+    "page": 1,
+    "bbox": [
+      132.02,
+      341.49895999999995,
+      505.54,
+      353.2099999999999
+    ],
+    "order": 10,
+    "kind": "text",
+    "text": "文件目录，用 C++语言为$$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface)和",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000011",
+    "page": 1,
+    "bbox": [
+      132.02,
+      357.09896,
+      505.50447999999994,
+      368.80999999999995
+    ],
+    "order": 11,
+    "kind": "text",
+    "text": "$$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface) ； 用 C 语言为 $$quote",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000012",
+    "page": 1,
+    "bbox": [
+      132.02,
+      372.69896,
+      505.48624,
+      384.40999999999997
+    ],
+    "order": 12,
+    "kind": "text",
+    "text": "($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) 和 $$quote",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000013",
+    "page": 1,
+    "bbox": [
+      132.02,
+      388.29895999999997,
+      505.5448,
+      400.00999999999993
+    ],
+    "order": 13,
+    "kind": "text",
+    "text": "($(ZRDDS_HOME)\\include\\CInterface)。其中$(ZRDDS_HOME)为 ZRDDS 安装目录，用",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000014",
+    "page": 1,
+    "bbox": [
+      132.02,
+      403.89896,
+      510.68072,
+      415.60999999999996
+    ],
+    "order": 14,
+    "kind": "text",
+    "text": "$$quote()包住每条路径（图 2、图 3），以避免路径中包含空格所引起的编译错误。",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p1-01",
+    "page": 1,
+    "bbox": [
+      228.60288000000003,
+      420.96,
+      407.1988800000001,
+      505.15199999999993
+    ],
+    "order": 1000000,
+    "kind": "image",
+    "text": "> ![图 1 项目的 pro 文件](images/img-p1-01.jpg)\n>\n> **图示信息：**\n> - Qt Creator project explorer view showing a project named 'test-v227' with its .pro file and two folders: '头文件' (header files) and '源文件' (source files).\n> - Project name: test-v227\n> - Project file: test-v227.pro\n> - Folder label: 头文件 (with 'h' icon)\n> - Folder label: 源文件 (with 'c++' icon)\n> - Top-level item labeled '项目'",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p1-01",
+      "mineru_type": "image",
+      "image_type": "operation_screenshot"
+    }
+  },
+  {
+    "block_id": "src-000015",
+    "page": 1,
+    "bbox": [
+      253.37,
+      522.52,
+      341.94999999999993,
+      532.50988
+    ],
+    "order": 15,
+    "kind": "text",
+    "text": "图 1 项目的 pro 文件",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "source-p1-02",
+    "page": 1,
+    "bbox": [
+      91.5,
+      547.5899999999999,
+      506.8,
+      566.49
+    ],
+    "order": 1000004,
+    "kind": "image",
+    "text": "> ![图 2 C++头文件目录](images/source-p1-02.png)\n\n```text\nINCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)\n```",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "source-p1-02",
+      "mineru_type": "pdf_source_image",
+      "image_type": "code_or_config"
+    }
+  },
+  {
+    "block_id": "src-000016",
+    "page": 1,
+    "bbox": [
+      255.05,
+      584.9499999999999,
+      340.11956,
+      594.9398799999999
+    ],
+    "order": 16,
+    "kind": "text",
+    "text": "图 2 C++头文件目录",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "source-p1-03",
+    "page": 1,
+    "bbox": [
+      90.0,
+      610.6099999999999,
+      507.15,
+      628.8599999999999
+    ],
+    "order": 1000005,
+    "kind": "image",
+    "text": "> ![图 3 C 头文件目录](images/source-p1-03.png)\n\n```text\nINCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)\n```",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "source-p1-03",
+      "mineru_type": "pdf_source_image",
+      "image_type": "code_or_config"
+    }
+  },
+  {
+    "block_id": "src-000017",
+    "page": 1,
+    "bbox": [
+      258.89,
+      647.3499999999999,
+      336.39956,
+      657.33988
+    ],
+    "order": 17,
+    "kind": "text",
+    "text": "图 3 C 头文件目录",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000018",
+    "page": 1,
+    "bbox": [
+      111.02,
+      669.14896,
+      505.4092,
+      680.8599999999999
+    ],
+    "order": 18,
+    "kind": "text",
+    "text": " 库文件及其所在目录：在.pro 文件中键入 LIBS += -L dir –llib。dir 为库文件所在目录，",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000019",
+    "page": 1,
+    "bbox": [
+      132.02,
+      684.7489599999999,
+      505.5688,
+      696.4599999999999
+    ],
+    "order": 19,
+    "kind": "text",
+    "text": "跟在-L 之后，为$$quote($(ZRDDS_HOME)\\lib)。lib 为库文件名，不带后缀，跟在-l",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000020",
+    "page": 1,
+    "bbox": [
+      132.02,
+      700.3489599999999,
+      505.53999999999996,
+      712.06
+    ],
+    "order": 20,
+    "kind": "text",
+    "text": "之后，分为 ZRDDS 库（见表 1）以及 Windows 相关库（ws2_32，wsock32，iphlpapi）。",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000021",
+    "page": 1,
+    "bbox": [
+      223.01,
+      725.3499999999999,
+      372.28911999999997,
+      735.33988
+    ],
+    "order": 21,
+    "kind": "text",
+    "text": "表 1 Window 下 qt 环境库文件选择",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000022",
+    "page": 1,
+    "bbox": [
+      90.52749999999999,
+      744.9359866666665,
+      505.3891683333333,
+      768.2399866666666
+    ],
+    "order": 22,
+    "kind": "table",
+    "text": "| 语言 | 编译所需库文件 | 说明 | 预编译符 |\n| --- | --- | --- | --- |\n| C++ | ZRDDSCppzd.lib | Debug版本静态库 | _ZRDDSCPPINTERFACE |\n|  | ZRDDSCppz.lib | Release版本静态库 | _ZRDDSCPPINTERFACE |\n| C | ZRDDSCzd.lib | Debug版本静态库 |  |\n|  | ZRDDSCz.lib | Release版本静态库 |  |",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000023",
+    "page": 2,
+    "bbox": [
+      111.02,
+      155.1089599999999,
+      505.50924,
+      166.81999999999994
+    ],
+    "order": 23,
+    "kind": "text",
+    "text": " 预编译符：在.pro 文件中键入 DEFINES += _ZRDDSCPPINTERFACE。使用 ZRDDS 的 C++",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000024",
+    "page": 2,
+    "bbox": [
+      132.02,
+      170.70895999999993,
+      268.71920000000006,
+      181.26896
+    ],
+    "order": 24,
+    "kind": "text",
+    "text": "库时需要添加这个预编译符。",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "code-p2-02",
+    "page": 2,
+    "bbox": [
+      194.07432000000003,
+      186.90624,
+      441.13212000000004,
+      209.63808
+    ],
+    "order": 2000000,
+    "kind": "code_figure",
+    "text": "> ![代码区域原图](images/source-p2-01.png)\n>\n> **解析代码：**\n\n```text\nDEFINES += _ZRDDSCPPINTERFACE\n```",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "vlm+pdf_crop",
+    "confidence": 1.0,
+    "metadata": {
+      "code_content": "DEFINES += _ZRDDSCPPINTERFACE",
+      "source_image_path": "images/source-p2-01.png",
+      "source_visual_id": "source-p2-01",
+      "code_verification_status": "verified_primary",
+      "code_content_candidate": "DEFINES += _ZRDDSCPPIINTERFACE",
+      "code_transcription_confidence": "high",
+      "mineru_code_content": "DEFINES +=ZRDDSCPPINTERFACE",
+      "code_context_corrections": [
+        {
+          "from": "_ZRDDSCPPIINTERFACE",
+          "to": "_ZRDDSCPPINTERFACE",
+          "reason": "source_identifier_anchor"
+        }
+      ]
+    }
+  },
+  {
+    "block_id": "src-000025",
+    "page": 2,
+    "bbox": [
+      267.65,
+      226.90999999999997,
+      327.63955999999996,
+      236.89987999999994
+    ],
+    "order": 25,
+    "kind": "text",
+    "text": "图 4 预编译符",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000026",
+    "page": 2,
+    "bbox": [
+      111.02,
+      248.7389599999999,
+      515.86,
+      260.44999999999993
+    ],
+    "order": 26,
+    "kind": "text",
+    "text": " 编译设置：若出现 not permitted with -fno-rtti 问题，在.pro 文件中键入 CONFIG += rtti。",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "img-p2-04",
+    "page": 2,
+    "bbox": [
+      232.77012000000002,
+      263.52096,
+      400.65036000000003,
+      288.77856
+    ],
+    "order": 1000003,
+    "kind": "image",
+    "text": "> ![图 5 编译设置 rtti](images/img-p2-04.png)\n\n```text\n8 CONFIG  += rtti\n```",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "img-p2-04",
+      "mineru_type": "image",
+      "image_type": "code_or_config"
+    }
+  },
+  {
+    "block_id": "src-000027",
+    "page": 2,
+    "bbox": [
+      260.33,
+      304.93999999999994,
+      334.89124000000004,
+      314.9298799999999
+    ],
+    "order": 27,
+    "kind": "text",
+    "text": "图 5 编译设置 rtti",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "src-000028",
+    "page": 2,
+    "bbox": [
+      111.02,
+      326.7389599999999,
+      503.96152,
+      338.44999999999993
+    ],
+    "order": 28,
+    "kind": "text",
+    "text": "至此，Windows 下 qt 环境 ZRDDS 项目配置完成，以 C++为例，图 6 为具体配置示例。",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  },
+  {
+    "block_id": "source-p2-03",
+    "page": 2,
+    "bbox": [
+      112.5,
+      348.4,
+      503.5,
+      549.9
+    ],
+    "order": 1000007,
+    "kind": "image",
+    "text": "> ![图 6 pro 配置](images/source-p2-03.png)\n\n```text\n1 QT += core\n2 QT -= gui\n3 \n4 TARGET = DDSApp\n5 CONFIG += console\n6 CONFIG -= app_bundle\n7 CONFIG    += rtti\n8 \n9 TEMPLATE = app\n10 \n11 SOURCES += \\\n12     CharSeq.cpp \\\n13     CharSeq_publication.cpp \\\n14     CharSeqTypeSupport.cpp\n15 \n16 HEADERS += \\\n17     CharSeq.h \\\n18     CharSeqDataReader.h \\\n19     CharSeqDataWriter.h \\\n20     CharSeqTypeSupport.h\n21 \n22 INCLUDEPATH += $$quote($(ZRDDS_HOME)\\include\\ZRDDSCoreInterface) $$quote($(ZRDDS_HOME)\\include\\CPlusPlusInterface)\n23 \n24 LIBS += -L $$quote($(ZRDDS_HOME)\\lib) -lZRDDSCppzd -lws2_32 -lwsock32 -liphlpapi\n25 \n26 DEFINES += _ZRDDSCPPINTERFACE\n27 \n28 TARGET = CharSeq_pub\n```",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "mineru+vlm",
+    "confidence": 1.0,
+    "metadata": {
+      "image_id": "source-p2-03",
+      "mineru_type": "pdf_source_image",
+      "image_type": "code_or_config"
+    }
+  },
+  {
+    "block_id": "src-000029",
+    "page": 2,
+    "bbox": [
+      269.69,
+      570.1599999999999,
+      325.62999999999994,
+      580.1498799999999
+    ],
+    "order": 29,
+    "kind": "text",
+    "text": "图 6 pro 配置",
+    "heading_level": null,
+    "heading_path": "2. 项目配置",
+    "source": "pdfplumber",
+    "confidence": 1.0,
+    "metadata": null
+  }
+]

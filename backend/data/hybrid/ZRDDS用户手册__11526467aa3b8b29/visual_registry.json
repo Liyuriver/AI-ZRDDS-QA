@@ -1,0 +1,6050 @@
+[
+  {
+    "occurrence_id": "img-p1-01",
+    "source_kind": "pdf_native",
+    "page": 1,
+    "bbox": [
+      0.363,
+      0.342,
+      0.62,
+      0.516
+    ],
+    "path": "images/img-p1-01.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0001",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A blue square seal stamp with white Chinese characters arranged in a 2x2 grid, featuring a distressed/ink-blotted border."
+  },
+  {
+    "occurrence_id": "img-p8-02",
+    "source_kind": "pdf_native",
+    "page": 8,
+    "bbox": [
+      0.23507397702076194,
+      0.15921347531651453,
+      0.7482022676678088,
+      0.4640279634510657
+    ],
+    "path": "images/img-p8-02.png",
+    "caption": "图 1-1web 架构和分布式系统",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0003",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A diagram showing five client computers sending tasks (Task 1 to Task 5) to a central server, with bidirectional arrows indicating communication between clients and the server for each task."
+  },
+  {
+    "occurrence_id": "img-p8-03",
+    "source_kind": "pdf_native",
+    "page": 8,
+    "bbox": [
+      0.30377652355035945,
+      0.6639167362694793,
+      0.6800138626629375,
+      0.8607305426342169
+    ],
+    "path": "images/img-p8-03.png",
+    "caption": "图 1-2 网络中间件",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0004",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A layered architecture diagram showing four horizontal components with vertical arrows indicating bidirectional communication between '应用程序' and '中间件', and a unidirectional downward arrow from '应用程序' to '硬件'."
+  },
+  {
+    "occurrence_id": "img-p16-04",
+    "source_kind": "pdf_native",
+    "page": 16,
+    "bbox": [
+      0.15767811937907342,
+      0.4390579247434435,
+      0.8247780674868137,
+      0.7383979466704674
+    ],
+    "path": "images/img-p16-04.png",
+    "caption": "图 2-1 键值、实例、样本的关系",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0015",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A flow diagram illustrating a data-centric publish/subscribe model with topic, key-based instances, and samples."
+  },
+  {
+    "occurrence_id": "img-p18-05",
+    "source_kind": "pdf_native",
+    "page": 18,
+    "bbox": [
+      0.314,
+      0.367,
+      0.684,
+      0.479
+    ],
+    "path": "images/img-p18-05.png",
+    "caption": "图 3-1",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0018",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p19-06",
+    "source_kind": "pdf_native",
+    "page": 19,
+    "bbox": [
+      0.119,
+      0.11,
+      0.877,
+      0.545
+    ],
+    "path": "images/img-p19-06.png",
+    "caption": "图 3-2",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0019",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Command-line help output of zrddsgen.exe showing usage, options, and Chinese explanations for each flag."
+  },
+  {
+    "occurrence_id": "img-p20-07",
+    "source_kind": "pdf_native",
+    "page": 20,
+    "bbox": [
+      0.137,
+      0.111,
+      0.858,
+      0.431
+    ],
+    "path": "images/img-p20-07.png",
+    "caption": "图 3-3",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0019",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Command prompt window showing execution of zrddsgen.exe with IDL file input and C++ output generation, followed by success message."
+  },
+  {
+    "occurrence_id": "img-p20-08",
+    "source_kind": "pdf_native",
+    "page": 20,
+    "bbox": [
+      0.114,
+      0.524,
+      0.863,
+      0.793
+    ],
+    "path": "images/img-p20-08.png",
+    "caption": "图 3-4",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0019",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "File Explorer window showing a list of C++ and Visual Studio project files related to 'HelloWorld' and 'HelloWorld_subscription', all modified on 2021/12/28 14:42."
+  },
+  {
+    "occurrence_id": "img-p21-09",
+    "source_kind": "pdf_native",
+    "page": 21,
+    "bbox": [
+      0.292,
+      0.168,
+      0.704,
+      0.574
+    ],
+    "path": "images/img-p21-09.png",
+    "caption": "图 3-5",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0020",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Visual Studio Solution Explorer showing a C++ solution named 'HelloWorld_publication' with two projects: 'HelloWorld_publication' and 'HelloWorld_subscription', each containing identical header and source files plus an '外部依赖项' node."
+  },
+  {
+    "occurrence_id": "img-p22-10",
+    "source_kind": "pdf_native",
+    "page": 22,
+    "bbox": [
+      0.188,
+      0.111,
+      0.845,
+      0.398
+    ],
+    "path": "images/img-p22-10.png",
+    "caption": "图 3-6",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0020",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p22-11",
+    "source_kind": "pdf_native",
+    "page": 22,
+    "bbox": [
+      0.154,
+      0.489,
+      0.912,
+      0.665
+    ],
+    "path": "images/img-p22-11.png",
+    "caption": "图 3-7",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0020",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Two side-by-side Windows Command Prompt windows showing runtime output of ZRDDS executables: left window runs 'HelloWorld_publication.exe', right window runs 'HelloWorld_subscription.exe'."
+  },
+  {
+    "occurrence_id": "img-p23-12",
+    "source_kind": "mineru",
+    "page": 23,
+    "bbox": [
+      0.142,
+      0.639,
+      0.815,
+      0.891
+    ],
+    "path": "images/26e904362b92ae23df74cfce652c0bc18f1efcfda5abeadbbafc98ac017e968f.jpg",
+    "caption": "表 4-1ZRDDS 支持的数据类型",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0022",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p24-13",
+    "source_kind": "mineru",
+    "page": 24,
+    "bbox": [
+      0.142,
+      0.104,
+      0.813,
+      0.202
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0022",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p25-14",
+    "source_kind": "mineru",
+    "page": 25,
+    "bbox": [
+      0.142,
+      0.41,
+      0.815,
+      0.89
+    ],
+    "path": "images/28eb5ad95ea0e74f3a216de49655bfc4eee496ee2287f483285a3e8cc82be7b9.jpg",
+    "caption": "表 4-2Sequence 方法列表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0022",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p26-15",
+    "source_kind": "mineru",
+    "page": 26,
+    "bbox": [
+      0.146,
+      0.105,
+      0.806,
+      0.164
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0023",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p27-16",
+    "source_kind": "mineru",
+    "page": 27,
+    "bbox": [
+      0.228,
+      0.801,
+      0.768,
+      0.881
+    ],
+    "path": "images/90feb1cd06cfb4b66531f0ec8c19eff95368de7f51f4aa490f0805412ae7fcb7.jpg",
+    "caption": "表 4-3 通过编译器获取的 C++文件",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0025",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p28-17",
+    "source_kind": "mineru",
+    "page": 28,
+    "bbox": [
+      0.228,
+      0.187,
+      0.768,
+      0.267
+    ],
+    "path": "images/c00dd518b95f44f5b8fd9f0171ce346603b0a22aa12b40ae5d95d206377e8355.jpg",
+    "caption": "表 4-4 通过编译器获取的 C 语言文件",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0025",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A two-column table listing file types and corresponding files."
+  },
+  {
+    "occurrence_id": "img-p28-18",
+    "source_kind": "mineru",
+    "page": 28,
+    "bbox": [
+      0.228,
+      0.349,
+      0.768,
+      0.466
+    ],
+    "path": "images/58b7817c0594a3d9b0f341c6f309c8d91b24d8d4e0c8d708fea2300fdbf1f96c.jpg",
+    "caption": "表 4-5 通过编译器获取的 Java 文件",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0025",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p30-19",
+    "source_kind": "mineru",
+    "page": 30,
+    "bbox": [
+      0.109,
+      0.142,
+      0.81,
+      0.673
+    ],
+    "path": "images/e393d9bb97ab184cce178a860b59379eb60d50e9af309f705cb4fcf6f854520d.jpg",
+    "caption": "表 4-6 zrddsgen 的选项",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0026",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p31-20",
+    "source_kind": "mineru",
+    "page": 31,
+    "bbox": [
+      0.228,
+      0.574,
+      0.769,
+      0.711
+    ],
+    "path": "images/0eb7878781153eb08b7c4745c265d31625e67c8e8c58124ab3e31b6b5d6875ee.jpg",
+    "caption": "表 5-1DDS 的实体和工厂",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0029",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p33-21",
+    "source_kind": "mineru",
+    "page": 33,
+    "bbox": [
+      0.126,
+      0.419,
+      0.81,
+      0.709
+    ],
+    "path": "images/ebdaf6bd0e88253b6cc39ac8a52315242c1075154e1e406c6b21119bd3d98a44.jpg",
+    "caption": "表 5-2 ReturnCode_t 表示的错误码",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0030",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p37-22",
+    "source_kind": "mineru",
+    "page": 37,
+    "bbox": [
+      0.139,
+      0.621,
+      0.857,
+      0.876
+    ],
+    "path": "images/e93eeb1239c9e1205ab0d923d0eeda07a8b1ce880fa09ffabeafd0f98f853bf2.jpg",
+    "caption": "表 5-3QoS 策略",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0034",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p38-23",
+    "source_kind": "mineru",
+    "page": 38,
+    "bbox": [
+      0.139,
+      0.107,
+      0.858,
+      0.889
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p39-24",
+    "source_kind": "mineru",
+    "page": 39,
+    "bbox": [
+      0.139,
+      0.104,
+      0.858,
+      0.237
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0036",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p40-25",
+    "source_kind": "mineru",
+    "page": 40,
+    "bbox": [
+      0.104,
+      0.514,
+      0.894,
+      0.848
+    ],
+    "path": "images/627aaf5ec0a7fff962d2c3514bf215fc2d09533eb5f07f735d03452b695873c1.jpg",
+    "caption": "表 5-4Listener 的回调函数",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0037",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A table mapping listeners (DomainParticipant, Subscriber, Publisher) to their associated callback functions via Topic and DataReader/DataWriter."
+  },
+  {
+    "occurrence_id": "img-p43-26",
+    "source_kind": "pdf_native",
+    "page": 43,
+    "bbox": [
+      0.213,
+      0.112,
+      0.818,
+      0.361
+    ],
+    "path": "images/img-p43-26.png",
+    "caption": "图 5-1Listener 类的继承",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0038",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "UML class inheritance diagram showing Listener as the base class and its derived classes with hierarchical relationships."
+  },
+  {
+    "occurrence_id": "img-p44-27",
+    "source_kind": "mineru",
+    "page": 44,
+    "bbox": [
+      0.198,
+      0.7,
+      0.798,
+      0.875
+    ],
+    "path": "images/f77c30abd688465691bed5462b4aa5e195a80a4c1c169a32a8d7804381bbe23b.jpg",
+    "caption": "表 5-5 实体的 Status",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0039",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p45-28",
+    "source_kind": "mineru",
+    "page": 45,
+    "bbox": [
+      0.198,
+      0.104,
+      0.798,
+      0.203
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0039",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p46-29",
+    "source_kind": "pdf_native",
+    "page": 46,
+    "bbox": [
+      0.213,
+      0.563,
+      0.821,
+      0.714
+    ],
+    "path": "images/img-p46-29.png",
+    "caption": "图 5-2WaitSet Blocking Behavior",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0041",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A completely black or uniformly dark blurred rectangle with no discernible features, text, UI elements, or structure."
+  },
+  {
+    "occurrence_id": "img-p48-30",
+    "source_kind": "mineru",
+    "page": 48,
+    "bbox": [
+      0.174,
+      0.193,
+      0.396,
+      0.209
+    ],
+    "path": "images/1294d9c21fb3935adacd6f2bf2ca7782d103d09a9a570e0ad530702a8555f364.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0042",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p48-31",
+    "source_kind": "mineru",
+    "page": 48,
+    "bbox": [
+      0.176,
+      0.215,
+      0.593,
+      0.23
+    ],
+    "path": "images/56d40c63b1c3137ab74e97a91a3c5337b22b4894b106fe46ed900f6e79366788.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0042",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p48-32",
+    "source_kind": "mineru",
+    "page": 48,
+    "bbox": [
+      0.176,
+      0.599,
+      0.645,
+      0.614
+    ],
+    "path": "images/49e1e37b95aab2c27bdab7385f409444f52e508293e81a2c0e474cf1d71ce02b.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0042",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p49-33",
+    "source_kind": "pdf_native",
+    "page": 49,
+    "bbox": [
+      0.318306524222267,
+      0.53375051234084,
+      0.7171290398441175,
+      0.7733953474534396
+    ],
+    "path": "images/img-p49-33.png",
+    "caption": "图 6-1 应用程序和域的关系",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0044",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Venn diagram showing two overlapping domains (域 1 and 域 2) with three applications: 应用程序A in the intersection, 应用程序B in 域 1 only, and 应用程序C in 域 2 only; bidirectional arrows connect 应用程序A to both 应用程序B and 应用程序C."
+  },
+  {
+    "occurrence_id": "img-p50-34",
+    "source_kind": "pdf_native",
+    "page": 50,
+    "bbox": [
+      0.121,
+      0.202,
+      0.836,
+      0.766
+    ],
+    "path": "images/img-p50-34.png",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0044",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A UI element showing a collapsed/expandable section with text 'DomainEntity' and a Chinese character '类' (meaning 'class'), with an arrow icon indicating expand/collapse state."
+  },
+  {
+    "occurrence_id": "img-p51-35",
+    "source_kind": "pdf_native",
+    "page": 51,
+    "bbox": [
+      0.13898193648793924,
+      0.12012095023137596,
+      0.8905437835953772,
+      0.7143531407905738
+    ],
+    "path": "images/img-p51-35.png",
+    "caption": "图 6-2 域模块图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0044",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "UML class diagram showing relationships among DDS domain-related classes: Entity, DomainParticipant, DomainParticipantFactory, DomainEntity, Publisher, Subscriber, and Topic."
+  },
+  {
+    "occurrence_id": "img-p52-36",
+    "source_kind": "mineru",
+    "page": 52,
+    "bbox": [
+      0.144,
+      0.299,
+      0.852,
+      0.512
+    ],
+    "path": "images/f90ff923d4541908a02410d3eea375fe347fe93b57b9221ccce44af63f2b7410.jpg",
+    "caption": "表 6-1DomainParticipantFactory 函数",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0045",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p53-37",
+    "source_kind": "mineru",
+    "page": 53,
+    "bbox": [
+      0.168,
+      0.859,
+      0.684,
+      0.875
+    ],
+    "path": "images/4b0212b9522ac834dda95c753c1ad8477e816f4b48c859e2bd3123367813478c.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0046",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p54-38",
+    "source_kind": "mineru",
+    "page": 54,
+    "bbox": [
+      0.144,
+      0.297,
+      0.852,
+      0.869
+    ],
+    "path": "images/ee44ddcd87963b6180802463f56e23413bac5d2f1e3636e7f8993a619c09db02.jpg",
+    "caption": "表 6-2DomainParticipant 的函数",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0047",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p55-39",
+    "source_kind": "mineru",
+    "page": 55,
+    "bbox": [
+      0.144,
+      0.104,
+      0.852,
+      0.557
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0048",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p58-40",
+    "source_kind": "mineru",
+    "page": 58,
+    "bbox": [
+      0.129,
+      0.552,
+      0.867,
+      0.878
+    ],
+    "path": "images/5c1b0b91a06971ce7121bff6c25c4d557920c0a5eb705b2c9ccc2064f09903b1.jpg",
+    "caption": "表 6-3 DomainParticipant 的 QoS 策略",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0051",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A table listing QoS policies with their descriptions and cross-references to sections in the manual."
+  },
+  {
+    "occurrence_id": "img-p59-41",
+    "source_kind": "mineru",
+    "page": 59,
+    "bbox": [
+      0.127,
+      0.104,
+      0.868,
+      0.219
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0051",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p60-42",
+    "source_kind": "mineru",
+    "page": 60,
+    "bbox": [
+      0.176,
+      0.594,
+      0.65,
+      0.609
+    ],
+    "path": "images/ee271f2d8dcdead947a226f997f312e8c7988270a07f11649267133e2dfaff46.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0053",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p62-43",
+    "source_kind": "mineru",
+    "page": 62,
+    "bbox": [
+      0.176,
+      0.191,
+      0.643,
+      0.206
+    ],
+    "path": "images/bdf6498ffb3400fbb5acb31214ec94e1658dd4b8125f8c75d7ee99696328d387.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0054",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p62-44",
+    "source_kind": "mineru",
+    "page": 62,
+    "bbox": [
+      0.176,
+      0.394,
+      0.732,
+      0.41
+    ],
+    "path": "images/2ae0295d07c93fd9a88eb8ed3041798ee07e3cf2997f1e5b469e090e045374ca.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0054",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p62-45",
+    "source_kind": "mineru",
+    "page": 62,
+    "bbox": [
+      0.109,
+      0.746,
+      0.887,
+      0.884
+    ],
+    "path": "images/d307079160dca4933b0c83ab0496923e834c003a1fc117d5ce623541dc842b58.jpg",
+    "caption": "表 6-4 内置数据读者及其关联的数据类型",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0055",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p63-46",
+    "source_kind": "mineru",
+    "page": 63,
+    "bbox": [
+      0.109,
+      0.104,
+      0.889,
+      0.13
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0055",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p65-47",
+    "source_kind": "mineru",
+    "page": 65,
+    "bbox": [
+      0.151,
+      0.753,
+      0.845,
+      0.852
+    ],
+    "path": "images/24c5726c0617c18aadf4f71b314af366045d96b615e92b8544fb28931d89ee86.jpg",
+    "caption": "表 7-1 Topic 函数",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0058",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p66-48",
+    "source_kind": "mineru",
+    "page": 66,
+    "bbox": [
+      0.151,
+      0.296,
+      0.845,
+      0.549
+    ],
+    "path": "images/2be8e6aae7d9aba1325abd8b94852aea34fc16412e80951e516a02df535dcbf6.jpg",
+    "caption": "表 7-2 Topic 函数",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0059",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p68-49",
+    "source_kind": "mineru",
+    "page": 68,
+    "bbox": [
+      0.146,
+      0.363,
+      0.852,
+      0.838
+    ],
+    "path": "images/c63a8f4262702b6b4142f731e0eee3ed7c87f66e26bbd1bd714f1f42b8bf0886.jpg",
+    "caption": "表 7-1Topic 的 QoS 策略",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0060",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p71-50",
+    "source_kind": "mineru",
+    "page": 71,
+    "bbox": [
+      0.157,
+      0.593,
+      0.84,
+      0.736
+    ],
+    "path": "images/c40ae109d0932bb7c8b5d778680091f872f3c0cca73c23911630d658a049c385.jpg",
+    "caption": "表 7-2ContentFilteredTopic 的相关操作",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0064",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p75-51",
+    "source_kind": "mineru",
+    "page": 75,
+    "bbox": [
+      0.174,
+      0.637,
+      0.547,
+      0.69
+    ],
+    "path": "images/58dc6a7694f3d03228eb5861bdf1b59ad1ab9e3270745f5bdf09f309452e0001.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0067",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p75-52",
+    "source_kind": "mineru",
+    "page": 75,
+    "bbox": [
+      0.174,
+      0.762,
+      0.598,
+      0.818
+    ],
+    "path": "images/10e8177f5e8d27560fc0b13771b5b5b96f15ee5f9aa22a06f849760793bd9251.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0067",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p76-53",
+    "source_kind": "mineru",
+    "page": 76,
+    "bbox": [
+      0.117,
+      0.267,
+      0.878,
+      0.441
+    ],
+    "path": "images/faa0c4f40b38027426f4a8efaa890f80cb2de91e14f6267f0fa4608969f0d4d3.jpg",
+    "caption": "表 7-3 有效类型对比",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0067",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p77-54",
+    "source_kind": "mineru",
+    "page": 77,
+    "bbox": [
+      0.178,
+      0.149,
+      0.252,
+      0.166
+    ],
+    "path": "images/75dde865d36cbe0d18808b1822dc3b87a53df73cf9bdd9e7a40977047f9aebcf.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0067",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p77-55",
+    "source_kind": "mineru",
+    "page": 77,
+    "bbox": [
+      0.107,
+      0.296,
+      0.862,
+      0.434
+    ],
+    "path": "images/a6f5dd3fd77e5fc6d0d842b385eba9ccdcbc8ebad53bc8865299b8187e9cff90.jpg",
+    "caption": "表 6-4 TypeSupport 的函数",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0068",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p80-56",
+    "source_kind": "pdf_native",
+    "page": 80,
+    "bbox": [
+      0.0,
+      0.01257280872291907,
+      0.8547640573641067,
+      0.5613941058295325
+    ],
+    "path": "images/img-p80-56.png",
+    "caption": "图 8-1ZRDDS 发布端模型",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0071",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "UML class diagram showing relationships among DataWriter, Publisher, Topic, QosPolicy, DomainParticipant, and Data entities in the DDS system software."
+  },
+  {
+    "occurrence_id": "img-p80-57",
+    "source_kind": "mineru",
+    "page": 80,
+    "bbox": [
+      0.107,
+      0.739,
+      0.862,
+      0.877
+    ],
+    "path": "images/965837d4d903de33c52703ff5f04a1ca0f69f6c20a2b3d7e5792f4e5331b884a.jpg",
+    "caption": "表 8-1Publisher 的函数",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0071",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p81-58",
+    "source_kind": "mineru",
+    "page": 81,
+    "bbox": [
+      0.107,
+      0.104,
+      0.863,
+      0.393
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0072",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p81-59",
+    "source_kind": "mineru",
+    "page": 81,
+    "bbox": [
+      0.178,
+      0.511,
+      0.44,
+      0.582
+    ],
+    "path": "images/182aba48e51f547d718c7d3246d74022a50b18594c28a0f6a5c3a9bc07e150b9.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0072",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p85-60",
+    "source_kind": "mineru",
+    "page": 85,
+    "bbox": [
+      0.149,
+      0.326,
+      0.726,
+      0.343
+    ],
+    "path": "images/f03f93d9e979cf4170567c25fcfe2abd84c3ed1ea40a7a4fc7660e402e9cb228.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0075",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p85-61",
+    "source_kind": "mineru",
+    "page": 85,
+    "bbox": [
+      0.107,
+      0.521,
+      0.838,
+      0.884
+    ],
+    "path": "images/c3f2e308007b6e302718f3287ede8154a6d1a6a29c27bd7f8ea48517dccbc11c.jpg",
+    "caption": "表 8-2DataWriter 的函数",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0076",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p86-62",
+    "source_kind": "mineru",
+    "page": 86,
+    "bbox": [
+      0.107,
+      0.104,
+      0.838,
+      0.542
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0078",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p90-63",
+    "source_kind": "mineru",
+    "page": 90,
+    "bbox": [
+      0.121,
+      0.827,
+      0.838,
+      0.888
+    ],
+    "path": "images/4df2b59822d6f03aeb2fdcae1a50159561ac568f60120044e9d3c6e5a93cb685.jpg",
+    "caption": "表 8-3DataWriterListener 回调方法",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0081",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p91-64",
+    "source_kind": "mineru",
+    "page": 91,
+    "bbox": [
+      0.121,
+      0.104,
+      0.838,
+      0.145
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0081",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p91-65",
+    "source_kind": "mineru",
+    "page": 91,
+    "bbox": [
+      0.144,
+      0.835,
+      0.826,
+      0.877
+    ],
+    "path": "images/89931556f1e4d62cd6db5b8b6433019aa35cb18ceb1bb3a946be28aaa39d6198.jpg",
+    "caption": "表 8-4 检查 DataWriter Status",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0082",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p92-66",
+    "source_kind": "mineru",
+    "page": 92,
+    "bbox": [
+      0.142,
+      0.104,
+      0.825,
+      0.184
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0082",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p92-67",
+    "source_kind": "mineru",
+    "page": 92,
+    "bbox": [
+      0.176,
+      0.579,
+      0.685,
+      0.593
+    ],
+    "path": "images/3d4f82092afa3daf977704117760b0841c57afa43fb9d0b519feca02975c7eeb.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0082",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p98-68",
+    "source_kind": "pdf_native",
+    "page": 98,
+    "bbox": [
+      0.029790635131189933,
+      0.025042494889262478,
+      0.8633518198273197,
+      0.7249581501409159
+    ],
+    "path": "images/img-p98-68.png",
+    "caption": "图 9-1ZRDDS 订阅端模型",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0088",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "UML class diagram showing relationships among DDS system components: DataReader, Subscriber, DomainParticipant, Topic, QosPolicy, and DataReaderListener."
+  },
+  {
+    "occurrence_id": "img-p98-69",
+    "source_kind": "mineru",
+    "page": 98,
+    "bbox": [
+      0.152,
+      0.813,
+      0.847,
+      0.875
+    ],
+    "path": "images/0bf2881025e05a61a38da22dfccfd3bc57939f4e75514c9ecd04e0e59f9f2425.jpg",
+    "caption": "表 9-1Subscriber 的函数",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0088",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p99-70",
+    "source_kind": "mineru",
+    "page": 99,
+    "bbox": [
+      0.151,
+      0.104,
+      0.847,
+      0.431
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0089",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p102-71",
+    "source_kind": "mineru",
+    "page": 102,
+    "bbox": [
+      0.176,
+      0.151,
+      0.689,
+      0.166
+    ],
+    "path": "images/f47113656997d99d21fc9b5e1c8839f91d6e541de35376d33d2e4c5a8a253791.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0091",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p103-72",
+    "source_kind": "mineru",
+    "page": 103,
+    "bbox": [
+      0.139,
+      0.86,
+      0.857,
+      0.883
+    ],
+    "path": "images/35767fb956ef081ccbd77a33416c066d25c1dedfd1f3bc863789cf40f12278cc.jpg",
+    "caption": "表 9-2DataReader 的方法",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0094",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p104-73",
+    "source_kind": "mineru",
+    "page": 104,
+    "bbox": [
+      0.139,
+      0.105,
+      0.858,
+      0.883
+    ],
+    "path": "images/fcff2d9aa8eb35670694d2d81e69dc2073ba183465df312af7960469cf450a99.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": true,
+    "visual_class": "non_knowledge_visual",
+    "description": "A table listing DataReader API methods grouped by functional categories, with method names in the left column and Chinese descriptions in the right column."
+  },
+  {
+    "occurrence_id": "img-p105-74",
+    "source_kind": "mineru",
+    "page": 105,
+    "bbox": [
+      0.139,
+      0.104,
+      0.857,
+      0.391
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0096",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p109-75",
+    "source_kind": "mineru",
+    "page": 109,
+    "bbox": [
+      0.176,
+      0.108,
+      0.42,
+      0.124
+    ],
+    "path": "images/545d81c3ffb4474e985062a9c5e15289e7401b22cf67ed276f292eb30b96bfbb.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0099",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p109-76",
+    "source_kind": "mineru",
+    "page": 109,
+    "bbox": [
+      0.126,
+      0.413,
+      0.87,
+      0.57
+    ],
+    "path": "images/43a53976b5626049a000b222478fcbec4a237c149e920038e33ba55bc051542a.jpg",
+    "caption": "表 9-3DataReaderListener 回调方法",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0099",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p111-77",
+    "source_kind": "mineru",
+    "page": 111,
+    "bbox": [
+      0.121,
+      0.598,
+      0.877,
+      0.771
+    ],
+    "path": "images/261bfc028f9429b85f4c763c74839159252a981ff3fc30a96ac79a73c0b778d5.jpg",
+    "caption": "表 9-4on_liveliness_changed 被调用时 Status 的状态",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0101",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p113-78",
+    "source_kind": "mineru",
+    "page": 113,
+    "bbox": [
+      0.119,
+      0.178,
+      0.825,
+      0.353
+    ],
+    "path": "images/898b73051dba524fe5f19876333cc60678dbf14aa2166994734c7655b52e8e13.jpg",
+    "caption": "表 9-5 检查 DataWriter Status",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0102",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p120-79",
+    "source_kind": "mineru",
+    "page": 120,
+    "bbox": [
+      0.132,
+      0.573,
+      0.863,
+      0.878
+    ],
+    "path": "images/2b3e1d4f9a88ef7d5ff62ccd40692cc92498e828826e357ebe5129446e0568f0.jpg",
+    "caption": "表 9-6SampleInfo 类结构",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0107",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p121-80",
+    "source_kind": "mineru",
+    "page": 121,
+    "bbox": [
+      0.132,
+      0.104,
+      0.863,
+      0.183
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0108",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p125-81",
+    "source_kind": "mineru",
+    "page": 125,
+    "bbox": [
+      0.169,
+      0.338,
+      0.828,
+      0.438
+    ],
+    "path": "images/40fb1f9b703446d75b0f9ff372e6344fb29d12d7869bc3be965cab7f717bc120.jpg",
+    "caption": "表 10-1 AsynchronousPublisherQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0112",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p126-82",
+    "source_kind": "mineru",
+    "page": 126,
+    "bbox": [
+      0.169,
+      0.385,
+      0.828,
+      0.599
+    ],
+    "path": "images/0779cf4e8c79b29aba9c840b1b001c103a3fd2d119676b6a04edb0b2d63df036.jpg",
+    "caption": "表 10-2 Batch QosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0113",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p129-83",
+    "source_kind": "mineru",
+    "page": 129,
+    "bbox": [
+      0.156,
+      0.538,
+      0.84,
+      0.686
+    ],
+    "path": "images/5e92caf759fde7432ad6e59d8a5a21d7f4aa48c464610b01d63f040147a3a5ba.jpg",
+    "caption": "表 10-3 DataWriterMessageModeQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0116",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p130-84",
+    "source_kind": "mineru",
+    "page": 130,
+    "bbox": [
+      0.169,
+      0.351,
+      0.828,
+      0.434
+    ],
+    "path": "images/d7ad52821b759d1b7edefdb048c012d5e15e46346666b14220d35b120826fbba.jpg",
+    "caption": "表 10-4DeadlineQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0117",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p131-85",
+    "source_kind": "mineru",
+    "page": 131,
+    "bbox": [
+      0.157,
+      0.644,
+      0.84,
+      0.725
+    ],
+    "path": "images/fef984b8e33345903c44d22cee6e3cf5353ad14d3f2389fe9975e380d7aaca31.jpg",
+    "caption": "表 10-5DestinationOrderQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0119",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p133-86",
+    "source_kind": "mineru",
+    "page": 133,
+    "bbox": [
+      0.157,
+      0.18,
+      0.84,
+      0.326
+    ],
+    "path": "images/66a798ba2caaaad07e316e9f4cc4c40ec4a6002ad04779e514b6022854e9ea52.jpg",
+    "caption": "表 10-6 DiscoveryConfigQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0121",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p133-87",
+    "source_kind": "mineru",
+    "page": 133,
+    "bbox": [
+      0.157,
+      0.782,
+      0.84,
+      0.864
+    ],
+    "path": "images/6ee5829310998c3f117362c26f70161ba5161951df0c8ddc6983807680a1842d.jpg",
+    "caption": "表 10-7DurabilityQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0122",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p135-88",
+    "source_kind": "mineru",
+    "page": 135,
+    "bbox": [
+      0.157,
+      0.18,
+      0.84,
+      0.298
+    ],
+    "path": "images/85f275a57b7044776958a0446b44c36fb322beb425abf1c648676fc24297e15f.jpg",
+    "caption": "表 10-8EntityFactoryQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0123",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p135-89",
+    "source_kind": "mineru",
+    "page": 135,
+    "bbox": [
+      0.157,
+      0.731,
+      0.84,
+      0.812
+    ],
+    "path": "images/031e5c60e80802dd220c29a082d609b5d9758d5f02691b09b19c939e2608d98d.jpg",
+    "caption": "表 10-9GroupDataQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0124",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p136-90",
+    "source_kind": "mineru",
+    "page": 136,
+    "bbox": [
+      0.157,
+      0.585,
+      0.84,
+      0.713
+    ],
+    "path": "images/391017bc0daab0b6c1fff26e8b05896f15b75b3ecd5300dd19e8f0191fc412ec.jpg",
+    "caption": "表 10-10HistoryQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0125",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p138-91",
+    "source_kind": "mineru",
+    "page": 138,
+    "bbox": [
+      0.156,
+      0.705,
+      0.84,
+      0.785
+    ],
+    "path": "images/a525e5cce2f6261e20c5baea4779696330100f73e629a6e366085dc8e42350ec.jpg",
+    "caption": "表 10-11 LifespanQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0127",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p139-92",
+    "source_kind": "mineru",
+    "page": 139,
+    "bbox": [
+      0.157,
+      0.585,
+      0.84,
+      0.713
+    ],
+    "path": "images/b3f6660f781441c29ce249cce0bdb8fcbacc40ecddb1cfe0d6f8bef5eea097e5.jpg",
+    "caption": "表 10-12LivelinessQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0128",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p141-93",
+    "source_kind": "mineru",
+    "page": 141,
+    "bbox": [
+      0.156,
+      0.527,
+      0.84,
+      0.686
+    ],
+    "path": "images/8060ab58cbf081aaf6511c2348e277e60db8c46a39c259c4442f3a55c7e09ec7.jpg",
+    "caption": "表 10-13LogQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0130",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p142-94",
+    "source_kind": "mineru",
+    "page": 142,
+    "bbox": [
+      0.157,
+      0.724,
+      0.838,
+      0.841
+    ],
+    "path": "images/9a14c6fb72125bd335c6847283ac54931a45fb613fb195764e3db1059ace36a9.jpg",
+    "caption": "表 10-14MsgStatisticsInfoQosPolicy 属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0131",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p143-95",
+    "source_kind": "mineru",
+    "page": 143,
+    "bbox": [
+      0.157,
+      0.826,
+      0.84,
+      0.887
+    ],
+    "path": "images/89060ec0cffb38cd474ba63cb1c09e8e862f4542bd103c5c7e7dbcf980b9a699.jpg",
+    "caption": "表 10-15OwnershipQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0132",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p144-96",
+    "source_kind": "mineru",
+    "page": 144,
+    "bbox": [
+      0.157,
+      0.104,
+      0.84,
+      0.145
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0132",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p145-97",
+    "source_kind": "mineru",
+    "page": 145,
+    "bbox": [
+      0.157,
+      0.676,
+      0.84,
+      0.757
+    ],
+    "path": "images/58d50b3a58084e19a2c0cbd39338e9be6fdffc8d26e4adcb1d64c84490329068.jpg",
+    "caption": "表 10-16 OwnershipStrengthQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0134",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p146-98",
+    "source_kind": "mineru",
+    "page": 146,
+    "bbox": [
+      0.156,
+      0.422,
+      0.84,
+      0.502
+    ],
+    "path": "images/d5179c62cd3d9e9193f3303f82b62091b85e8f4296cc2200084c5809e79f0c65.jpg",
+    "caption": "表 10-17 PartitionQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0135",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p147-99",
+    "source_kind": "mineru",
+    "page": 147,
+    "bbox": [
+      0.193,
+      0.234,
+      0.84,
+      0.409
+    ],
+    "path": "images/55e13bbbace69f05d5b677b288d15a8bd9157b1fcb6a4d7e0f3d99c44945ec5b.jpg",
+    "caption": "图 10-1 PARTITION Qos 控制数据可见性",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0135",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A data flow diagram showing two DataWriters (DataWriter1, DataWriter2) publishing to four partitions (Partition_A, Partition_B, Partition_C, Partition_D), and two DataReaders (DataReader1, DataReader2) subscribing to subsets of those partitions, with annotations indicating control/data distribution and subscription scope."
+  },
+  {
+    "occurrence_id": "img-p148-100",
+    "source_kind": "mineru",
+    "page": 148,
+    "bbox": [
+      0.121,
+      0.793,
+      0.801,
+      0.883
+    ],
+    "path": "images/a3695ae1ae875c77fe9072ae649daae464899fff4ae41caab6f3cf3e70c2fc9a.jpg",
+    "caption": "表 10-18 PresentationQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0137",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p149-101",
+    "source_kind": "mineru",
+    "page": 149,
+    "bbox": [
+      0.119,
+      0.104,
+      0.803,
+      0.2
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0137",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p151-102",
+    "source_kind": "mineru",
+    "page": 151,
+    "bbox": [
+      0.156,
+      0.282,
+      0.84,
+      0.466
+    ],
+    "path": "images/568788f5e7be7345414379f04ee59b47e8ff0ce77ed1ee788491dd2151cc54eb.jpg",
+    "caption": "表 10-19 DataWriterProtocolQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0139",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p152-103",
+    "source_kind": "mineru",
+    "page": 152,
+    "bbox": [
+      0.157,
+      0.329,
+      0.84,
+      0.437
+    ],
+    "path": "images/9309ec8147bcee175a5bf710ab57908fbcdb3744144b2d0c8a2f40bdee133d35.jpg",
+    "caption": "表 10-20 PublishModeQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0140",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p153-104",
+    "source_kind": "mineru",
+    "page": 153,
+    "bbox": [
+      0.149,
+      0.399,
+      0.848,
+      0.498
+    ],
+    "path": "images/0c34c06ba000388fcdd6e73a5028d9cc5230666231d292c3fa33ae20ea841c7f.jpg",
+    "caption": "表 10-21 RapidIOConfigQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0141",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p154-105",
+    "source_kind": "mineru",
+    "page": 154,
+    "bbox": [
+      0.147,
+      0.538,
+      0.848,
+      0.619
+    ],
+    "path": "images/8218d82f154de551a061834fb04eb86c023065da7055f3522089a751250aae4e.jpg",
+    "caption": "表 10-22RapidIOControllerQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0142",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p154-106",
+    "source_kind": "mineru",
+    "page": 154,
+    "bbox": [
+      0.157,
+      0.865,
+      0.84,
+      0.892
+    ],
+    "path": "images/b715f50ac2e393f3e3cf2ec03f7ced00c4666873ca8581a023ffce910be6f24e.jpg",
+    "caption": "表 10-23 ReaderDataLifecycleQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0143",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p155-107",
+    "source_kind": "mineru",
+    "page": 155,
+    "bbox": [
+      0.156,
+      0.104,
+      0.84,
+      0.263
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0143",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p156-108",
+    "source_kind": "mineru",
+    "page": 156,
+    "bbox": [
+      0.157,
+      0.5,
+      0.84,
+      0.624
+    ],
+    "path": "images/eb154b8de10ade60bd062c883ad9bab30122abb007dcca3e5107c92301f8d038.jpg",
+    "caption": "表 10-24 ReceiverThreadConfigQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0145",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p157-109",
+    "source_kind": "mineru",
+    "page": 157,
+    "bbox": [
+      0.156,
+      0.399,
+      0.84,
+      0.526
+    ],
+    "path": "images/e5096d6b637a1189f34dbf0ce7219955a05bd24f541e337628e485b41315f206.jpg",
+    "caption": "表 10-25 ReliabilityQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0146",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p159-110",
+    "source_kind": "mineru",
+    "page": 159,
+    "bbox": [
+      0.22,
+      0.249,
+      0.71,
+      0.265
+    ],
+    "path": "images/2328683ca4f8ca0bf4f401d49298c6bb9f4dfb18006bf51f991c07678f7f3a08.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0147",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A line of text stating a reliability kind constraint: 'DataWriter 的 reliability 的 kind ≥ DataReader 的 reliability 的 kind'"
+  },
+  {
+    "occurrence_id": "img-p159-111",
+    "source_kind": "mineru",
+    "page": 159,
+    "bbox": [
+      0.156,
+      0.445,
+      0.84,
+      0.612
+    ],
+    "path": "images/3f087071a984dfac178f77bd9d2d0665c828557a8b8f80cd0c3cf1f95d21c813.jpg",
+    "caption": "表 10-2610-27 ResourceLimitsQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0148",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p160-112",
+    "source_kind": "mineru",
+    "page": 160,
+    "bbox": [
+      0.157,
+      0.676,
+      0.84,
+      0.881
+    ],
+    "path": "images/00cfc12cc67c60853410c1a70dcaa7f2ff286e4a8c776d7ca2094b1c6f305add.jpg",
+    "caption": "表 10-28ThreadCoreAffinityQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0150",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p161-113",
+    "source_kind": "mineru",
+    "page": 161,
+    "bbox": [
+      0.157,
+      0.468,
+      0.84,
+      0.549
+    ],
+    "path": "images/a06a1e46671c5092856d3b4d14dc3c13316835d676accbbf0cb256b98dbb86f9.jpg",
+    "caption": "表 10-29 TimeBasedFilterQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0151",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p162-114",
+    "source_kind": "pdf_native",
+    "page": 162,
+    "bbox": [
+      0.191,
+      0.21,
+      0.853,
+      0.323
+    ],
+    "path": "images/img-p162-114.png",
+    "caption": "图 10-2 DataReader 接收数据",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0151",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A timeline diagram illustrating the behavior of TimeBasedFilterQosPolicy with time progressing left to right, showing sample reception, dropping, acceptance, and deadline conditions."
+  },
+  {
+    "occurrence_id": "img-p162-115",
+    "source_kind": "mineru",
+    "page": 162,
+    "bbox": [
+      0.157,
+      0.807,
+      0.84,
+      0.888
+    ],
+    "path": "images/f3f7efffb0edb4846cfc19a4622ebbaaf70926d2ff891fc73b41f81eb0dff350.jpg",
+    "caption": "表 10-30 TopicDataQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0152",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p163-116",
+    "source_kind": "mineru",
+    "page": 163,
+    "bbox": [
+      0.157,
+      0.561,
+      0.84,
+      0.67
+    ],
+    "path": "images/9165aa99d6ba3a546fb58526d155c64907402b7b9849d5b6ac01c1ca0730dc09.jpg",
+    "caption": "表 10-31TransportConfigQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0153",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p163-117",
+    "source_kind": "mineru",
+    "page": 163,
+    "bbox": [
+      0.161,
+      0.864,
+      0.87,
+      0.885
+    ],
+    "path": "images/db2416f3b918a389739886d571c84e7bc8ee1cc62ba29a67e3b94da175819a12.jpg",
+    "caption": "表 10-32ZRDDS 当前可配置的地址方式参数",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0153",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p164-118",
+    "source_kind": "mineru",
+    "page": 164,
+    "bbox": [
+      0.161,
+      0.105,
+      0.873,
+      0.89
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p165-119",
+    "source_kind": "mineru",
+    "page": 165,
+    "bbox": [
+      0.161,
+      0.103,
+      0.87,
+      0.571
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0155",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p166-120",
+    "source_kind": "mineru",
+    "page": 166,
+    "bbox": [
+      0.157,
+      0.18,
+      0.84,
+      0.28
+    ],
+    "path": "images/2a028340eb9133428eeeb195b6f70dfdd2c75568981a5d8e0c7fcec134e62680.jpg",
+    "caption": "表 10-33 UserDataQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0156",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p166-121",
+    "source_kind": "mineru",
+    "page": 166,
+    "bbox": [
+      0.157,
+      0.804,
+      0.84,
+      0.885
+    ],
+    "path": "images/8c021ca4f86862a7e1f8ef05fb0d464bb4d7eedb22125d64238ccc990784972e.jpg",
+    "caption": "表 10-34 WriterDataLifecycleQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0157",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p167-122",
+    "source_kind": "mineru",
+    "page": 167,
+    "bbox": [
+      0.156,
+      0.104,
+      0.84,
+      0.203
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0157",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p168-123",
+    "source_kind": "mineru",
+    "page": 168,
+    "bbox": [
+      0.147,
+      0.18,
+      0.848,
+      0.45
+    ],
+    "path": "images/dcef92ab6c91190a8a560bf542fb56a9867fb9e1aa25414619580e4c98d229c3.jpg",
+    "caption": "表 10-35DataWriterResourceLimitsQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0158",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p170-124",
+    "source_kind": "mineru",
+    "page": 170,
+    "bbox": [
+      0.147,
+      0.253,
+      0.848,
+      0.407
+    ],
+    "path": "images/aaa82b6ff7ad644b66164ac932be341568734eac8c76537637eabb91d89fabd5.jpg",
+    "caption": "表 10-36PropertyQosPolicy 的属性",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0163",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p172-125",
+    "source_kind": "mineru",
+    "page": 172,
+    "bbox": [
+      0.107,
+      0.393,
+      0.81,
+      0.526
+    ],
+    "path": "images/ca23456479534db14c0658d25d972f66d174d2e43b804fc4b53ba72d993b5241.jpg",
+    "caption": "CompressionFunc compression_func)",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0164",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p172-126",
+    "source_kind": "mineru",
+    "page": 172,
+    "bbox": [
+      0.109,
+      0.624,
+      0.81,
+      0.758
+    ],
+    "path": "images/090cc94705afad7202f30db2a6d0f272ff812eaf2482ace5627ee1f51588cadb.jpg",
+    "caption": "DeCompressionFunc decompression_func)",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0164",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p172-127",
+    "source_kind": "mineru",
+    "page": 172,
+    "bbox": [
+      0.109,
+      0.86,
+      0.81,
+      0.881
+    ],
+    "path": "images/d99e57f441b009493549e71c6e7268f1fad83ed38a67197a448f12b6e34cac33.jpg",
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0165",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p173-128",
+    "source_kind": "mineru",
+    "page": 173,
+    "bbox": [
+      0.109,
+      0.104,
+      0.81,
+      0.218
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0165",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p173-129",
+    "source_kind": "mineru",
+    "page": 173,
+    "bbox": [
+      0.109,
+      0.273,
+      0.81,
+      0.536
+    ],
+    "path": "images/6ec8dc835ed82af4cbf8dc4cd7866cb9a98a9d386b59b04c06c97a7550ba72ae.jpg",
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0165",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p173-130",
+    "source_kind": "mineru",
+    "page": 173,
+    "bbox": [
+      0.107,
+      0.573,
+      0.81,
+      0.816
+    ],
+    "path": "images/161268bd7d4574fb20cbf45ad0f586cfd4847d6db65dc7cd9f72fe5386a7acad.jpg",
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0165",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p175-131",
+    "source_kind": "pdf_native",
+    "page": 175,
+    "bbox": [
+      0.277,
+      0.114,
+      0.719,
+      0.337
+    ],
+    "path": "images/img-p175-131.png",
+    "caption": "图 11-1 安装步骤一图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0168",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "ZRDDS 安装向导的欢迎界面，显示安装前提示和操作按钮。"
+  },
+  {
+    "occurrence_id": "img-p175-132",
+    "source_kind": "pdf_native",
+    "page": 175,
+    "bbox": [
+      0.277,
+      0.413,
+      0.719,
+      0.639
+    ],
+    "path": "images/img-p175-132.png",
+    "caption": "图 11-2 安装步骤二图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0168",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "ZRDDS 安装向导的目录选择界面，使用 Nullsoft Install System v3.04。"
+  },
+  {
+    "occurrence_id": "img-p176-133",
+    "source_kind": "pdf_native",
+    "page": 176,
+    "bbox": [
+      0.277,
+      0.114,
+      0.719,
+      0.337
+    ],
+    "path": "images/img-p176-133.png",
+    "caption": "图 11-3 安装步骤三图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0168",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "ZRDDS installation window showing extraction progress of multiple LifespanQos_Subscription files using Nullsoft Install System v3.04."
+  },
+  {
+    "occurrence_id": "img-p176-134",
+    "source_kind": "pdf_native",
+    "page": 176,
+    "bbox": [
+      0.28,
+      0.437,
+      0.715,
+      0.589
+    ],
+    "path": "images/img-p176-134.png",
+    "caption": "图 11-4 安装步骤四图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0168",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A Windows-style dialog box titled 'ZRDDS 安装' displaying a status message and a confirmation button."
+  },
+  {
+    "occurrence_id": "img-p176-135",
+    "source_kind": "pdf_native",
+    "page": 176,
+    "bbox": [
+      0.366,
+      0.687,
+      0.667,
+      0.841
+    ],
+    "path": "images/img-p176-135.png",
+    "caption": "图 11-5 安装步骤五图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0168",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A Windows-style dialog box titled 'ZRDDS 安装' displaying a message instructing the user to restart the computer for environment variables to take effect, with a single '确定' button."
+  },
+  {
+    "occurrence_id": "img-p177-136",
+    "source_kind": "pdf_native",
+    "page": 177,
+    "bbox": [
+      0.277,
+      0.16,
+      0.717,
+      0.385
+    ],
+    "path": "images/img-p177-136.png",
+    "caption": "图 11-6 安装步骤六图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0168",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "ZRDDS 安装向导的完成界面，显示安装已成功并提供后续操作选项。"
+  },
+  {
+    "occurrence_id": "img-p178-137",
+    "source_kind": "pdf_native",
+    "page": 178,
+    "bbox": [
+      0.201,
+      0.203,
+      0.794,
+      0.673
+    ],
+    "path": "images/img-p178-137.png",
+    "caption": "图 11-7 用命令行方式调用 zrddsgen.exe 及输入的相关指令",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0169",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Command-line help output for zrddsGen.exe showing usage, options, and descriptions in Chinese."
+  },
+  {
+    "occurrence_id": "img-p179-138",
+    "source_kind": "pdf_native",
+    "page": 179,
+    "bbox": [
+      0.206,
+      0.272,
+      0.793,
+      0.556
+    ],
+    "path": "images/img-p179-138.png",
+    "caption": "图 11-8 创建空项目图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0170",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Visual Studio 'New Project' dialog in Chinese, showing template selection and project configuration fields."
+  },
+  {
+    "occurrence_id": "img-p180-139",
+    "source_kind": "mineru",
+    "page": 180,
+    "bbox": [
+      0.109,
+      0.141,
+      0.87,
+      0.167
+    ],
+    "path": "images/26540ce736b5715cc1d2f5dcce084e3a16ef6dc65bdb54c4e67579920cc84475.jpg",
+    "caption": "表 11-1DDS 运行库命名规则",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0170",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A single-line text string showing a library file path with bracketed version alternatives."
+  },
+  {
+    "occurrence_id": "img-p180-140",
+    "source_kind": "pdf_native",
+    "page": 180,
+    "bbox": [
+      0.186,
+      0.476,
+      0.81,
+      0.758
+    ],
+    "path": "images/img-p180-140.png",
+    "caption": "图 11-9 配置运行时库图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0170",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Visual Studio project property page for 'CPPlusInterfaceTest', showing Linker → Input settings under Debug configuration and Win32 platform."
+  },
+  {
+    "occurrence_id": "img-p181-141",
+    "source_kind": "pdf_native",
+    "page": 181,
+    "bbox": [
+      0.184,
+      0.112,
+      0.813,
+      0.395
+    ],
+    "path": "images/img-p181-141.png",
+    "caption": "图 11-10 添加编译符图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0170",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Visual Studio property page for 'CPlusPlusInterfaceTest' showing C/C++ preprocessor settings under Debug configuration and Win32 platform."
+  },
+  {
+    "occurrence_id": "img-p181-142",
+    "source_kind": "pdf_native",
+    "page": 181,
+    "bbox": [
+      0.205,
+      0.492,
+      0.826,
+      0.812
+    ],
+    "path": "images/img-p181-142.jpg",
+    "caption": "图11-11 选择运行库版本图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0170",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Visual Studio property pages for a C++ project named 'CPlusPlusInterfaceTest', showing the 'Linker' > 'Advanced' configuration tab under Debug|Win32 platform."
+  },
+  {
+    "occurrence_id": "img-p182-143",
+    "source_kind": "mineru",
+    "page": 182,
+    "bbox": [
+      0.151,
+      0.142,
+      0.847,
+      0.875
+    ],
+    "path": "images/2f3211d14013afc94bf8c24b77cfaf77e249da095fcb6479e8240e866146ca55.jpg",
+    "caption": "表 11-2 库文件选择",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0170",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p183-144",
+    "source_kind": "mineru",
+    "page": 183,
+    "bbox": [
+      0.151,
+      0.104,
+      0.847,
+      0.153
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0171",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p184-145",
+    "source_kind": "mineru",
+    "page": 184,
+    "bbox": [
+      0.144,
+      0.197,
+      0.87,
+      0.341
+    ],
+    "path": "images/0baf94472591d28da7189bf5c5dcde13869a3a08f2ae24ff472c022422278543.jpg",
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0171",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p185-146",
+    "source_kind": "pdf_native",
+    "page": 185,
+    "bbox": [
+      0.2270380964010952,
+      0.13642508908684903,
+      0.7731178518637035,
+      0.40996190585066694
+    ],
+    "path": "images/img-p185-146.png",
+    "caption": "图 11-12 发布端应用程序流程图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0173",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A flowchart showing the sequence of steps to create and publish data in a ZRDDS application, with branching after the first step."
+  },
+  {
+    "occurrence_id": "img-p188-147",
+    "source_kind": "pdf_native",
+    "page": 188,
+    "bbox": [
+      0.25099911375562717,
+      0.17893936017977943,
+      0.7489938963196263,
+      0.47786462514355665
+    ],
+    "path": "images/img-p188-147.png",
+    "caption": "图 11-13 订阅端应用程序流程图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0174",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A vertical flowchart showing the sequence of creating ZRDDS application components, starting from DomainParticipant and ending with Listener listening to data subscriptions."
+  },
+  {
+    "occurrence_id": "img-p195-148",
+    "source_kind": "mineru",
+    "page": 195,
+    "bbox": [
+      0.154,
+      0.114,
+      0.833,
+      0.482
+    ],
+    "path": "images/57136ce00010fb0389b2b2903921ad82e4fd0f56e055ef535927cad8abcfd0e2.jpg",
+    "caption": "图 12-1DataWriter 向 DataReader 发送数据",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0181",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A sequence diagram illustrating a reliable communication model with DataWriter and DataReader components, showing message flow including DATA, HB, and ACK, and queue state changes."
+  },
+  {
+    "occurrence_id": "img-p196-149",
+    "source_kind": "mineru",
+    "page": 196,
+    "bbox": [
+      0.119,
+      0.108,
+      0.774,
+      0.665
+    ],
+    "path": "images/4472442c825cce13cb563056f91ae92aa05a35c4577c4de853f75e5b85715ff6.jpg",
+    "caption": "图 12-2DataWriter 发送数据时发生数据丢包的处理过程",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0181",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Sequence diagram illustrating a reliable communication protocol between DataWriter and DataReader, showing message exchange, queue states, and acknowledgment handling with retransmission."
+  },
+  {
+    "occurrence_id": "img-p197-150",
+    "source_kind": "mineru",
+    "page": 197,
+    "bbox": [
+      0.107,
+      0.141,
+      0.862,
+      0.3
+    ],
+    "path": "images/af886c2362959ca21d33975f3b58918a265f4c1685c58d96d576399960200902.jpg",
+    "caption": "表 12-1 影响通信模型的 3 个 QoS",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0182",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p197-151",
+    "source_kind": "mineru",
+    "page": 197,
+    "bbox": [
+      0.163,
+      0.682,
+      0.833,
+      0.766
+    ],
+    "path": "images/60fa0e062426d40adf3ae3f5c4e4004ad0fed1cfa6a864a2b40b95c4a0c7ec7b.jpg",
+    "caption": "表 12-2 History QosPolicy 对实际队列长度的作用",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0182",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p199-152",
+    "source_kind": "mineru",
+    "page": 199,
+    "bbox": [
+      0.122,
+      0.581,
+      0.873,
+      0.888
+    ],
+    "path": "images/4dacbd464c20f6a51f54061f8f5345dda654bafcf0fb35484770ea403b988f1b.jpg",
+    "caption": "表 12-3 单实例通信的处理机制",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0184",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p200-153",
+    "source_kind": "mineru",
+    "page": 200,
+    "bbox": [
+      0.121,
+      0.104,
+      0.875,
+      0.329
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0184",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p200-154",
+    "source_kind": "mineru",
+    "page": 200,
+    "bbox": [
+      0.134,
+      0.643,
+      0.863,
+      0.892
+    ],
+    "path": "images/94db0e6da58d8aa03cdd9290f5b6eccfef3d6de8b26357c3cdaf96c24dd0293d.jpg",
+    "caption": "表 12-4“发送/接收队列”资源上限的处理机制",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0185",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p201-155",
+    "source_kind": "mineru",
+    "page": 201,
+    "bbox": [
+      0.132,
+      0.104,
+      0.863,
+      0.423
+    ],
+    "path": "images/be48d5a43e878cdc826b20037585bfebfd3e6f40db75942244297eb1027a24b4.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0185",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A table row describing QoS behavior for 'keep_all' policy, with conditions and outcomes involving dr, dw, rtps layer, and sample limits."
+  },
+  {
+    "occurrence_id": "img-p201-156",
+    "source_kind": "mineru",
+    "page": 201,
+    "bbox": [
+      0.132,
+      0.527,
+      0.863,
+      0.884
+    ],
+    "path": "images/3243e0f6accec50aaec0f5908b66a06bfc576bf583dff02a37462ab7137756f7.jpg",
+    "caption": "表 12-5DataWriter 的 Qos 取不同值时的表现情况描述",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0186",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p202-157",
+    "source_kind": "mineru",
+    "page": 202,
+    "bbox": [
+      0.132,
+      0.104,
+      0.863,
+      0.555
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0186",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p203-158",
+    "source_kind": "mineru",
+    "page": 203,
+    "bbox": [
+      0.107,
+      0.592,
+      0.87,
+      0.736
+    ],
+    "path": "images/cd2ce3dc161e2b507c8ead9f89ca6da5325a426961248fe004847416978bf41f.jpg",
+    "caption": "表 13-1 TCP 并发传输掩码说明表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0189",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p204-159",
+    "source_kind": "mineru",
+    "page": 204,
+    "bbox": [
+      0.107,
+      0.265,
+      0.87,
+      0.619
+    ],
+    "path": "images/7e8a4d06b03e46fa0264e826e9723bb14f01ca89c7ed95ade851de4f0a5dd1b0.jpg",
+    "caption": "表 13-2TCP 并发传输发送端配置项",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0190",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p206-160",
+    "source_kind": "mineru",
+    "page": 206,
+    "bbox": [
+      0.109,
+      0.543,
+      0.885,
+      0.686
+    ],
+    "path": "images/150bb861363c4c95d0c00d72c475e73d73ffd5a70d232776d7d0d4232830fbfa.jpg",
+    "caption": "表 13-3TCP 并发传输接收端配置项",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0191",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p207-161",
+    "source_kind": "mineru",
+    "page": 207,
+    "bbox": [
+      0.107,
+      0.356,
+      0.885,
+      0.453
+    ],
+    "path": "images/38043626d1ad5bf5d586139300c9971b226359eed7cd12941fd625a837d2d47a.jpg",
+    "caption": "表 13-4TCP 并发传输接收端扩展配置项",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0192",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p208-162",
+    "source_kind": "mineru",
+    "page": 208,
+    "bbox": [
+      0.107,
+      0.258,
+      0.87,
+      0.33
+    ],
+    "path": "images/22e181b58392ced3575e9b169e78a16f880c1201bc779341f8171f46fa8b0b3e.jpg",
+    "caption": "表 13-5TCP 多核接收端扩展接口",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0192",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p212-163",
+    "source_kind": "mineru",
+    "page": 212,
+    "bbox": [
+      0.109,
+      0.782,
+      0.828,
+      0.856
+    ],
+    "path": "images/cb978171de9db0dd86157c3bb26725aada5e0c47c121aa2a9025c27d2e2d5967.jpg",
+    "caption": "表 13-6 数据写者 A 节点环境",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0195",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p213-164",
+    "source_kind": "mineru",
+    "page": 213,
+    "bbox": [
+      0.109,
+      0.141,
+      0.828,
+      0.215
+    ],
+    "path": "images/60e0a65a910c432bef3eefe404baf01ce05044522f3938ebdefcfc889f32f66d.jpg",
+    "caption": "表 13-7 数据读者 B节点环境",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0195",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A two-row table titled '数据读者 B' showing network interface information and corresponding IP addresses for three interfaces: e1, e2, and e3."
+  },
+  {
+    "occurrence_id": "img-p213-165",
+    "source_kind": "mineru",
+    "page": 213,
+    "bbox": [
+      0.109,
+      0.273,
+      0.823,
+      0.323
+    ],
+    "path": "images/c619521af12d33144a0149a08549f71637336ab0829e7d296b8b7720468cae61.jpg",
+    "caption": "表 13-8 数据读者 C节点环境",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0195",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p213-166",
+    "source_kind": "pdf_native",
+    "page": 213,
+    "bbox": [
+      0.16507367756080762,
+      0.36658043538434754,
+      0.8770737429533696,
+      0.5686127898366834
+    ],
+    "path": "images/img-p213-166.png",
+    "caption": "图 13-1 通信效果",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0195",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A data flow diagram showing three groups (B, A, C) each containing three network cards (网卡e1, 网卡e2, 网卡e3), with arrows indicating data distribution ratios from group A to B and C, and upward arrows from each group to '数据DATA'."
+  },
+  {
+    "occurrence_id": "img-p214-167",
+    "source_kind": "mineru",
+    "page": 214,
+    "bbox": [
+      0.11,
+      0.104,
+      0.826,
+      0.734
+    ],
+    "path": "images/083d851493c6422f26a49ace9824791b5cad1d31d6755a9f2f57f1f8e9a90bd8.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0196",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p214-168",
+    "source_kind": "mineru",
+    "page": 214,
+    "bbox": [
+      0.109,
+      0.778,
+      0.828,
+      0.873
+    ],
+    "path": "images/4a920bef8f161d249431d0895901ee3f444d35a7b26a0d5d8510d1299adb07cc.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0196",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p218-169",
+    "source_kind": "mineru",
+    "page": 218,
+    "bbox": [
+      0.109,
+      0.536,
+      0.87,
+      0.585
+    ],
+    "path": "images/ae61c8a37fd697c1d095117fa55207a28f344f0879bfef2c06e07eccab36f817.jpg",
+    "caption": "表 14-1 大包零拷贝发送端配置项",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0199",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p218-170",
+    "source_kind": "mineru",
+    "page": 218,
+    "bbox": [
+      0.109,
+      0.776,
+      0.87,
+      0.872
+    ],
+    "path": "images/a5897efb74560d925df3238f72cd8c423fdf3fa42bbfb4c1a917cb0f4d169b38.jpg",
+    "caption": "表 14-2 大包零拷贝接收端配置项",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0199",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p219-171",
+    "source_kind": "mineru",
+    "page": 219,
+    "bbox": [
+      0.109,
+      0.104,
+      0.87,
+      0.13
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0199",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p221-172",
+    "source_kind": "mineru",
+    "page": 221,
+    "bbox": [
+      0.109,
+      0.178,
+      0.87,
+      0.299
+    ],
+    "path": "images/9324b1c917ab3e3cf9e4d9111605cc28ec6e59d03d13afe5329d7e6fdd5639fb.jpg",
+    "caption": "表 14-3UDP 报文时延配置项",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0201",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p222-173",
+    "source_kind": "mineru",
+    "page": 222,
+    "bbox": [
+      0.109,
+      0.631,
+      0.868,
+      0.681
+    ],
+    "path": "images/e378f3f06f996fc1d5bd218a1bff73efcae65c8618a091f8776765936424e1b4.jpg",
+    "caption": "表 14-4 回调 on_data_arrived 配置项",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0202",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p225-174",
+    "source_kind": "mineru",
+    "page": 225,
+    "bbox": [
+      0.147,
+      0.721,
+      0.848,
+      0.889
+    ],
+    "path": "images/ba67aa054595d12ead0a1e011099de19f7e7e90a44078af168cee4d47e6c93f7.jpg",
+    "caption": "表 15-1C接口与 C++接口的对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0205",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p226-175",
+    "source_kind": "mineru",
+    "page": 226,
+    "bbox": [
+      0.147,
+      0.105,
+      0.85,
+      0.89
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p227-176",
+    "source_kind": "mineru",
+    "page": 227,
+    "bbox": [
+      0.147,
+      0.105,
+      0.85,
+      0.891
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p228-177",
+    "source_kind": "mineru",
+    "page": 228,
+    "bbox": [
+      0.147,
+      0.107,
+      0.85,
+      0.891
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p229-178",
+    "source_kind": "mineru",
+    "page": 229,
+    "bbox": [
+      0.147,
+      0.105,
+      0.85,
+      0.89
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p230-179",
+    "source_kind": "mineru",
+    "page": 230,
+    "bbox": [
+      0.147,
+      0.105,
+      0.85,
+      0.888
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p231-180",
+    "source_kind": "mineru",
+    "page": 231,
+    "bbox": [
+      0.147,
+      0.104,
+      0.85,
+      0.697
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0206",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p237-181",
+    "source_kind": "mineru",
+    "page": 237,
+    "bbox": [
+      0.287,
+      0.441,
+      0.746,
+      0.871
+    ],
+    "path": "images/4cbddd6788a8a206a1da714421989b0d97fa0ef3ec8b499132bb76349227c3b8.jpg",
+    "caption": "图 13-1 给出了 ZRDDS 应用程序开发流程的简单示意。",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0212",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A flowchart titled '开发流程' showing a top-down development workflow with branching for publisher and subscriber paths."
+  },
+  {
+    "occurrence_id": "img-p238-182",
+    "source_kind": "mineru",
+    "page": 238,
+    "bbox": [
+      0.119,
+      0.197,
+      0.872,
+      0.594
+    ],
+    "path": "images/b9aae99da917f1401fb098df570e02531cc4b92bab5bbcd3fd2b9dc43ab7c6d3.jpg",
+    "caption": "图 13-2 标准协议接口开发流程（发布端）",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0212",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A dual-column flowchart showing the development process (right column) and corresponding operation steps with API calls (left column), linked by '接口映射' arrows."
+  },
+  {
+    "occurrence_id": "img-p238-183",
+    "source_kind": "mineru",
+    "page": 238,
+    "bbox": [
+      0.149,
+      0.639,
+      0.848,
+      0.795
+    ],
+    "path": "images/795e8aec68d97cba11cc39198a69477cf6c75f89395468ae12f9a6d04b79fb99.jpg",
+    "caption": "图 13-3",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0212",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A flowchart showing the development workflow for a standard protocol interface, with three main steps on the left mapped to corresponding method calls on the right via '接口映射' (interface mapping) arrows."
+  },
+  {
+    "occurrence_id": "img-p239-184",
+    "source_kind": "mineru",
+    "page": 239,
+    "bbox": [
+      0.109,
+      0.187,
+      0.889,
+      0.705
+    ],
+    "path": "images/7f3ecb425daed25d782be7f572940819ac2c4d2b65ca502708578f6fcaf5713e.jpg",
+    "caption": "表 16-1 标准协议接口开发流程主要接口",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0212",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p242-185",
+    "source_kind": "mineru",
+    "page": 242,
+    "bbox": [
+      0.265,
+      0.222,
+      0.766,
+      0.662
+    ],
+    "path": "images/f65b46c577b8c453a56b0f8c5d81bfafc5128e94c760d653b2bbaddbcc91e2f3.jpg",
+    "caption": "图 14-1 扩展接口开发流程",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0216",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A vertical flowchart depicting the development process for an extension interface, with a branching path after '创建主题' (Create Topic) into '发布端' (Publisher) and '订阅端' (Subscriber) streams."
+  },
+  {
+    "occurrence_id": "img-p243-186",
+    "source_kind": "mineru",
+    "page": 243,
+    "bbox": [
+      0.154,
+      0.118,
+      0.823,
+      0.56
+    ],
+    "path": "images/d5f7299813a15cd94e632f7f820f64ab6c2e7f082bb28bc758c74c183ab72ceb.jpg",
+    "caption": "图 14-2 扩展接口开发流程（发布端）",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0216",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A dual-column flowchart showing the mapping between development process steps (right column) and corresponding operation steps with interface calls (left column), connected by '操作映射' and '接口映射' labels."
+  },
+  {
+    "occurrence_id": "img-p243-187",
+    "source_kind": "mineru",
+    "page": 243,
+    "bbox": [
+      0.168,
+      0.613,
+      0.828,
+      0.709
+    ],
+    "path": "images/2d26b92a288ec10c7cc1a8671a6d8144aae3d7889991c14558bd9bf20701aaec.jpg",
+    "caption": "图 14-3",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0216",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A flow diagram showing the mapping between data reader creation and callback handling via interface mappings."
+  },
+  {
+    "occurrence_id": "img-p243-188",
+    "source_kind": "mineru",
+    "page": 243,
+    "bbox": [
+      0.109,
+      0.859,
+      0.887,
+      0.888
+    ],
+    "path": "images/4cb27c4c7b19ccebe6c094aa2d97936edfcf186ace498df3eae9bd49a7805abd.jpg",
+    "caption": "表 17-1 扩展开发流程主要接口",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0217",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p244-189",
+    "source_kind": "mineru",
+    "page": 244,
+    "bbox": [
+      0.109,
+      0.104,
+      0.887,
+      0.463
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0217",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p244-190",
+    "source_kind": "mineru",
+    "page": 244,
+    "bbox": [
+      0.191,
+      0.565,
+      0.84,
+      0.655
+    ],
+    "path": "images/d6c35b259c9432db8b105a04a5c70e3cf768cc03ffa0965198adb8cd455a56f7.jpg",
+    "caption": "图 14-4 示例通信场景图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0218",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A block diagram showing three applications (app1, app2, app3) connected via labeled data paths and protocols."
+  },
+  {
+    "occurrence_id": "img-p245-191",
+    "source_kind": "mineru",
+    "page": 245,
+    "bbox": [
+      0.109,
+      0.306,
+      0.889,
+      0.892
+    ],
+    "path": "images/1745b22555287b20b4850b3c60c91a846e21b0d117a4b2e8af848a527454b58e.jpg",
+    "caption": "表 17-2 扩展开发流程主要接口",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0219",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p246-192",
+    "source_kind": "mineru",
+    "page": 246,
+    "bbox": [
+      0.109,
+      0.105,
+      0.889,
+      0.877
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p247-193",
+    "source_kind": "mineru",
+    "page": 247,
+    "bbox": [
+      0.109,
+      0.104,
+      0.889,
+      0.463
+    ],
+    "path": "images/c6bbe9196645eb7ca388341c8eaca47cc0ffbccc6646cbf6ca912cebf9e72397.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": true,
+    "visual_class": "non_knowledge_visual",
+    "description": "A table organizing DDS API functions by categories: '实体创建逻辑精简化', '简单的数据监听器', and '实体回收逻辑精简化', with columns for function signatures and descriptions."
+  },
+  {
+    "occurrence_id": "img-p249-194",
+    "source_kind": "mineru",
+    "page": 249,
+    "bbox": [
+      0.284,
+      0.112,
+      0.747,
+      0.494
+    ],
+    "path": "images/d7fda1620a9b531d6f75d3b790acfeb2ccf4db2a471b0d50da068e2d377f78d1.jpg",
+    "caption": "图 15-1 标准协议接口开发流程",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0222",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A flowchart depicting the development process for a DDS-based system, showing sequential and parallel steps from initialization to cleanup."
+  },
+  {
+    "occurrence_id": "img-p250-195",
+    "source_kind": "mineru",
+    "page": 250,
+    "bbox": [
+      0.208,
+      0.118,
+      0.826,
+      0.524
+    ],
+    "path": "images/634d7f14229325aa62d24efe12c84aee7a3f0319c9ff5eba4881d9c967eae7dc.jpg",
+    "caption": "图 15-2 简化接口开发流程（发布端）",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0222",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A dual-column flowchart showing the mapping between '操作' (Operation) steps on the left and '开发流程' (Development Process) steps on the right, connected by '操作映射' and '接口映射' links."
+  },
+  {
+    "occurrence_id": "img-p250-196",
+    "source_kind": "mineru",
+    "page": 250,
+    "bbox": [
+      0.156,
+      0.57,
+      0.842,
+      0.659
+    ],
+    "path": "images/a2e52cf53c79ffca8675c6628dbf82481f645e313777ed316eaa056600bfec51.jpg",
+    "caption": "图 15-3",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0222",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A flowchart showing the mapping between user-facing operations and underlying interface implementations for a data reader system."
+  },
+  {
+    "occurrence_id": "img-p251-197",
+    "source_kind": "mineru",
+    "page": 251,
+    "bbox": [
+      0.109,
+      0.564,
+      0.889,
+      0.873
+    ],
+    "path": "images/c7c424050415a0f997f584a5b886416af1e01d986a3e9c53220307c4e5ed6bc2.jpg",
+    "caption": "表 18-1 简化接口开发流程主要接口",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0224",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p252-198",
+    "source_kind": "mineru",
+    "page": 252,
+    "bbox": [
+      0.109,
+      0.104,
+      0.887,
+      0.219
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0224",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p252-199",
+    "source_kind": "mineru",
+    "page": 252,
+    "bbox": [
+      0.21,
+      0.316,
+      0.823,
+      0.399
+    ],
+    "path": "images/00c687a39153c80edde4e12d63fb26eca6e9d06caae2b51578d19aa7198275d7.jpg",
+    "caption": "图 18-1 示例通信场景图",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0225",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A block diagram showing three applications (app1, app2, app3) connected by labeled data flows: AirTrack (非零拷贝) from app1 to app2, SeaTrack (零拷贝) from app3 to app1, and UDP and SRIO connections from app2 and app3 respectively pointing upward to app1."
+  },
+  {
+    "occurrence_id": "img-p253-200",
+    "source_kind": "mineru",
+    "page": 253,
+    "bbox": [
+      0.109,
+      0.365,
+      0.889,
+      0.791
+    ],
+    "path": "images/3d7230a8ab0da892e7054477b65bea6db6cb281e9dabe920ed68dd939a77994d.jpg",
+    "caption": "表 19-1 简化接口开发流程主要接口",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0227",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p254-201",
+    "source_kind": "mineru",
+    "page": 254,
+    "bbox": [
+      0.115,
+      0.777,
+      0.882,
+      0.873
+    ],
+    "path": "images/69a1613f68c774154a475f780f315cc946e34424b515ed353e25de854ba402c1.jpg",
+    "caption": "表 20-1xml 根节点与说明对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0230",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p255-202",
+    "source_kind": "mineru",
+    "page": 255,
+    "bbox": [
+      0.115,
+      0.104,
+      0.882,
+      0.202
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0230",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p255-203",
+    "source_kind": "mineru",
+    "page": 255,
+    "bbox": [
+      0.119,
+      0.26,
+      0.878,
+      0.884
+    ],
+    "path": "images/e9652ffd11dcc68c74bacd380401286a197936f236fa49e6af4a2667394ab619.jpg",
+    "caption": "表 20-2 配置属性与说明对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0230",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p256-204",
+    "source_kind": "mineru",
+    "page": 256,
+    "bbox": [
+      0.117,
+      0.105,
+      0.88,
+      0.876
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p257-205",
+    "source_kind": "mineru",
+    "page": 257,
+    "bbox": [
+      0.117,
+      0.104,
+      0.878,
+      0.181
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0231",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p257-206",
+    "source_kind": "mineru",
+    "page": 257,
+    "bbox": [
+      0.109,
+      0.263,
+      0.87,
+      0.573
+    ],
+    "path": "images/2616df5baadd0d6a2c5492e94802b731681908f4a7a72174ca4df0a61550b8f6.jpg",
+    "caption": "表 20-3 类型名称与属性对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0232",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p257-207",
+    "source_kind": "mineru",
+    "page": 257,
+    "bbox": [
+      0.107,
+      0.727,
+      0.889,
+      0.882
+    ],
+    "path": "images/c1bdf774f2adaeb144c25629b5308cc0d377ccfa1c5ad00bd54fd75756523bb2.jpg",
+    "caption": "表 20-4 接口与说明对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0233",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p258-208",
+    "source_kind": "mineru",
+    "page": 258,
+    "bbox": [
+      0.11,
+      0.107,
+      0.847,
+      0.126
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0233",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p258-209",
+    "source_kind": "mineru",
+    "page": 258,
+    "bbox": [
+      0.085,
+      0.279,
+      0.912,
+      0.885
+    ],
+    "path": "images/89079b3477e2da80d5ded7ab41fe006db6a1f62d20f7006ecb44cacf9db73438.jpg",
+    "caption": "表 20-5 实体接口及说明对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0234",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p259-210",
+    "source_kind": "mineru",
+    "page": 259,
+    "bbox": [
+      0.085,
+      0.104,
+      0.91,
+      0.577
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0235",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p266-211",
+    "source_kind": "mineru",
+    "page": 266,
+    "bbox": [
+      0.144,
+      0.187,
+      0.852,
+      0.426
+    ],
+    "path": "images/2177562f2b8ceb679669584e58ef679df150aa832fb4be51fc8be4fdbbb7e138.jpg",
+    "caption": "表 21-1 配置项及其含义对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0242",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p268-212",
+    "source_kind": "mineru",
+    "page": 268,
+    "bbox": [
+      0.109,
+      0.462,
+      0.87,
+      0.535
+    ],
+    "path": "images/c8a57a11f2a3a0459327b69ea1b6f1f25160af080582627996a52a1f8c378b57.jpg",
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0246",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p270-213",
+    "source_kind": "mineru",
+    "page": 270,
+    "bbox": [
+      0.107,
+      0.255,
+      0.87,
+      0.869
+    ],
+    "path": "images/71b84b7c42e00466107f68e7bcf104ad4b2b3b432a6be13e4dc2497c6a47e0fd.jpg",
+    "caption": "表 23-1 全局配置参数、含义及默认值对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0250",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p271-214",
+    "source_kind": "mineru",
+    "page": 271,
+    "bbox": [
+      0.109,
+      0.105,
+      0.87,
+      0.883
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p272-215",
+    "source_kind": "mineru",
+    "page": 272,
+    "bbox": [
+      0.109,
+      0.105,
+      0.87,
+      0.882
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p273-216",
+    "source_kind": "mineru",
+    "page": 273,
+    "bbox": [
+      0.109,
+      0.104,
+      0.87,
+      0.598
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0252",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p273-217",
+    "source_kind": "mineru",
+    "page": 273,
+    "bbox": [
+      0.109,
+      0.736,
+      0.87,
+      0.832
+    ],
+    "path": "images/422de249780f2c58b120c28bd23a5fca3c2ea57da44594a0f375d369d1756a42.jpg",
+    "caption": "$KIND 为参数值，有如下常用参数值",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0252",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p275-218",
+    "source_kind": "mineru",
+    "page": 275,
+    "bbox": [
+      0.109,
+      0.255,
+      0.868,
+      0.444
+    ],
+    "path": "images/179938119e99cea34ba3a1af5675a418abe0b7802000da14ff37826f69451eac.jpg",
+    "caption": "表 23-2 域参与者配置参数、含义及默认值对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0252",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p276-219",
+    "source_kind": "mineru",
+    "page": 276,
+    "bbox": [
+      0.142,
+      0.103,
+      0.889,
+      0.33
+    ],
+    "path": "images/9b9968740bacfa3a10dd3167f30393d0a03cc3e8d3e6e3be4a25f37458d1eb20.jpg",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0253",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p276-220",
+    "source_kind": "mineru",
+    "page": 276,
+    "bbox": [
+      0.109,
+      0.573,
+      0.889,
+      0.881
+    ],
+    "path": "images/8f8bd51b4feb08022cb61321810135a97afecc6b60351172b24651d5fba64fce.jpg",
+    "caption": "表 23-3 数据写者配置参数、含义及默认值对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0253",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p277-221",
+    "source_kind": "mineru",
+    "page": 277,
+    "bbox": [
+      0.109,
+      0.103,
+      0.887,
+      0.48
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0253",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p278-222",
+    "source_kind": "mineru",
+    "page": 278,
+    "bbox": [
+      0.109,
+      0.651,
+      0.87,
+      0.889
+    ],
+    "path": "images/bf2d9584a0fcc0d2c03c82daea10839744cb4610992729a7cfc228eefe3aa4ed.jpg",
+    "caption": "表 23-4 数据读者配置参数、含义及默认值对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0254",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p279-223",
+    "source_kind": "mineru",
+    "page": 279,
+    "bbox": [
+      0.109,
+      0.104,
+      0.87,
+      0.177
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0254",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p282-224",
+    "source_kind": "pdf_native",
+    "page": 282,
+    "bbox": [
+      0.406,
+      0.307,
+      0.667,
+      0.369
+    ],
+    "path": "images/img-p282-224.png",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0259",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "File explorer view showing two items: a folder named 'ZRDDS' and a script file named 'install.sh'."
+  },
+  {
+    "occurrence_id": "img-p284-225",
+    "source_kind": "mineru",
+    "page": 284,
+    "bbox": [
+      0.159,
+      0.473,
+      0.836,
+      0.618
+    ],
+    "path": "images/70095be0b43f75820beb05c52e7ef89d9c7d0c5900b593a94a8da850dace4fd4.jpg",
+    "caption": "表 25-1 级别参数与含义对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0262",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p286-226",
+    "source_kind": "pdf_native",
+    "page": 286,
+    "bbox": [
+      0.152,
+      0.115,
+      0.875,
+      0.156
+    ],
+    "path": "images/img-p286-226.png",
+    "caption": null,
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0264",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A red-colored log line showing an ERROR timestamped at 2021-12-30 18:33:41:527, indicating an inconsistency in QoS policies related to DataWriterQos resource limits."
+  },
+  {
+    "occurrence_id": "img-p286-227",
+    "source_kind": "mineru",
+    "page": 286,
+    "bbox": [
+      0.117,
+      0.618,
+      0.878,
+      0.785
+    ],
+    "path": "images/ca0209f7841b953368ce4232e5f1b2e0576d99af1671414a5069b7426c930698.jpg",
+    "caption": "表 25-2 日志等级掩码与使能级别对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0265",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p287-228",
+    "source_kind": "mineru",
+    "page": 287,
+    "bbox": [
+      0.109,
+      0.411,
+      0.825,
+      0.881
+    ],
+    "path": "images/df2b61307594dbe2d8b53f031d9a2a56025ec9ec0af11d0bac7db8bdee94c96b.jpg",
+    "caption": "表 25-3 日志接口说明表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0265",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p288-229",
+    "source_kind": "mineru",
+    "page": 288,
+    "bbox": [
+      0.109,
+      0.105,
+      0.826,
+      0.887
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": null,
+    "binding_status": "excluded",
+    "binding_reason": "table_image_without_knowledge_owner",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "non_knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p289-230",
+    "source_kind": "mineru",
+    "page": 289,
+    "bbox": [
+      0.109,
+      0.104,
+      0.826,
+      0.637
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0267",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p289-231",
+    "source_kind": "mineru",
+    "page": 289,
+    "bbox": [
+      0.277,
+      0.695,
+      0.721,
+      0.793
+    ],
+    "path": "images/87b3b2ae4e930f3b434daaee67269e7cfcd0c29178e79904054d92c0886401d8.jpg",
+    "caption": "表 25-4 日志风格与参数对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0267",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p289-232",
+    "source_kind": "mineru",
+    "page": 289,
+    "bbox": [
+      0.109,
+      0.831,
+      0.87,
+      0.878
+    ],
+    "path": "images/732b75bbc8445f232c919e4065e8ce02da60d97a6f4065f94e91da2c46eb9b7c.jpg",
+    "caption": "25.4.2.2 接口使用示例",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0267",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p291-233",
+    "source_kind": "mineru",
+    "page": 291,
+    "bbox": [
+      0.109,
+      0.511,
+      0.873,
+      0.775
+    ],
+    "path": "images/98f1ac4cac81f8f4bb60c67b75d8dac0e4283bc466b79c3326e5408eea66eddb.jpg",
+    "caption": "表 26-1 调试命令编号与参数对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0269",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p292-234",
+    "source_kind": "mineru",
+    "page": 292,
+    "bbox": [
+      0.107,
+      0.103,
+      0.87,
+      0.319
+    ],
+    "path": "images/ce1de9f21a95dde627a90d7e418335f9988be2b2b15d3d55a31a1b5795bbb6d7.jpg",
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0270",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p292-235",
+    "source_kind": "mineru",
+    "page": 292,
+    "bbox": [
+      0.21,
+      0.493,
+      0.788,
+      0.638
+    ],
+    "path": "images/e408936b4bd5d0bab89fc52ed96331bad236b0897426125bebaedf129726b27b.jpg",
+    "caption": "表 26-3 使能级别与参数值对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0270",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p292-236",
+    "source_kind": "mineru",
+    "page": 292,
+    "bbox": [
+      0.305,
+      0.765,
+      0.692,
+      0.863
+    ],
+    "path": "images/a158cc5e317e2d03743c5bd0faff19b2c508f1aa6420f64d7ea85d9c914b4605.jpg",
+    "caption": "表 26-4 风格类型与参数对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0270",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p294-237",
+    "source_kind": "mineru",
+    "page": 294,
+    "bbox": [
+      0.144,
+      0.794,
+      0.87,
+      0.891
+    ],
+    "path": "images/7e0e44aadd8806689501b7aed6ad33501f276d19769a56d452d66b4b211696c7.jpg",
+    "caption": "表 27-1 数据类型成员与所记录内容对照表",
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0274",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "img-p295-238",
+    "source_kind": "mineru",
+    "page": 295,
+    "bbox": [
+      0.142,
+      0.104,
+      0.87,
+      0.367
+    ],
+    "path": null,
+    "caption": null,
+    "visual_type": "structured_table_duplicate",
+    "roles": [
+      "structured_table_duplicate"
+    ],
+    "semantic_owner_chunk_id": "chunk-0274",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "ignored_non_knowledge",
+    "needs_review": false,
+    "visual_class": "structured_table_duplicate",
+    "description": ""
+  },
+  {
+    "occurrence_id": "source-p8-25",
+    "source_kind": "pdf_native",
+    "page": 8,
+    "bbox": [
+      0.32177652355035946,
+      0.8150533405247529,
+      0.6620138626629375,
+      0.848730542634217
+    ],
+    "path": "images/source-p8-25.png",
+    "caption": "源文档图像",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0004",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A completely black image with no visible content, text, or structure."
+  },
+  {
+    "occurrence_id": "source-p16-26",
+    "source_kind": "pdf_native",
+    "page": 16,
+    "bbox": [
+      0.5899136065540381,
+      0.6927172169099202,
+      0.6630139866437378,
+      0.7263979466704674
+    ],
+    "path": "images/source-p16-26.png",
+    "caption": "源文档图像",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0015",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Completely black image with no discernible content or features."
+  },
+  {
+    "occurrence_id": "source-p16-27",
+    "source_kind": "pdf_native",
+    "page": 16,
+    "bbox": [
+      0.3876692216392024,
+      0.6885070695553022,
+      0.4607696017289021,
+      0.7221877993158494
+    ],
+    "path": "images/source-p16-27.png",
+    "caption": "源文档图像",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0015",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Completely black image with no discernible content or features."
+  },
+  {
+    "occurrence_id": "source-p49-01",
+    "source_kind": "pdf_native",
+    "page": 49,
+    "bbox": [
+      0.336306524222267,
+      0.54575051234084,
+      0.6460014571994894,
+      0.6991188178211707
+    ],
+    "path": "images/source-p49-01.png",
+    "caption": "图 6-1 应用程序和域的关系",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0044",
+    "binding_status": "resolved",
+    "binding_reason": "caption_match",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A completely black image with a faint, thin elliptical outline near the center; no text, icons, buttons, or discernible content is visible."
+  },
+  {
+    "occurrence_id": "source-p49-02",
+    "source_kind": "pdf_native",
+    "page": 49,
+    "bbox": [
+      0.336306524222267,
+      0.608956546854808,
+      0.6460014571994894,
+      0.7613953474534397
+    ],
+    "path": "images/source-p49-02.png",
+    "caption": "源文档图像",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0044",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A completely black image with a faint, thin elliptical outline near the center, containing no readable text, icons, buttons, or discernible content."
+  },
+  {
+    "occurrence_id": "source-p49-09",
+    "source_kind": "pdf_native",
+    "page": 49,
+    "bbox": [
+      0.636930894308943,
+      0.6972598080577728,
+      0.6991290398441175,
+      0.7325809935623337
+    ],
+    "path": "images/source-p49-09.png",
+    "caption": "源文档图像",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0044",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A completely black image with no discernible content, text, or structure."
+  },
+  {
+    "occurrence_id": "source-p50-03",
+    "source_kind": "pdf_native",
+    "page": 50,
+    "bbox": [
+      0.11406384201773836,
+      0.26953693599344364,
+      0.3682486119733924,
+      0.7692245152052452
+    ],
+    "path": "images/source-p50-03.png",
+    "caption": "源文档图像",
+    "visual_type": "operation_screenshot",
+    "roles": [
+      "operation_screenshot"
+    ],
+    "semantic_owner_chunk_id": "chunk-0044",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A hierarchical tree view of ZRDDS entities in a GUI, with expandable nodes and a selected 'DomainParticipant' item at the bottom."
+  },
+  {
+    "occurrence_id": "source-p51-03",
+    "source_kind": "pdf_native",
+    "page": 51,
+    "bbox": [
+      0.15698193648793926,
+      0.2027187432706196,
+      0.4111667064435933,
+      0.7023531407905739
+    ],
+    "path": "images/source-p51-03.png",
+    "caption": "源文档图像",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0044",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A vertical list of items with icons (purple circles, gray circles, and checkmarks) and text labels ending in '.cpp', '.h', or '.doc', followed by a bottom bar containing Chinese text '实体' and 'DomainParticipant' with an arrow and 'Entity'."
+  },
+  {
+    "occurrence_id": "source-p80-05",
+    "source_kind": "pdf_native",
+    "page": 80,
+    "bbox": [
+      0.0,
+      0.02457280872291907,
+      0.42669134299200423,
+      0.14760770275085525
+    ],
+    "path": "images/source-p80-05.png",
+    "caption": "源文档图像",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0071",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A single labeled box with the text 'Data' centered on a black background."
+  },
+  {
+    "occurrence_id": "source-p98-06",
+    "source_kind": "pdf_native",
+    "page": 98,
+    "bbox": [
+      0.04779063513118993,
+      0.03704249488926248,
+      0.4533931234114425,
+      0.15107852114815648
+    ],
+    "path": "images/source-p98-06.png",
+    "caption": "源文档图像",
+    "visual_type": "unknown",
+    "roles": [
+      "unknown"
+    ],
+    "semantic_owner_chunk_id": "chunk-0088",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A single labeled box with the text 'Data' centered on a black background; no other visible elements or structure."
+  },
+  {
+    "occurrence_id": "source-p282-02",
+    "source_kind": "pdf_native",
+    "page": 282,
+    "bbox": [
+      0.3186017603977692,
+      0.45292308057772707,
+      0.7620775381307531,
+      0.4768861649562903
+    ],
+    "path": "images/source-p282-02.png",
+    "caption": "源文档图像",
+    "visual_type": "terminal_or_log",
+    "roles": [
+      "terminal_or_log"
+    ],
+    "semantic_owner_chunk_id": "chunk-0259",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Terminal output showing the result of echoing the ZRDDS_HOME environment variable in a Docker test directory."
+  },
+  {
+    "occurrence_id": "source-p282-03",
+    "source_kind": "pdf_native",
+    "page": 282,
+    "bbox": [
+      0.15621850433380366,
+      0.5777983656404408,
+      0.8538265134717462,
+      0.6277437286202965
+    ],
+    "path": "images/source-p282-03.png",
+    "caption": "源文档图像",
+    "visual_type": "terminal_or_log",
+    "roles": [
+      "terminal_or_log"
+    ],
+    "semantic_owner_chunk_id": "chunk-0259",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "Terminal output of executing ./LicenceInfoUtil in /usr/ZRDDS/bin, showing successful acquisition of host info and generation of authorization files."
+  },
+  {
+    "occurrence_id": "source-p285-01",
+    "source_kind": "pdf_native",
+    "page": 285,
+    "bbox": [
+      0.15621850433380366,
+      0.6225270809578107,
+      0.9092924813545654,
+      0.7116115545419991
+    ],
+    "path": "images/source-p285-01.png",
+    "caption": "源文档图像",
+    "visual_type": "terminal_or_log",
+    "roles": [
+      "terminal_or_log"
+    ],
+    "semantic_owner_chunk_id": "chunk-0264",
+    "binding_status": "resolved",
+    "binding_reason": "source_block_interval",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A log entry in standard style showing an ERROR-level message with timestamp, log level, function location, and inconsistent QoS policy details."
+  },
+  {
+    "occurrence_id": "source-p286-02",
+    "source_kind": "pdf_native",
+    "page": 286,
+    "bbox": [
+      0.15621850433380366,
+      0.35363573736221965,
+      0.8827185379291809,
+      0.39804256936526033
+    ],
+    "path": "images/source-p286-02.png",
+    "caption": "源文档图像",
+    "visual_type": "terminal_or_log",
+    "roles": [
+      "terminal_or_log"
+    ],
+    "semantic_owner_chunk_id": "chunk-0264",
+    "binding_status": "resolved",
+    "binding_reason": "page_top_heading_inheritance",
+    "resolution_status": "resolved",
+    "needs_review": false,
+    "visual_class": "knowledge_visual",
+    "description": "A single-line log entry showing an ERROR-level message with timestamp, file/function/line context, and a QoS inconsistency detail."
+  }
+]

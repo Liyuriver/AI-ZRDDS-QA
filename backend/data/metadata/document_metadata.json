@@ -1,0 +1,59 @@
+{
+  "documents": [
+    {
+      "document_id": "zrdds_troubleshooting",
+      "source_file": "ZRDDS故障排查指南.pdf",
+      "product": "ZRDDS",
+      "version": null,
+      "version_raw": null,
+      "doc_type": "故障排查指南",
+      "publish_date": null,
+      "applicable_versions": [],
+      "metadata_source": "manual"
+    },
+    {
+      "document_id": "zrdds_install_java",
+      "source_file": "ZRDDS安装配置手册-Java.pdf",
+      "product": "ZRDDS",
+      "version": null,
+      "version_raw": null,
+      "doc_type": "安装配置手册-Java",
+      "publish_date": null,
+      "applicable_versions": [],
+      "metadata_source": "manual"
+    },
+    {
+      "document_id": "zrdds_install_qtcreator",
+      "source_file": "ZRDDS安装配置手册-QtCreator.pdf",
+      "product": "ZRDDS",
+      "version": null,
+      "version_raw": null,
+      "doc_type": "安装配置手册-QtCreator",
+      "publish_date": null,
+      "applicable_versions": [],
+      "metadata_source": "manual"
+    },
+    {
+      "document_id": "zrdds_install_c_cpp",
+      "source_file": "ZRDDS安装配置手册-C-C++.pdf",
+      "product": "ZRDDS",
+      "version": null,
+      "version_raw": null,
+      "doc_type": "安装配置手册-C-C++",
+      "publish_date": null,
+      "applicable_versions": [],
+      "metadata_source": "manual"
+    },
+    {
+      "document_id": "zrdds_user_manual",
+      "source_file": "ZRDDS用户手册.pdf",
+      "product": "ZRDDS",
+      "version": "V2.0",
+      "version_raw": "V2.0",
+      "doc_type": "用户手册",
+      "publish_date": null,
+      "applicable_versions": [],
+      "metadata_source": "document_cover"
+    }
+  ]
+}
