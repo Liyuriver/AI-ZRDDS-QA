@@ -39,6 +39,17 @@ class ChatData(BaseModel):
     status: ChatStatus
     sources: list[Source] = Field(default_factory=list)
     images: list[ImageSource] = Field(default_factory=list)
+    answer_status: Optional[str] = None
+    original_query: Optional[str] = None
+    rag_query: Optional[str] = None
+    confidence_score: Optional[float] = None
+    confidence_level: Optional[str] = None
+    confidence_reasons: list[str] = Field(default_factory=list)
+    requested_version: Optional[str] = None
+    detected_version: Optional[str] = None
+    effective_version: Optional[str] = None
+    version_status: Optional[str] = None
+    evidence: list[dict] = Field(default_factory=list)
 
 
 class ChatResponse(BaseModel):

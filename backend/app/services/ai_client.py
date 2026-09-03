@@ -474,15 +474,20 @@ class AIClient:
                 )
                 page = item.get("page") or 0
 
-            sources.append(
-                {
+            source = {
                     "document": document,
+                    "document_id": item.get("document_id") or item.get("dataset_id"),
+                    "chunk_id": item.get("chunk_id") or item.get("segment_id") or item.get("segmentId"),
                     "section": section,
                     "page": page,
-                    "score": item.get("score") or 0,
                     "quote": quote,
+                    "version": item.get("version") or self._get_nested(item, "metadata", "version") or (mapping or {}).get("version"),
                 }
-            )
+            raw_score = item.get("rerank_score", item.get("retrieval_score", item.get("score")))
+            if isinstance(raw_score, (int, float)) and not isinstance(raw_score, bool):
+                source["raw_score"] = raw_score
+                source["score"] = raw_score  # backward-compatible field
+            sources.append(source)
 
             for image in self._images_from_mapping(mapping):
                 dedupe_key = image.get("image_id") or image.get("url")
@@ -567,6 +572,7 @@ class AIClient:
             "answer": self._clean_answer(data.get("answer", "")),
             "status": "answered",
             "sources": sources,
+            "evidence": sources,
             "images": images,
             "dify_conversation_id": data.get("conversation_id") or conversation_id,
         }
