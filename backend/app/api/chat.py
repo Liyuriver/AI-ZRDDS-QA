@@ -19,6 +19,7 @@ from app.schemas.chat import (
     MessageRead,
 )
 from app.services.ai_client import AIClient, AIServiceError
+from app.services.qa.question_service import answer_question
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
 from app.services.user_service import UserNotFoundError
 from app.api.user import get_current_user
@@ -202,8 +203,8 @@ async def chat(
             )
             conversation_id = conversation.id
 
-        result = await ai_client.query(
-            question=request.question,
+        result = await answer_question(
+            original_query=request.question,
             version=request.version,
             conversation_id=conversation.dify_conversation_id,
             user_id=request.user_id,
@@ -217,7 +218,7 @@ async def chat(
         conversation_service.save_ai_message(
             conversation_id,
             result["answer"],
-            answer_status=result["status"],
+            answer_status=result["answer_status"],
             sources=result.get("sources", []),
             images=result.get("images", []),
         )
@@ -242,5 +243,16 @@ async def chat(
         status=result["status"],
         sources=result.get("sources", []),
         images=result.get("images", []),
+        answer_status=result.get("answer_status"),
+        original_query=result.get("original_query"),
+        rag_query=result.get("rag_query"),
+        confidence_score=result.get("confidence_score"),
+        confidence_level=result.get("confidence_level"),
+        confidence_reasons=result.get("confidence_reasons", []),
+        requested_version=result.get("requested_version"),
+        detected_version=result.get("detected_version"),
+        effective_version=result.get("effective_version"),
+        version_status=result.get("version_status"),
+        evidence=result.get("evidence", []),
     )
     return ChatResponse(code=0, message="success", data=data)

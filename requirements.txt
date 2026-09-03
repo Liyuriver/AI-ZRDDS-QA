@@ -3,3 +3,4 @@ pymysql
 python-dotenv
 rank-bm25
 pytest
+pypdf
