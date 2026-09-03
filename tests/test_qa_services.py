@@ -29,7 +29,7 @@ def test_confidence_and_gate_are_evidence_based():
     assert calculate_confidence([ev(score=0.1)], "UNKNOWN", None)["confidence_level"] == "LOW"
     assert calculate_confidence([{"content": "x"}], "UNKNOWN", None)["confidence_level"] == "LOW"
     assert decide_answer([], "LOW", "UNKNOWN", False, None) == ("NO_ANSWER", REFUSAL_LOW)
-    assert decide_answer([ev(), ev(score=0.85)], "HIGH", "MISMATCH", True, "2.0")[0] == "VERSION_UNCERTAIN"
+    assert decide_answer([ev(), ev(score=0.85)], "HIGH", "MISMATCH", True, "2.0")[0] == "VERSION_MISMATCH"
 
 
 def test_quote_evidence_is_not_misclassified_as_no_evidence():
@@ -96,13 +96,13 @@ def test_weak_evidence_returns_low_confidence_refusal():
     assert result["answer"] == REFUSAL_LOW
 
 
-def test_version_mismatch_returns_version_uncertain():
+def test_version_mismatch_returns_version_mismatch():
     evidence = [ev(score=0.90, version="1.0")]
     result = asyncio.run(answer_question("API 配置问题", version="V2.0", ai_client=ScenarioAI(evidence)))
     assert result["requested_version"] == "V2.0"
     assert result["effective_version"] == "V2.0"
     assert result["version_status"] == "MISMATCH"
-    assert result["answer_status"] == "VERSION_UNCERTAIN"
+    assert result["answer_status"] == "VERSION_MISMATCH"
 
 
 def test_mixed_versions_return_version_uncertain():
@@ -128,7 +128,7 @@ def test_null_evidence_version_remains_unknown():
 
 
 def test_answer_decision_priority_matrix():
-    assert decide_answer([ev()], "LOW", "MISMATCH", True, "1.0")[0] == "VERSION_UNCERTAIN"
+    assert decide_answer([ev()], "LOW", "MISMATCH", True, "1.0")[0] == "VERSION_MISMATCH"
     assert decide_answer([ev()], "LOW", "MIXED", True, "2.0")[0] == "VERSION_UNCERTAIN"
     assert decide_answer([ev()], "LOW", "MATCHED", True, "2.0")[0] == "LOW_CONFIDENCE"
     assert decide_answer([ev()], "LOW", "UNKNOWN", True, "2.0")[0] == "LOW_CONFIDENCE"
@@ -154,7 +154,7 @@ def test_chat_handler_exposes_version_uncertain_as_standard_answer_status(monkey
 
     async def fake_answer_question(**_kwargs):
         return {"answer": REFUSAL_VERSION, "status": "insufficient_evidence",
-                "answer_status": "VERSION_UNCERTAIN", "sources": [], "images": [],
+                "answer_status": "VERSION_MISMATCH", "sources": [], "images": [],
                 "evidence": [{"content": "x", "version": "V2.0"}],
                 "confidence_score": 0.252, "confidence_level": "LOW",
                 "confidence_reasons": ["version_conflict"],
@@ -165,6 +165,19 @@ def test_chat_handler_exposes_version_uncertain_as_standard_answer_status(monkey
     response = asyncio.run(chat_api.chat(
         ChatRequest(question="q", version="V1.0", user_id="u1"), FakeConversationService()
     ))
-    assert response.data.answer_status == "VERSION_UNCERTAIN"
+    assert response.data.answer_status == "VERSION_MISMATCH"
     assert response.data.version_status == "MISMATCH"
     assert response.data.status == "insufficient_evidence"
+
+
+def test_v1_request_with_v2_evidence_returns_version_mismatch_message():
+    result = asyncio.run(answer_question(
+        "ZRDDS V1.0 中 Listener 的关系", version="V1.0",
+        ai_client=ScenarioAI([ev(score=0.9, version="V2.0")]),
+    ))
+    assert result["requested_version"] == "V1.0"
+    assert result["effective_version"] == "V1.0"
+    assert result["version_status"] == "MISMATCH"
+    assert result["answer_status"] == "VERSION_MISMATCH"
+    assert "V2.0" in result["answer"]
+    assert "V1.0" in result["answer"]

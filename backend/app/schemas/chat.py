@@ -6,7 +6,10 @@ from typing import Literal, Optional
 from pydantic import BaseModel, Field
 
 
-ChatStatus = Literal["answered", "insufficient_evidence", "error"]
+ChatStatus = Literal[
+    "answered", "insufficient_evidence", "error",
+    "ANSWER", "VERSION_MISMATCH", "VERSION_UNCERTAIN", "LOW_CONFIDENCE", "NO_ANSWER",
+]
 
 
 class ChatRequest(BaseModel):
