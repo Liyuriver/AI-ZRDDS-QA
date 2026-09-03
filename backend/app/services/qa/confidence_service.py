@@ -6,8 +6,25 @@ from numbers import Real
 from app.config import CONFIDENCE_HIGH_THRESHOLD, CONFIDENCE_LOW_THRESHOLD
 
 
+def normalize_evidence(raw_results) -> list[dict]:
+    """Convert Dify/source/retrieval shapes into one evidence shape."""
+    if isinstance(raw_results, Mapping):
+        raw_results = raw_results.get("evidence", raw_results.get("sources", raw_results.get("retrieval_results", [])))
+    if not isinstance(raw_results, Sequence) or isinstance(raw_results, (str, bytes)):
+        return []
+    normalized = []
+    for raw in raw_results:
+        if isinstance(raw, Mapping):
+            item = dict(raw)
+            # Dify retriever_resources calls the excerpt quote/content depending on deployment.
+            if not item.get("content") and item.get("quote"):
+                item["content"] = item["quote"]
+            normalized.append(item)
+    return normalized
+
+
 def _score(item: Mapping) -> float | None:
-    value = item.get("raw_score", item.get("score", item.get("rerank_score")))
+    value = item.get("rerank_score", item.get("retrieval_score", item.get("score", item.get("raw_score"))))
     return float(value) if isinstance(value, Real) and not isinstance(value, bool) else None
 
 
@@ -35,7 +52,8 @@ def confidence_level(score: float) -> str:
 
 def calculate_confidence(evidence: Sequence[Mapping], version_status: str = "UNKNOWN",
                          requested_version: str | None = None) -> dict:
-    valid = [item for item in evidence if isinstance(item, Mapping) and item.get("content")]
+    normalized_evidence = normalize_evidence(evidence)
+    valid = [item for item in normalized_evidence if item.get("content")]
     raw_scores = [s for item in valid if (s := _score(item)) is not None]
     normalized = sorted((normalize_score(s, raw_scores) for s in raw_scores if normalize_score(s, raw_scores) is not None), reverse=True)
     reasons: list[str] = []

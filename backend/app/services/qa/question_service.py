@@ -6,7 +6,7 @@ from collections.abc import Mapping, Sequence
 
 from app.services.metadata.version_service import extract_version, normalize_version
 from app.services.qa.answer_decision_service import decide_answer
-from app.services.qa.confidence_service import calculate_confidence
+from app.services.qa.confidence_service import calculate_confidence, normalize_evidence
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +54,11 @@ async def answer_question(original_query: str, *, version: str | None = None,
     if effective and not re.search(r"\bv?\s*" + re.escape(effective) + r"\b", rag_query, re.IGNORECASE):
         rag_query = f"ZRDDS V{effective} {rag_query}".strip()
     response = await client.query(rag_query, version=effective, conversation_id=conversation_id, user_id=user_id)
-    evidence = response.get("evidence", response.get("sources", [])) or []
+    # Normalize once; both the response and confidence gate use this same list.
+    raw_evidence = response.get("evidence")
+    if raw_evidence is None:
+        raw_evidence = response.get("sources", [])
+    evidence = normalize_evidence(raw_evidence)
     sensitive = is_version_sensitive(original, evidence)
     vstatus = determine_version_status(evidence, effective, sensitive)
     confidence = calculate_confidence(evidence, vstatus, effective)
