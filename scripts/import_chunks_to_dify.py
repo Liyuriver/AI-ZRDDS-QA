@@ -22,7 +22,7 @@ AI-ZRDDS-QA/
 └─ .env / backend/.env
 
 处理逻辑：
-1. 自动扫描所有 chunks.jsonl
+1. 自动扫描所有 chunks.jsonl；可用 --only 仅选择指定目录
 2. 每个处理目录对应一个 Dify document
 3. 创建临时占位分段初始化索引
 4. 等待索引完成
@@ -770,6 +770,43 @@ def add_segments(
 # 保存映射
 # ============================================================
 
+def load_existing_map():
+    """读取已有 dify_segment_map.json；不存在或格式异常时返回空列表。"""
+
+    if not OUTPUT_MAP.exists():
+        return []
+
+    try:
+        with OUTPUT_MAP.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        return data if isinstance(data, list) else []
+
+    except Exception as exc:
+        print(f"\n[警告] 读取旧映射失败，将按空映射处理：{exc}")
+        return []
+
+
+def merge_mappings(existing_mappings, new_mappings, imported_bundle_names):
+    """
+    合并旧映射与本次新映射。
+
+    如果某个 bundle 本次被重新导入，则先移除旧映射中该 bundle
+    的记录，再加入新映射，避免 dify_segment_map.json 出现重复记录。
+    """
+
+    imported_bundle_names = set(imported_bundle_names)
+
+    kept = [
+        item
+        for item in existing_mappings
+        if isinstance(item, dict)
+        and item.get("bundle_dir") not in imported_bundle_names
+    ]
+
+    return kept + list(new_mappings)
+
+
 def save_map(mappings):
     """保存所有文档的统一映射文件。"""
 
@@ -934,11 +971,36 @@ def main():
         )
     )
 
+    parser.add_argument(
+        "--only",
+        type=str,
+        default=None,
+        help=(
+            "只导入目录名中包含指定关键词的文档。"
+            "例如：--only 用户手册"
+        )
+    )
+
     args = parser.parse_args()
 
     check_config()
 
     documents = discover_documents()
+
+    if args.only:
+        keyword = args.only.strip()
+
+        documents = [
+            item
+            for item in documents
+            if keyword in item["bundle_dir"].name
+        ]
+
+        if not documents:
+            print(
+                f"没有找到目录名包含“{keyword}”且含 chunks.jsonl 的文档。"
+            )
+            return
 
     print(
         "=" * 70
@@ -995,6 +1057,11 @@ def main():
             f"{item['bundle_dir'].name}"
         )
 
+    if args.only:
+        print(
+            f"\n单文档筛选：目录名包含“{args.only}”"
+        )
+
     if args.limit is not None:
 
         print(
@@ -1008,6 +1075,8 @@ def main():
     success_documents = 0
 
     failed_documents = []
+
+    imported_bundle_names = []
 
     for item in documents:
 
@@ -1025,6 +1094,10 @@ def main():
             )
 
             success_documents += 1
+
+            imported_bundle_names.append(
+                item["bundle_dir"].name
+            )
 
         except Exception as exc:
 
@@ -1054,8 +1127,16 @@ def main():
                 }
             )
 
+    existing_mappings = load_existing_map()
+
+    merged_mappings = merge_mappings(
+        existing_mappings=existing_mappings,
+        new_mappings=all_mappings,
+        imported_bundle_names=imported_bundle_names,
+    )
+
     save_map(
-        all_mappings
+        merged_mappings
     )
 
     print(
@@ -1082,8 +1163,13 @@ def main():
     )
 
     print(
-        f"成功分段："
+        f"本次成功分段："
         f"{len(all_mappings)}"
+    )
+
+    print(
+        f"合并后映射总数："
+        f"{len(merged_mappings)}"
     )
 
     if failed_documents:
