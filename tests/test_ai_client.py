@@ -81,6 +81,17 @@ def test_query_returns_stable_error_after_retry(monkeypatch):
         asyncio.run(client.query("测试问题", user_id="test-user"))
 
 
+def test_query_turns_empty_answer_into_insufficient_evidence(monkeypatch):
+    fake = FakeAsyncClient([response(200, {"answer": "   ", "metadata": {}})])
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **_kwargs: fake)
+    client = AIClient()
+    client.base_url = "http://dify.test/v1"
+    client.api_key = "test-key"
+
+    result = asyncio.run(client.query("测试问题", user_id="test-user"))
+
+    assert result["status"] == "insufficient_evidence"
+    assert result["answer"]
 @pytest.mark.parametrize("resource", [
     {"content": "x", "metadata": {"version": "V2.0"}},
     {"content": "x", "document_metadata": {"version": "V2.0"}},

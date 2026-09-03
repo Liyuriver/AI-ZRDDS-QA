@@ -25,8 +25,8 @@ class UserRepository:
     def __init__(self, db: Session):
         self.db = db
 
-    def create(self, username: str, email: str) -> User:
-        user = User(username=username, email=email)
+    def create(self, username: str, email: str, password_hash: Optional[str] = None) -> User:
+        user = User(username=username, email=email, password_hash=password_hash)
         try:
             self.db.add(user)
             self.db.commit()
@@ -50,6 +50,24 @@ class UserRepository:
             return self.db.query(User).filter(User.username == username).first()
         except SQLAlchemyError as exc:
             raise RepositoryError("查询用户失败") from exc
+
+    def update_password(self, user: User, password_hash: str) -> None:
+        user.password_hash = password_hash
+        try:
+            self.db.commit()
+        except SQLAlchemyError as exc:
+            self.db.rollback()
+            raise RepositoryError("修改密码失败") from exc
+
+    def update_avatar(self, user: User, avatar_url: str) -> User:
+        user.avatar_url = avatar_url
+        try:
+            self.db.commit()
+            self.db.refresh(user)
+            return user
+        except SQLAlchemyError as exc:
+            self.db.rollback()
+            raise RepositoryError("修改头像失败") from exc
 
     def list(self) -> List[User]:
         return self.db.query(User).order_by(User.created_at.asc(), User.id.asc()).all()
