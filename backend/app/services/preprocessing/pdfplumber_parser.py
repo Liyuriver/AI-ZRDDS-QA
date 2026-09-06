@@ -38,6 +38,8 @@ class Block:
     bbox: tuple[float, float, float, float] | None = None
     order: int = 0
     kind: str = "text"  # text | heading | table | box | code | toc
+    source_page: str | None = None
+    title: str | None = None
 
 
 @dataclass(frozen=True)
@@ -815,9 +817,11 @@ def split_chunks(document: str, blocks: list[Block], max_chars: int, metadata: d
     current_pages: set[int] = set()
     current_block_ids: list[int] = []
     current_has_nonheading = False
+    current_source_pages: list[str] = []
+    current_title: str | None = None
 
     def emit() -> None:
-        nonlocal current, current_pages, current_block_ids, current_has_nonheading
+        nonlocal current, current_pages, current_block_ids, current_has_nonheading, current_source_pages, current_title
         content = "\n\n".join(current).strip()
         if content:
             chunks.append({
@@ -841,8 +845,19 @@ def split_chunks(document: str, blocks: list[Block], max_chars: int, metadata: d
                 "chunk_id": f"chunk-{len(chunks) + 1:04d}",
                 "content": content,
             })
+            if metadata and metadata.get("source_file"):
+                chunk = chunks[-1]
+                chunk.update({
+                    "source_file": metadata["source_file"],
+                    "source_page": current_source_pages[0] if current_source_pages else None,
+                    "title": current_title or metadata.get("title") or current_section or document,
+                    "language": metadata.get("language"),
+                })
+                chunk["source_pages_html"] = list(dict.fromkeys(current_source_pages))
         current = []
         current_has_nonheading = False
+        current_source_pages = []
+        current_title = None
 
     for block, section in heading_paths(blocks):
         if block.kind == "toc":
@@ -859,6 +874,10 @@ def split_chunks(document: str, blocks: list[Block], max_chars: int, metadata: d
             current = current + ([rendered] if current else [rendered])
             current_pages = {block.page}
             current_block_ids = current_block_ids + ([block.order] if current_block_ids else [block.order])
+            if block.source_page:
+                current_source_pages.append(block.source_page)
+            if block.title:
+                current_title = block.title
             continue
         candidate = "\n\n".join(current + [rendered])
         if current and len(candidate) > max_chars:
@@ -872,6 +891,8 @@ def split_chunks(document: str, blocks: list[Block], max_chars: int, metadata: d
         current_has_nonheading = True
         current_pages.add(block.page)
         current_block_ids.append(block.order)
+        if block.source_page:
+            current_source_pages.append(block.source_page)
     emit()
     return chunks
 
