@@ -161,9 +161,16 @@ def test_chat_handler_exposes_version_uncertain_as_standard_answer_status(monkey
                 "requested_version": "V1.0", "effective_version": "V1.0",
                 "version_status": "MISMATCH", "original_query": "q", "rag_query": "q"}
 
-    monkeypatch.setattr(chat_api, "answer_question", fake_answer_question)
+    async def fake_retrieve_knowledge(*_args, **_kwargs):
+        return []
+
+    monkeypatch.setattr(chat_api, "retrieve_candidates", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(chat_api.ai_client, "retrieve_knowledge", fake_retrieve_knowledge)
+    monkeypatch.setattr(chat_api.ai_client, "query", fake_answer_question)
     response = asyncio.run(chat_api.chat(
-        ChatRequest(question="q", version="V1.0", user_id="u1"), FakeConversationService()
+        ChatRequest(question="q", version="V1.0", user_id="u1"),
+        FakeConversationService(),
+        SimpleNamespace(id="u1"),
     ))
     assert response.data.answer_status == "VERSION_MISMATCH"
     assert response.data.version_status == "MISMATCH"

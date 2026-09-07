@@ -9,25 +9,10 @@ from urllib.parse import quote
 
 import httpx
 from dotenv import load_dotenv
-import asyncio
-import json
-import logging
-import os
-import re
-from pathlib import Path
-from typing import Any, Dict
-from urllib.parse import import_quote
 
-import httpx
-from dotenv import load_dotenv
-
-from app.services.answer_validation_service import validate_answer
 from app.services.answer_validation_service import validate_answer
 from app.config import DIFY_TOP_K
 from app.services.metadata.metadata_service import find_document_metadata
-
-load_dotenv()
-logger = logging.getLogger(__name__)
 
 load_dotenv()
 logger = logging.getLogger(__name__)
@@ -658,11 +643,8 @@ class AIClient:
             validation.reasons,
         )
 
-        return {
-            "answer": self._clean_answer(data.get("answer", "")),
-            "status": validation.status,
         answer = self._clean_answer(data.get("answer", ""))
-        answer_status = "answered"
+        answer_status = validation.status
         if not answer:
             answer = "当前知识库中没有找到足够证据回答这个问题，请补充更具体的信息后重试。"
             answer_status = "insufficient_evidence"
@@ -677,6 +659,7 @@ class AIClient:
         return {
             "answer": answer,
             "status": answer_status,
+            "answer_status": answer_status,
             "sources": sources,
             "evidence": sources,
             "images": images,

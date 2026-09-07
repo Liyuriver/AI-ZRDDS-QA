@@ -6,8 +6,11 @@ from collections.abc import Generator
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 
+from app.api.user import get_current_user
+from app.config import BM25_TOP_K, DIFY_TOP_K, RERANK_TOP_N, RRF_K, RRF_TOP_N
 from app.database.database import get_db
 from app.database.repository import ConversationRepository, RepositoryError, UserRepository
+from app.models import User
 from app.schemas.chat import (
     ChatData,
     ChatRequest,
@@ -23,8 +26,9 @@ from app.services.qa.question_service import answer_question
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
 from app.services.user_service import UserNotFoundError
 from app.services.query_rewrite_service import rewrite_query
-
-
+from app.services.retrieval.fusion_service import fuse_candidates
+from app.services.retrieval.rerank_service import rerank
+from app.services.retrieval.retrieval_service import retrieve_candidates
 
 router = APIRouter(prefix="/chat", tags=["chat"])
 conversation_router = APIRouter(tags=["conversations"])
@@ -205,7 +209,7 @@ async def chat(
 
         rewritten = rewrite_query(request.question)
 
-                bm25_results = retrieve_candidates(
+        bm25_results = retrieve_candidates(
             rewritten.search_query,
             top_k=BM25_TOP_K,
         )
