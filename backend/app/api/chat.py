@@ -205,55 +205,79 @@ async def chat(
             )
             conversation_id = conversation.id
 
-rewritten = rewrite_query(request.question)
+        rewritten = rewrite_query(request.question)
 
-bm25 = retrieve(rewritten.search_query, top_k=5)
+        # 使用本地 BM25 做第一轮辅助召回
+        bm25 = retrieve(rewritten.search_query, top_k=8)
 
-topic_hints = []
-seen_hints = set()
+        topic_hints = []
+        seen_hints = set()
 
-for item in bm25.results:
-    matched_terms = tuple(
-        term for term in rewritten.terms
-        if term.lower() in item.content.lower()
-        or term.lower() in (item.section or "").lower()
-    )
-
-    if not matched_terms:
-        continue
-
-    section = item.section or item.heading_path or "未标注章节"
-    hint = f"{item.source_file}: {section}（{', '.join(matched_terms)}）"
-
-    if hint not in seen_hints:
-        seen_hints.add(hint)
-        topic_hints.append(hint)
-
-bm25_context = "；".join(topic_hints[:5])
-
-logger.info(
-    "query rewrite: original=%r terms=%s",
-    request.question,
-    rewritten.terms,
-)
-
-logger.info(
-    "BM25 top-k=%s",
-    [(item.chunk_id, item.section, round(item.score, 2))
-     for item in bm25.results],
-)
-
-result = await answer_question(
-    original_query=request.question,
-    version=request.version,
-    auxiliary_query=rewritten.search_query,
-    bm25_context=bm25_context,
-)
-        dify_conversation_id = result.get("dify_conversation_id")
-        if dify_conversation_id and dify_conversation_id != conversation.dify_conversation_id:
-            conversation_service.save_dify_conversation_id(
-                conversation_id, dify_conversation_id
+        for item in bm25.results:
+            matched_terms = tuple(
+                term
+                for term in rewritten.terms
+                if term.lower() in item.content.lower()
+                or term.lower() in (item.section or "").lower()
             )
+
+            # 只有真正命中查询扩展术语的 BM25 结果才作为 Dify 辅助主题
+            if not matched_terms:
+                continue
+
+            section = item.section or item.heading_path or "未标注章节"
+            hint = (
+                f"{item.source_file}：{section}"
+                f"（{', '.join(matched_terms)}）"
+            )
+
+            if hint not in seen_hints:
+                seen_hints.add(hint)
+
+                # 故障排查类章节适当优先
+                priority = (
+                    0
+                    if any(
+                        term in section
+                        for term in ("收不到数据", "配置检测")
+                    )
+                    else 1
+                )
+
+                topic_hints.append(
+                    (priority, len(topic_hints), hint)
+                )
+
+        topic_hints.sort(key=lambda item: (item[0], item[1]))
+
+        bm25_context = "；".join(
+            item[2] for item in topic_hints[:5]
+        )
+
+        logger.info(
+            "query rewrite: original=%r terms=%s",
+            request.question,
+            rewritten.terms,
+        )
+
+        logger.info(
+            "BM25 top-k=%s",
+            [
+                (
+                    item.chunk_id,
+                    item.section,
+                    round(item.score, 2),
+                )
+                for item in bm25.results
+            ],
+        )
+
+        result = await answer_question(
+            original_query=request.question,
+            version=request.version,
+            auxiliary_query=rewritten.search_query,
+            bm25_context=bm25_context,
+        )
         conversation_service.save_user_message(conversation_id, request.question)
         conversation_service.save_ai_message(
             conversation_id,
