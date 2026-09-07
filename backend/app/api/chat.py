@@ -22,6 +22,8 @@ from app.services.ai_client import AIClient, AIServiceError
 from app.services.qa.question_service import answer_question
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
 from app.services.user_service import UserNotFoundError
+from app.services.query_rewrite_service import rewrite_query
+from app.services.retrieval.retrieval_service import retrieve
 from app.api.user import get_current_user
 from app.models import User
 
@@ -203,12 +205,50 @@ async def chat(
             )
             conversation_id = conversation.id
 
-        result = await answer_question(
-            original_query=request.question,
-            version=request.version,
-            conversation_id=conversation.dify_conversation_id,
-            user_id=request.user_id,
-        )
+rewritten = rewrite_query(request.question)
+
+bm25 = retrieve(rewritten.search_query, top_k=5)
+
+topic_hints = []
+seen_hints = set()
+
+for item in bm25.results:
+    matched_terms = tuple(
+        term for term in rewritten.terms
+        if term.lower() in item.content.lower()
+        or term.lower() in (item.section or "").lower()
+    )
+
+    if not matched_terms:
+        continue
+
+    section = item.section or item.heading_path or "未标注章节"
+    hint = f"{item.source_file}: {section}（{', '.join(matched_terms)}）"
+
+    if hint not in seen_hints:
+        seen_hints.add(hint)
+        topic_hints.append(hint)
+
+bm25_context = "；".join(topic_hints[:5])
+
+logger.info(
+    "query rewrite: original=%r terms=%s",
+    request.question,
+    rewritten.terms,
+)
+
+logger.info(
+    "BM25 top-k=%s",
+    [(item.chunk_id, item.section, round(item.score, 2))
+     for item in bm25.results],
+)
+
+result = await answer_question(
+    original_query=request.question,
+    version=request.version,
+    auxiliary_query=rewritten.search_query,
+    bm25_context=bm25_context,
+)
         dify_conversation_id = result.get("dify_conversation_id")
         if dify_conversation_id and dify_conversation_id != conversation.dify_conversation_id:
             conversation_service.save_dify_conversation_id(

@@ -4,3 +4,5 @@ python-dotenv
 rank-bm25
 pytest
 pypdf
+beautifulsoup4
+charset-normalizer
