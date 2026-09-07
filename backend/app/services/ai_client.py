@@ -22,6 +22,8 @@ import httpx
 from dotenv import load_dotenv
 
 from app.services.answer_validation_service import validate_answer
+from app.services.answer_validation_service import validate_answer
+from app.config import DIFY_TOP_K
 from app.services.metadata.metadata_service import find_document_metadata
 
 load_dotenv()
@@ -569,6 +571,8 @@ class AIClient:
         user_id: str | None = None,
         auxiliary_query: str | None = None,
         bm25_context: str | None = None,
+        external_context: str | None = None,
+        evidence: list[dict] | None = None,
     ) -> Dict[str, Any]:
 
         if not self.base_url:
@@ -582,15 +586,8 @@ class AIClient:
         url = f"{self.base_url}/chat-messages"
 
         final_query = question
-        if auxiliary_query or bm25_context:
-            final_query = (
-                f"原问题：\n{question}\n\n"
-                f"辅助检索术语：\n{auxiliary_query or ''}\n\n"
-                f"BM25候选主题（仅用于辅助检索，不是最终答案）：\n{bm25_context or ''}"
-            )
-        logger.info("Dify query prepared: original=%r final=%r", question, final_query)
         payload = {
-            "inputs": {},
+            "inputs": {"external_context": external_context or ""},
             "query": final_query,
             "response_mode": "blocking",
             "conversation_id": conversation_id or "",
@@ -645,17 +642,17 @@ class AIClient:
             raise AIServiceError("Dify 返回了无效响应，请稍后重试")
 
         sources, images = self._extract_sources(data)
-        validation = validate_answer(self._clean_answer(data.get("answer", "")), sources)
+        evidence = evidence or []
+        validation = validate_answer(self._clean_answer(data.get("answer", "")), evidence)
         logger.info(
-            "Dify retriever_resources=%s validation=%s reasons=%s",
+            "final evidence=%s validation=%s reasons=%s",
             [
                 {
-                    "document": source.get("document"),
+                    "source": source.get("source_file") or source.get("document"),
                     "section": source.get("section"),
-                    "score": source.get("score"),
-                    "quote": str(source.get("quote") or "")[:180],
+                    "rank": source.get("rerank_rank"),
                 }
-                for source in sources
+                for source in evidence
             ],
             validation.status,
             validation.reasons,
@@ -685,3 +682,57 @@ class AIClient:
             "images": images,
             "dify_conversation_id": data.get("conversation_id") or conversation_id,
         }
+
+    async def retrieve_knowledge(self, query: str, top_k: int = DIFY_TOP_K) -> list[dict]:
+        """Call Dify's dataset retrieval API, never the chat answer endpoint."""
+        dataset_id = os.getenv("DIFY_DATASET_ID")
+        # Dataset retrieval uses a Knowledge/Dataset API key.  An App key is
+        # intentionally not used as a fallback: the two Dify API surfaces have
+        # different permissions and confusing them hides configuration errors.
+        kb_key = os.getenv("DIFY_KB_API_KEY") or os.getenv("DIFY_DATASET_API_KEY")
+        if not self.base_url:
+            logger.warning("Dify retrieval disabled: DIFY_API_BASE is missing")
+            return []
+        if not dataset_id or not kb_key:
+            logger.warning("Dify retrieval disabled: DIFY_DATASET_ID or DIFY_KB_API_KEY is missing")
+            return []
+        payload = {
+            "query": query,
+            "retrieval_model": {
+                "search_method": "hybrid_search",
+                "reranking_enable": False,
+                "top_k": top_k,
+                "score_threshold_enabled": False,
+            },
+        }
+        url = f"{self.base_url}/datasets/{dataset_id}/retrieve"
+        headers = {"Authorization": f"Bearer {kb_key}", "Content-Type": "application/json"}
+        try:
+            async with httpx.AsyncClient(timeout=60.0, trust_env=False) as client:
+                response = await client.post(url, json=payload, headers=headers)
+                response.raise_for_status()
+            records = response.json().get("records", [])
+        except (httpx.HTTPError, ValueError) as exc:
+            logger.warning("Dify retrieval failed; continuing with BM25: %s", exc)
+            return []
+        results = []
+        for record in records:
+            segment = record.get("segment") if isinstance(record, dict) else {}
+            if not isinstance(segment, dict):
+                continue
+            metadata = segment.get("metadata") or {}
+            document = segment.get("document") or record.get("document") or {}
+            if isinstance(document, str):
+                document_name = document
+            else:
+                document_name = document.get("name") or document.get("document_name") or ""
+            results.append({
+                "id": segment.get("id"),
+                "chunk_id": segment.get("id") or segment.get("index_node_id"),
+                "source_file": segment.get("document_name") or document_name or metadata.get("source_file") or "",
+                "section": segment.get("segment_name") or metadata.get("section") or "",
+                "content": segment.get("content") or "",
+                "raw_score": record.get("score", 0),
+                "page": metadata.get("page") or 0,
+            })
+        return results[:top_k]

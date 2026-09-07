@@ -123,3 +123,9 @@ def retrieve(query: str, top_k: int = 5, document_id: Optional[str] = None,
              requested_version: Optional[str] = None) -> RetrievalResponse:
     return _default_service.retrieve(query, top_k, document_id, product, doc_type, requested_version)
 
+
+def retrieve_candidates(query: str, top_k: int = 10) -> list[dict[str, Any]]:
+    """Return complete BM25 chunks in the common fusion shape's input format."""
+    response = retrieve(query, top_k=top_k)
+    return [item.model_dump() if hasattr(item, "model_dump") else item.dict() for item in response.results]
+
