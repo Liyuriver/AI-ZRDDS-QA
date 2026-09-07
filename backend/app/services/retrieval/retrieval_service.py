@@ -30,11 +30,10 @@ class RetrievalService:
     def _available_chunks(self, metadata: DocumentMetadata) -> Optional[List[Mapping[str, Any]]]:
         """Find chunks by manifest source_file, not by a document-specific filename rule."""
         candidates = []
-        for path in self.hybrid_path.rglob("chunks.json") if self.hybrid_path.exists() else []:
+        paths = list(self.hybrid_path.rglob("chunks.jsonl")) if self.hybrid_path.exists() else []
+        for path in paths:
             try:
-                payload = json.loads(path.read_text(encoding="utf-8"))
-                if not isinstance(payload, list) or not payload:
-                    continue
+                payload = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
                 matching = [chunk for chunk in payload if chunk.get("document") == metadata.source_file
                             or chunk.get("source_file") == metadata.source_file]
                 if matching:
