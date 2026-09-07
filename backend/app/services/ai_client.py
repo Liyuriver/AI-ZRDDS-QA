@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 import os
 import re
 from pathlib import Path
@@ -8,8 +9,10 @@ from urllib.parse import quote
 
 import httpx
 from dotenv import load_dotenv
+from app.services.answer_validation_service import validate_answer
 
 load_dotenv()
+logger = logging.getLogger(__name__)
 
 
 class AIServiceError(RuntimeError):
@@ -500,6 +503,8 @@ class AIClient:
         version: str | None = None,
         conversation_id: str | None = None,
         user_id: str | None = None,
+        auxiliary_query: str | None = None,
+        bm25_context: str | None = None,
     ) -> Dict[str, Any]:
 
         if not self.base_url:
@@ -512,9 +517,17 @@ class AIClient:
 
         url = f"{self.base_url}/chat-messages"
 
+        final_query = question
+        if auxiliary_query or bm25_context:
+            final_query = (
+                f"原问题：\n{question}\n\n"
+                f"辅助检索术语：\n{auxiliary_query or ''}\n\n"
+                f"BM25候选主题（仅用于辅助检索，不是最终答案）：\n{bm25_context or ''}"
+            )
+        logger.info("Dify query prepared: original=%r final=%r", question, final_query)
         payload = {
             "inputs": {},
-            "query": question,
+            "query": final_query,
             "response_mode": "blocking",
             "conversation_id": conversation_id or "",
             "user": user_id or "test-user",
@@ -562,10 +575,25 @@ class AIClient:
         data = response.json()
 
         sources, images = self._extract_sources(data)
+        validation = validate_answer(self._clean_answer(data.get("answer", "")), sources)
+        logger.info(
+            "Dify retriever_resources=%s validation=%s reasons=%s",
+            [
+                {
+                    "document": source.get("document"),
+                    "section": source.get("section"),
+                    "score": source.get("score"),
+                    "quote": str(source.get("quote") or "")[:180],
+                }
+                for source in sources
+            ],
+            validation.status,
+            validation.reasons,
+        )
 
         return {
             "answer": self._clean_answer(data.get("answer", "")),
-            "status": "answered",
+            "status": validation.status,
             "sources": sources,
             "images": images,
             "dify_conversation_id": data.get("conversation_id") or conversation_id,

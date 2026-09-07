@@ -21,6 +21,8 @@ from app.schemas.chat import (
 from app.services.ai_client import AIClient, AIServiceError
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
 from app.services.user_service import UserNotFoundError
+from app.services.query_rewrite_service import rewrite_query
+from app.services.retrieval.retrieval_service import retrieve
 
 
 router = APIRouter(prefix="/chat", tags=["chat"])
@@ -171,11 +173,35 @@ async def chat(
             )
             conversation_id = conversation.id
 
+        rewritten = rewrite_query(request.question)
+        bm25 = retrieve(rewritten.search_query, top_k=5)
+        topic_hints = []
+        seen_hints = set()
+        for item in bm25.results:
+            matched_terms = tuple(
+                term for term in rewritten.terms
+                if term.lower() in item.content.lower()
+                or term.lower() in (item.section or "").lower()
+            )
+            # A topic is useful only when the BM25 hit also contains a rewritten
+            # DDS term; generic high-frequency chunks are not sent to Dify.
+            if not matched_terms:
+                continue
+            section = item.section or item.heading_path or "未标注章节"
+            hint = f"{item.source_file}：{section}（{', '.join(matched_terms)}）"
+            if hint not in seen_hints:
+                seen_hints.add(hint)
+                topic_hints.append(hint)
+        bm25_context = "；".join(topic_hints[:5])
+        logger.info("query rewrite: original=%r terms=%s", request.question, rewritten.terms)
+        logger.info("BM25 top-k=%s", [(item.chunk_id, item.section, round(item.score, 2)) for item in bm25.results])
         result = await ai_client.query(
             question=request.question,
             version=request.version,
             conversation_id=conversation.dify_conversation_id,
             user_id=request.user_id,
+            auxiliary_query=", ".join(rewritten.terms),
+            bm25_context=bm25_context,
         )
         dify_conversation_id = result.get("dify_conversation_id")
         if dify_conversation_id and dify_conversation_id != conversation.dify_conversation_id:
