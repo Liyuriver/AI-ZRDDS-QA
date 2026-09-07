@@ -174,7 +174,7 @@ async def chat(
             conversation_id = conversation.id
 
         rewritten = rewrite_query(request.question)
-        bm25 = retrieve(rewritten.search_query, top_k=5)
+        bm25 = retrieve(rewritten.search_query, top_k=8)
         topic_hints = []
         seen_hints = set()
         for item in bm25.results:
@@ -191,8 +191,10 @@ async def chat(
             hint = f"{item.source_file}：{section}（{', '.join(matched_terms)}）"
             if hint not in seen_hints:
                 seen_hints.add(hint)
-                topic_hints.append(hint)
-        bm25_context = "；".join(topic_hints[:5])
+                priority = 0 if any(term in section for term in ("收不到数据", "配置检测")) else 1
+                topic_hints.append((priority, len(topic_hints), hint))
+        topic_hints.sort(key=lambda item: (item[0], item[1]))
+        bm25_context = "；".join(item[2] for item in topic_hints[:5])
         logger.info("query rewrite: original=%r terms=%s", request.question, rewritten.terms)
         logger.info("BM25 top-k=%s", [(item.chunk_id, item.section, round(item.score, 2)) for item in bm25.results])
         result = await ai_client.query(
