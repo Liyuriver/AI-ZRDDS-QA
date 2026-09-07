@@ -249,7 +249,7 @@ watch(missingConversationId, async (id) => {
 .chat-page {
   height: 100vh;
   overflow: hidden;
-  background: var(--color-surface);
+  background: var(--color-background);
 }
 .chat-page__workspace {
   display: grid;
@@ -257,11 +257,27 @@ watch(missingConversationId, async (id) => {
   grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
 }
 .chat-page__main {
+  position: relative;
   display: grid;
   min-width: 0;
   min-height: 0;
   grid-template-rows: 66px minmax(0, 1fr) auto;
-  background: #fbfcfe;
+  background:
+    radial-gradient(circle at 78% 8%, rgb(168 220 193 / 18%), transparent 28%), var(--color-surface);
+}
+.chat-page__main::before {
+  position: absolute;
+  z-index: 0;
+  top: 65px;
+  right: 8%;
+  left: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #9fd5b8, transparent);
+  content: '';
+  opacity: 0.55;
+  transform-origin: center;
+  animation: knowledge-flow 7s ease-in-out infinite;
+  pointer-events: none;
 }
 .chat-page__titlebar {
   display: flex;
@@ -269,11 +285,12 @@ watch(missingConversationId, async (id) => {
   justify-content: space-between;
   padding: 0 30px;
   border-bottom: 1px solid var(--color-border);
-  background: #fff;
+  background: rgb(252 255 253 / 88%);
+  backdrop-filter: blur(14px);
 }
 .chat-page__titlebar p {
   margin: 0 0 3px;
-  color: #98a2b3;
+  color: #739286;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -290,16 +307,48 @@ watch(missingConversationId, async (id) => {
 .chat-page__titlebar > span {
   padding: 6px 10px;
   border-radius: 999px;
-  color: #64748b;
-  background: #f1f5f9;
+  color: var(--color-primary-dark);
+  background: var(--color-primary-soft);
   font-size: 11px;
   font-weight: 700;
 }
 .chat-page__messages {
+  position: relative;
+  z-index: 1;
   display: grid;
   min-height: 0;
   overflow-y: auto;
   padding: 48px 48px 24px;
+}
+
+@keyframes knowledge-flow {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scaleX(0.62);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 760px) {
+  .chat-page__workspace {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+  .chat-page__titlebar {
+    padding: 0 18px;
+  }
+  .chat-page__messages {
+    padding: 30px 18px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-page__main::before {
+    animation: none;
+  }
 }
 .chat-page__offline {
   position: absolute;

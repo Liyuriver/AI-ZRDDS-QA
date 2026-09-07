@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import aiLogo from '@/assets/ai-logo.jpg'
+
 withDefaults(
   defineProps<{
     compact?: boolean
@@ -11,7 +13,9 @@ withDefaults(
 
 <template>
   <div class="brand" :class="{ 'brand--compact': compact }">
-    <span class="brand__mark" aria-hidden="true">AI</span>
+    <span class="brand__mark">
+      <img :src="aiLogo" alt="ZRDDS QA" />
+    </span>
     <span class="brand__copy">
       <strong>AI-ZRDDS-QA</strong>
       <small v-if="!compact">ZRDDS 智能知识库</small>
@@ -27,16 +31,21 @@ withDefaults(
 }
 
 .brand__mark {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 13px;
-  color: #fff;
-  background: linear-gradient(145deg, var(--color-primary), #4f46e5);
-  box-shadow: 0 8px 20px rgb(37 99 235 / 24%);
-  font-size: 14px;
-  font-weight: 800;
+  display: block;
+  width: 76px;
+  height: 76px;
+  overflow: hidden;
+  border: 1px solid #c9e5d5;
+  border-radius: 50%;
+  background: #f1fbf5;
+  box-shadow: 0 7px 20px rgb(36 113 80 / 18%);
+}
+
+.brand__mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .brand__copy {
@@ -47,7 +56,7 @@ withDefaults(
 .brand__copy strong {
   color: var(--color-text);
   font-size: 16px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
 }
 
 .brand__copy small {
@@ -56,8 +65,19 @@ withDefaults(
 }
 
 .brand--compact .brand__mark {
-  width: 36px;
-  height: 36px;
-  border-radius: 11px;
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 640px) {
+  .brand__mark {
+    width: 64px;
+    height: 64px;
+  }
+
+  .brand--compact .brand__mark {
+    width: 42px;
+    height: 42px;
+  }
 }
 </style>

@@ -141,8 +141,8 @@ async function handleSubmit(): Promise<void> {
   margin: -10px 0 18px;
   padding: 9px 12px;
   border-radius: 8px;
-  color: #52709d;
-  background: #f2f7ff;
+  color: #527064;
+  background: #edf8f2;
   font-size: 12px;
 }
 

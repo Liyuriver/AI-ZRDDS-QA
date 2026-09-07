@@ -55,8 +55,9 @@ defineEmits<{
   justify-content: space-between;
   padding: 0 28px;
   border-bottom: 1px solid var(--color-border);
-  background: rgb(255 255 255 / 94%);
-  box-shadow: 0 1px 2px rgb(15 23 42 / 3%);
+  background: rgb(252 255 253 / 91%);
+  box-shadow: 0 1px 18px rgb(31 90 65 / 5%);
+  backdrop-filter: blur(16px);
 }
 
 .app-header__actions,
@@ -71,10 +72,10 @@ defineEmits<{
 
 .app-header__environment {
   padding: 7px 11px;
-  border: 1px solid #dbeafe;
+  border: 1px solid #cde7d9;
   border-radius: 999px;
   color: var(--color-primary-dark);
-  background: #eff6ff;
+  background: #eaf7f0;
   font-size: 12px;
   font-weight: 700;
 }
@@ -96,7 +97,7 @@ defineEmits<{
 }
 
 .app-header__user:hover {
-  background: #f8fafc;
+  background: #edf8f2;
 }
 
 .app-header__avatar {
@@ -106,9 +107,22 @@ defineEmits<{
   place-items: center;
   border-radius: 50%;
   color: #fff;
-  background: #334155;
+  background: var(--color-moss);
   font-size: 13px;
   font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    padding: 0 14px;
+  }
+  .app-header__environment,
+  .app-header__divider {
+    display: none;
+  }
+  .app-header__user > span:nth-child(2) {
+    display: none;
+  }
 }
 
 .app-header__avatar img {

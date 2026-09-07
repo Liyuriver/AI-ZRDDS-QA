@@ -108,10 +108,10 @@ function cleanMarkdownArtifacts(value: string): string {
   gap: 14px;
   padding: 16px 16px 15px;
   overflow: hidden;
-  border: 1px solid #dce4ee;
+  border: 1px solid #d7e8df;
   border-radius: 12px;
-  background: #fbfdff;
-  box-shadow: 0 4px 16px rgb(38 64 99 / 4%);
+  background: #fbfefc;
+  box-shadow: 0 4px 16px rgb(31 90 65 / 5%);
 }
 .citation-item__index {
   display: flex;
@@ -123,7 +123,7 @@ function cleanMarkdownArtifacts(value: string): string {
   justify-content: center;
   border-radius: 9px;
   color: var(--color-primary);
-  background: #eaf2ff;
+  background: var(--color-primary-soft);
 }
 .citation-item__index span {
   font-size: 8px;
@@ -148,7 +148,7 @@ function cleanMarkdownArtifacts(value: string): string {
 .citation-item__title strong {
   min-width: 0;
   overflow: hidden;
-  color: #172033;
+  color: var(--color-text);
   font-size: 13px;
   line-height: 1.45;
   text-overflow: ellipsis;

@@ -49,7 +49,7 @@ const hiddenCount = computed(() => Math.max(0, props.citations.length - 3))
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #475569;
+  color: var(--color-moss);
   cursor: pointer;
   list-style: none;
   font-size: 12px;
@@ -60,7 +60,7 @@ const hiddenCount = computed(() => Math.max(0, props.citations.length - 3))
 }
 .citation-list summary::before {
   content: '▾';
-  color: #94a3b8;
+  color: #789187;
   transition: transform 0.2s ease;
 }
 .citation-list:not([open]) summary::before {
@@ -69,8 +69,8 @@ const hiddenCount = computed(() => Math.max(0, props.citations.length - 3))
 .citation-list summary small {
   padding: 3px 7px;
   border-radius: 999px;
-  color: #64748b;
-  background: #f1f5f9;
+  color: #527064;
+  background: #e5f1ea;
   font-size: 10px;
 }
 .citation-list__items {
@@ -86,10 +86,10 @@ const hiddenCount = computed(() => Math.max(0, props.citations.length - 3))
   gap: 7px;
   margin-top: 12px;
   padding: 10px 14px;
-  border: 1px dashed #c9d7e7;
+  border: 1px dashed #b8d8c6;
   border-radius: 9px;
-  color: #315f9f;
-  background: #f8fbff;
+  color: var(--color-primary-dark);
+  background: #f4fbf7;
   font-size: 11px;
   font-weight: 700;
   cursor: pointer;
@@ -97,8 +97,8 @@ const hiddenCount = computed(() => Math.max(0, props.citations.length - 3))
 }
 .citation-list__more:hover,
 .citation-list__more:focus-visible {
-  border-color: #93b4e8;
-  background: #eff6ff;
+  border-color: #72b895;
+  background: var(--color-primary-soft);
   outline: none;
 }
 </style>

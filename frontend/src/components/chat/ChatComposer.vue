@@ -63,17 +63,18 @@ function handleKeydown(event: KeyboardEvent): void {
   align-items: flex-end;
   gap: 14px;
   padding: 12px 12px 12px 18px;
-  border: 1px solid #d7deea;
+  border: 1px solid #cfe3d8;
   border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 12px 34px rgb(15 23 42 / 9%);
+  background: rgb(255 255 255 / 92%);
+  box-shadow: 0 14px 38px rgb(31 90 65 / 10%);
+  backdrop-filter: blur(14px);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 .chat-composer__box:focus-within {
-  border-color: #93b4f5;
-  box-shadow: 0 12px 36px rgb(37 99 235 / 13%);
+  border-color: #76bd98;
+  box-shadow: 0 14px 38px rgb(47 143 104 / 16%);
 }
 .chat-composer textarea {
   min-height: 48px;
@@ -88,7 +89,19 @@ function handleKeydown(event: KeyboardEvent): void {
   line-height: 1.6;
 }
 .chat-composer textarea::placeholder {
-  color: #a5adba;
+  color: #8ba398;
+}
+
+@media (max-width: 760px) {
+  .chat-composer {
+    width: calc(100% - 28px);
+  }
+  .chat-composer > p span:first-child {
+    display: none;
+  }
+  .chat-composer > p {
+    justify-content: flex-end;
+  }
 }
 .chat-composer__box .el-button {
   min-width: 76px;

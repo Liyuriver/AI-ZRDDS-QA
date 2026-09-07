@@ -49,17 +49,29 @@ const suggestions = [
   text-align: center;
 }
 .chat-welcome__icon {
+  position: relative;
   display: grid;
   width: 58px;
   height: 58px;
   margin: 0 auto 20px;
   place-items: center;
-  border-radius: 18px;
+  border-radius: 50% 50% 48% 52% / 42% 48% 52% 58%;
   color: #fff;
-  background: linear-gradient(145deg, var(--color-primary), #4f46e5);
-  box-shadow: 0 14px 30px rgb(37 99 235 / 24%);
+  background: linear-gradient(145deg, #72c69e, var(--color-primary-dark));
+  box-shadow: 0 14px 34px rgb(36 113 80 / 22%);
   font-size: 22px;
   font-weight: 800;
+}
+.chat-welcome__icon::after {
+  position: absolute;
+  right: -5px;
+  bottom: 3px;
+  width: 13px;
+  height: 20px;
+  border-radius: 100% 0;
+  background: #bce6ce;
+  content: '';
+  transform: rotate(20deg);
 }
 .chat-welcome__eyebrow {
   margin: 0 0 8px;
@@ -91,8 +103,9 @@ const suggestions = [
   padding: 18px;
   border: 1px solid var(--color-border);
   border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 8px 24px rgb(15 23 42 / 4%);
+  background: rgb(255 255 255 / 78%);
+  box-shadow: 0 8px 28px rgb(31 90 65 / 5%);
+  backdrop-filter: blur(10px);
   color: inherit;
   text-align: left;
   cursor: pointer;
@@ -103,10 +116,26 @@ const suggestions = [
 }
 .chat-welcome__suggestions button:hover,
 .chat-welcome__suggestions button:focus-visible {
-  border-color: #bfdbfe;
-  box-shadow: 0 12px 28px rgb(37 99 235 / 10%);
-  transform: translateY(-2px);
+  border-color: #9fd5b8;
+  box-shadow: 0 14px 30px rgb(36 113 80 / 12%);
+  transform: translateY(-3px) rotate(-0.25deg);
   outline: none;
+}
+
+@media (max-width: 760px) {
+  .chat-welcome__suggestions {
+    grid-template-columns: 1fr;
+    margin-top: 26px;
+  }
+  .chat-welcome {
+    text-align: left;
+  }
+  .chat-welcome__icon {
+    margin-left: 0;
+  }
+  .chat-welcome__description {
+    margin-left: 0;
+  }
 }
 .chat-welcome__suggestions strong,
 .chat-welcome__suggestions span {

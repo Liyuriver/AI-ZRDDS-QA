@@ -31,10 +31,10 @@ const formatTime = (value: string) =>
   padding: 13px 17px;
   border-radius: 16px 16px 4px;
   color: #fff;
-  background: var(--color-primary);
+  background: linear-gradient(135deg, #3b9b72, var(--color-primary-dark));
   line-height: 1.75;
   white-space: pre-wrap;
-  box-shadow: 0 8px 22px rgb(37 99 235 / 17%);
+  box-shadow: 0 9px 24px rgb(31 111 80 / 19%);
 }
 .user-message__meta {
   display: flex;

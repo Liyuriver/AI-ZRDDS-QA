@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ElMessage } from 'element-plus'
 
+import aiLogo from '@/assets/ai-logo.jpg'
 import type { ChatMessage } from '@/types/chat'
 import CitationList from '@/components/citation/CitationList.vue'
 import MarkdownContent from '@/components/common/MarkdownContent.vue'
@@ -22,7 +23,9 @@ async function copyAnswer(): Promise<void> {
 
 <template>
   <article class="assistant-message">
-    <div class="assistant-message__avatar" aria-hidden="true">AI</div>
+    <div class="assistant-message__avatar">
+      <img :src="aiLogo" alt="ZRDDS QA 助手" />
+    </div>
     <div class="assistant-message__content">
       <div class="assistant-message__heading">
         <strong>AI 助手</strong><span>{{ formatTime(message.createdAt) }}</span>
@@ -49,16 +52,20 @@ async function copyAnswer(): Promise<void> {
   gap: 12px;
 }
 .assistant-message__avatar {
-  display: grid;
   width: 34px;
   height: 34px;
   flex: 0 0 auto;
-  place-items: center;
-  border-radius: 10px;
-  color: #fff;
-  background: linear-gradient(145deg, #334155, #475569);
-  font-size: 10px;
-  font-weight: 800;
+  overflow: hidden;
+  border: 1px solid #c9e5d5;
+  border-radius: 50%;
+  background: #f1fbf5;
+  box-shadow: 0 4px 12px rgb(49 94 75 / 14%);
+}
+.assistant-message__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .assistant-message__content {
   max-width: min(760px, 82%);
@@ -79,24 +86,24 @@ async function copyAnswer(): Promise<void> {
 .assistant-message__heading button {
   margin-left: auto;
   padding: 3px 8px;
-  border: 1px solid #dbe2ea;
+  border: 1px solid #d5e7dd;
   border-radius: 6px;
-  color: #64748b;
-  background: #fff;
+  color: #587469;
+  background: #fcfffd;
   font-size: 10px;
   cursor: pointer;
 }
 .assistant-message__heading button:hover {
   color: var(--color-primary);
-  border-color: #bfdbfe;
-  background: #eff6ff;
+  border-color: #add8c0;
+  background: #eaf7f0;
 }
 .assistant-message__body {
   padding: 16px 18px;
   border: 1px solid var(--color-border);
   border-radius: 4px 16px 16px;
-  background: #fff;
-  box-shadow: 0 7px 22px rgb(15 23 42 / 4%);
+  background: rgb(255 255 255 / 90%);
+  box-shadow: 0 9px 26px rgb(31 90 65 / 6%);
 }
 .assistant-message__no-answer {
   display: flex;

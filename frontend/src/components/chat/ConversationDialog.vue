@@ -145,7 +145,7 @@ function confirm(): void {
   place-items: center;
   border-radius: 12px;
   color: var(--color-primary);
-  background: #eff6ff;
+  background: var(--color-primary-soft);
 }
 .conversation-modal__header.is-delete .conversation-modal__icon {
   color: #dc2626;

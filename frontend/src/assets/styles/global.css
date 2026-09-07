@@ -58,7 +58,7 @@
   padding: 8px 12px;
   border-radius: 999px;
   color: var(--color-primary-dark);
-  background: #eff6ff;
+  background: var(--color-primary-soft);
   font-size: 13px;
   font-weight: 600;
 }
@@ -81,4 +81,63 @@
   place-items: center;
   padding: 48px;
   text-align: center;
+}
+
+/* Element Plus loads component styles after the app theme in development.
+   Keep primary controls aligned with the knowledge-green palette. */
+html:root {
+  --el-color-primary: #2f8f68;
+  --el-color-primary-light-3: #62ae8b;
+  --el-color-primary-light-5: #8bc8a9;
+  --el-color-primary-light-7: #b9dfca;
+  --el-color-primary-light-8: #d4ecdf;
+  --el-color-primary-light-9: #eaf7f0;
+  --el-color-primary-dark-2: #1f6f50;
+}
+
+.el-button--primary {
+  --el-button-bg-color: #2f8f68;
+  --el-button-border-color: #2f8f68;
+  --el-button-hover-bg-color: #409f78;
+  --el-button-hover-border-color: #409f78;
+  --el-button-active-bg-color: #1f6f50;
+  --el-button-active-border-color: #1f6f50;
+  --el-button-disabled-bg-color: #add5c0;
+  --el-button-disabled-border-color: #add5c0;
+
+  box-shadow: 0 7px 18px rgb(31 111 80 / 16%);
+}
+
+.el-button--primary:not(.is-disabled):hover,
+.el-button--primary:not(.is-disabled):focus-visible {
+  box-shadow: 0 9px 22px rgb(31 111 80 / 23%);
+  transform: translateY(-1px);
+}
+
+.el-button--primary:not(.is-disabled):active {
+  box-shadow: 0 4px 11px rgb(31 111 80 / 17%);
+  transform: translateY(0);
+}
+
+.el-button--primary.is-disabled {
+  box-shadow: none;
+}
+
+.el-button {
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .el-button {
+    transition: none;
+  }
+  .el-button--primary:not(.is-disabled):hover,
+  .el-button--primary:not(.is-disabled):focus-visible {
+    transform: none;
+  }
 }

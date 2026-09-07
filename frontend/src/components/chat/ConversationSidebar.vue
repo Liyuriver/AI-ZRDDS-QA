@@ -111,7 +111,7 @@ function formatTime(value: string): string {
   flex-direction: column;
   padding: 24px 18px 18px;
   border-right: 1px solid var(--color-border);
-  background: #f8fafc;
+  background: linear-gradient(180deg, #f1f9f4, #f7fbf8 62%, #edf7f1);
 }
 
 .conversation-sidebar__heading {
@@ -123,7 +123,7 @@ function formatTime(value: string): string {
 
 .conversation-sidebar__heading p {
   margin: 0 0 5px;
-  color: #98a2b3;
+  color: #789187;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.09em;
@@ -139,8 +139,8 @@ function formatTime(value: string): string {
   min-width: 24px;
   padding: 4px 7px;
   border-radius: 999px;
-  color: #64748b;
-  background: #e9eef5;
+  color: #527064;
+  background: #dfeee6;
   text-align: center;
   font-size: 11px;
   font-weight: 700;
@@ -176,13 +176,13 @@ function formatTime(value: string): string {
 }
 
 .conversation-sidebar__item:hover {
-  background: #fff;
+  background: rgb(255 255 255 / 72%);
 }
 
 .conversation-sidebar__item--active {
-  border-color: #dbeafe;
-  background: #fff;
-  box-shadow: 0 5px 16px rgb(15 23 42 / 5%);
+  border-color: #b9dec9;
+  background: rgb(255 255 255 / 88%);
+  box-shadow: 0 8px 22px rgb(31 90 65 / 8%);
 }
 
 .conversation-sidebar__select {
@@ -232,7 +232,7 @@ function formatTime(value: string): string {
 .conversation-sidebar__actions button:hover,
 .conversation-sidebar__actions button:focus-visible {
   color: var(--color-primary);
-  background: #eff6ff;
+  background: #e8f6ee;
   transform: translateY(-1px);
   outline: none;
 }
@@ -261,7 +261,7 @@ function formatTime(value: string): string {
   place-items: center;
   border-radius: 9px;
   color: var(--color-primary);
-  background: #eff6ff;
+  background: #e4f4eb;
   font-size: 11px;
   font-weight: 800;
 }
@@ -332,6 +332,54 @@ function formatTime(value: string): string {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #22c55e;
+  background: #36ad73;
+  box-shadow: 0 0 0 5px rgb(54 173 115 / 11%);
+  animation: service-breathe 2.8s ease-in-out infinite;
+}
+
+@keyframes service-breathe {
+  50% {
+    box-shadow: 0 0 0 8px rgb(54 173 115 / 3%);
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 760px) {
+  .conversation-sidebar {
+    padding: 18px 10px;
+  }
+  .conversation-sidebar__heading p,
+  .conversation-sidebar__heading h2,
+  .conversation-sidebar__count,
+  .conversation-sidebar__item-copy,
+  .conversation-sidebar__actions,
+  .conversation-sidebar__footer span:last-child,
+  .conversation-sidebar__create:not(:focus) {
+    font-size: 0;
+  }
+  .conversation-sidebar__create {
+    min-width: 0;
+    padding-inline: 0;
+  }
+  .conversation-sidebar__create span {
+    margin: 0;
+    font-size: 20px;
+  }
+  .conversation-sidebar__item {
+    justify-content: center;
+  }
+  .conversation-sidebar__select {
+    flex: 0 0 auto;
+    padding: 6px;
+  }
+  .conversation-sidebar__footer {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .conversation-sidebar__indicator {
+    animation: none;
+  }
 }
 </style>

@@ -32,19 +32,48 @@ import BrandLogo from '@/components/common/BrandLogo.vue'
   display: grid;
   min-height: 100vh;
   grid-template-columns: minmax(500px, 1.1fr) minmax(480px, 0.9fr);
-  background: var(--color-surface);
+  background: #fbfefc;
 }
 
 .auth-layout__intro {
+  position: relative;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
   padding: 48px clamp(48px, 6vw, 96px);
   overflow: hidden;
+  isolation: isolate;
   background:
-    radial-gradient(circle at 85% 15%, rgb(96 165 250 / 28%), transparent 28%),
-    radial-gradient(circle at 15% 90%, rgb(99 102 241 / 20%), transparent 32%), #eff6ff;
+    radial-gradient(circle at 82% 18%, rgb(168 220 193 / 72%), transparent 29%),
+    radial-gradient(circle at 8% 92%, rgb(211 238 222 / 90%), transparent 34%), #edf8f1;
+}
+
+.auth-layout__intro::before,
+.auth-layout__intro::after {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgb(47 143 104 / 16%);
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+}
+
+.auth-layout__intro::before {
+  top: 14%;
+  right: -12%;
+  width: 420px;
+  height: 420px;
+  animation: knowledge-orbit 18s ease-in-out infinite alternate;
+}
+
+.auth-layout__intro::after {
+  right: 18%;
+  bottom: -16%;
+  width: 310px;
+  height: 310px;
+  box-shadow: 0 0 0 38px rgb(255 255 255 / 22%);
+  animation: knowledge-orbit 14s ease-in-out -5s infinite alternate-reverse;
 }
 
 .auth-layout__message {
@@ -62,7 +91,7 @@ import BrandLogo from '@/components/common/BrandLogo.vue'
 .auth-layout__message h1 {
   max-width: 620px;
   margin: 0;
-  color: #14213d;
+  color: #163a2d;
   font-size: clamp(40px, 4vw, 62px);
   line-height: 1.14;
   letter-spacing: -0.045em;
@@ -71,7 +100,7 @@ import BrandLogo from '@/components/common/BrandLogo.vue'
 .auth-layout__message > p:last-child {
   max-width: 570px;
   margin: 28px 0 0;
-  color: #53627c;
+  color: #527064;
   font-size: 17px;
   line-height: 1.9;
 }
@@ -83,9 +112,9 @@ import BrandLogo from '@/components/common/BrandLogo.vue'
 
 .auth-layout__feature-list span {
   padding: 9px 14px;
-  border: 1px solid rgb(37 99 235 / 14%);
+  border: 1px solid rgb(47 143 104 / 18%);
   border-radius: 999px;
-  color: #31517f;
+  color: #315f4c;
   background: rgb(255 255 255 / 68%);
   font-size: 13px;
   font-weight: 600;
@@ -97,6 +126,10 @@ import BrandLogo from '@/components/common/BrandLogo.vue'
   align-content: center;
   justify-items: center;
   padding: 48px 64px;
+  background:
+    linear-gradient(90deg, rgb(47 143 104 / 4%) 1px, transparent 1px),
+    linear-gradient(rgb(47 143 104 / 4%) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 .auth-layout__card {
@@ -107,5 +140,44 @@ import BrandLogo from '@/components/common/BrandLogo.vue'
   margin: 30px 0 0;
   color: #98a2b3;
   font-size: 12px;
+}
+
+@keyframes knowledge-orbit {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+  to {
+    transform: translate3d(-26px, 18px, 0) rotate(8deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+  .auth-layout__intro {
+    min-height: 320px;
+    padding: 32px;
+  }
+  .auth-layout__message h1 {
+    font-size: clamp(34px, 8vw, 50px);
+  }
+  .auth-layout__message > p:last-child {
+    margin-top: 18px;
+  }
+  .auth-layout__feature-list {
+    margin-top: 28px;
+  }
+  .auth-layout__panel {
+    min-height: auto;
+    padding: 54px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-layout__intro::before,
+  .auth-layout__intro::after {
+    animation: none;
+  }
 }
 </style>

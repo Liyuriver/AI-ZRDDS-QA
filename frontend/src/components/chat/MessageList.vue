@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 
+import aiLogo from '@/assets/ai-logo.jpg'
 import type { ChatMessage } from '@/types/chat'
 import AssistantMessage from './AssistantMessage.vue'
 import UserMessage from './UserMessage.vue'
@@ -72,7 +73,9 @@ watch(
     </template>
 
     <article v-if="sending" class="message-list__thinking">
-      <span class="message-list__avatar">AI</span>
+      <span class="message-list__avatar">
+        <img :src="aiLogo" alt="ZRDDS QA 助手" />
+      </span>
       <div aria-live="polite">
         <i /><i /><i />
         <span>{{ thinkingText }}</span>
@@ -102,15 +105,20 @@ watch(
   gap: 12px;
 }
 .message-list__avatar {
-  display: grid;
   width: 34px;
   height: 34px;
-  place-items: center;
-  border-radius: 10px;
-  color: #fff;
-  background: #475569;
-  font-size: 10px;
-  font-weight: 800;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid #c9e5d5;
+  border-radius: 50%;
+  background: #f1fbf5;
+  box-shadow: 0 4px 12px rgb(49 94 75 / 14%);
+}
+.message-list__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .message-list__thinking div {
   display: flex;
@@ -119,14 +127,20 @@ watch(
   padding: 14px 17px;
   border: 1px solid var(--color-border);
   border-radius: 4px 14px 14px;
-  background: #fff;
+  background: #fcfffd;
 }
 .message-list__thinking i {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #94a3b8;
+  background: #74b793;
   animation: pulse 1.2s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message-list__thinking i {
+    animation: none;
+  }
 }
 .message-list__thinking i:nth-child(2) {
   animation-delay: 0.15s;
