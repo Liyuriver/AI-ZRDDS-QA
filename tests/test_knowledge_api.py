@@ -53,12 +53,13 @@ def test_knowledge_search_returns_ranked_results():
     assert all(result.content and result.doc_name for result in results)
 
 
-def test_unknown_version_returns_no_incompatible_results():
+def test_version_filter_matches_confirmed_manual_and_keeps_unknown_docs_excluded():
     results = KnowledgeService.search(
-        KnowledgeQuery(keyword="配置", version="v2.0", top_k=3)
+        KnowledgeQuery(keyword="配置", version="v2.0", top_k=20)
     )
-    # 当前元数据未声明文档版本，保守策略是不把 unknown 当作 compatible。
-    assert results == []
+    assert results
+    assert all(result.version == "V2.0" for result in results)
+    assert all(result.version_status == "compatible" for result in results)
 
 if __name__ == "__main__":
     test_version_filter()

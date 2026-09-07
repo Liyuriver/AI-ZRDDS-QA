@@ -47,6 +47,30 @@ def get_metadata_by_source_file(source_file: str, path: Optional[Path] = None) -
     raise KeyError(f"unknown source_file: {source_file}")
 
 
+def find_document_metadata(
+    document_id: Optional[str] = None,
+    document_name: Optional[str] = None,
+    path: Optional[Path] = None,
+) -> tuple[Optional[DocumentMetadata], Optional[str]]:
+    """Find metadata by stable id first, then normalized source filename."""
+    entries = load_metadata(path)
+    if document_id:
+        for entry in entries:
+            if entry.document_id == str(document_id):
+                return entry, "document_id"
+
+    def normalize_name(value: Optional[str]) -> str:
+        name = str(value or "").replace("\\", "/").rsplit("/", 1)[-1].strip().lower()
+        return name[:-4] if name.endswith(".pdf") else name
+
+    target = normalize_name(document_name)
+    if target:
+        for entry in entries:
+            if normalize_name(entry.source_file) == target:
+                return entry, "source_file"
+    return None, None
+
+
 def list_documents(path: Optional[Path] = None) -> list[DocumentMetadata]:
     return load_metadata(path)
 
@@ -78,3 +102,17 @@ def merge_metadata_into_chunk(chunk: Mapping[str, Any], metadata: MetadataInput)
 
 def merge_metadata_into_chunks(chunks: Iterable[Mapping[str, Any]], metadata: MetadataInput) -> list[dict[str, Any]]:
     return [merge_metadata_into_chunk(chunk, metadata) for chunk in chunks]
+
+
+def sync_document_metadata_to_chunks(
+    chunks: Iterable[Mapping[str, Any]], metadata: MetadataInput
+) -> list[dict[str, Any]]:
+    """Copy only version metadata; preserve chunk content and identity fields."""
+    source = _as_metadata(metadata)
+    fields = {
+        "version": source.version,
+        "version_raw": source.version_raw,
+        "applicable_versions": list(source.applicable_versions),
+        "metadata_source": source.metadata_source,
+    }
+    return [{**dict(chunk), **fields} for chunk in chunks]

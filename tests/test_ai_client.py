@@ -81,5 +81,60 @@ def test_query_returns_stable_error_after_retry(monkeypatch):
         asyncio.run(client.query("测试问题", user_id="test-user"))
 
 
+def test_query_turns_empty_answer_into_insufficient_evidence(monkeypatch):
+    fake = FakeAsyncClient([response(200, {"answer": "   ", "metadata": {}})])
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **_kwargs: fake)
+    client = AIClient()
+    client.base_url = "http://dify.test/v1"
+    client.api_key = "test-key"
+
+    result = asyncio.run(client.query("测试问题", user_id="test-user"))
+
+    assert result["status"] == "insufficient_evidence"
+    assert result["answer"]
+@pytest.mark.parametrize("resource", [
+    {"content": "x", "metadata": {"version": "V2.0"}},
+    {"content": "x", "document_metadata": {"version": "V2.0"}},
+    {"content": "x", "segment": {"metadata": {"version": "V2.0"}}},
+    {"content": "x", "retriever_resource": {"metadata": {"version": "V2.0"}}},
+])
+def test_extract_sources_preserves_nested_version_metadata(resource):
+    client = AIClient()
+    sources, _images = client._extract_sources({"metadata": {"retriever_resources": [resource]}})
+    assert sources[0]["version"] == "V2.0"
+
+
+def test_extract_sources_does_not_invent_missing_version():
+    client = AIClient()
+    sources, _images = client._extract_sources({"metadata": {"retriever_resources": [{"content": "x"}]}})
+    assert sources[0]["version"] is None
+
+
+def test_extract_sources_enriches_missing_version_from_backend_metadata(monkeypatch):
+    metadata = type("Metadata", (), {"version": "V2.0"})()
+    monkeypatch.setattr(
+        "app.services.ai_client.find_document_metadata",
+        lambda **_kwargs: (metadata, "source_file"),
+    )
+    client = AIClient()
+    sources, _images = client._extract_sources({"metadata": {"retriever_resources": [{
+        "content": "x", "document_name": "ZRDDS用户手册.pdf"
+    }]}})
+    assert sources[0]["version"] == "V2.0"
+
+
+def test_extract_sources_keeps_dify_version_over_backend_metadata(monkeypatch):
+    metadata = type("Metadata", (), {"version": "V2.0"})()
+    monkeypatch.setattr(
+        "app.services.ai_client.find_document_metadata",
+        lambda **_kwargs: (metadata, "source_file"),
+    )
+    client = AIClient()
+    sources, _images = client._extract_sources({"metadata": {"retriever_resources": [{
+        "content": "x", "version": "V1.0", "document_name": "guide.pdf"
+    }]}})
+    assert sources[0]["version"] == "V1.0"
+
+
 async def _noop():
     return None
