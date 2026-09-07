@@ -23,9 +23,7 @@ from app.services.qa.question_service import answer_question
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
 from app.services.user_service import UserNotFoundError
 from app.services.query_rewrite_service import rewrite_query
-from app.services.retrieval.retrieval_service import retrieve
-from app.api.user import get_current_user
-from app.models import User
+
 
 
 router = APIRouter(prefix="/chat", tags=["chat"])
@@ -207,77 +205,124 @@ async def chat(
 
         rewritten = rewrite_query(request.question)
 
-        # 使用本地 BM25 做第一轮辅助召回
-        bm25 = retrieve(rewritten.search_query, top_k=8)
-
-        topic_hints = []
-        seen_hints = set()
-
-        for item in bm25.results:
-            matched_terms = tuple(
-                term
-                for term in rewritten.terms
-                if term.lower() in item.content.lower()
-                or term.lower() in (item.section or "").lower()
-            )
-
-            # 只有真正命中查询扩展术语的 BM25 结果才作为 Dify 辅助主题
-            if not matched_terms:
-                continue
-
-            section = item.section or item.heading_path or "未标注章节"
-            hint = (
-                f"{item.source_file}：{section}"
-                f"（{', '.join(matched_terms)}）"
-            )
-
-            if hint not in seen_hints:
-                seen_hints.add(hint)
-
-                # 故障排查类章节适当优先
-                priority = (
-                    0
-                    if any(
-                        term in section
-                        for term in ("收不到数据", "配置检测")
-                    )
-                    else 1
-                )
-
-                topic_hints.append(
-                    (priority, len(topic_hints), hint)
-                )
-
-        topic_hints.sort(key=lambda item: (item[0], item[1]))
-
-        bm25_context = "；".join(
-            item[2] for item in topic_hints[:5]
+                bm25_results = retrieve_candidates(
+            rewritten.search_query,
+            top_k=BM25_TOP_K,
         )
 
-        logger.info(
-            "query rewrite: original=%r terms=%s",
+        dify_results = await ai_client.retrieve_knowledge(
+            rewritten.search_query,
+            top_k=DIFY_TOP_K,
+        )
+
+        fused = fuse_candidates(
+            bm25_results,
+            dify_results,
+            top_n=RRF_TOP_N,
+            rrf_k=RRF_K,
+        )
+
+        evidence = rerank(
             request.question,
+            fused,
+            top_n=RERANK_TOP_N,
+        )
+
+        logger.debug(
+            "original_query=%r rewritten_query=%r rewrite_terms=%s",
+            request.question,
+            rewritten.search_query,
             rewritten.terms,
         )
 
-        logger.info(
-            "BM25 top-k=%s",
+        logger.debug(
+            "BM25 Top10=%s",
             [
                 (
-                    item.chunk_id,
-                    item.section,
-                    round(item.score, 2),
+                    x.get("chunk_id"),
+                    x.get("source_file"),
+                    x.get("rank"),
+                    x.get("raw_score"),
                 )
-                for item in bm25.results
+                for x in bm25_results
             ],
         )
 
-        result = await answer_question(
-            original_query=request.question,
-            version=request.version,
-            auxiliary_query=rewritten.search_query,
-            bm25_context=bm25_context,
+        logger.debug(
+            "Dify Top10=%s",
+            [
+                (
+                    x.get("chunk_id"),
+                    x.get("source_file"),
+                    x.get("rank"),
+                    x.get("raw_score"),
+                )
+                for x in dify_results
+            ],
         )
+
+        logger.debug(
+            "RRF Top15=%s",
+            [
+                (
+                    x.get("chunk_id"),
+                    x.get("source_file"),
+                    x.get("fusion_score"),
+                )
+                for x in fused
+            ],
+        )
+
+        logger.debug(
+            "Rerank Top5=%s",
+            [
+                (
+                    x.get("chunk_id"),
+                    x.get("source_file"),
+                    x.get("rerank_score"),
+                    x.get("rerank_rank"),
+                )
+                for x in evidence
+            ],
+        )
+
+        external_context = "\n\n".join(
+            f"[证据{index}]\n"
+            f"来源：{item.get('source_file', '')}\n"
+            f"章节：{item.get('section', '')}\n"
+            f"内容：{item.get('content', '')}"
+            for index, item in enumerate(evidence, 1)
+        )
+
+        result = await ai_client.query(
+            question=request.question,
+            version=request.version,
+            conversation_id=conversation.dify_conversation_id,
+            user_id=request.user_id,
+            external_context=external_context,
+            evidence=evidence,
+        )
+
+        result["sources"] = [
+            {
+                "document": item.get("source_file", ""),
+                "section": item.get("section", ""),
+                "page": item.get("page", 0),
+                "score": item.get("rerank_score", 0),
+                "quote": item.get("content", ""),
+            }
+            for item in evidence
+        ]
+
+        dify_conversation_id = result.get("dify_conversation_id")
+        if (
+            dify_conversation_id
+            and dify_conversation_id != conversation.dify_conversation_id
+        ):
+            conversation_service.save_dify_conversation_id(
+                conversation_id,
+                dify_conversation_id,
+            )
         conversation_service.save_user_message(conversation_id, request.question)
         conversation_service.save_ai_message(
             conversation_id,

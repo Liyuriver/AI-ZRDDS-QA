@@ -13,12 +13,12 @@ class ValidationResult:
 _INTERNAL_TERMS = ("内部锁", "锁顺序", "内部线程", "资源锁机制", "内部资源锁")
 
 
-def validate_answer(answer: str, sources: list[dict]) -> ValidationResult:
+def validate_answer(answer: str, rerank_top5: list[dict]) -> ValidationResult:
     text = answer or ""
-    evidence = "\n".join(str(item.get("quote") or "") for item in sources)
+    evidence = "\n".join(str(item.get("content") or item.get("quote") or "") for item in rerank_top5)
     reasons: list[str] = []
-    if not sources or not evidence.strip():
-        reasons.append("没有有效的 Dify 召回证据")
+    if not rerank_top5 or not evidence.strip():
+        reasons.append("没有有效的 Rerank Top-5 证据")
 
     loan_claim = re.search(
         r"return[_ ]?loan\s*\(?.{0,50}(改变|修改|设置|负责).{0,30}(sample.?state|样本状态|READ)",
