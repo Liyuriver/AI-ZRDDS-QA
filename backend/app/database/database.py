@@ -87,6 +87,14 @@ def _migrate_legacy_schema() -> None:
         if "users" not in tables:
             return
         user_columns = {column["name"] for column in inspector.get_columns("users")}
+        if "password_hash" not in user_columns:
+            logger.warning("旧 users 表缺少 password_hash 列，正在执行兼容迁移")
+            connection.execute(text("ALTER TABLE users ADD COLUMN password_hash VARCHAR(255) NULL"))
+            user_columns.add("password_hash")
+        if "avatar_url" not in user_columns:
+            logger.warning("旧 users 表缺少 avatar_url 列，正在执行兼容迁移")
+            connection.execute(text("ALTER TABLE users ADD COLUMN avatar_url VARCHAR(512) NULL"))
+            user_columns.add("avatar_url")
         if "user_id" not in user_columns:
             return
 

@@ -62,12 +62,15 @@ def test_repository_rolls_back_and_preserves_database_cause():
 
 def test_update_conversation_api_returns_updated_title():
     service = Mock()
+    current_user = Mock(id="user-id")
+    service.get_conversation.return_value = Mock(user_id="user-id")
     service.update_conversation_title.return_value = Mock(title="新标题")
 
     result = update_conversation(
         "9c47ce4a-53e8-4b74-8c2a-b96b459f25ae",
         ConversationUpdate(title="新标题"),
         service,
+        current_user,
     )
 
     assert result.title == "新标题"
@@ -78,9 +81,11 @@ def test_update_conversation_api_returns_updated_title():
 
 def test_delete_conversation_api_returns_no_content():
     service = Mock()
+    current_user = Mock(id="user-id")
+    service.get_conversation.return_value = Mock(user_id="user-id")
     conversation_id = "9c47ce4a-53e8-4b74-8c2a-b96b459f25ae"
 
-    response = delete_conversation(conversation_id, service)
+    response = delete_conversation(conversation_id, service, current_user)
 
     assert response.status_code == 204
     service.delete_conversation.assert_called_once_with(conversation_id)
@@ -93,9 +98,29 @@ def test_create_conversation_api_returns_diagnostic_database_error():
     service.create_conversation.side_effect.__cause__ = cause
 
     try:
-        create_conversation(ConversationCreate(user_id="user-id", title="test"), service)
+        create_conversation(
+            ConversationCreate(user_id="user-id", title="test"),
+            service,
+            Mock(id="user-id"),
+        )
         assert False
     except HTTPException as exc:
         assert exc.status_code == 500
         assert exc.detail["message"] == "创建会话时发生数据库错误"
         assert exc.detail["error_type"] == "OperationalError"
+
+
+def test_update_conversation_hides_another_users_conversation():
+    service = Mock()
+    service.get_conversation.return_value = Mock(user_id="owner-id")
+    try:
+        update_conversation(
+            "9c47ce4a-53e8-4b74-8c2a-b96b459f25ae",
+            ConversationUpdate(title="越权修改"),
+            service,
+            Mock(id="attacker-id"),
+        )
+        assert False
+    except HTTPException as exc:
+        assert exc.status_code == 404
+    service.update_conversation_title.assert_not_called()
