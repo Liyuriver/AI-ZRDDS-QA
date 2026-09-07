@@ -22,7 +22,10 @@ from app.services.ai_client import AIClient, AIServiceError
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
 from app.services.user_service import UserNotFoundError
 from app.services.query_rewrite_service import rewrite_query
-from app.services.retrieval.retrieval_service import retrieve
+from app.services.retrieval.retrieval_service import retrieve_candidates
+from app.services.retrieval.fusion_service import fuse_candidates
+from app.services.retrieval.rerank_service import rerank
+from app.config import BM25_TOP_K, DIFY_TOP_K, RERANK_TOP_N, RRF_TOP_N, RRF_K
 
 
 router = APIRouter(prefix="/chat", tags=["chat"])
@@ -174,37 +177,33 @@ async def chat(
             conversation_id = conversation.id
 
         rewritten = rewrite_query(request.question)
-        bm25 = retrieve(rewritten.search_query, top_k=8)
-        topic_hints = []
-        seen_hints = set()
-        for item in bm25.results:
-            matched_terms = tuple(
-                term for term in rewritten.terms
-                if term.lower() in item.content.lower()
-                or term.lower() in (item.section or "").lower()
-            )
-            # A topic is useful only when the BM25 hit also contains a rewritten
-            # DDS term; generic high-frequency chunks are not sent to Dify.
-            if not matched_terms:
-                continue
-            section = item.section or item.heading_path or "未标注章节"
-            hint = f"{item.source_file}：{section}（{', '.join(matched_terms)}）"
-            if hint not in seen_hints:
-                seen_hints.add(hint)
-                priority = 0 if any(term in section for term in ("收不到数据", "配置检测")) else 1
-                topic_hints.append((priority, len(topic_hints), hint))
-        topic_hints.sort(key=lambda item: (item[0], item[1]))
-        bm25_context = "；".join(item[2] for item in topic_hints[:5])
-        logger.info("query rewrite: original=%r terms=%s", request.question, rewritten.terms)
-        logger.info("BM25 top-k=%s", [(item.chunk_id, item.section, round(item.score, 2)) for item in bm25.results])
+        bm25_results = retrieve_candidates(rewritten.search_query, top_k=BM25_TOP_K)
+        dify_results = await ai_client.retrieve_knowledge(rewritten.search_query, top_k=DIFY_TOP_K)
+        fused = fuse_candidates(bm25_results, dify_results, top_n=RRF_TOP_N, rrf_k=RRF_K)
+        evidence = rerank(request.question, fused, top_n=RERANK_TOP_N)
+        logger.debug("original_query=%r rewritten_query=%r rewrite_terms=%s", request.question, rewritten.search_query, rewritten.terms)
+        logger.debug("BM25 Top10=%s", [(x.get("chunk_id"), x.get("source_file"), x.get("rank"), x.get("raw_score")) for x in bm25_results])
+        logger.debug("Dify Top10=%s", [(x.get("chunk_id"), x.get("source_file"), x.get("rank"), x.get("raw_score")) for x in dify_results])
+        logger.debug("RRF Top15=%s", [(x.get("chunk_id"), x.get("source_file"), x.get("fusion_score")) for x in fused])
+        logger.debug("Rerank Top5=%s", [(x.get("chunk_id"), x.get("source_file"), x.get("rerank_score"), x.get("rerank_rank")) for x in evidence])
+        external_context = "\n\n".join(
+            f"[证据{index}]\n来源：{item.get('source_file', '')}\n章节：{item.get('section', '')}\n内容：{item.get('content', '')}"
+            for index, item in enumerate(evidence, 1)
+        )
         result = await ai_client.query(
             question=request.question,
             version=request.version,
             conversation_id=conversation.dify_conversation_id,
             user_id=request.user_id,
-            auxiliary_query=", ".join(rewritten.terms),
-            bm25_context=bm25_context,
+            external_context=external_context,
+            evidence=evidence,
         )
+        result["sources"] = [
+            {"document": item.get("source_file", ""), "section": item.get("section", ""),
+             "page": item.get("page", 0), "score": item.get("rerank_score", 0),
+             "quote": item.get("content", "")}
+            for item in evidence
+        ]
         dify_conversation_id = result.get("dify_conversation_id")
         if dify_conversation_id and dify_conversation_id != conversation.dify_conversation_id:
             conversation_service.save_dify_conversation_id(
