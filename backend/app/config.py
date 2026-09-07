@@ -15,7 +15,6 @@ PROJECT_NAME = "ZRDDS Knowledge Base QA API"
 PROJECT_VERSION = "0.1.0"
 API_V1_PREFIX = "/api/v1"
 
-
 def _bool(name: str, default: bool) -> bool:
     value = os.getenv(name)
     return default if value is None else value.strip().lower() in {"1", "true", "yes", "on"}
@@ -30,3 +29,8 @@ RRF_TOP_N = int(os.getenv("RRF_TOP_N", "15"))
 BM25_TOP_K = int(os.getenv("BM25_TOP_K", "10"))
 DIFY_TOP_K = int(os.getenv("DIFY_TOP_K", "10"))
 RRF_K = int(os.getenv("RRF_K", "60"))
+
+# Evidence-based QA thresholds
+CONFIDENCE_HIGH_THRESHOLD = 0.75
+CONFIDENCE_LOW_THRESHOLD = 0.50
+CONFIDENCE_SCORE_NORMALIZATION = "auto"

@@ -3,17 +3,28 @@
 from datetime import datetime
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
-ChatStatus = Literal["answered", "insufficient_evidence", "error"]
+ChatStatus = Literal[
+    "answered", "insufficient_evidence", "error",
+    "ANSWER", "VERSION_MISMATCH", "VERSION_UNCERTAIN", "LOW_CONFIDENCE", "NO_ANSWER",
+]
 
 
 class ChatRequest(BaseModel):
-    question: str = Field(..., min_length=1, description="User's question")
+    question: str = Field(..., min_length=1, max_length=2000, description="User's question")
     version: Optional[str] = None
     conversation_id: Optional[str] = None
     user_id: str = Field(..., min_length=1)
+
+    @field_validator("question")
+    @classmethod
+    def normalize_question(cls, value: str) -> str:
+        normalized = value.strip()
+        if not normalized:
+            raise ValueError("问题不能为空")
+        return normalized
 
 
 class Source(BaseModel):
@@ -39,6 +50,17 @@ class ChatData(BaseModel):
     status: ChatStatus
     sources: list[Source] = Field(default_factory=list)
     images: list[ImageSource] = Field(default_factory=list)
+    answer_status: Optional[str] = None
+    original_query: Optional[str] = None
+    rag_query: Optional[str] = None
+    confidence_score: Optional[float] = None
+    confidence_level: Optional[str] = None
+    confidence_reasons: list[str] = Field(default_factory=list)
+    requested_version: Optional[str] = None
+    detected_version: Optional[str] = None
+    effective_version: Optional[str] = None
+    version_status: Optional[str] = None
+    evidence: list[dict] = Field(default_factory=list)
 
 
 class ChatResponse(BaseModel):
