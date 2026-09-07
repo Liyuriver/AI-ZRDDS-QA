@@ -227,7 +227,7 @@ async def chat(
         )
 
         evidence = rerank(
-            request.question,
+            rewritten.search_query,
             fused,
             top_n=RERANK_TOP_N,
         )

@@ -22,6 +22,9 @@ _RULES: tuple[tuple[tuple[str, ...], tuple[str, ...]], ...] = (
      ("read", "take", "take_next_sample", "SampleState", "return_loan")),
     (("内容过滤", "过滤主题", "content filter"),
      ("ContentFilteredTopic", "filter_expression", "parameter")),
+    (("idl", "结构体", "增加一个成员", "新增成员", "重新生成", "生成文件", "typesupport"),
+     ("序列化", "反序列化", "数据类型同名", "内部结构不同", "生成文件一致性",
+      "zrddsgen", "TypeSupport", "DataWriter", "DataReader", "通信异常")),
 )
 
 

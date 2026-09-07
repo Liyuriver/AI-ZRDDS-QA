@@ -20,7 +20,14 @@ def normalize_candidate(item: dict[str, Any], source: str, rank: int) -> dict[st
     source_file = str(item.get("source_file") or item.get("document") or "")
     section = str(item.get("section") or item.get("segment_name") or "")
     chunk_id = str(item.get("chunk_id") or item.get("segment_id") or "")
-    stable_id = chunk_id or f"{source_file}:{section}:{content_hash(content)}"
+    # Chunk numbers restart in every document, so ``chunk-0050`` alone is not
+    # globally unique.  Include the document identity to prevent cross-manual
+    # candidates from being collapsed during fusion.
+    stable_id = (
+        f"{source_file}:{chunk_id}"
+        if chunk_id
+        else f"{source_file}:{section}:{content_hash(content)}"
+    )
     return {
         "id": str(item.get("id") or stable_id),
         "chunk_id": chunk_id,
@@ -59,8 +66,7 @@ def fuse_candidates(
         for rank, raw in enumerate(results, 1):
             candidate = normalize_candidate(raw, source, rank)
             match = next((item for item in merged if (
-                (candidate["chunk_id"] and item["chunk_id"] == candidate["chunk_id"])
-                or candidate["_dedup_key"] == item["_dedup_key"]
+                candidate["_dedup_key"] == item["_dedup_key"]
                 or _same_content(candidate, item)
             )), None)
             contribution = 1.0 / (rrf_k + rank)
