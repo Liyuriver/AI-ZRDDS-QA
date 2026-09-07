@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
 import tempfile
@@ -400,6 +401,9 @@ def _enrich_late_source_visuals(
     from app.services.preprocessing.image_vlm import enrich_image
 
     document = str(getattr(parsed, "document", "document.pdf"))
+    reused_results: dict[str, dict[str, Any]] = {}
+    late_total = sum(1 for item in matches if str((enrichments.get(str(item.get("image_id") or "")) or {}).get("parse_status") or "") == "source_recovered_without_vlm")
+    late_index = 0
     for match in matches:
         image_id = str(match.get("image_id") or "")
         if not image_id:
@@ -407,6 +411,7 @@ def _enrich_late_source_visuals(
         current = dict(enrichments.get(image_id) or {})
         if str(current.get("parse_status") or "") != "source_recovered_without_vlm":
             continue
+        late_index += 1
 
         source = Path(str(match.get("path") or ""))
         if not source.is_absolute() and match.get("mineru_root"):
@@ -418,20 +423,31 @@ def _enrich_late_source_visuals(
             enrichments[image_id] = current
             continue
 
+        source_key = str(source.resolve())
+        if source_key in reused_results:
+            enrichments[image_id] = dict(reused_results[source_key])
+            continue
+
+        print(f"VLM late source {late_index}/{late_total}: {image_id}")
         analysis_source = source
         temporary_analysis: Path | None = None
         try:
             if source.suffix.lower() == ".svg":
                 temporary_analysis = _vector_analysis_png(source)
                 analysis_source = temporary_analysis
-            result = enrich_image(
-                analysis_source,
-                document=document,
-                section=str(match.get("section") or "") or None,
-                context_before=_source_text_context_for_page(parsed, int(match.get("page") or 0)),
-                context_after="",
-                mineru_ocr=_overlapping_code_candidate(match, code_matches),
-            )
+            if os.getenv("ENABLE_VLM", "true").lower() in {"0", "false", "no", "off"} or os.getenv("TEST_MODE", "").lower() == "true":
+                result = {"image_type": current.get("image_type") or "unknown", "description": current.get("description", ""),
+                          "key_information": current.get("key_information", []), "parse_status": "vlm_disabled",
+                          "needs_review": True}
+            else:
+                result = enrich_image(
+                    analysis_source,
+                    document=document,
+                    section=str(match.get("section") or "") or None,
+                    context_before=_source_text_context_for_page(parsed, int(match.get("page") or 0)),
+                    context_after="",
+                    mineru_ocr=_overlapping_code_candidate(match, code_matches),
+                )
         except Exception as exc:
             result = {
                 "image_type": current.get("image_type") or "unknown",
@@ -459,6 +475,7 @@ def _enrich_late_source_visuals(
             merged["parse_status"] = "source_recovered_vlm_failed"
             merged["needs_review"] = True
         enrichments[image_id] = merged
+        reused_results[source_key] = dict(merged)
 
 
 def _filter_names(value: Any) -> set[str]:

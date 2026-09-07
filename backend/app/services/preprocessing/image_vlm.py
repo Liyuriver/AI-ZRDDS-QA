@@ -22,6 +22,19 @@ IMAGE_TYPES = {
 PROMPT_VERSION = "qwen-vl-json-v5.1-late-source-visual-fix"
 
 
+def _effective_vlm_settings(timeout: float, retries: int) -> tuple[float, int]:
+    """Allow the document CLI to bound one slow VLM call without changing callers."""
+    try:
+        timeout = max(1.0, float(os.getenv("VLM_TIMEOUT", str(timeout))))
+    except ValueError:
+        pass
+    try:
+        retries = max(0, int(os.getenv("VLM_RETRIES", str(retries))))
+    except ValueError:
+        pass
+    return timeout, retries
+
+
 def classify_image(raw_type: str | None, caption: str | None = None) -> str:
     value = f"{raw_type or ''} {caption or ''}".lower()
     if "table" in value:
@@ -344,6 +357,7 @@ def transcribe_code_image(image_path: Path, *, mineru_ocr: str | None = None, co
         raise RuntimeError("DASHSCOPE_API_KEY is not configured")
     if httpx is None:
         raise RuntimeError("缺少依赖：httpx；用途：Qwen3-VL HTTP API 调用")
+    timeout, retries = _effective_vlm_settings(timeout, retries)
     model = os.getenv("QWEN_VL_MODEL", "qwen3-vl-plus")
     encoded = base64.b64encode(Path(image_path).read_bytes()).decode("ascii")
     payload = _precise_code_payload(encoded, model, _image_mime(Path(image_path)))
@@ -403,6 +417,7 @@ def enrich_image(image_path: Path, *, document: str, section: str | None, contex
         raise RuntimeError("DASHSCOPE_API_KEY is not configured")
     if httpx is None:
         raise RuntimeError("缺少依赖：httpx；用途：Qwen3-VL HTTP API 调用")
+    timeout, retries = _effective_vlm_settings(timeout, retries)
     model = os.getenv("QWEN_VL_MODEL", "qwen3-vl-plus")
     encoded = base64.b64encode(image_path.read_bytes()).decode("ascii")
     prompt = f"""Return JSON only. Do not invent information. Judge the attached image itself first; document context is only for locating the figure and must not be used to invent pixels.

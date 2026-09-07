@@ -24,6 +24,7 @@ from app.services.preprocessing.image_context_matcher import match_visual_record
 from app.services.preprocessing.image_vlm import enrich_image, filter_images, normalize_image_type
 from app.services.preprocessing.mineru_reader import MinerUImage, read_mineru_code, read_mineru_output
 from app.services.preprocessing.pdfplumber_parser import parse_pdf
+from app.services.preprocessing.chm_parser import parse_chm
 
 import pdfplumber
 
@@ -248,6 +249,23 @@ def _write_pdfplumber_intermediate(parsed, directory: Path) -> None:
     (directory / "chunks.json").write_text(json.dumps(parsed.chunks, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def _process_chm(chm: Path, output_dir: Path, max_chars: int, metadata: dict[str, object]) -> None:
+    """CHM route: HTML front-end followed by the common Markdown/chunk contract."""
+    parsed = parse_chm(chm, output_dir, max_chars=max_chars, metadata=metadata)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "enriched.md").write_text(parsed.markdown, encoding="utf-8")
+    (output_dir / "chunks.json").write_text(json.dumps(parsed.chunks, ensure_ascii=False, indent=2), encoding="utf-8")
+    (output_dir / "chunks.jsonl").write_text("\n".join(json.dumps(chunk, ensure_ascii=False) for chunk in parsed.chunks) + "\n", encoding="utf-8")
+    stats_path = output_dir / "chm_parse_stats.json"
+    stats = json.loads(stats_path.read_text(encoding="utf-8")) if stats_path.is_file() else {}
+    print(f"CHM html={stats.get('html_discovered', 0)} parsed={stats.get('html_parsed', 0)} "
+          f"images={stats.get('images_found', 0)}/{stats.get('images_copied', 0)} "
+          f"missing={len(stats.get('image_warnings', []))} code={stats.get('code_blocks', 0)} "
+          f"chunks={len(parsed.chunks)} max={stats.get('max_chunk_chars', 0)} avg={stats.get('avg_chunk_chars', 0)} "
+          f"replacement={stats.get('replacement_characters', 0)}")
+    print(f"Output: {output_dir}")
+
+
 def _recover_missing_mineru_images(pdf: Path, images: list, image_root: Path) -> list:
     """Recover only MinerU records with a page/bbox but no exported file."""
     image_root.mkdir(parents=True, exist_ok=True)
@@ -282,13 +300,38 @@ def _recover_unrepresented_slots(pdf: Path, parsed: Any, images: list[MinerUImag
 def main() -> None:
     _load_local_env()
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--pdf", type=Path, required=True)
+    parser.add_argument("--pdf", "--input", dest="input", type=Path, required=True, help="PDF or CHM input file")
     parser.add_argument("--max-chars", type=int, default=1800)
     parser.add_argument("--run-tag", default="", help="suffix for a new pdfplumber/hybrid output run; MinerU cache is reused")
+    parser.add_argument("--product", default=None)
+    parser.add_argument("--version", default=None)
+    parser.add_argument("--language", default=None)
+    parser.add_argument("--doc-type", default=None)
+    parser.add_argument("--disable-vlm", action="store_true", help="reuse available cache and never call the VLM service")
+    parser.add_argument("--vlm-timeout", type=float, default=30.0, help="timeout per VLM request in seconds")
+    parser.add_argument("--vlm-retries", type=int, default=1, help="retries per VLM request")
     args = parser.parse_args()
-    pdf = args.pdf.resolve()
+    if args.disable_vlm:
+        os.environ["ENABLE_VLM"] = "false"
+    os.environ.setdefault("VLM_TIMEOUT", str(args.vlm_timeout))
+    os.environ.setdefault("VLM_RETRIES", str(args.vlm_retries))
+    pdf = args.input.resolve()
     if not pdf.is_file():
-        raise FileNotFoundError(f"PDF not found: {pdf}")
+        raise FileNotFoundError(f"Input not found: {pdf}")
+    if pdf.suffix.lower() == ".chm":
+        digest = hashlib.sha256(pdf.read_bytes()).hexdigest()[:16]
+        output_name = f"{pdf.stem}__{digest}" + (f"__{args.run_tag}" if args.run_tag else "")
+        metadata = {
+            key: value for key, value in {
+                "product": args.product, "version": args.version,
+                "language": args.language, "doc_type": args.doc_type,
+            }.items() if value
+        }
+        print("[1/1] Decompiling and parsing CHM...")
+        _process_chm(pdf, BACKEND_DATA / "hybrid" / output_name, args.max_chars, metadata)
+        return
+    if pdf.suffix.lower() != ".pdf":
+        raise ValueError("Only .pdf and .chm inputs are supported")
     name = pdf.stem
     # A filename is not an input identity. Reusing mineru/<stem> caused a
     # different PDF with the same name to inherit the previous PDF's images.
