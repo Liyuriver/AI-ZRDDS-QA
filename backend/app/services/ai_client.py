@@ -21,6 +21,74 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 
+DIFY_QUERY_MAX_LENGTH = 250
+_TECHNICAL_IDENTIFIER_RE = re.compile(
+    r"[A-Za-z][A-Za-z0-9_]*(?:::[A-Za-z][A-Za-z0-9_]*(?:\(\))?)?"
+)
+
+
+def _technical_terms(text: str) -> list[str]:
+    """Extract stable API/type/enum identifiers without expanding prose."""
+    terms: list[str] = []
+    for candidate in _TECHNICAL_IDENTIFIER_RE.findall(str(text or "")):
+        bare = candidate.split("::")[-1].removesuffix("()")
+        is_qualified = "::" in candidate
+        is_snake = "_" in candidate
+        is_enum = is_snake and candidate.upper() == candidate
+        is_camel = any(char.isupper() for char in bare[1:])
+        if not (is_qualified or is_snake or is_enum or is_camel):
+            continue
+        if candidate.casefold() not in {item.casefold() for item in terms}:
+            terms.append(candidate)
+        if is_qualified and bare.casefold() not in {item.casefold() for item in terms}:
+            terms.append(bare)
+    return terms
+
+
+def build_dify_query(
+    original_query: str,
+    rewritten_query: str | None = None,
+    *,
+    max_length: int = DIFY_QUERY_MAX_LENGTH,
+) -> str:
+    """Build a bounded Dify query while preserving high-value identifiers."""
+    original = re.sub(r"\s+", " ", str(original_query or "")).strip()
+    rewritten = re.sub(r"\s+", " ", str(rewritten_query or "")).strip()
+    technical = _technical_terms(f"{original} {rewritten}")
+
+    # Normal user questions are preferred verbatim.  Add only identifiers
+    # that came from the rewrite and are not already present.
+    query = original
+    for term in technical:
+        if term.casefold() in query.casefold():
+            continue
+        candidate = f"{query} {term}".strip()
+        if len(candidate) > max_length:
+            break
+        query = candidate
+    if len(query) <= max_length:
+        return query
+
+    # For genuinely oversized original prose, reserve technical identifiers
+    # first, then pack natural-language clauses/words into the remaining
+    # budget.  This is deliberately not a blind character slice.
+    packed = ""
+    for term in technical:
+        candidate = f"{packed} {term}".strip()
+        if len(candidate) <= max_length:
+            packed = candidate
+    remaining = max_length - len(packed) - (1 if packed else 0)
+    if remaining <= 0:
+        return packed
+    natural = re.findall(r"[A-Za-z]+|[0-9]+|[\u4e00-\u9fff]+", original)
+    for word in natural:
+        candidate = f"{packed} {word}".strip()
+        if len(candidate) > max_length:
+            break
+        packed = candidate
+    return packed
+
+
 class AIServiceError(RuntimeError):
     """Raised when Dify cannot complete a chat request safely."""
 
@@ -32,6 +100,7 @@ class AIClient:
             os.getenv("DIFY_APP_API_KEY")
             or os.getenv("DIFY_API_KEY")
         )
+        self.last_retrieval_trace: dict[str, Any] = {}
 
         # 当前文件：backend/app/services/ai_client.py
         backend_root = Path(__file__).resolve().parents[2]
@@ -669,21 +738,44 @@ class AIClient:
             "dify_conversation_id": data.get("conversation_id") or conversation_id,
         }
 
-    async def retrieve_knowledge(self, query: str, top_k: int = DIFY_TOP_K) -> list[dict]:
+    async def retrieve_knowledge(
+        self,
+        query: str,
+        top_k: int = DIFY_TOP_K,
+        *,
+        original_query: str | None = None,
+    ) -> list[dict]:
         """Call Dify's dataset retrieval API, never the chat answer endpoint."""
+        dify_query = build_dify_query(original_query or query, query)
+        self.last_retrieval_trace = {
+            "original_query": original_query or query,
+            "rewrite_query": query,
+            "dify_query": dify_query,
+            "original_length": len(original_query or query),
+            "rewrite_length": len(query),
+            "dify_query_length": len(dify_query),
+        }
         dataset_id = os.getenv("DIFY_DATASET_ID")
         # Dataset retrieval uses a Knowledge/Dataset API key.  An App key is
         # intentionally not used as a fallback: the two Dify API surfaces have
         # different permissions and confusing them hides configuration errors.
         kb_key = os.getenv("DIFY_KB_API_KEY") or os.getenv("DIFY_DATASET_API_KEY")
         if not self.base_url:
-            logger.warning("Dify retrieval disabled: DIFY_API_BASE is missing")
+            self.last_retrieval_trace.update({"status": "disabled", "http_status": None, "result_count": 0})
+            logger.warning("DIFY_RETRIEVAL_DISABLED status=missing_base_url query_length=%s", len(dify_query))
             return []
         if not dataset_id or not kb_key:
-            logger.warning("Dify retrieval disabled: DIFY_DATASET_ID or DIFY_KB_API_KEY is missing")
+            self.last_retrieval_trace.update({"status": "disabled", "http_status": None, "result_count": 0})
+            logger.warning("DIFY_RETRIEVAL_DISABLED status=missing_credentials query_length=%s", len(dify_query))
+            return []
+        if len(dify_query) > DIFY_QUERY_MAX_LENGTH:
+            self.last_retrieval_trace.update({"status": "blocked", "http_status": None, "result_count": 0,
+                                              "error_type": "query_too_long"})
+            logger.error("DIFY_RETRIEVAL_FAILED status=local_query_too_long error_type=query_too_long query_length=%s query_preview=%r",
+                         len(dify_query), dify_query[:120])
             return []
         payload = {
-            "query": query,
+            "query": dify_query,
             "retrieval_model": {
                 "search_method": "hybrid_search",
                 "reranking_enable": False,
@@ -699,8 +791,23 @@ class AIClient:
                 response.raise_for_status()
             body = response.json()
             records = body.get("records", []) if isinstance(body, dict) else []
+        except httpx.HTTPStatusError as exc:
+            error_type = "http_status_error"
+            try:
+                error_type = str(exc.response.json().get("code") or error_type)
+            except (ValueError, TypeError):
+                pass
+            status = exc.response.status_code
+            self.last_retrieval_trace.update({"status": "failed", "http_status": status,
+                                              "result_count": 0, "error_type": error_type})
+            logger.warning("DIFY_RETRIEVAL_FAILED status=%s error_type=%s query_length=%s query_preview=%r",
+                           status, error_type, len(dify_query), dify_query[:120])
+            return []
         except (httpx.HTTPError, ValueError, TypeError, AttributeError) as exc:
-            logger.warning("Dify retrieval failed; continuing with BM25: %s", exc)
+            self.last_retrieval_trace.update({"status": "failed", "http_status": None,
+                                              "result_count": 0, "error_type": type(exc).__name__})
+            logger.warning("DIFY_RETRIEVAL_FAILED status=client_error error_type=%s query_length=%s query_preview=%r",
+                           type(exc).__name__, len(dify_query), dify_query[:120])
             return []
         results = []
         for record in records:
@@ -724,4 +831,10 @@ class AIClient:
                 "raw_score": record.get("score", 0),
                 "page": metadata.get("page") or 0,
             })
-        return results[:top_k]
+        results = results[:top_k]
+        self.last_retrieval_trace.update({"status": "success", "http_status": 200, "result_count": len(results)})
+        logger.info("DIFY_RETRIEVAL_SUCCESS status=200 query_length=%s result_count=%s top=%s",
+                    len(dify_query), len(results),
+                    [(item.get("source_file"), item.get("segment_id"), item.get("raw_score"))
+                     for item in results[:3]])
+        return results

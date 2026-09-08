@@ -3,7 +3,7 @@ import asyncio
 import httpx
 import pytest
 
-from app.services.ai_client import AIClient, AIServiceError
+from app.services.ai_client import AIClient, AIServiceError, build_dify_query
 
 
 class FakeAsyncClient:
@@ -92,6 +92,64 @@ def test_query_turns_empty_answer_into_insufficient_evidence(monkeypatch):
 
     assert result["status"] == "insufficient_evidence"
     assert result["answer"]
+
+
+def test_build_dify_query_preserves_identifiers_and_respects_limit():
+    original = (
+        "In DDS, what is the semantic difference between DataReader::read() and "
+        "DataReader::take()? How do READ_SAMPLE_STATE and NOT_READ_SAMPLE_STATE "
+        "affect whether the same sample can be returned again?"
+    )
+    rewritten = f"{original} " + " ".join(["read", "take"] * 20)
+    query = build_dify_query(original, rewritten)
+    assert len(query) <= 250
+    for term in ("read", "take", "READ_SAMPLE_STATE", "NOT_READ_SAMPLE_STATE"):
+        assert term.casefold() in query.casefold()
+    assert query == original
+
+
+def test_retrieve_knowledge_sends_bounded_query_and_records_success(monkeypatch):
+    fake = FakeAsyncClient([response(200, {"records": [{
+        "score": 0.9,
+        "segment": {
+            "id": "segment-1",
+            "document_name": "formal-15-04-10.pdf",
+            "segment_name": "2.2.2.5.1 Access to the data",
+            "content": "read and take semantics",
+        },
+    }]})])
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **_kwargs: fake)
+    monkeypatch.setenv("DIFY_DATASET_ID", "dataset-test")
+    monkeypatch.setenv("DIFY_KB_API_KEY", "kb-test")
+    client = AIClient()
+    client.base_url = "http://dify.test/v1"
+    original = "In DDS, what is the semantic difference between DataReader::read() and DataReader::take()? How do READ_SAMPLE_STATE and NOT_READ_SAMPLE_STATE affect whether the same sample can be returned again?"
+
+    result = asyncio.run(client.retrieve_knowledge(original, original_query=original))
+
+    assert result[0]["source_file"] == "formal-15-04-10.pdf"
+    sent_query = fake.payloads[0]["query"]
+    assert len(sent_query) <= 250
+    assert client.last_retrieval_trace["status"] == "success"
+    assert client.last_retrieval_trace["http_status"] == 200
+    assert client.last_retrieval_trace["result_count"] == 1
+
+
+def test_retrieve_knowledge_exposes_http_failure_in_trace(monkeypatch, caplog):
+    fake = FakeAsyncClient([response(400, {"code": "invalid_param"})])
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **_kwargs: fake)
+    monkeypatch.setenv("DIFY_DATASET_ID", "dataset-test")
+    monkeypatch.setenv("DIFY_KB_API_KEY", "kb-test")
+    client = AIClient()
+    client.base_url = "http://dify.test/v1"
+
+    result = asyncio.run(client.retrieve_knowledge("long query", original_query="long query"))
+
+    assert result == []
+    assert client.last_retrieval_trace["status"] == "failed"
+    assert client.last_retrieval_trace["http_status"] == 400
+    assert client.last_retrieval_trace["error_type"] == "invalid_param"
+    assert "DIFY_RETRIEVAL_FAILED" in caplog.text
 @pytest.mark.parametrize("resource", [
     {"content": "x", "metadata": {"version": "V2.0"}},
     {"content": "x", "document_metadata": {"version": "V2.0"}},

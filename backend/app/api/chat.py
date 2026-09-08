@@ -249,6 +249,7 @@ async def chat(
         dify_results = await ai_client.retrieve_knowledge(
             rewritten.search_query,
             top_k=DIFY_TOP_K,
+            original_query=request.question,
         )
 
         fused = fuse_candidates(
@@ -266,10 +267,11 @@ async def chat(
         evidence = select_evidence(request.question, reranked, top_n=RERANK_TOP_N)
 
         logger.debug(
-            "original_query=%r rewritten_query=%r rewrite_terms=%s",
+            "original_query=%r rewritten_query=%r rewrite_terms=%s dify_trace=%s",
             request.question,
             rewritten.search_query,
             rewritten.terms,
+            ai_client.last_retrieval_trace,
         )
 
         logger.debug(
