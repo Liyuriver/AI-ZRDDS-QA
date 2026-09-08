@@ -26,7 +26,7 @@ DASHSCOPE_WORKSPACE_ID = os.getenv("DASHSCOPE_WORKSPACE_ID", "")
 RERANK_MODEL = os.getenv("RERANK_MODEL", "qwen3.7-text-rerank")
 RERANK_TOP_N = int(os.getenv("RERANK_TOP_N", "5"))
 RRF_TOP_N = int(os.getenv("RRF_TOP_N", "15"))
-BM25_TOP_K = int(os.getenv("BM25_TOP_K", "10"))
+BM25_TOP_K = int(os.getenv("BM25_TOP_K", "30"))
 DIFY_TOP_K = int(os.getenv("DIFY_TOP_K", "10"))
 RRF_K = int(os.getenv("RRF_K", "60"))
 
