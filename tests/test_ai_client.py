@@ -168,6 +168,17 @@ def test_extract_sources_does_not_invent_missing_version():
     assert sources[0]["version"] is None
 
 
+def test_extract_sources_preserves_segment_identity():
+    client = AIClient()
+    sources, _images = client._extract_sources({"metadata": {"retriever_resources": [{
+        "document_name": "formal-15-04-10.pdf",
+        "segment_id": "segment-42",
+        "content": "read and take semantics",
+    }]}})
+    assert sources[0]["chunk_id"] == "segment-42"
+    assert sources[0]["segment_id"] == "segment-42"
+
+
 def test_extract_sources_enriches_missing_version_from_backend_metadata(monkeypatch):
     metadata = type("Metadata", (), {"version": "V2.0"})()
     monkeypatch.setattr(

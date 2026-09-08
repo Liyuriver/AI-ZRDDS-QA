@@ -361,6 +361,8 @@ async def chat(
         result["sources"] = [
             {
                 "document": item.get("source_file", ""),
+                "chunk_id": item.get("chunk_id"),
+                "segment_id": item.get("segment_id"),
                 "section": item.get("section", ""),
                 "page": item.get("page", 0),
                 "score": item.get("rerank_score", 0),
@@ -371,6 +373,7 @@ async def chat(
         result["evidence"] = [
             {
                 "chunk_id": item.get("chunk_id"),
+                "segment_id": item.get("segment_id"),
                 "source_file": item.get("source_file"),
                 "section": item.get("section"),
                 "heading_path": item.get("heading_path"),

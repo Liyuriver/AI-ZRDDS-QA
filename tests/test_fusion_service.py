@@ -19,3 +19,19 @@ def test_fusion_keeps_bm25_only_evidence():
     )
     assert result[0]["content"] == "Domain Topic Type QoS"
     assert result[0]["retrieval_source"] == ["bm25"]
+
+
+def test_fusion_preserves_dify_segment_identity():
+    result = fuse_candidates(
+        [],
+        [{
+            "segment_id": "segment-42",
+            "chunk_id": "segment-42",
+            "source_file": "formal-15-04-10.pdf",
+            "section": "2.2.2.5.1 Access to the data",
+            "content": "read and take semantics",
+            "score": 0.9,
+        }],
+    )
+    assert result[0]["chunk_id"] == "segment-42"
+    assert result[0]["segment_id"] == "segment-42"

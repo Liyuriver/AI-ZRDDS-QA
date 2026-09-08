@@ -572,6 +572,7 @@ class AIClient:
                     "document": document,
                     "document_id": item.get("document_id") or item.get("dataset_id"),
                     "chunk_id": item.get("chunk_id") or item.get("segment_id") or item.get("segmentId"),
+                    "segment_id": item.get("segment_id") or item.get("segmentId"),
                     "section": section,
                     "page": page,
                     "quote": quote,

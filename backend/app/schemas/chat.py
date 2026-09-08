@@ -29,6 +29,8 @@ class ChatRequest(BaseModel):
 
 class Source(BaseModel):
     document: str
+    chunk_id: Optional[str] = None
+    segment_id: Optional[str] = None
     section: Optional[str] = None
     page: Optional[int] = None
     score: Optional[float] = None

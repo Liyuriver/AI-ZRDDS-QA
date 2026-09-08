@@ -28,10 +28,12 @@ def normalize_candidate(item: dict[str, Any], source: str, rank: int) -> dict[st
     source_file = str(item.get("source_file") or item.get("document") or "")
     section = str(item.get("section") or item.get("segment_name") or "")
     chunk_id = str(item.get("chunk_id") or item.get("segment_id") or "")
+    segment_id = item.get("segment_id") or item.get("segmentId")
     stable_id = f"{_document_key(source_file)}:{_section_key(section)}:{content_hash(content)}"
     return {
         "id": str(item.get("id") or stable_id),
         "chunk_id": chunk_id,
+        "segment_id": str(segment_id) if segment_id is not None else None,
         "source_file": source_file,
         "section": section,
         "content": content,
@@ -91,6 +93,8 @@ def fuse_candidates(
                         match["retrieval_source"].append(value)
                 if not match.get("chunk_id") and candidate.get("chunk_id"):
                     match["chunk_id"] = candidate["chunk_id"]
+                if not match.get("segment_id") and candidate.get("segment_id"):
+                    match["segment_id"] = candidate["segment_id"]
     merged.sort(key=lambda item: (-item["fusion_score"], item.get("_dedup_key", "")))
     limit = top_n if top_n is not None else len(merged)
     for item in merged[:limit]:
