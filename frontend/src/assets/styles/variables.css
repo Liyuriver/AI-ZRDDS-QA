@@ -1,0 +1,25 @@
+:root,
+html:root {
+  --color-primary: #2f8f68;
+  --color-primary-dark: #1f6f50;
+  --color-primary-soft: #e5f5ec;
+  --color-text: #18352c;
+  --color-text-secondary: #61786f;
+  --color-border: #d8e8df;
+  --color-surface: #fcfffd;
+  --color-background: #f2f9f5;
+  --color-mint: #a8dcc1;
+  --color-moss: #426d5a;
+  --shadow-soft: 0 18px 50px rgb(31 90 65 / 9%);
+  --sidebar-width: 280px;
+  --header-height: 72px;
+  --content-max-width: 1440px;
+
+  --el-color-primary: var(--color-primary);
+  --el-color-primary-light-3: #62ae8b;
+  --el-color-primary-light-5: #8bc8a9;
+  --el-color-primary-light-7: #b9dfca;
+  --el-color-primary-light-8: #d4ecdf;
+  --el-color-primary-light-9: #eaf7f0;
+  --el-color-primary-dark-2: var(--color-primary-dark);
+}

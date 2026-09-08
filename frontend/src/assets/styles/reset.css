@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family:
+    'Avenir Next',
+    'PingFang SC',
+    'Microsoft YaHei',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  color: #123d2d;
+  background: #bfe8d1;
+}
+
+:focus-visible {
+  outline: 3px solid rgb(47 143 104 / 25%);
+  outline-offset: 2px;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}

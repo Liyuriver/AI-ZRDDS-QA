@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 from typing import Any
 
 import httpx
@@ -19,13 +20,46 @@ from app.config import (
 logger = logging.getLogger(__name__)
 
 
-def _fallback(candidates: list[dict[str, Any]], top_n: int) -> list[dict[str, Any]]:
+def _search_terms(value: Any) -> set[str]:
+    """Build language-agnostic lexical features for the offline reranker."""
+    text = re.sub(r"\s+", "", str(value or "").lower())
+    ascii_terms = set(re.findall(r"[a-z0-9_]{2,}", text))
+    chinese = "".join(re.findall(r"[\u4e00-\u9fff]", text))
+    chinese_terms = {chinese[index:index + 2] for index in range(len(chinese) - 1)}
+    return ascii_terms | chinese_terms
+
+
+def _coverage(query_terms: set[str], value: Any) -> float:
+    if not query_terms:
+        return 0.0
+    return len(query_terms & _search_terms(value)) / len(query_terms)
+
+
+def _fallback(query: str, candidates: list[dict[str, Any]], top_n: int) -> list[dict[str, Any]]:
+    """Use local lexical relevance when the external semantic reranker is unavailable."""
+    query_terms = _search_terms(query)
+    max_fusion = max((float(item.get("fusion_score", 0)) for item in candidates), default=1.0)
+
+    for item in candidates:
+        section = item.get("section") or ""
+        content = item.get("content") or ""
+        lexical_score = (
+            0.72 * _coverage(query_terms, f"{section} {content}")
+            + 0.18 * _coverage(query_terms, section)
+        )
+        rrf_score = float(item.get("fusion_score", 0)) / max_fusion if max_fusion else 0.0
+        item["local_rerank_score"] = lexical_score + 0.10 * rrf_score
+
     ranked = sorted(
         candidates,
-        key=lambda item: (-float(item.get("fusion_score", 0)), item.get("id", "")),
+        key=lambda item: (
+            -float(item.get("local_rerank_score", 0)),
+            -float(item.get("fusion_score", 0)),
+            item.get("id", ""),
+        ),
     )[:top_n]
     for rank, item in enumerate(ranked, 1):
-        item["rerank_score"] = float(item.get("fusion_score", 0))
+        item["rerank_score"] = float(item.get("local_rerank_score", 0))
         item["rerank_rank"] = rank
     return ranked
 
@@ -78,13 +112,13 @@ def rerank(query: str, candidates: list[dict[str, Any]], top_n: int = RERANK_TOP
             "rerank provider=%s model=%s request_url=%s http_status=disabled candidate_count=%s fallback=True",
             provider, RERANK_MODEL, request_url, len(candidates),
         )
-        return _fallback(candidates, top_n)
+        return _fallback(query, candidates, top_n)
     if not api_key or not workspace_id:
         logger.warning(
             "rerank provider=%s model=%s request_url=%s http_status=not_configured candidate_count=%s fallback=True",
             provider, RERANK_MODEL, request_url, len(candidates),
         )
-        return _fallback(candidates, top_n)
+        return _fallback(query, candidates, top_n)
 
     payload = {
         "model": RERANK_MODEL,
@@ -114,4 +148,4 @@ def rerank(query: str, candidates: list[dict[str, Any]], top_n: int = RERANK_TOP
             "rerank provider=%s model=%s request_url=%s http_status=%s candidate_count=%s fallback=True",
             provider, RERANK_MODEL, request_url, status or type(exc).__name__, len(candidates),
         )
-        return _fallback(candidates, top_n)
+        return _fallback(query, candidates, top_n)
