@@ -81,18 +81,7 @@ class RetrievalService:
                       and (requested_version is None or
                            version_status(chunk, requested_version) == "compatible")]
         if candidates:
-            # Keep BM25 as the scorer, then apply a narrow scenario boost.  The
-            # boost is content/metadata based and deliberately avoids chunk IDs.
             ranked = BM25Index().build_index(candidates).search(query, len(candidates))
-            query_text = (query or "").lower()
-            fault_scenario = any(term in query_text for term in ("收不到数据", "故障排查", "配置检测"))
-            if fault_scenario:
-                for item in ranked:
-                    source = str(item.get("source_file") or "")
-                    section = str(item.get("section") or item.get("heading_path") or "")
-                    if "故障排查" in source or any(term in section for term in ("收不到数据", "配置检测")):
-                        item["score"] = float(item.get("score") or 0) * 3.0
-                ranked.sort(key=lambda item: (-float(item.get("score") or 0), item.get("chunk_id") or ""))
             ranked = ranked[:top_k]
         else:
             ranked = []

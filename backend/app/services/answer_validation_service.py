@@ -13,12 +13,17 @@ class ValidationResult:
 _INTERNAL_TERMS = ("内部锁", "锁顺序", "内部线程", "资源锁机制", "内部资源锁")
 
 
-def validate_answer(answer: str, rerank_top5: list[dict]) -> ValidationResult:
+def validate_answer(answer: str, rerank_top5: list[dict], query: str = "") -> ValidationResult:
     text = answer or ""
     evidence = "\n".join(str(item.get("content") or item.get("quote") or "") for item in rerank_top5)
     reasons: list[str] = []
     if not rerank_top5 or not evidence.strip():
         reasons.append("没有有效的 Rerank Top-5 证据")
+    if query and evidence.strip():
+        query_terms = set(re.findall(r"[A-Za-z][A-Za-z0-9_.+\-]*|[\u4e00-\u9fff]{2,}", query.lower()))
+        evidence_terms = set(re.findall(r"[A-Za-z][A-Za-z0-9_.+\-]*|[\u4e00-\u9fff]{2,}", evidence.lower()))
+        if query_terms and not (query_terms & evidence_terms):
+            reasons.append("Top-5 证据与原问题缺少可验证的主题重合")
 
     loan_claim = re.search(
         r"return[_ ]?loan\s*\(?.{0,50}(改变|修改|设置|负责).{0,30}(sample.?state|样本状态|READ)",

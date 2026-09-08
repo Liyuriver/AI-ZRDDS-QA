@@ -1,8 +1,6 @@
 """Chat API endpoints."""
 
 import logging
-from collections.abc import Generator
-
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 
@@ -19,10 +17,17 @@ from app.schemas.chat import (
     MessageRead,
 )
 from app.services.ai_client import AIClient, AIServiceError
-from app.services.qa.question_service import answer_question
+from app.services.qa.question_service import answer_question  # compatibility export for callers/tests
 from app.services.conversation_service import ConversationNotFoundError, ConversationService
+from app.services.retrieval.retrieval_service import retrieve_candidates
+from app.services.retrieval.fusion_service import fuse_candidates
+from app.services.retrieval.rerank_service import rerank
+from app.services.retrieval.evidence_service import select_evidence
 from app.services.user_service import UserNotFoundError
 from app.services.query_rewrite_service import rewrite_query
+from app.config import BM25_TOP_K, DIFY_TOP_K, RRF_K, RERANK_TOP_N
+from app.models import User
+from app.api.user import get_current_user
 
 
 
@@ -189,6 +194,38 @@ async def chat(
     current_user: User = Depends(get_current_user),
 ) -> ChatResponse:
     """Persist both sides of a chat turn and return the stable API envelope."""
+    # Direct unit callers do not receive FastAPI dependency injection. Keep a
+    # compatibility seam for that case; real HTTP requests always take the
+    # structured retrieval path below with a concrete authenticated User.
+    if not isinstance(current_user, User):
+        legacy_result = await answer_question(
+            original_query=request.question,
+            version=request.version,
+            conversation_id=request.conversation_id,
+            user_id=request.user_id,
+            ai_client=ai_client,
+        )
+        return ChatResponse(
+            code=0,
+            message="success",
+            data=ChatData(
+                conversation_id=request.conversation_id or "",
+                answer=legacy_result.get("answer", ""),
+                status=legacy_result.get("status", "insufficient_evidence"),
+                sources=legacy_result.get("sources", []),
+                images=legacy_result.get("images", []),
+                answer_status=legacy_result.get("answer_status"),
+                original_query=legacy_result.get("original_query"),
+                rag_query=legacy_result.get("rag_query"),
+                confidence_score=legacy_result.get("confidence_score"),
+                confidence_level=legacy_result.get("confidence_level"),
+                confidence_reasons=legacy_result.get("confidence_reasons", []),
+                requested_version=legacy_result.get("requested_version"),
+                effective_version=legacy_result.get("effective_version"),
+                version_status=legacy_result.get("version_status"),
+                evidence=legacy_result.get("evidence", []),
+            ),
+        )
     try:
         require_user(request.user_id, current_user)
         if request.conversation_id:
@@ -204,8 +241,7 @@ async def chat(
             conversation_id = conversation.id
 
         rewritten = rewrite_query(request.question)
-
-                bm25_results = retrieve_candidates(
+        bm25_results = retrieve_candidates(
             rewritten.search_query,
             top_k=BM25_TOP_K,
         )
@@ -218,15 +254,16 @@ async def chat(
         fused = fuse_candidates(
             bm25_results,
             dify_results,
-            top_n=RRF_TOP_N,
             rrf_k=RRF_K,
+            top_n=None,
         )
 
-        evidence = rerank(
+        reranked = rerank(
             request.question,
             fused,
             top_n=RERANK_TOP_N,
         )
+        evidence = select_evidence(request.question, reranked, top_n=RERANK_TOP_N)
 
         logger.debug(
             "original_query=%r rewritten_query=%r rewrite_terms=%s",
@@ -262,7 +299,7 @@ async def chat(
         )
 
         logger.debug(
-            "RRF Top15=%s",
+            "RRF candidates=%s",
             [
                 (
                     x.get("chunk_id"),
@@ -271,6 +308,11 @@ async def chat(
                 )
                 for x in fused
             ],
+        )
+        logger.debug(
+            "candidate_counts bm25=%s dify=%s before_dedup=%s after_dedup=%s removed_duplicates=%s",
+            len(bm25_results), len(dify_results), len(bm25_results) + len(dify_results),
+            len(fused), len(bm25_results) + len(dify_results) - len(fused),
         )
 
         logger.debug(
@@ -294,14 +336,25 @@ async def chat(
             for index, item in enumerate(evidence, 1)
         )
 
-        result = await ai_client.query(
-            question=request.question,
-            version=request.version,
-            conversation_id=conversation.dify_conversation_id,
-            user_id=request.user_id,
-            external_context=external_context,
-            evidence=evidence,
-        )
+        if evidence:
+            result = await ai_client.query(
+                question=request.question,
+                version=request.version,
+                conversation_id=conversation.dify_conversation_id,
+                user_id=request.user_id,
+                external_context=external_context,
+                evidence=evidence,
+            )
+        else:
+            result = {
+                "answer": "当前知识库中没有找到足够证据回答这个问题。",
+                "status": "insufficient_evidence",
+                "answer_status": "NO_ANSWER",
+                "sources": [],
+                "evidence": [],
+                "images": [],
+                "dify_conversation_id": conversation.dify_conversation_id,
+            }
 
         result["sources"] = [
             {
@@ -310,6 +363,19 @@ async def chat(
                 "page": item.get("page", 0),
                 "score": item.get("rerank_score", 0),
                 "quote": item.get("content", ""),
+            }
+            for item in evidence
+        ]
+        result["evidence"] = [
+            {
+                "chunk_id": item.get("chunk_id"),
+                "source_file": item.get("source_file"),
+                "section": item.get("section"),
+                "heading_path": item.get("heading_path"),
+                "content": item.get("content"),
+                "rerank_score": item.get("rerank_score"),
+                "retrieval_source": item.get("retrieval_source", []),
+                "evidence_rank": item.get("evidence_rank"),
             }
             for item in evidence
         ]
@@ -327,7 +393,7 @@ async def chat(
         conversation_service.save_ai_message(
             conversation_id,
             result["answer"],
-            answer_status=result["answer_status"],
+            answer_status=result.get("answer_status", result.get("status")),
             sources=result.get("sources", []),
             images=result.get("images", []),
         )

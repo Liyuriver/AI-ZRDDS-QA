@@ -1,6 +1,6 @@
 """BM25 index wrapper."""
 
-from typing import Any, Dict, Iterable, List, Mapping, Sequence
+from typing import Any, Dict, Iterable, List, Mapping
 
 from rank_bm25 import BM25Okapi
 
@@ -14,8 +14,21 @@ class BM25Index:
 
     def build_index(self, chunks: Iterable[Mapping[str, Any]]) -> "BM25Index":
         self._chunks = list(chunks)
-        self._index = BM25Okapi([tokenize(chunk.get("content", "")) for chunk in self._chunks])
+        self._index = BM25Okapi([tokenize(self._index_text(chunk)) for chunk in self._chunks])
         return self
+
+    @staticmethod
+    def _index_text(chunk: Mapping[str, Any]) -> str:
+        # Repeat structural fields to give headings a controlled boost without
+        # applying a document-wide source-file multiplier.
+        return " ".join(
+            [
+                str(chunk.get("content", "")),
+                str(chunk.get("section", "")) * 3,
+                str(chunk.get("heading_path", "")) * 2,
+                str(chunk.get("source_file", "")),
+            ]
+        )
 
     def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
         if not query or top_k <= 0 or not self._chunks or self._index is None:

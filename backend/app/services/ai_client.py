@@ -9,19 +9,7 @@ from urllib.parse import quote
 
 import httpx
 from dotenv import load_dotenv
-import asyncio
-import json
-import logging
-import os
-import re
-from pathlib import Path
-from typing import Any, Dict
-from urllib.parse import import_quote
 
-import httpx
-from dotenv import load_dotenv
-
-from app.services.answer_validation_service import validate_answer
 from app.services.answer_validation_service import validate_answer
 from app.config import DIFY_TOP_K
 from app.services.metadata.metadata_service import find_document_metadata
@@ -643,7 +631,7 @@ class AIClient:
 
         sources, images = self._extract_sources(data)
         evidence = evidence or []
-        validation = validate_answer(self._clean_answer(data.get("answer", "")), evidence)
+        validation = validate_answer(self._clean_answer(data.get("answer", "")), evidence, question)
         logger.info(
             "final evidence=%s validation=%s reasons=%s",
             [
@@ -658,9 +646,6 @@ class AIClient:
             validation.reasons,
         )
 
-        return {
-            "answer": self._clean_answer(data.get("answer", "")),
-            "status": validation.status,
         answer = self._clean_answer(data.get("answer", ""))
         answer_status = "answered"
         if not answer:
@@ -677,6 +662,7 @@ class AIClient:
         return {
             "answer": answer,
             "status": answer_status,
+            "answer_status": "ANSWER" if answer_status == "answered" else "NO_ANSWER",
             "sources": sources,
             "evidence": sources,
             "images": images,
@@ -711,8 +697,9 @@ class AIClient:
             async with httpx.AsyncClient(timeout=60.0, trust_env=False) as client:
                 response = await client.post(url, json=payload, headers=headers)
                 response.raise_for_status()
-            records = response.json().get("records", [])
-        except (httpx.HTTPError, ValueError) as exc:
+            body = response.json()
+            records = body.get("records", []) if isinstance(body, dict) else []
+        except (httpx.HTTPError, ValueError, TypeError, AttributeError) as exc:
             logger.warning("Dify retrieval failed; continuing with BM25: %s", exc)
             return []
         results = []
@@ -729,6 +716,8 @@ class AIClient:
             results.append({
                 "id": segment.get("id"),
                 "chunk_id": segment.get("id") or segment.get("index_node_id"),
+                "segment_id": segment.get("id"),
+                "document_id": segment.get("document_id") or (document.get("id") if isinstance(document, dict) else None),
                 "source_file": segment.get("document_name") or document_name or metadata.get("source_file") or "",
                 "section": segment.get("segment_name") or metadata.get("section") or "",
                 "content": segment.get("content") or "",
