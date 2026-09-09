@@ -60,7 +60,7 @@ def _parse_results(payload: Any, candidates: list[dict[str, Any]], top_n: int) -
 
 
 def rerank(query: str, candidates: list[dict[str, Any]], top_n: int = RERANK_TOP_N) -> list[dict[str, Any]]:
-    """Rerank RRF candidates through DashScope; never raise into chat."""
+    """Return a ranked candidate pool; final evidence sizing happens later."""
     if not candidates:
         return []
 

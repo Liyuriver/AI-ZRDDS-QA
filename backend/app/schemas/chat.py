@@ -7,8 +7,8 @@ from pydantic import BaseModel, Field, field_validator
 
 
 ChatStatus = Literal[
-    "answered", "insufficient_evidence", "error",
-    "ANSWER", "VERSION_MISMATCH", "VERSION_UNCERTAIN", "LOW_CONFIDENCE", "NO_ANSWER",
+    "answered", "insufficient_evidence", "error", "partial",
+    "ANSWER", "PARTIAL_ANSWER", "VERSION_MISMATCH", "VERSION_UNCERTAIN", "LOW_CONFIDENCE", "NO_ANSWER",
 ]
 
 
@@ -29,8 +29,15 @@ class ChatRequest(BaseModel):
 
 class Source(BaseModel):
     document: str
+    # Citation identity is preserved end-to-end.  All fields stay optional so
+    # historical Dify retriever_resources responses remain valid.
+    source_id: Optional[str] = None
+    source_type: Optional[Literal["dify", "local"]] = None
     chunk_id: Optional[str] = None
     segment_id: Optional[str] = None
+    citation_index: Optional[int] = None
+    source_file: Optional[str] = None
+    position: Optional[int] = None
     section: Optional[str] = None
     page: Optional[int] = None
     score: Optional[float] = None

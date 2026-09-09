@@ -25,6 +25,9 @@ DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
 DASHSCOPE_WORKSPACE_ID = os.getenv("DASHSCOPE_WORKSPACE_ID", "")
 RERANK_MODEL = os.getenv("RERANK_MODEL", "qwen3.7-text-rerank")
 RERANK_TOP_N = int(os.getenv("RERANK_TOP_N", "5"))
+# Rerank is a candidate stage.  The smaller RERANK_TOP_N limits only the
+# evidence injected into the answering model.
+RERANK_CANDIDATE_POOL = int(os.getenv("RERANK_CANDIDATE_POOL", "20"))
 RRF_TOP_N = int(os.getenv("RRF_TOP_N", "15"))
 BM25_TOP_K = int(os.getenv("BM25_TOP_K", "30"))
 DIFY_TOP_K = int(os.getenv("DIFY_TOP_K", "10"))
