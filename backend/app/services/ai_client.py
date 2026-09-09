@@ -13,6 +13,8 @@ from dotenv import load_dotenv
 from app.services.answer_validation_service import validate_answer
 from app.config import DIFY_TOP_K
 from app.services.metadata.metadata_service import find_document_metadata
+from app.services.query_rewrite_service import rewrite_query
+from app.services.retrieval.evidence_service import analyze_evidence_support
 
 load_dotenv()
 logger = logging.getLogger(__name__)
@@ -25,6 +27,42 @@ DIFY_QUERY_MAX_LENGTH = 250
 _TECHNICAL_IDENTIFIER_RE = re.compile(
     r"[A-Za-z][A-Za-z0-9_]*(?:::[A-Za-z][A-Za-z0-9_]*(?:\(\))?)?"
 )
+# 参与"与原问题直接相关"判定的英文 token 最小长度与停用词
+_TOKEN_MIN_LENGTH = 3
+_ENGLISH_STOPWORDS = frozenset({
+    "the", "and", "for", "are", "was", "were", "with", "that", "this", "these",
+    "those", "from", "what", "when", "where", "which", "will", "would", "should",
+    "can", "could", "does", "have", "has", "how", "why", "its", "into", "about",
+    "between", "after", "before", "than", "then", "there", "their", "them", "they",
+    "your", "you", "our", "out", "not", "but", "all", "any", "some", "such", "also",
+    "only", "over", "under", "same", "each", "both", "one", "two", "via", "etc",
+})
+
+
+def _normalize_query_text(text: str) -> str:
+    """统一空白，避免 token 级别的重复/漂移噪声。"""
+    return re.sub(r"\s+", " ", str(text or "")).strip()
+
+
+def _original_word_tokens(original: str) -> frozenset[str]:
+    """原问题中的英文词（小写、去停用词），作为"与原问题直接相关"的判定依据。"""
+    tokens: set[str] = set()
+    for word in re.findall(r"[A-Za-z][A-Za-z0-9_]*", str(original or "")):
+        lowered = word.lower()
+        if len(lowered) >= _TOKEN_MIN_LENGTH and lowered not in _ENGLISH_STOPWORDS:
+            tokens.add(lowered)
+    return frozenset(tokens)
+
+
+def _stems_overlap(term: str, tokens: frozenset[str]) -> bool:
+    """term 与原始问题是否存在词干/前缀重叠（通用相关性代理，非单题规则）。"""
+    t = str(term or "").casefold()
+    for tok in tokens:
+        if len(tok) >= _TOKEN_MIN_LENGTH and (
+            t.startswith(tok) or tok.startswith(t) or tok in t or t in tok
+        ):
+            return True
+    return False
 
 
 def _technical_terms(text: str) -> list[str]:
@@ -45,48 +83,166 @@ def _technical_terms(text: str) -> list[str]:
     return terms
 
 
-def build_dify_query(
-    original_query: str,
-    rewritten_query: str | None = None,
-    *,
-    max_length: int = DIFY_QUERY_MAX_LENGTH,
-) -> str:
-    """Build a bounded Dify query while preserving high-value identifiers."""
-    original = re.sub(r"\s+", " ", str(original_query or "")).strip()
-    rewritten = re.sub(r"\s+", " ", str(rewritten_query or "")).strip()
-    technical = _technical_terms(f"{original} {rewritten}")
+def _classify_term(term: str, original: str, original_tokens: frozenset[str]) -> int:
+    """通用技术词优先级：1=primary（必须保留）3=secondary（长度允许时保留）4=related（默认丢弃）。"""
+    bare = term.split("::")[-1].removesuffix("()")
+    is_qualified = "::" in term or term.endswith("()")
+    is_enum = "_" in term and term.upper() == term
+    is_camel = (not is_enum) and any(char.isupper() for char in bare[1:]) and "_" not in bare
+    is_snake = ("_" in term) and not is_enum
+    is_plain_word = re.fullmatch(r"[A-Za-z]+", bare) is not None
+    is_chinese = any("\u4e00" <= char <= "\u9fff" for char in term)
 
-    # Normal user questions are preferred verbatim.  Add only identifiers
-    # that came from the rewrite and are not already present.
-    query = original
-    for term in technical:
-        if term.casefold() in query.casefold():
-            continue
-        candidate = f"{query} {term}".strip()
-        if len(candidate) > max_length:
-            break
-        query = candidate
-    if len(query) <= max_length:
-        return query
+    if is_chinese:
+        # 中文扩展词只在原问题中直接出现时保留，避免随触发词无限扩展。
+        return 1 if term in original else 4
+    if is_qualified or is_enum or term.startswith("DDS_") or is_camel:
+        return 1
+    if is_snake:
+        # 方法名：与原问题词干关联才算高价值；否则视为弱相关扩展。
+        return 1 if _stems_overlap(bare, original_tokens) else 4
+    if is_plain_word:
+        if term.casefold() in original.casefold():
+            return 1
+        # 标准单字术语（wait/read/take 等）：中等价值，长度允许时保留。
+        return 3
+    return 4
 
-    # For genuinely oversized original prose, reserve technical identifiers
-    # first, then pack natural-language clauses/words into the remaining
-    # budget.  This is deliberately not a blind character slice.
+
+def _phrase_is_valuable(phrase: str, original_tokens: frozenset[str], primary: list[str]) -> bool:
+    """多词语义 gloss 是否值得保留：包含核心技术词，或与原问题词干重叠。"""
+    lowered = str(phrase or "").casefold()
+    if _stems_overlap(phrase, original_tokens):
+        return True
+    return any(primary_term.casefold() in lowered for primary_term in primary)
+
+
+def _compress_oversized_query(original: str, ordered: list[str], max_length: int) -> str:
+    """原始问题本身超长时：先保留核心技术词/语义短语，再用自然语言填充剩余预算。
+    这是"压缩自然语言"步骤，不是盲目的字符切片。"""
     packed = ""
-    for term in technical:
-        candidate = f"{packed} {term}".strip()
+    for item in ordered:
+        candidate = f"{packed} {item}".strip() if packed else item
         if len(candidate) <= max_length:
             packed = candidate
+        else:
+            break
     remaining = max_length - len(packed) - (1 if packed else 0)
     if remaining <= 0:
         return packed
-    natural = re.findall(r"[A-Za-z]+|[0-9]+|[\u4e00-\u9fff]+", original)
-    for word in natural:
+    for word in re.findall(r"[A-Za-z]+|[0-9]+|[\u4e00-\u9fff]+", original):
         candidate = f"{packed} {word}".strip()
         if len(candidate) > max_length:
             break
         packed = candidate
     return packed
+
+
+def build_dify_query(
+    original_query: str,
+    rewritten_query: str | None = None,
+    *,
+    max_length: int = DIFY_QUERY_MAX_LENGTH,
+    trace: dict | None = None,
+) -> str:
+    """构建受长度约束的 Dify 查询，统一处理中文/英文/中英混合问题。
+
+    最终查询由四部分组成（按优先级组装）：
+      1. 原始问题核心语义（压缩后的原问题）
+      2. 核心技术标识符（CamelCase / snake_case / ALL_CAPS_ENUM / DDS_* / Class::method）
+      3. 高价值语义短语（与核心概念或原问题直接相关的 rewrite gloss）
+      4. 必要的标准技术术语（次要单字术语，长度允许时保留）
+
+    压缩顺序：去重 → 丢弃 related → 丢弃低价值 secondary → 压缩自然语言。
+    """
+    original = _normalize_query_text(original_query)
+    rewritten = _normalize_query_text(rewritten_query)
+    original_tokens = _original_word_tokens(original)
+
+    # 复用现有 QueryPlan/rewrite 的结构化信息（不重复实现第二套改写系统）。
+    plan = rewrite_query(original) if original else None
+    expansion_terms = list(plan.expansion_terms) if plan else []
+    rewrite_single_terms: list[str] = []
+    if plan:
+        for term in (
+            list(plan.core_terms) + list(plan.technical_entities)
+            + list(plan.scenario_terms) + expansion_terms
+        ):
+            if " " in term.strip():
+                continue  # 多词 gloss 走语义短语通道
+            if term.casefold() in original.casefold():
+                continue  # 已在原问题中，无需重复加入
+            if term.casefold() not in {item.casefold() for item in rewrite_single_terms}:
+                rewrite_single_terms.append(term)
+
+    # 技术标识符：从 原问题 + rewrite 全文 中提取并去重。
+    identifiers = _technical_terms(f"{original} {rewritten}")
+
+    # 归类：primary / secondary / related。
+    primary: list[str] = []
+    secondary: list[str] = []
+    related: list[str] = []
+    for term in identifiers:
+        priority = _classify_term(term, original, original_tokens)
+        (primary if priority == 1 else secondary if priority == 3 else related).append(term)
+    for term in rewrite_single_terms:
+        if " " in term.strip():
+            continue  # 多词 gloss 走语义短语通道
+        if term.casefold() in {item.casefold() for item in primary} or term.casefold() in {
+            item.casefold() for item in secondary
+        } or term.casefold() in {item.casefold() for item in related}:
+            continue
+        priority = _classify_term(term, original, original_tokens)
+        (primary if priority == 1 else secondary if priority == 3 else related).append(term)
+
+    # 通用降级规则：与原问题无词干关联、但包含已保留核心概念的 API 名，
+    # 视为有价值的扩展降为 secondary（长度允许时保留）；无关扩展保持 related 丢弃。
+    rescued: list[str] = []
+    for term in list(related):
+        lowered = term.casefold()
+        if any(primary_term.casefold() in lowered for primary_term in primary):
+            related.remove(term)
+            secondary.append(term)
+            rescued.append(term)
+
+    # 语义短语：只保留与核心概念或原问题相关的 gloss。
+    phrases = [term for term in expansion_terms if " " in term.strip()]
+    kept_phrases = [phrase for phrase in phrases if _phrase_is_valuable(phrase, original_tokens, primary)]
+    dropped_phrases = [phrase for phrase in phrases if phrase not in kept_phrases]
+
+    # 组装：同层内更长的词先占位（更长 = 信息更多，并能覆盖短重复）。
+    ordered: list[str] = []
+    ordered += sorted(primary, key=lambda term: (-len(term),))
+    ordered += kept_phrases
+    ordered += sorted(secondary, key=lambda term: (-len(term),))
+
+    query = original
+    dropped: list[str] = list(dropped_phrases) + related
+    for item in ordered:
+        if len(query) >= max_length:
+            break
+        if item.casefold() in query.casefold():
+            continue  # 包含式去重：read / read() / DataReader::read() 只保留一次
+        candidate = f"{query} {item}".strip()
+        if len(candidate) > max_length:
+            dropped.append(item)
+            continue
+        query = candidate
+
+    if len(query) > max_length:
+        # 仅当原问题本身超长时触发：保留核心技术词 + 语义短语，压缩自然语言。
+        query = _compress_oversized_query(original, ordered, max_length)
+
+    if trace is not None:
+        trace.update({
+            "core_terms": list(plan.core_terms) if plan else [],
+            "technical_terms": list(dict.fromkeys(primary + secondary)),
+            "semantic_phrases": kept_phrases,
+            "dropped_terms": list(dict.fromkeys(dropped)),
+            "final_dify_query": query,
+            "final_length": len(query),
+        })
+    return query
 
 
 class AIServiceError(RuntimeError):
@@ -534,7 +690,7 @@ class AIClient:
         images = []
         seen_images = set()
 
-        for item in resources:
+        for citation_index, item in enumerate(resources, 1):
             if not isinstance(item, dict):
                 continue
 
@@ -568,11 +724,18 @@ class AIClient:
                 )
                 page = item.get("page") or 0
 
+            segment_id = item.get("segment_id") or item.get("segmentId")
+            chunk_id = item.get("chunk_id") or segment_id
             source = {
                     "document": document,
                     "document_id": item.get("document_id") or item.get("dataset_id"),
-                    "chunk_id": item.get("chunk_id") or item.get("segment_id") or item.get("segmentId"),
-                    "segment_id": item.get("segment_id") or item.get("segmentId"),
+                    "source_id": segment_id or chunk_id,
+                    "source_type": "dify",
+                    "citation_index": citation_index,
+                    "source_file": document,
+                    "chunk_id": chunk_id,
+                    "segment_id": segment_id,
+                    "position": item.get("position"),
                     "section": section,
                     "page": page,
                     "quote": quote,
@@ -621,6 +784,47 @@ class AIClient:
             enriched.append(item)
         return enriched
 
+    @staticmethod
+    def build_sources_from_evidence(evidence: list[dict]) -> list[dict]:
+        """Build unified citation sources directly from final evidence.
+
+        Dify evidence  -> source_type="dify",  source_id=segment_id
+        Local/BM25 evidence -> source_type="local", source_id=chunk_id
+
+        citation_index is 1-based and matches the [证据N] markers in
+        external_context. Sources are never re-sorted after construction.
+        """
+        evidence = evidence or []
+        sources: list[dict] = []
+        for index, item in enumerate(evidence, 1):
+            if not isinstance(item, dict):
+                continue
+            segment_id = item.get("segment_id")
+            chunk_id = item.get("chunk_id")
+            source_type = "dify" if segment_id else "local"
+            source_id = segment_id if source_type == "dify" else chunk_id
+            source = {
+                "source_id": source_id,
+                "source_type": source_type,
+                "citation_index": index,
+                "document": item.get("source_file", ""),
+                "source_file": item.get("source_file", ""),
+                "segment_id": segment_id,
+                "chunk_id": chunk_id,
+                "section": item.get("section", ""),
+                "page": item.get("page", 0),
+                "position": item.get("position"),
+                "score": item.get("rerank_score", 0),
+                "quote": item.get("content", ""),
+                "version": item.get("version"),
+            }
+            sources.append(source)
+            logger.debug(
+                "source_mapping evidence_index=%s evidence_source_id=%s api_source_id=%s document=%s source_type=%s",
+                index, source_id, source_id, item.get("source_file"), source_type,
+            )
+        return sources
+
     async def query(
         self,
         question: str,
@@ -631,6 +835,10 @@ class AIClient:
         bm25_context: str | None = None,
         external_context: str | None = None,
         evidence: list[dict] | None = None,
+        candidate_pool: list[dict] | None = None,
+        required_facets: list[dict] | None = None,
+        relation_facets: list[dict] | None = None,
+        reasoning_trace: dict[str, Any] | None = None,
     ) -> Dict[str, Any]:
 
         if not self.base_url:
@@ -644,8 +852,23 @@ class AIClient:
         url = f"{self.base_url}/chat-messages"
 
         final_query = question
+        evidence = evidence or []
+        relation_facets = relation_facets or []
+        reasoning_trace = reasoning_trace or analyze_evidence_support(question, evidence, required_facets or [], relation_facets)
+        context = external_context or ""
+        if reasoning_trace.get("compositionally_covered_facets") or reasoning_trace.get("relation_chain_supported"):
+            final_query = (
+                f"{question}\n\n"
+                "回答约束：已提供多条可组合证据。请区分证据事实与有限工程推论，"
+                "可使用“可能/风险”等措辞；不要仅因缺少逐字相同的场景原句而拒绝回答。"
+            )
+            context = (
+                f"{context}\n\n[证据链推理规则]\n"
+                "上述证据分别支持产物来源、职责与兼容性后果。可以将这些事实组合为带“可能”或“风险”的有限工程推论；"
+                "不得补充证据中没有的机制、参数、错误码或确定性后果。"
+            )
         payload = {
-            "inputs": {"external_context": external_context or ""},
+            "inputs": {"external_context": context},
             "query": final_query,
             "response_mode": "blocking",
             "conversation_id": conversation_id or "",
@@ -699,9 +922,20 @@ class AIClient:
         if not isinstance(data, dict):
             raise AIServiceError("Dify 返回了无效响应，请稍后重试")
 
-        sources, images = self._extract_sources(data)
-        evidence = evidence or []
-        validation = validate_answer(self._clean_answer(data.get("answer", "")), evidence, question)
+        # Always extract from Dify for images + fallback when no backend evidence.
+        dify_sources, images = self._extract_sources(data)
+        if evidence:
+            # Primary: build sources directly from final evidence so citations
+            # match external_context [证据N] even when Dify retriever_resources
+            # is empty (evidence injected via external_context, not Dify retrieval).
+            sources = self.build_sources_from_evidence(evidence)
+        else:
+            sources = dify_sources
+        validation = validate_answer(
+            self._clean_answer(data.get("answer", "")), evidence, question,
+            candidate_pool=candidate_pool, required_facets=required_facets,
+            relation_facets=relation_facets,
+        )
         logger.info(
             "final evidence=%s validation=%s reasons=%s",
             [
@@ -737,6 +971,29 @@ class AIClient:
             "evidence": sources,
             "images": images,
             "dify_conversation_id": data.get("conversation_id") or conversation_id,
+            "validation": {
+                "status": validation.status,
+                "reasons": list(validation.reasons),
+                "missing_required_facets": list(validation.missing_required_facets),
+                "negative_claim_facets": list(validation.negative_claim_facets),
+                "compositional_refusal_facets": list(validation.compositional_refusal_facets),
+                "missing_relations": list(validation.missing_relations),
+                "missing_side_states": list(validation.missing_side_states),
+                "contradicted_negative_claims": list(validation.contradicted_negative_claims),
+                "should_retry": validation.should_retry,
+                "directly_covered_facets": reasoning_trace.get("directly_covered_facets", []),
+                "compositionally_covered_facets": reasoning_trace.get("compositionally_covered_facets", []),
+                "unsupported_facets": reasoning_trace.get("unsupported_facets", []),
+                "facet_supporting_evidence_ids": reasoning_trace.get("facet_supporting_evidence_ids", {}),
+                "reasoning_links": reasoning_trace.get("reasoning_links", []),
+                "covered_relation_facets": reasoning_trace.get("covered_relation_facets", []),
+                "uncovered_relation_facets": reasoning_trace.get("uncovered_relation_facets", []),
+                "relation_supporting_evidence_ids": reasoning_trace.get("relation_supporting_evidence_ids", {}),
+                "semantic_normalization": reasoning_trace.get("semantic_normalization", []),
+                "missing_relations": list(validation.missing_relations),
+                "missing_side_states": list(validation.missing_side_states),
+                "contradicted_negative_claims": list(validation.contradicted_negative_claims),
+            },
         }
 
     async def retrieve_knowledge(
@@ -747,15 +1004,15 @@ class AIClient:
         original_query: str | None = None,
     ) -> list[dict]:
         """Call Dify's dataset retrieval API, never the chat answer endpoint."""
-        dify_query = build_dify_query(original_query or query, query)
-        self.last_retrieval_trace = {
+        trace: dict[str, Any] = {
             "original_query": original_query or query,
             "rewrite_query": query,
-            "dify_query": dify_query,
             "original_length": len(original_query or query),
             "rewrite_length": len(query),
-            "dify_query_length": len(dify_query),
         }
+        dify_query = build_dify_query(original_query or query, query, trace=trace)
+        trace.update({"dify_query": dify_query, "dify_query_length": len(dify_query)})
+        self.last_retrieval_trace = trace
         dataset_id = os.getenv("DIFY_DATASET_ID")
         # Dataset retrieval uses a Knowledge/Dataset API key.  An App key is
         # intentionally not used as a fallback: the two Dify API surfaces have
@@ -825,6 +1082,7 @@ class AIClient:
                 "id": segment.get("id"),
                 "chunk_id": segment.get("id") or segment.get("index_node_id"),
                 "segment_id": segment.get("id"),
+                "position": segment.get("position") or record.get("position") or metadata.get("position"),
                 "document_id": segment.get("document_id") or (document.get("id") if isinstance(document, dict) else None),
                 "source_file": segment.get("document_name") or document_name or metadata.get("source_file") or "",
                 "section": segment.get("segment_name") or metadata.get("section") or "",

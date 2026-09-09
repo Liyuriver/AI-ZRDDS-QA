@@ -11,6 +11,8 @@ class QueryRewrite:
     technical_entities: tuple[str, ...] = ()
     scenario_terms: tuple[str, ...] = ()
     expansion_terms: tuple[str, ...] = ()
+    required_facets: tuple[str, ...] = ()
+    relation_facets: tuple[dict, ...] = ()
 
     @property
     def original(self) -> str:
@@ -46,6 +48,64 @@ _RULES: tuple[tuple[tuple[str, ...], tuple[str, ...]], ...] = (
 )
 
 
+_TECHNICAL_ENTITY_RE = re.compile(r"[A-Za-z][A-Za-z0-9_.+\-]*")
+_LIST_SEPARATORS_RE = re.compile(r"[、,/，；;]|\b(?:and|or|vs)\b|(?:与|和|及|以及|并且)", re.I)
+_NON_FACET_ENTITIES = {"compare", "explain", "describe", "how", "does", "what", "which", "the", "and", "or", "with", "from", "for", "work", "works", "must", "on", "to", "by", "who", "why", "where", "when", "match", "matches", "offer", "offers", "offered", "provide", "provides", "provided", "produce", "produces", "request", "requests", "requested", "require", "requires", "consume", "consumes", "compatible", "compatibility"}
+
+
+def _relation_facets(original: str, entities: tuple[str, ...]) -> tuple[dict, ...]:
+    """Extract role/constraint relations without using product vocabularies.
+
+    The extractor deliberately records roles and constraints, not a list of
+    known DDS policies.  This lets the evidence layer match equivalent
+    producer/consumer and offered/requested wording across languages.
+    """
+    text = original.lower()
+    if not re.search(r"(?:offered|requested|provide|provides|produce|consume|require|depend|compatible|match|满足|提供|产生|请求|要求|依赖|兼容|匹配|不满足|规则|判断)", text, re.I):
+        return ()
+    clean_entities = [e for e in entities if e.lower() not in _NON_FACET_ENTITIES]
+    subjects = [e for e in clean_entities if re.search(r"writer|reader|producer|consumer|publisher|subscriber", e, re.I)]
+    for match in re.finditer(r"([A-Za-z][A-Za-z0-9_.+\-]*)\s+(?:offers?|provides?|produces?|requests?|requires?|consumes?|depends?)\b", original, re.I):
+        if match.group(1) not in subjects:
+            subjects.append(match.group(1))
+    objects = [e for e in clean_entities if e not in subjects and e.lower() not in _NON_FACET_ENTITIES]
+    obj = " ".join(objects) if objects else "the shared capability"
+    relations: list[dict] = []
+    offer_words = bool(re.search(r"offered|offer|provide|provides|produce|发布|提供|产生|生产", text, re.I))
+    request_words = bool(re.search(r"requested|request|require|consume|订阅|请求|要求|消费|依赖", text, re.I))
+    if subjects and offer_words:
+        relations.append({"subject": subjects[0], "relation": "offers", "object": obj, "constraint_type": "role", "required": True})
+    if len(subjects) > 1 and request_words:
+        relations.append({"subject": subjects[1], "relation": "requests", "object": obj, "constraint_type": "role", "required": True})
+    if (offer_words and request_words) or re.search(r"兼容|匹配|不满足|compatible|match|satisf", text, re.I):
+        relations.append({"subject": subjects[0] if subjects else "producer", "relation": "matches", "object": obj, "constraint_type": "compatibility_rule", "required": True})
+    return tuple(dict.fromkeys((tuple(sorted(item.items())) for item in relations)))
+
+
+def _explicit_required_facets(original: str, entities: tuple[str, ...]) -> tuple[str, ...]:
+    """Keep user-requested technical directions separate from retrieval hints.
+
+    This intentionally uses syntax and exact entities rather than a DDS term
+    list, so new vocabularies and mixed-language questions follow the same
+    path.  A single explicit entity is also a required facet; that keeps the
+    representation uniform for single-facet questions.
+    """
+    facets: list[str] = [entity for entity in entities if entity.lower() not in _NON_FACET_ENTITIES]
+    has_enumeration = bool(_LIST_SEPARATORS_RE.search(original)) or bool(
+        re.search(r"(?:分别|各自|几个方向|从.+?(?:方向|方面))", original, re.I)
+    )
+    if has_enumeration and not facets:
+        # Chinese technical names commonly occur in an explicit list but are
+        # not captured by the Latin-token entity regex.  Only take list items,
+        # never arbitrary prose fragments.
+        for group in re.findall(r"(?:从|包括|包含|涉及|就)?([^？?。；;]{2,80})(?:分别|各自|几个方向|方向|方面|[？?])", original):
+            for part in _LIST_SEPARATORS_RE.split(group):
+                term = part.strip(" ：:()（）")
+                if 2 <= len(term) <= 32 and not re.search(r"^(请|说明|比较|什么|如何|哪些|给出|排查|控制|行为)$", term):
+                    facets.append(term)
+    return tuple(dict.fromkeys(facets))
+
+
 def rewrite_query(question: str) -> QueryRewrite:
     original = (question or "").strip()
     lowered = original.lower().replace("\u3000", " ")
@@ -55,7 +115,7 @@ def rewrite_query(question: str) -> QueryRewrite:
             for term in expansions:
                 if term not in terms:
                     terms.append(term)
-    entities = tuple(dict.fromkeys(re.findall(r"[A-Za-z][A-Za-z0-9_.+\-]*", original)))
+    entities = tuple(dict.fromkeys(token.strip(".,:;!?()[]{}") for token in _TECHNICAL_ENTITY_RE.findall(original) if token.strip(".,:;!?()[]{}")))
     known_core = ("Domain", "Domain ID", "Topic", "Type", "QoS", "Partition", "match")
     core = tuple(term for term in terms if term in known_core or term.lower() in lowered)
     scenarios = tuple(term for term in terms if term in {"收不到数据", "故障排查", "配置检测", "网络环境", "死锁", "监听器"})
@@ -69,4 +129,6 @@ def rewrite_query(question: str) -> QueryRewrite:
         technical_entities=tuple(dict.fromkeys(entities + tuple(term for term in terms if term in known_core))),
         scenario_terms=tuple(dict.fromkeys(scenarios)),
         expansion_terms=tuple(dict.fromkeys(expansions)),
+        required_facets=_explicit_required_facets(original, entities),
+        relation_facets=tuple(dict(item) for item in _relation_facets(original, entities)),
     )
