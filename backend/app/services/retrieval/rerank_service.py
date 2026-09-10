@@ -37,6 +37,19 @@ def _coverage(query_terms: set[str], value: Any) -> float:
 
 def _fallback(query: str, candidates: list[dict[str, Any]], top_n: int) -> list[dict[str, Any]]:
     """Use local lexical relevance when the external semantic reranker is unavailable."""
+    # Minimal callers that do not provide section metadata cannot be scored
+    # reliably beyond the fused order.  Preserve the RRF order for that
+    # compatibility path; indexed knowledge chunks carry sections and use the
+    # lexical fallback below.
+    if not any(item.get("section") for item in candidates):
+        ranked = sorted(
+            candidates,
+            key=lambda item: (-float(item.get("fusion_score", 0)), item.get("id", "")),
+        )[:top_n]
+        for rank, item in enumerate(ranked, 1):
+            item["rerank_score"] = float(item.get("fusion_score", 0))
+            item["rerank_rank"] = rank
+        return ranked
     query_terms = _search_terms(query)
     max_fusion = max((float(item.get("fusion_score", 0)) for item in candidates), default=1.0)
 

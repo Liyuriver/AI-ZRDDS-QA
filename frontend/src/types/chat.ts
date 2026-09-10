@@ -1,6 +1,6 @@
 export type MessageRole = 'user' | 'assistant'
 export type MessageStatus = 'sending' | 'success' | 'error'
-export type AnswerStatus = 'answered' | 'no_answer'
+export type AnswerStatus = 'answered' | 'partial' | 'no_answer'
 export type VersionStatus = 'compatible' | 'incompatible' | 'unknown'
 
 export interface Citation {

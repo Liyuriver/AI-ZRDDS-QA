@@ -42,6 +42,36 @@ describe('real chat response mapping', () => {
     expect(message.answerStatus).toBe('no_answer')
   })
 
+  it('preserves backend partial and boundary answer states', () => {
+    const partial = mapChatResponse({
+      code: 0,
+      message: 'success',
+      data: {
+        conversation_id: 'conversation-1',
+        answer: '已回答有证据的部分',
+        status: 'answered',
+        answer_status: 'PARTIAL_ANSWER',
+        sources: [],
+        images: [],
+      },
+    })
+    expect(partial.answerStatus).toBe('partial')
+
+    const boundary = mapChatResponse({
+      code: 0,
+      message: 'success',
+      data: {
+        conversation_id: 'conversation-1',
+        answer: '当前需要补充现场信息',
+        status: 'insufficient_evidence',
+        answer_status: 'NEED-CONTEXT',
+        sources: [],
+        images: [],
+      },
+    })
+    expect(boundary.answerStatus).toBe('no_answer')
+  })
+
   it('uses a safe fallback for an empty answer and malformed evidence arrays', () => {
     const payload = {
       code: 0,

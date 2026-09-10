@@ -10,11 +10,17 @@ from urllib.parse import quote
 import httpx
 from dotenv import load_dotenv
 
-from app.services.answer_validation_service import validate_answer
+from app.services.answer_validation_service import (
+    build_evidence_grounded_fallback,
+    validate_answer,
+)
 from app.config import DIFY_TOP_K
 from app.services.metadata.metadata_service import find_document_metadata
 from app.services.query_rewrite_service import rewrite_query
-from app.services.retrieval.evidence_service import analyze_evidence_support
+from app.services.retrieval.evidence_service import (
+    analyze_evidence_support,
+    extract_facet_requirements,
+)
 
 load_dotenv()
 logger = logging.getLogger(__name__)
@@ -245,6 +251,237 @@ def build_dify_query(
     return query
 
 
+def _evidence_id(item: dict[str, Any]) -> str:
+    return str(item.get("segment_id") or item.get("chunk_id") or item.get("id") or "")
+
+
+def build_generation_coverage_guidance(
+    evidence: list[dict],
+    reasoning_trace: dict[str, Any],
+    required_facets: list[dict] | None = None,
+    relation_facets: list[dict] | None = None,
+    retry_generation_reason: str | None = None,
+) -> tuple[str, str, dict[str, Any]]:
+    """Build structured, generic coverage instructions for the answering LLM."""
+    required_facets = required_facets or []
+    relation_facets = relation_facets or []
+    trace = reasoning_trace or {}
+    direct = list(trace.get("directly_covered_facets", []))
+    compositional = list(trace.get("compositionally_covered_facets", []))
+    unsupported = list(trace.get("unsupported_facets", []))
+    covered_relations = {str(value) for value in trace.get("covered_relation_facets", [])}
+    presence_relations = {str(value) for value in trace.get("relation_presence_covered", [])}
+    constraint_relations = {str(value) for value in trace.get("relation_constraint_covered", [])}
+    constraint_support_ids = {
+        str(relation_id): [str(value) for value in values]
+        for relation_id, values in (trace.get("constraint_support_ids", {}) or {}).items()
+    }
+    relation_diagnostics = trace.get("relation_diagnostics") or []
+    if not relation_diagnostics:
+        relation_diagnostics = [
+            {
+                "relation_id": str(index),
+                "relation_subject": relation.get("subject"),
+                "relation_object": relation.get("object"),
+                "relation_presence_covered": str(index) in presence_relations,
+                "relation_constraint_covered": str(index) in constraint_relations,
+                "presence_support_ids": (trace.get("presence_support_ids", {}) or {}).get(str(index), []),
+                "constraint_support_ids": constraint_support_ids.get(str(index), []),
+            }
+            for index, relation in enumerate(relation_facets)
+        ]
+    facet_supporting_ids = {
+        str(facet_id): [str(value) for value in values]
+        for facet_id, values in (trace.get("facet_supporting_evidence_ids", {}) or {}).items()
+    }
+    direct_ids = {str(value) for value in direct}
+    compositional_ids = {str(value) for value in compositional}
+    unsupported_ids = {str(value) for value in unsupported}
+    summary_lines = ["Required facets:"]
+    for facet in required_facets:
+        facet_id = str(facet.get("id") or "")
+        if facet_id in direct_ids:
+            status = "DIRECTLY_COVERED"
+        elif facet_id in compositional_ids:
+            status = "COMPOSITIONALLY_COVERED"
+        elif facet_id in unsupported_ids or facet_id:
+            status = "UNSUPPORTED"
+        else:
+            status = "UNSUPPORTED"
+        support_ids = facet_supporting_ids.get(facet_id, [])
+        summary_lines.append(
+            f"- {facet_id}: {status}; support={support_ids or '(none)'}"
+        )
+    if not required_facets:
+        summary_lines.append("- (none)")
+    summary_lines.extend([
+        f"DIRECTLY_COVERED facets: {', '.join(map(str, direct)) or '(none)'}",
+        f"COMPOSITIONALLY_COVERED facets: {', '.join(map(str, compositional)) or '(none)'}",
+        f"UNSUPPORTED facets: {', '.join(map(str, unsupported)) or '(none)'}",
+    ])
+    for item in relation_diagnostics:
+        relation_id = str(item.get("relation_id", ""))
+        subject = item.get("relation_subject", "")
+        obj = item.get("relation_object", "")
+        presence = bool(item.get("relation_presence_covered"))
+        constraint = bool(item.get("relation_constraint_covered"))
+        support_ids = item.get("constraint_support_ids") or constraint_support_ids.get(relation_id, [])
+        summary_lines.append(
+            f"Relation {relation_id} ({subject} -> {obj}): "
+            f"presence={'covered' if presence else 'uncovered'}, "
+            f"constraint={'covered' if constraint else 'uncovered'}, "
+            f"constraint_support={list(support_ids) or '(none)'}"
+        )
+    all_constraint_ids = {
+        candidate_id for values in constraint_support_ids.values() for candidate_id in values
+    }
+    critical_evidence = [item for item in evidence if _evidence_id(item) in all_constraint_ids]
+    evidence_by_id = {
+        _evidence_id(item): item
+        for item in evidence
+        if _evidence_id(item)
+    }
+    covered_facet_ids = direct_ids | compositional_ids
+    facet_evidence_lines: list[str] = []
+    facet_evidence_seen: set[str] = set()
+    answer_plan_lines: list[str] = []
+    for facet in required_facets:
+        facet_id = str(facet.get("id") or "")
+        if not facet_id:
+            continue
+        support_ids = [
+            str(value) for value in facet_supporting_ids.get(facet_id, [])
+            if str(value) in evidence_by_id
+        ]
+        if facet_id in covered_facet_ids and support_ids:
+            answer_plan_lines.append(
+                f"- {facet_id}: write a separate answer block; use only Evidence {', '.join(support_ids)} "
+                "to state its own observable meaning, symptom, or check."
+            )
+            for support_id in support_ids:
+                if support_id in facet_evidence_seen:
+                    continue
+                facet_evidence_seen.add(support_id)
+                item = evidence_by_id[support_id]
+                facet_labels = [
+                    str(candidate.get("id") or "")
+                    for candidate in required_facets
+                    if str(candidate.get("id") or "") in covered_facet_ids
+                    and support_id in facet_supporting_ids.get(str(candidate.get("id") or ""), [])
+                ]
+                facet_evidence_lines.append(
+                    f"Evidence {support_id} (supports facets: {', '.join(facet_labels) or facet_id})\n"
+                    f"{item.get('content') or item.get('quote') or ''}"
+                )
+        elif facet_id in unsupported_ids or not support_ids:
+            answer_plan_lines.append(
+                f"- {facet_id}: do not invent an answer; state insufficiency only for this facet if needed."
+            )
+    if answer_plan_lines:
+        summary_lines.extend(["", "Required facet answer plan:", *answer_plan_lines])
+    diagnostic_plan = trace.get("diagnostic_stage_plan") or {}
+    ordered_stages = [str(stage) for stage in (diagnostic_plan.get("ordered_stages") or []) if stage]
+    confirmed_stages = [str(stage) for stage in (diagnostic_plan.get("confirmed_stages") or []) if stage]
+    first_failure_stage = str(diagnostic_plan.get("first_failure_stage") or "")
+    next_validation = str(diagnostic_plan.get("next_validation") or "")
+    stage_evidence_terms = {
+        "participant_discovery": r"spdp|participant|参与者|metatraffic|发现",
+        "endpoint_matching": r"sedp|endpoint|datawriter|datareader|匹配|match",
+        "user_data_transport": r"usertraffic|用户数据|data|网络|网卡|nic|ip|地址",
+        "reliability_retransmission": r"heartbeat|acknack|nackfrag|重传|可靠",
+        "reader_cache_application_read": r"reader|read|take|缓存|样本",
+        "application_processing": r"callback|回调|积压|阻塞|应用处理",
+    }
+    evidence_text = " ".join(str(item.get("content") or item.get("quote") or "") for item in evidence)
+    evidence_supported_stages = [
+        stage for stage in confirmed_stages
+        if stage in stage_evidence_terms and re.search(stage_evidence_terms[stage], evidence_text, re.I)
+    ]
+    diagnostic_plan_lines: list[str] = []
+    if evidence_supported_stages:
+        diagnostic_plan_lines.append(
+            "- Evidence/query-confirmed stages: " + ", ".join(evidence_supported_stages) + "."
+        )
+    if first_failure_stage in evidence_supported_stages:
+        diagnostic_plan_lines.append(
+            f"- Current first indicated failure stage: {first_failure_stage}; do not use a later-stage example as proof that this stage passed."
+        )
+    if next_validation:
+        diagnostic_plan_lines.append(f"- Next validation supported by the diagnostic plan: {next_validation}.")
+    if ordered_stages:
+        # Keep the complete plan available for trace/audit consumers, but make
+        # explicit that it is metadata rather than a generation checklist.
+        summary_lines.extend([
+            "",
+            "Diagnostic stage order metadata (audit only; do not expand unsupported stages): "
+            + " -> ".join(ordered_stages) + ".",
+        ])
+    if first_failure_stage and first_failure_stage not in evidence_supported_stages:
+        summary_lines.append(
+            f"- Current first indicated failure stage: {first_failure_stage} "
+            "(not Evidence-supported; do not claim or expand it)."
+        )
+    if diagnostic_plan_lines:
+        summary_lines.extend(["", "Diagnostic stage answer plan:", *diagnostic_plan_lines])
+    summary = {
+        "required_facets": [str(facet.get("id") or "") for facet in required_facets],
+        "required_relations": relation_diagnostics,
+        "constraint_support_ids": constraint_support_ids,
+        "facet_supporting_evidence_ids": facet_supporting_ids,
+        "covered_relation_facets": sorted(covered_relations),
+        "critical_evidence_ids": sorted(all_constraint_ids),
+        "directly_covered_facets": direct,
+        "compositionally_covered_facets": compositional,
+        "unsupported_facets": unsupported,
+        "evidence_strength": trace.get("evidence_strength", {}),
+        "semantic_concept_conflicts": trace.get("semantic_concept_conflicts", []),
+        "diagnostic_stage_plan": diagnostic_plan,
+        "evidence_supported_stages": evidence_supported_stages,
+    }
+    guidance = (
+        "[Evidence Coverage Summary]\n"
+        + "\n".join(summary_lines)
+        + "\n\n[Generation Evidence Contract]\n"
+        "- DIRECTLY_COVERED means the supplied evidence directly supports the requested fact or conclusion.\n"
+        "- COMPOSITIONALLY_COVERED means multiple supplied evidence items may be combined into a limited engineering conclusion; every step must be grounded in those items. A single sentence matching the user question verbatim is not required.\n"
+        "- UNSUPPORTED means a necessary fact or rule is absent. Do not fill it with model general knowledge; state that the evidence is insufficient only for that unsupported direction.\n"
+        "- If a required facet, relation, or constraint is marked covered and has support evidence, you MUST use that evidence in the answer.\n"
+        "- For every covered required facet, create one labeled bullet, paragraph, or table row. Do not satisfy several facets with a single introductory list of names.\n"
+        "- In a diagnostic question, each covered facet block should contain only the Evidence-supported observation/meaning and the corresponding check or next validation; one strong example must not replace other covered facets.\n"
+        "- For a diagnostic question, expand only stages that are both query-confirmed and supported by supplied Evidence; do not fill an unconfirmed stage merely to make the stage list complete.\n"
+        "- Do not claim '知识库没有/未提供/未说明', '无法判断', '证据不足', 'the knowledge base does not provide', or 'cannot determine' for a covered target. Such a negative claim contradicts the supplied evidence.\n"
+        "- A covered presence relation does not by itself prove a concrete constraint. You may remain conservative only when the requested constraint is explicitly marked uncovered.\n"
+        "- Keep facts and finite deductions distinct, cite the supporting evidence, and do not invent mechanisms, parameters, error codes, or deterministic consequences.\n"
+        "- Every new protocol/entity identifier, acronym, policy/status name, or concrete numeric parameter in the answer must occur in the supplied Evidence or in the user's question; otherwise omit it.\n"
+        "- constraint_support IDs identify evidence necessary for the user's core relation/constraint and must be checked first.\n"
+        "- Use direct_fact only for facts explicitly supported by Evidence. Use supported_inference only with cautious wording such as 可能、优先检查、需要进一步验证. Never turn a single symptom into a unique root cause.\n"
+        "- Keep QoS compatibility, Discovery/matched state, IDL/type compatibility, serialization/deserialization, and network reachability as separate mechanisms. A matched endpoint does not prove deserialization success; QoS incompatibility does not prove type incompatibility; network symptoms do not prove an IDL/type fault.\n"
+        "- For diagnostic questions, organize only Evidence-supported checks in layers: symptom/log -> Discovery/matching -> QoS -> type/IDL -> serialization/deserialization -> network. Do not add generic terms such as Connection Refused, firewall, or bandwidth congestion unless Evidence contains them.\n"
+        "- For exact APIs, exact classes, QoS policies, version-specific APIs, and standard/extension interfaces, do not inherit parameters or lifecycle semantics from a related API or concept.\n"
+        "- A remediation such as Batch, BEST_EFFORT, CPU affinity, read→take, delete_contained_entities, ResourceLimits, purge, or Jumbo Frame needs both direct Evidence and a matching condition; otherwise call it only a candidate test item or omit it."
+    )
+    if retry_generation_reason:
+        guidance += f"\n\n[Generation retry instruction]\n{retry_generation_reason}"
+    critical_text = ""
+    if critical_evidence:
+        critical_text = (
+            "\n\n[Critical Evidence]\n"
+            "The following evidence is necessary for the user's core relation/constraint. Read and use it before drafting the answer.\n"
+            + "\n\n".join(
+            f"Evidence {_evidence_id(item)}\n{item.get('content') or item.get('quote') or ''}"
+            for item in critical_evidence
+            )
+        )
+    if facet_evidence_lines:
+        critical_text += (
+            "\n\n[Required Facet Evidence]\n"
+            "Use these facet-to-evidence assignments to keep covered mechanisms separate. "
+            "The same evidence may support more than one facet, but each facet still needs its own answer block.\n"
+            + "\n\n".join(facet_evidence_lines)
+        )
+    return guidance, critical_text, summary
+
+
 class AIServiceError(RuntimeError):
     """Raised when Dify cannot complete a chat request safely."""
 
@@ -292,6 +529,81 @@ class AIClient:
         if name.lower().endswith(".pdf"):
             name = name[:-4]
         return name
+
+    def _build_evidence_fallback(
+        self,
+        question: str,
+        evidence: list[dict],
+        conversation_id: str | None,
+        reason: str,
+        required_facets: list[dict] | None = None,
+        reasoning_trace: dict[str, Any] | None = None,
+    ) -> Dict[str, Any]:
+        """Return a minimal Evidence-grounded answer when generation fails.
+
+        Retrieval and generation are separate stages.  A provider failure must
+        not turn usable selected Evidence into a status-only refusal.
+        """
+        sources = self.build_sources_from_evidence(evidence)
+        if required_facets is None:
+            required_facets = extract_facet_requirements(question).get("required_facets", [])
+        answer = build_evidence_grounded_fallback(
+            question,
+            evidence,
+            required_facets,
+            reasoning_trace,
+        )
+        has_content = bool(answer.strip())
+        # A provider fallback is still a valid answer when the authoritative
+        # evidence coverage is complete.  Keep PARTIAL for unresolved targets;
+        # when no coverage trace was supplied, preserve the legacy direct-call
+        # behavior rather than guessing that all facets are covered.
+        coverage_known = reasoning_trace is not None
+        partial_coverage = not coverage_known or bool(
+            reasoning_trace.get("unsupported_facets")
+            or reasoning_trace.get("uncovered_facets")
+            or reasoning_trace.get("uncovered_relation_facets")
+            or reasoning_trace.get("missing_required_facets")
+            or reasoning_trace.get("missing_relations")
+            or reasoning_trace.get("missing_relation_constraints")
+        )
+        return {
+            "answer": answer,
+            "raw_llm_answer": "",
+            "final_answer": answer,
+            "status": "answered" if has_content else "insufficient_evidence",
+            "answer_status": (
+                "NO_ANSWER" if not has_content
+                else "PARTIAL_ANSWER" if partial_coverage
+                else "ANSWER"
+            ),
+            "sources": sources,
+            "evidence": sources,
+            "images": [],
+            "dify_conversation_id": conversation_id,
+            "generation_fallback": "evidence_only",
+            "generation_fallback_reason": reason,
+            "live_generation_status": "LIVE_GENERATION_BLOCKED",
+            "generation_verified": False,
+            "validation": {
+                "should_retry": False,
+                "fallback": "evidence_only",
+                "reason": reason,
+                "question": question,
+                "supported_claims": [answer] if has_content else [],
+                "live_generation_status": "LIVE_GENERATION_BLOCKED",
+                "generation_verified": False,
+            },
+        }
+
+    @staticmethod
+    def _response_error_text(response: httpx.Response) -> str:
+        """Extract a bounded, non-secret provider error description."""
+        try:
+            payload = response.json()
+            return json.dumps(payload, ensure_ascii=False)[:3000]
+        except (ValueError, json.JSONDecodeError):
+            return response.text[:3000]
 
     def _load_segment_map(self) -> list[dict]:
         if not self.segment_map_path.exists():
@@ -677,6 +989,7 @@ class AIClient:
 
         return result
 
+
     def _extract_sources(self, data: Dict[str, Any]) -> list[dict]:
         metadata = data.get("metadata") or {}
 
@@ -839,6 +1152,8 @@ class AIClient:
         required_facets: list[dict] | None = None,
         relation_facets: list[dict] | None = None,
         reasoning_trace: dict[str, Any] | None = None,
+        facet_diagnostics: dict[str, Any] | None = None,
+        retry_generation_reason: str | None = None,
     ) -> Dict[str, Any]:
 
         if not self.base_url:
@@ -854,12 +1169,28 @@ class AIClient:
         final_query = question
         evidence = evidence or []
         relation_facets = relation_facets or []
+        coverage_trace_supplied = reasoning_trace is not None
         reasoning_trace = reasoning_trace or analyze_evidence_support(question, evidence, required_facets or [], relation_facets)
         context = external_context or ""
+        coverage_guidance, critical_evidence_context, generation_coverage_summary = build_generation_coverage_guidance(
+            evidence,
+            reasoning_trace,
+            required_facets,
+            relation_facets,
+            retry_generation_reason,
+        )
+        final_query = f"{question}\n\n{coverage_guidance}"
+        context = "\n\n".join(
+            part for part in (context, coverage_guidance, critical_evidence_context) if part
+        )
+        # Dify applications configured with a required `external_context`
+        # input reject an empty string.  Keep the input contract valid even
+        # for legacy/direct calls that do not have retrieved evidence.
+        if not context.strip():
+            context = "本次请求没有额外检索证据。"
         if reasoning_trace.get("compositionally_covered_facets") or reasoning_trace.get("relation_chain_supported"):
-            final_query = (
-                f"{question}\n\n"
-                "回答约束：已提供多条可组合证据。请区分证据事实与有限工程推论，"
+            final_query += (
+                "\n\n回答约束：已提供多条可组合证据。请区分证据事实与有限工程推论，"
                 "可使用“可能/风险”等措辞；不要仅因缺少逐字相同的场景原句而拒绝回答。"
             )
             context = (
@@ -901,6 +1232,43 @@ class AIClient:
                         await asyncio.sleep(0.5)
                         continue
 
+                    provider_error = self._response_error_text(exc.response)
+                    provider_error_lower = provider_error.lower()
+                    logger.error(
+                        "DIFY_GENERATION_FAILED status=%s error=%s evidence_count=%s",
+                        exc.response.status_code,
+                        provider_error,
+                        len(evidence),
+                    )
+                    if "insufficient balance" in provider_error_lower or "status code 402" in provider_error_lower:
+                        if evidence:
+                            return self._build_evidence_fallback(
+                                question,
+                                evidence,
+                                conversation_id,
+                                "provider_insufficient_balance",
+                                required_facets,
+                                reasoning_trace if coverage_trace_supplied else None,
+                            )
+                        raise AIServiceError(
+                            "Dify 生成模型余额不足，请在 Dify 中充值或切换可用模型"
+                        ) from exc
+
+                    # Retrieval is already complete at this point.  Keep the
+                    # chat usable when Dify returns a transient/upstream
+                    # 5xx, plugin error, or another provider-side status: the
+                    # caller still receives the authoritative excerpts and
+                    # citations instead of an opaque HTTP 502.
+                    if evidence:
+                        return self._build_evidence_fallback(
+                            question,
+                            evidence,
+                            conversation_id,
+                            f"provider_http_{exc.response.status_code}",
+                            required_facets,
+                            reasoning_trace if coverage_trace_supplied else None,
+                        )
+
                     raise AIServiceError(
                         "Dify 暂时无法完成回答，请稍后重试"
                     ) from exc
@@ -910,6 +1278,16 @@ class AIClient:
                         await asyncio.sleep(0.5)
                         continue
 
+                    if evidence:
+                        return self._build_evidence_fallback(
+                            question,
+                            evidence,
+                            conversation_id,
+                            "provider_connection_error",
+                            required_facets,
+                            reasoning_trace if coverage_trace_supplied else None,
+                        )
+
                     raise AIServiceError(
                         "Dify 连接失败，请稍后重试"
                     ) from exc
@@ -917,9 +1295,27 @@ class AIClient:
         try:
             data = response.json()
         except (ValueError, json.JSONDecodeError) as exc:
+            if evidence:
+                return self._build_evidence_fallback(
+                    question,
+                    evidence,
+                    conversation_id,
+                    "provider_invalid_json",
+                    required_facets,
+                    reasoning_trace if coverage_trace_supplied else None,
+                )
             raise AIServiceError("Dify 返回了无法解析的响应，请稍后重试") from exc
 
         if not isinstance(data, dict):
+            if evidence:
+                return self._build_evidence_fallback(
+                    question,
+                    evidence,
+                    conversation_id,
+                    "provider_invalid_response",
+                    required_facets,
+                    reasoning_trace if coverage_trace_supplied else None,
+                )
             raise AIServiceError("Dify 返回了无效响应，请稍后重试")
 
         # Always extract from Dify for images + fallback when no backend evidence.
@@ -931,10 +1327,49 @@ class AIClient:
             sources = self.build_sources_from_evidence(evidence)
         else:
             sources = dify_sources
+        raw_llm_answer = str(data.get("answer", "") or "")
+        answer = self._clean_answer(raw_llm_answer)
         validation = validate_answer(
-            self._clean_answer(data.get("answer", "")), evidence, question,
+            answer, evidence, question,
             candidate_pool=candidate_pool, required_facets=required_facets,
             relation_facets=relation_facets,
+            facet_diagnostics=facet_diagnostics,
+        )
+        # Preserve the provider's cleaned answer verbatim when validation
+        # fails. The API owns the bounded retry and must validate the actual
+        # first/retry generations; salvaging here would split dotted names,
+        # hide malformed output, and make a retry look like a different answer
+        # than the provider returned.
+        logger.warning(
+            "generation_trace generation_required_facets=%s generation_required_relations=%s "
+            "generation_constraint_support_ids=%s generation_coverage_summary=%s "
+            "raw_llm_negative_claims=%s negative_claim_conflicts_with_coverage=%s",
+            generation_coverage_summary.get("required_facets", []),
+            generation_coverage_summary.get("required_relations", []),
+            generation_coverage_summary.get("constraint_support_ids", {}),
+            generation_coverage_summary,
+            validation.raw_llm_negative_claims,
+            validation.negative_claim_conflicts_with_coverage,
+        )
+        logger.warning(
+            "generation_answer_trace raw_llm_answer=%r final_answer=%r critical_evidence_ids=%s answer_covered_facets=%s answer_missing_facets=%s",
+            raw_llm_answer,
+            answer,
+            generation_coverage_summary.get("critical_evidence_ids", []),
+            validation.answer_covered_facets,
+            validation.answer_missing_facets,
+        )
+        logger.warning(
+            "generation_validation_detail status=%s should_retry=%s reasons=%s "
+            "unsupported_claims=%s overclaim_claims=%s output_integrity_issues=%s "
+            "parameter_name_conflicts=%s",
+            validation.status,
+            validation.should_retry,
+            validation.reasons,
+            validation.unsupported_claims,
+            validation.overclaim_claims,
+            validation.output_integrity_issues,
+            validation.parameter_name_conflicts,
         )
         logger.info(
             "final evidence=%s validation=%s reasons=%s",
@@ -950,11 +1385,25 @@ class AIClient:
             validation.reasons,
         )
 
-        answer = self._clean_answer(data.get("answer", ""))
-        answer_status = "answered"
+        partial_coverage = bool(
+            reasoning_trace.get("unsupported_facets")
+            or reasoning_trace.get("uncovered_relation_facets")
+            or validation.missing_required_facets
+            or validation.missing_relations
+            or validation.missing_relation_constraints
+            or validation.unsupported_claims
+            or validation.causal_overclaim_claims
+            or validation.lifecycle_state_conflicts
+            or validation.numeric_unit_conflicts
+            or validation.return_code_conflicts
+            or validation.mechanism_conflicts
+        )
+        answer_status = "PARTIAL_ANSWER" if partial_coverage else "ANSWER"
+        answer_status_value = answer_status
         if not answer:
             answer = "当前知识库中没有找到足够证据回答这个问题，请补充更具体的信息后重试。"
             answer_status = "insufficient_evidence"
+            answer_status_value = "NO_ANSWER"
         logger.debug(
             "Dify evidence diagnostics raw_dify_version=%s parsed_evidence_versions=%s",
             [self._extract_metadata_value(item, "version") for item in (
@@ -965,12 +1414,16 @@ class AIClient:
 
         return {
             "answer": answer,
-            "status": answer_status,
-            "answer_status": "ANSWER" if answer_status == "answered" else "NO_ANSWER",
+            "raw_llm_answer": raw_llm_answer,
+            "final_answer": answer,
+            "status": "answered" if answer_status != "insufficient_evidence" else answer_status,
+            "answer_status": answer_status_value,
             "sources": sources,
             "evidence": sources,
             "images": images,
             "dify_conversation_id": data.get("conversation_id") or conversation_id,
+            "live_generation_status": "VERIFIED",
+            "generation_verified": True,
             "validation": {
                 "status": validation.status,
                 "reasons": list(validation.reasons),
@@ -978,21 +1431,58 @@ class AIClient:
                 "negative_claim_facets": list(validation.negative_claim_facets),
                 "compositional_refusal_facets": list(validation.compositional_refusal_facets),
                 "missing_relations": list(validation.missing_relations),
+                "missing_relation_constraints": list(validation.missing_relation_constraints),
                 "missing_side_states": list(validation.missing_side_states),
                 "contradicted_negative_claims": list(validation.contradicted_negative_claims),
                 "should_retry": validation.should_retry,
                 "directly_covered_facets": reasoning_trace.get("directly_covered_facets", []),
                 "compositionally_covered_facets": reasoning_trace.get("compositionally_covered_facets", []),
                 "unsupported_facets": reasoning_trace.get("unsupported_facets", []),
+                "answer_covered_facets": list(validation.answer_covered_facets),
+                "answer_missing_facets": list(validation.answer_missing_facets),
+                "answer_facet_snippets": validation.answer_facet_snippets or {},
+                "output_integrity_issues": list(validation.output_integrity_issues),
+                "parameter_name_conflicts": list(validation.parameter_name_conflicts),
                 "facet_supporting_evidence_ids": reasoning_trace.get("facet_supporting_evidence_ids", {}),
                 "reasoning_links": reasoning_trace.get("reasoning_links", []),
                 "covered_relation_facets": reasoning_trace.get("covered_relation_facets", []),
                 "uncovered_relation_facets": reasoning_trace.get("uncovered_relation_facets", []),
                 "relation_supporting_evidence_ids": reasoning_trace.get("relation_supporting_evidence_ids", {}),
+                "relation_presence_covered": reasoning_trace.get("relation_presence_covered", []),
+                "relation_constraint_covered": reasoning_trace.get("relation_constraint_covered", []),
+                "presence_support_ids": reasoning_trace.get("presence_support_ids", {}),
+                "constraint_support_ids": reasoning_trace.get("constraint_support_ids", {}),
+                "missing_relation_constraints": reasoning_trace.get("missing_relation_constraints", []),
+                "recovery_target_relation_ids": reasoning_trace.get("recovery_target_relation_ids", []),
+                "recovery_target_constraints": reasoning_trace.get("recovery_target_constraints", {}),
+                "relation_diagnostics": reasoning_trace.get("relation_diagnostics", []),
+                "generation_coverage_summary": generation_coverage_summary,
+                "raw_llm_negative_claims": list(validation.raw_llm_negative_claims),
+                "negative_claim_conflicts_with_coverage": list(validation.negative_claim_conflicts_with_coverage),
+                "generation_evidence_conflict": validation.generation_evidence_conflict,
+                "unsupported_claims": list(validation.unsupported_claims),
+                "supported_claims": list(validation.supported_claims),
+                "evidence_strength": validation.evidence_strength or reasoning_trace.get("evidence_strength", {}),
+                "overclaim_detected": validation.overclaim_detected,
+                "overclaim_claims": list(validation.overclaim_claims),
+                "exact_api_conflicts": list(validation.exact_api_conflicts),
+                "semantic_concept_conflicts": list(validation.semantic_concept_conflicts),
+                "action_applicability_conflicts": list(validation.action_applicability_conflicts),
+                "causal_overclaim_claims": list(validation.causal_overclaim_claims),
+                "lifecycle_state_conflicts": list(validation.lifecycle_state_conflicts),
+                "numeric_unit_conflicts": list(validation.numeric_unit_conflicts),
+                "return_code_conflicts": list(validation.return_code_conflicts),
+                "mechanism_conflicts": list(validation.mechanism_conflicts),
+                "live_generation_status": "VERIFIED",
+                "generation_verified": True,
                 "semantic_normalization": reasoning_trace.get("semantic_normalization", []),
                 "missing_relations": list(validation.missing_relations),
                 "missing_side_states": list(validation.missing_side_states),
                 "contradicted_negative_claims": list(validation.contradicted_negative_claims),
+                "ignored_missing_facets": list(validation.ignored_missing_facets),
+                "raw_extracted_facets": list((facet_diagnostics or {}).get("raw_extracted_facets", [])),
+                "accepted_required_facets": list((facet_diagnostics or {}).get("accepted_required_facets", [])),
+                "rejected_noise_facets": list((facet_diagnostics or {}).get("rejected_noise_facets", [])),
             },
         }
 

@@ -29,6 +29,26 @@ def test_idl_change_retrieves_troubleshooting_serialization_chunk():
     )
 
 
+def test_reliability_aliases_retrieve_the_writer_reader_compatibility_table():
+    question = (
+        "Writer与Reader均已发现，但一直无法匹配。日志提示QoS不兼容，"
+        "当前只知道双方Reliability配置不同。请说明应如何判断谁的offered/requested不满足。"
+    )
+    rewritten = rewrite_query(question)
+
+    assert "尽力而为" in rewritten.search_query
+    assert "数据写者" in rewritten.search_query
+    assert "数据读者" in rewritten.search_query
+    results = retrieve_candidates(rewritten.search_query, top_k=30)
+
+    assert any(
+        item.get("source_file") == "ZRDDS故障排查指南.pdf"
+        and item.get("section") == "1. DDS 通信过程 > 1.3. 通信过程"
+        and "不匹配" in str(item.get("content") or "")
+        for item in results
+    )
+
+
 def test_chat_rerank_uses_rewritten_query(monkeypatch):
     import asyncio
     from types import SimpleNamespace

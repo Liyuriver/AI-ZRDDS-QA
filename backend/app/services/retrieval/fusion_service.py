@@ -60,6 +60,14 @@ def normalize_candidate(item: dict[str, Any], source: str, rank: int) -> dict[st
         # per-source rank tracking (filled/merged during dedup)
         "bm25_rank": rank if source == "bm25" else None,
         "dify_rank": rank if source == "dify" else None,
+        # Recovery identity is retrieval metadata, not a ranking feature.  It
+        # must survive normalization so later stages can distinguish a
+        # recovery hit from an ordinary hit with the same text.
+        "recovery_retrieval": bool(item.get("recovery_retrieval")),
+        "recovery_relation_ids": list(item.get("recovery_relation_ids") or []),
+        "recovery_facet_ids": list(item.get("recovery_facet_ids") or []),
+        "recovery_candidate_ids": list(item.get("recovery_candidate_ids") or []),
+        "recovery_support_map": dict(item.get("recovery_support_map") or {}),
     }
 
 
@@ -96,6 +104,22 @@ def _merge_source_info(target: dict[str, Any], incoming: dict[str, Any]) -> None
         target["chunk_id"] = incoming["chunk_id"]
     if not target.get("segment_id") and incoming.get("segment_id"):
         target["segment_id"] = incoming["segment_id"]
+    if incoming.get("recovery_retrieval"):
+        target["recovery_retrieval"] = True
+    for field in ("recovery_relation_ids", "recovery_facet_ids", "recovery_candidate_ids"):
+        values = list(target.get(field) or [])
+        for value in incoming.get(field) or []:
+            if value not in values:
+                values.append(value)
+        if values:
+            target[field] = values
+    if incoming.get("recovery_support_map"):
+        merged_map = dict(target.get("recovery_support_map") or {})
+        for key, values in incoming["recovery_support_map"].items():
+            merged_map[key] = list(dict.fromkeys(
+                list(merged_map.get(key) or []) + list(values or [])
+            ))
+        target["recovery_support_map"] = merged_map
 
 
 def _classify_candidate(item: dict[str, Any], reserve_n: int) -> str:
@@ -198,7 +222,15 @@ def fuse_candidates(
         for rank, raw in enumerate(results, 1):
             candidate = normalize_candidate(raw, source, rank)
             match = next((item for item in merged if (
-                (candidate["chunk_id"] and item["chunk_id"] == candidate["chunk_id"])
+                # chunk numbers are only document-local.  Never merge two
+                # different documents merely because both call a segment
+                # "chunk-0050"; this would destroy evidence identity.
+                (candidate["chunk_id"] and item["chunk_id"] == candidate["chunk_id"]
+                 and (
+                     not candidate["source_file"]
+                     or not item["source_file"]
+                     or _document_key(candidate["source_file"]) == _document_key(item["source_file"])
+                 ))
                 or candidate["_dedup_key"] == item["_dedup_key"]
                 or _same_content(candidate, item)
             )), None)

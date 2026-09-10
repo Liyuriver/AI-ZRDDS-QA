@@ -34,6 +34,10 @@ async function copyAnswer(): Promise<void> {
         </button>
       </div>
       <div class="assistant-message__body">
+        <div v-if="message.answerStatus === 'partial'" class="assistant-message__partial">
+          <strong>部分回答</strong>
+          <span>已回答有证据支持的部分，其余结论请结合现场信息确认</span>
+        </div>
         <div v-if="message.answerStatus === 'no_answer'" class="assistant-message__no-answer">
           <strong>依据不足</strong>
           <span>系统未生成推测性回答</span>
@@ -116,6 +120,25 @@ async function copyAnswer(): Promise<void> {
   border-radius: 9px;
   color: #92400e;
   background: #fffbeb;
+}
+.assistant-message__partial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 13px;
+  padding: 10px 12px;
+  border: 1px solid #bfdbfe;
+  border-radius: 9px;
+  color: #1e3a8a;
+  background: #eff6ff;
+}
+.assistant-message__partial strong {
+  font-size: 12px;
+}
+.assistant-message__partial span {
+  color: #1d4ed8;
+  font-size: 10px;
 }
 .assistant-message__no-answer strong {
   font-size: 12px;

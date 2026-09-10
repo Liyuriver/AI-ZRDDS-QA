@@ -3,7 +3,14 @@ import asyncio
 import httpx
 import pytest
 
-from app.services.ai_client import AIClient, AIServiceError, build_dify_query
+from app.services.ai_client import (
+    AIClient,
+    AIServiceError,
+    build_dify_query,
+    build_generation_coverage_guidance,
+)
+from app.services.retrieval.evidence_service import analyze_evidence_support, extract_facet_requirements
+from app.api.chat import should_retry_generation
 
 
 class FakeAsyncClient:
@@ -81,6 +88,32 @@ def test_query_returns_stable_error_after_retry(monkeypatch):
         asyncio.run(client.query("测试问题", user_id="test-user"))
 
 
+def test_query_uses_evidence_fallback_after_provider_failure(monkeypatch):
+    fake = FakeAsyncClient([
+        response(502, {"code": "upstream_error", "message": "provider unavailable"}),
+        response(502, {"code": "upstream_error", "message": "provider unavailable"}),
+    ])
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **_kwargs: fake)
+    monkeypatch.setattr("app.services.ai_client.asyncio.sleep", lambda _delay: _noop())
+
+    client = AIClient()
+    client.base_url = "http://dify.test/v1"
+    client.api_key = "test-key"
+    evidence = [{
+        "source_file": "manual.pdf",
+        "section": "QoS",
+        "chunk_id": "rule-1",
+        "content": "DataWriter offers Reliability; DataReader requests Reliability.",
+    }]
+
+    result = asyncio.run(client.query("测试问题", evidence=evidence, user_id="test-user"))
+
+    assert fake.calls == 2
+    assert result["answer_status"] == "PARTIAL_ANSWER"
+    assert result["generation_fallback"] == "evidence_only"
+    assert "DataWriter offers Reliability" in result["answer"]
+
+
 def test_query_turns_empty_answer_into_insufficient_evidence(monkeypatch):
     fake = FakeAsyncClient([response(200, {"answer": "   ", "metadata": {}})])
     monkeypatch.setattr(httpx, "AsyncClient", lambda **_kwargs: fake)
@@ -92,6 +125,59 @@ def test_query_turns_empty_answer_into_insufficient_evidence(monkeypatch):
 
     assert result["status"] == "insufficient_evidence"
     assert result["answer"]
+
+
+def test_generation_prompt_contains_dynamic_coverage_contract_and_critical_content():
+    requirements = extract_facet_requirements(
+        "Writer offers Reliability; Reader requests Reliability; Reliability must satisfy the compatibility rule."
+    )
+    evidence = [
+        {"chunk_id": "writer-fact", "content": "DataWriter offers Reliability."},
+        {"chunk_id": "reader-fact", "content": "DataReader requests Reliability."},
+        {"chunk_id": "rule-dynamic", "content": "The offered Reliability must be greater than or equal to the requested Reliability."},
+    ]
+    trace = analyze_evidence_support(
+        "Writer offers Reliability; Reader requests Reliability; Reliability must satisfy the compatibility rule.",
+        evidence,
+        requirements["required_facets"],
+        requirements["required_relation_facets"],
+    )
+    guidance, critical, summary = build_generation_coverage_guidance(
+        evidence,
+        trace,
+        requirements["required_facets"],
+        requirements["required_relation_facets"],
+    )
+
+    assert "[Generation Evidence Contract]" in guidance
+    assert "COMPOSITIONALLY_COVERED" in guidance
+    assert "Reliability" in guidance
+    assert "rule-dynamic" in guidance
+    assert "rule-dynamic" in critical
+    assert "The offered Reliability must be greater" in critical
+    assert summary["critical_evidence_ids"] == ["rule-dynamic"]
+
+
+def test_query_exposes_raw_and_final_generation_answers(monkeypatch):
+    fake = FakeAsyncClient([response(200, {
+        "answer": "模型原始答案",
+        "metadata": {},
+    })])
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **_kwargs: fake)
+    client = AIClient()
+    client.base_url = "http://dify.test/v1"
+    client.api_key = "test-key"
+
+    result = asyncio.run(client.query("测试问题", user_id="test-user"))
+
+    assert result["raw_llm_answer"] == "模型原始答案"
+    assert result["final_answer"] == "模型原始答案"
+    assert fake.payloads[0]["query"].startswith("测试问题\n\n[Evidence Coverage Summary]")
+
+
+def test_generation_conflict_retries_even_when_evidence_ids_are_unchanged():
+    assert should_retry_generation(False, ["relation:2"])
+    assert not should_retry_generation(False, [])
 
 
 def test_build_dify_query_preserves_identifiers_and_respects_limit():

@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field, field_validator
 ChatStatus = Literal[
     "answered", "insufficient_evidence", "error", "partial",
     "ANSWER", "PARTIAL_ANSWER", "VERSION_MISMATCH", "VERSION_UNCERTAIN", "LOW_CONFIDENCE", "NO_ANSWER",
+    "OUT-KB", "EXPERIMENT", "NEED-CONTEXT", "FRESH", "VERSION-GAP",
 ]
 
 
@@ -69,6 +70,10 @@ class ChatData(BaseModel):
     detected_version: Optional[str] = None
     effective_version: Optional[str] = None
     version_status: Optional[str] = None
+    boundary_type: Optional[str] = None
+    diagnostic_stage_plan: dict = Field(default_factory=dict)
+    live_generation_status: Optional[str] = None
+    generation_verified: Optional[bool] = None
     evidence: list[dict] = Field(default_factory=list)
 
 

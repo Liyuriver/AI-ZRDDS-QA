@@ -1,5 +1,8 @@
 const DEFAULT_API_BASE_URL = '/api/v1'
-const DEFAULT_API_TIMEOUT = 30_000
+// A live RAG turn may include Dify retrieval, recovery retrieval, reranking,
+// and one bounded validation retry. Keep the browser request alive while the
+// backend completes that chain instead of reporting a client-side timeout.
+const DEFAULT_API_TIMEOUT = 180_000
 
 function parsePositiveNumber(value: string | undefined, fallback: number): number {
   const parsed = Number(value)

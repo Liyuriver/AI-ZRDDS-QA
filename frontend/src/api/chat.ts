@@ -8,7 +8,7 @@ interface BackendMessage {
   conversation_id: string
   role: 'user' | 'assistant'
   content: string
-  answer_status?: 'answered' | 'insufficient_evidence' | 'error' | null
+  answer_status?: string | null
   sources?: BackendSource[] | null
   images?: BackendImage[] | null
   created_at: string
@@ -34,9 +34,28 @@ interface BackendChatResponse {
     conversation_id: string
     answer: string
     status: 'answered' | 'insufficient_evidence' | 'error'
+    answer_status?: string | null
     sources: BackendSource[]
     images: BackendImage[]
   } | null
+}
+
+const NO_ANSWER_STATUSES = new Set([
+  'insufficient_evidence',
+  'error',
+  'NO_ANSWER',
+  'OUT-KB',
+  'EXPERIMENT',
+  'NEED-CONTEXT',
+  'FRESH',
+  'VERSION-GAP',
+])
+
+function mapAnswerStatus(status: string | null | undefined, fallback: string): ChatMessage['answerStatus'] {
+  const normalized = status || fallback
+  if (normalized === 'PARTIAL_ANSWER' || normalized === 'partial') return 'partial'
+  if (NO_ANSWER_STATUSES.has(normalized)) return 'no_answer'
+  return 'answered'
 }
 
 export const mapHistoryMessage = (item: BackendMessage): ChatMessage => ({
@@ -46,12 +65,7 @@ export const mapHistoryMessage = (item: BackendMessage): ChatMessage => ({
   content: item.content,
   status: 'success',
   createdAt: item.created_at,
-  answerStatus:
-    item.role === 'assistant'
-      ? item.answer_status === 'insufficient_evidence'
-        ? 'no_answer'
-        : 'answered'
-      : undefined,
+  answerStatus: item.role === 'assistant' ? mapAnswerStatus(item.answer_status, 'answered') : undefined,
   citations:
     item.role === 'assistant' ? mapCitations(item.sources || [], item.images || []) : undefined,
 })
@@ -93,8 +107,7 @@ export function mapChatResponse(response: BackendChatResponse): ChatMessage {
     content: answer || 'AI 服务没有返回有效内容，请稍后重试。',
     status: 'success',
     createdAt: new Date().toISOString(),
-    answerStatus:
-      response.data.status === 'insufficient_evidence' || !answer ? 'no_answer' : 'answered',
+    answerStatus: answer ? mapAnswerStatus(response.data.answer_status, response.data.status) : 'no_answer',
     citations: mapCitations(response.data.sources, response.data.images),
   }
 }
